@@ -36,6 +36,15 @@
             letter-spacing: 0.05em;
             font-feature-settings: "palt";
             overflow-x: hidden;
+            
+            /* 日本語の折り返し設定（スマホでの変な隙間防止） */
+            word-break: break-all;
+            overflow-wrap: break-word;
+        }
+
+        /* PCのみ改行するためのクラス */
+        .pc-only {
+            display: block;
         }
 
         /* 見出し：艶のある Shippori Mincho */
@@ -111,7 +120,7 @@
             font-size: 1rem;
             letter-spacing: 0.1em;
             transition: all 0.3s ease;
-            font-family: "Noto Sans JP", sans-serif; /* ボタンは可読性重視 */
+            font-family: "Noto Sans JP", sans-serif;
         }
         .btn:hover {
             background-color: var(--accent-color);
@@ -147,7 +156,7 @@
             animation: fadeIn 2s ease-out;
         }
         .hero-content h1 {
-            font-family: "Shippori Mincho", serif; /* フォント適用 */
+            font-family: "Shippori Mincho", serif;
             font-size: 3.5rem;
             font-weight: 600;
             margin-bottom: 30px;
@@ -178,7 +187,7 @@
             color: var(--accent-color);
             letter-spacing: 0.15em;
             position: relative;
-            font-family: "Shippori Mincho", serif; /* フォント適用 */
+            font-family: "Shippori Mincho", serif;
             font-weight: 600;
         }
         .section-title::after {
@@ -204,7 +213,7 @@
         .highlight { color: #fff; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
         .quote-large {
             font-size: 1.5rem; 
-            font-family: "Shippori Mincho", serif; /* フォント適用 */
+            font-family: "Shippori Mincho", serif;
             color: var(--accent-color);
             margin: 80px 0; display: block; text-align: center; line-height: 1.8;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
@@ -219,7 +228,7 @@
             font-size: 1.5rem; line-height: 1.6; color: var(--accent-color);
             margin-bottom: 25px; border-left: 3px solid var(--accent-color); padding-left: 20px;
             font-weight: 600;
-            font-family: "Shippori Mincho", serif; /* フォント適用 */
+            font-family: "Shippori Mincho", serif;
         }
         .concept-text p { margin-bottom: 1.5em; color: #ccc; font-size: 1rem; }
 
@@ -308,7 +317,17 @@
 
         /* --- スマホ対応 --- */
         @media (max-width: 900px) {
-            .container { padding: 0 25px; }
+            .container { padding: 0 30px; /* 余白を少し広げて窮屈さを軽減 */ }
+            
+            /* スマホでPC用改行を無効化 */
+            br.pc-only { display: none; }
+
+            /* 長文テキストは「両端揃え」で見やすくする */
+            .story-text {
+                text-align: justify;
+                text-align-last: left;
+            }
+
             .service-grid { grid-template-columns: 1fr; gap: 40px;}
             .pricing-grid { flex-direction: column; align-items: center; }
             .price-card { width: 100%; max-width: 350px; margin-bottom: 20px; }
@@ -320,6 +339,7 @@
             .profile-flex { flex-direction: column; gap: 30px;}
             .profile-img { width: 100%; height: auto; aspect-ratio: 3/4; flex: none;}
             
+            /* H1のサイズ調整（折り返し位置の最適化） */
             .hero-content h1 { font-size: 2.2rem; }
             .quote-large { font-size: 1.2rem; margin: 50px 0;}
         }
@@ -342,8 +362,8 @@
         <canvas id="hero-canvas"></canvas>
         
         <div class="container hero-content">
-            <h1>あなたの物語を、<br>最高傑作へ。</h1>
-            <p>主人公たちは、最高の仲間と旅に出る。</p>
+            <h1>あなたの物語を、<br class="pc-only">最高傑作へ。</h1>
+            <p>主人公たちは、<br class="pc-only">最高の仲間と旅に出る。</p>
             <a href="#services" class="btn">旅の地図を見る</a>
         </div>
     </div>
@@ -355,21 +375,21 @@
             
             <div class="story-text">
                 <p style="text-align: center; font-weight: bold; margin-bottom: 3em; color: #fff; font-size: 1.2rem; letter-spacing: 0.1em;">
-                    あなたは今、自分の人生の「主役」を生きていると言えますか？
+                    あなたは今、自分の人生の<br class="pc-only">「主役」を生きていると言えますか？
                 </p>
 
                 <p>
-                    周りの期待に応えてきた。社会のルールも守ってきた。十分な給与も得られた。<br>
-                    でも、いつの間にか、自分は誰と仲が良いのか分からなくなった。<br>
-                    気軽に「今日、ご飯食べに行かない？」なんて、言えなくなっていた。
+                    周りの期待に応えてきた。<br class="pc-only">社会のルールも守ってきた。<br class="pc-only">十分な給与も得られた。<br>
+                    でも、いつの間にか、<br class="pc-only">自分は誰と仲が良いのか分からなくなった。<br>
+                    気軽に「今日、ご飯食べに行かない？」なんて、<br class="pc-only">言えなくなっていた。
                 </p>
                 <p>
-                    心の奥底で知っている。本当の自分は不真面目で自分勝手。<br>
-                    相手の為と見せかけて、保身や損得勘定で動くズルい自分。
+                    心の奥底で知っている。<br class="pc-only">本当の自分は不真面目で自分勝手。<br>
+                    相手の為と見せかけて、<br class="pc-only">保身や損得勘定で動くズルい自分。
                 </p>
                 <p>
-                    パートナーとの関係さえも、役割を演じることになってしまった。<br>
-                    誰にも本音を言えない。建前の中で生きる日々は、もう苦しい。
+                    パートナーとの関係さえも、<br class="pc-only">役割を演じることになってしまった。<br>
+                    誰にも本音を言えない。<br class="pc-only">建前の中で生きる日々は、もう苦しい。
                 </p>
                 <p>
                     <span class="highlight">「残りの人生、このまま偽りの中で生き続けるの？」<br>
@@ -377,22 +397,23 @@
                     「一体自分は何者なのか？」</span>
                 </p>
                 <p>
-                    私はこの問いの答えを探す旅の中で、コーチングと出会いました。<br>
-                    そして気づいたのです。私が「価値のない自分」だと否定し、隠してきた部分こそが、<br>
-                    実は人生を動かす最もパワフルなエネルギーであることを。
+                    私はこの問いの答えを探す旅の中で、<br class="pc-only">コーチングと出会いました。<br>
+                    そして気づいたのです。<br class="pc-only">私が「価値のない自分」だと否定し、隠してきた部分こそが、<br>
+                    実は人生を動かす<br class="pc-only">最もパワフルなエネルギーであることを。
                 </p>
                 <p>
-                    あなたの「完璧な仮面」の裏にある、不真面目で、自分勝手な一面も、あなた自身の全てです。その全てが、あなたが本当に望む未来を創造するためのエネルギーになります。
+                    あなたの「完璧な仮面」の裏にある、<br class="pc-only">不真面目で、自分勝手な一面も、あなた自身の全てです。<br>
+                    その全てが、あなたが本当に望む未来を<br class="pc-only">創造するためのエネルギーになります。
                 </p>
                 <p>
-                    もしあなたが、「本当に大切にしたい自分」を生きることに飢えているなら。<br>
-                    恐れも、弱さも、すべてを燃料に変えて、一緒に遠くまで行きましょう。
+                    もしあなたが、「本当に大切にしたい自分」を<br class="pc-only">生きることに飢えているなら。<br>
+                    恐れも、弱さも、すべてを燃料に変えて、<br class="pc-only">一緒に遠くまで行きましょう。
                 </p>
 
                 <span class="quote-large">
                     "If you want to go fast, go alone.<br>
                     If you want to go far, go together."<br>
-                    <span style="font-size: 0.8em; display:block; margin-top:10px;">（早く行きたければ一人で行け、遠くへ行きたければみんなで行け）</span>
+                    <span style="font-size: 0.8em; display:block; margin-top:10px;">（早く行きたければ一人で行け、<br class="pc-only">遠くへ行きたければみんなで行け）</span>
                 </span>
             </div>
         </section>
@@ -444,7 +465,7 @@
             
             <div class="concept-grid">
                 <div class="concept-text">
-                    <h3>気持ちがいいだけのコーチングでは、<br>人生は変わらない。</h3>
+                    <h3>気持ちがいいだけの<br class="pc-only">コーチングでは、<br class="pc-only">人生は変わらない。</h3>
                     <p>
                         コーチングの時間は、日常の喧騒から切り離された、あなたにとって心安らぐ非日常の場です。<br>
                         自分の枠を外し、新しい自分との出会いは、本質的な変化への最初の一歩です。
@@ -458,7 +479,7 @@
                     </p>
                 </div>
                 <div class="concept-text">
-                    <h3>「180度の変化」より、<br>確かな「2度の変化」を。</h3>
+                    <h3>「180度の変化」より、<br class="pc-only">確かな「2度の変化」を。</h3>
                     <p>
                         一度のセッションで劇的に180度変化することは、ほとんどないと考えています。
                     </p>
@@ -481,7 +502,7 @@
     <section class="container" id="pricing">
         <h2 class="section-title">Coaching Price / Commitment</h2>
         <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
-            CoSTARでは、新しい自分を定着させるための<br>
+            CoSTARでは、新しい自分を定着させるための<br class="pc-only">
             「3〜10ヶ月の中長期的な関わり」を基本としています。
         </p>
 
@@ -553,12 +574,12 @@
                 </p>
                 
                 <p>
-                    1982年生まれ。大手IT企業を経て、石油元売のIT部門にてシステム開発（PM）、プロセス改革、戦略策定、生成AI組織の立ち上げ、組織リーダーを歴任。<br>
+                    1982年生まれ。大手IT企業を経て、石油元売のIT部門にてシステム開発（PM）、プロセス改革、戦略策定、生成AI組織の立ち上げ、組織リーダーを歴任。<br class="pc-only">
                     自身のリーダーシップへの葛藤からコーチングと出会う。
                 </p>
                 <p>
-                    自身が「価値がない」と否定し隠してきた部分こそが、人生を動かす最もパワフルなリソースであることを体感。<br>
-                    完璧な仮面の下にある、あなたの全ての感情と共にいます。<br>
+                    自身が「価値がない」と否定し隠してきた部分こそが、人生を動かす最もパワフルなリソースであることを体感。<br class="pc-only">
+                    完璧な仮面の下にある、あなたの全ての感情と共にいます。<br class="pc-only">
                     あなたの「最高傑作」の物語を、共に創りましょう。
                 </p>
             </div>
@@ -569,7 +590,7 @@
         <div class="container">
             <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 30px;">Contact</h2>
             <p style="margin-bottom: 30px;">
-                まずは、あなたの物語を少しだけ聞かせてください。<br>
+                まずは、あなたの物語を少しだけ聞かせてください。<br class="pc-only">
                 体験セッションのお申し込み、またはご質問はこちらから。
             </p>
             
@@ -638,20 +659,4 @@
                     canvas.height = height;
                     
                     stars = [];
-                    for (let i = 0; i < numStars; i++) { stars.push(new Star(width, height)); }
-                }
-
-                function animate() {
-                    ctx.clearRect(0, 0, width, height);
-                    stars.forEach(star => { star.update(); star.draw(ctx); });
-                    requestAnimationFrame(animate);
-                }
-
-                window.addEventListener('resize', resize);
-                resize(); 
-                animate(); 
-            });
-        })();
-    </script>
-</body>
-</html>
+                    for (let i = 0; i < numStars; i++) { stars.push(new Star(width, height
