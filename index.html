@@ -36,7 +36,7 @@
             letter-spacing: 0.05em;
             font-feature-settings: "palt";
             overflow-x: hidden;
-            scroll-behavior: smooth; /* スムーズスクロール */
+            scroll-behavior: smooth;
         }
 
         h1, h2, h3, .logo, .quote-large, .hero-content p {
@@ -79,10 +79,15 @@
             letter-spacing: 0.1em;
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
         }
+        /* ロゴリンクのスタイル調整 */
+        .logo a {
+            color: inherit;
+            text-decoration: none;
+        }
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 20px; /* 少し間隔を調整 */
+            gap: 20px;
         }
         .nav-link { font-size: 0.85rem; color: #ccc; cursor: pointer; font-weight: 500; }
         .nav-link:hover { color: var(--accent-color); }
@@ -137,7 +142,10 @@
             position: relative;
             overflow: hidden;
         }
-        #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        #hero-canvas { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            z-index: 1; pointer-events: none; display: block;
+        }
         .hero-content {
             position: relative; z-index: 2; max-width: 800px; margin: 0 auto; padding: 0 20px;
             animation: fadeIn 2s ease-out;
@@ -166,7 +174,10 @@
 
         /* --- Message --- */
         .message-section { background-color: #000; position: relative; overflow: hidden; padding: 120px 0; }
-        #star-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        #star-canvas { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            z-index: 1; pointer-events: none; display: block;
+        }
         .message-content { position: relative; z-index: 2; text-align: center; }
         .story-text { text-align: left; max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: #ddd; }
         .story-text p { margin-bottom: 2.5em; }
@@ -268,7 +279,6 @@
         }
         @keyframes slideIn { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
         
-        /* 閉じるボタン */
         .close-btn {
             position: absolute; top: 15px; right: 20px;
             color: #aaa; font-size: 35px; font-weight: bold; cursor: pointer; transition: 0.3s;
@@ -283,7 +293,6 @@
             width: 100%; padding: 12px; border: 1px solid #555; background-color: rgba(255,255,255,0.05);
             color: #fff; border-radius: 4px; font-size: 1rem; box-sizing: border-box; font-family: inherit;
         }
-        /* プルダウン選択肢の視認性 */
         .form-select option { background-color: var(--secondary-bg); color: #fff; }
         .form-input:focus, .form-textarea:focus, .form-select:focus {
             outline: none; border-color: var(--accent-color); background-color: rgba(255,255,255,0.1);
@@ -314,8 +323,6 @@
             .price-card.recommended { transform: scale(1); margin: 20px 0 40px 0; }
             .service-card.main-service { order: -1; }
             .nav-actions { gap: 15px; }
-            /* 修正: スマホでもnav-link（Note）を表示させるため、display:noneを削除 */
-            /* .nav-link { display: none; }  <-- 削除済み */
             .concept-grid { grid-template-columns: 1fr; gap: 40px; }
             .profile-flex { flex-direction: column; gap: 30px;}
             .profile-img { width: 100%; height: auto; aspect-ratio: 3/4; flex: none;}
@@ -332,7 +339,7 @@
 
     <header>
         <div class="nav-flex">
-            <div class="logo">CoSTAR</div>
+            <div class="logo"><a href="index.html">CoSTAR</a></div>
             <div class="nav-actions">
                 <a href="https://note.com/gifted_holly763" target="_blank" class="nav-link">Note</a>
                 <a href="#contact" class="nav-btn">Contact</a>
@@ -538,12 +545,10 @@
     </section>
 
     <section class="container" id="pricing">
-        <h2 class="section-title">Coaching Price / Commitment</h2>
+        <h2 class="section-title">Coaching Price</h2>
         <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
-            人生の角度を変え、その変化を日常に定着させるには<br>
-            「時間」と「継続」が不可欠です。<br>
-            そのため、単発ではなく、最低でも3～6ヶ月間の<br>
-            パートナーシップを基本推奨としています。
+            人生の角度を変え、その変化を日常に定着させるには「時間」と「継続」が不可欠です。<br>
+            そのため、単発ではなく、最低でも3～6ヶ月間のパートナーシップを基本推奨としています。
         </p>
 
         <div class="pricing-grid">
@@ -634,7 +639,7 @@
                     <li>サンプルセッションの時間や料金は下記の通りとなります。ご理解の上、お申込みをお願いいたします。</li>
                 </ul>
                 <div style="margin-top:10px; font-weight:bold; color:var(--accent-color);">
-                    時間: 45分（オリエンテーション20分＋セッション25分）<br>
+                    時間: 45分（オリエンテーション15分＋セッション25分＋質疑5分）<br>
                     料金: 5,000円（税込）<br>
                     形式: オンライン（Zoom）
                 </div>
@@ -660,7 +665,7 @@
 
                 <div class="form-group">
                     <label class="form-label">現在の職務／役職 <span style="color:#d9534f">*</span></label>
-                    <select name="職務・役職" class="form-select" required>
+                    <select name="職務・役職" class="form-select" required onchange="toggleOtherInput(this, 'other-job')">
                         <option value="" disabled selected>選択してください</option>
                         <option value="経営者・役員">経営者・役員</option>
                         <option value="事業責任者・部門長">事業責任者・部門長</option>
@@ -670,11 +675,12 @@
                         <option value="フリーランス・個人事業主">フリーランス・個人事業主</option>
                         <option value="その他">その他</option>
                     </select>
+                    <input type="text" name="職務・役職_その他" id="other-job" class="form-input" style="display:none; margin-top:10px;" placeholder="具体的にご記入ください">
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">所属企業の業種 <span style="color:#d9534f">*</span></label>
-                    <select name="業種" class="form-select" required>
+                    <select name="業種" class="form-select" required onchange="toggleOtherInput(this, 'other-industry')">
                         <option value="" disabled selected>選択してください</option>
                         <option value="IT">IT</option>
                         <option value="金融">金融</option>
@@ -682,6 +688,7 @@
                         <option value="サービス業">サービス業</option>
                         <option value="その他">その他</option>
                     </select>
+                    <input type="text" name="業種_その他" id="other-industry" class="form-input" style="display:none; margin-top:10px;" placeholder="具体的にご記入ください">
                 </div>
 
                 <div class="form-group">
@@ -715,9 +722,9 @@
                         <div class="schedule-head">平日</div>
                         <div class="schedule-head">土日祝</div>
 
-                        <div class="schedule-label">朝 (7:00-9:00)</div>
-                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 朝(7-9)"></div>
-                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 朝(7-9)"></div>
+                        <div class="schedule-label">早朝 (7:00-9:00)</div>
+                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 早朝(7-9)"></div>
+                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 早朝(7-9)"></div>
 
                         <div class="schedule-label">午前 (9:00-12:00)</div>
                         <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 午前(9-12)"></div>
@@ -731,9 +738,9 @@
                         <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 午後(13-18)"></div>
                         <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 午後(13-18)"></div>
 
-                        <div class="schedule-label">夜 (18:00-22:00)</div>
-                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 夜(18-22)"></div>
-                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 夜(18-22)"></div>
+                        <div class="schedule-label">夜間 (18:00-22:00)</div>
+                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 夜間(18-22)"></div>
+                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 夜間(18-22)"></div>
                     </div>
                 </div>
 
@@ -780,38 +787,7 @@
     </div>
 
     <script>
-        // Modal Control Logic
-        function openModal(type) {
-            document.getElementById('modal-' + type).style.display = 'block';
-            document.body.style.overflow = 'hidden'; // 背景スクロール禁止
-        }
-
-        function closeModal(type) {
-            document.getElementById('modal-' + type).style.display = 'none';
-            document.body.style.overflow = 'auto'; // 背景スクロール再開
-        }
-
-        // Check URL parameters on load (外部からの直リンク対応)
-        window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const mode = urlParams.get('open'); // ?open=trial or ?open=contact
-            
-            if (mode === 'trial') {
-                openModal('trial');
-            } else if (mode === 'contact') {
-                openModal('contact');
-            }
-        });
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Canvas Animations (Stars)
+        // Canvas Animations (Stars) - Priority Execution
         (function() {
             const canvasList = [
                 document.getElementById('hero-canvas'),
@@ -827,7 +803,7 @@
                 reset() {
                     this.x = Math.random() * this.width;
                     this.y = Math.random() * this.height;
-                    this.size = Math.random() * 2;
+                    this.size = Math.random() * 2; // Reverted to gentle size
                     this.speedX = (Math.random() - 0.5) * 0.3; 
                     this.speedY = (Math.random() - 0.5) * 0.3; 
                     this.brightness = Math.random();
@@ -853,11 +829,18 @@
                 const ctx = canvas.getContext('2d');
                 let width, height;
                 let stars = [];
-                const numStars = 100;
+                const numStars = 100; // Reverted to gentle count
 
                 function resize() {
-                    width = canvas.parentElement.offsetWidth;
-                    height = canvas.parentElement.offsetHeight;
+                    // Force resize calculation to ensure visibility
+                    if(canvas.id === 'hero-canvas'){
+                        width = window.innerWidth;
+                        height = window.innerHeight;
+                    } else {
+                        width = canvas.parentElement.offsetWidth;
+                        height = canvas.parentElement.offsetHeight;
+                    }
+                    
                     canvas.width = width; 
                     canvas.height = height;
                     
@@ -872,10 +855,50 @@
                 }
 
                 window.addEventListener('resize', resize);
+                window.addEventListener('load', resize); // Ensure init on load
+                
                 resize(); 
                 animate(); 
             });
         })();
+
+        // Modal Control Logic
+        function openModal(type) {
+            document.getElementById('modal-' + type).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(type) {
+            document.getElementById('modal-' + type).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Toggle Other Input Logic
+        function toggleOtherInput(selectElem, inputId) {
+            const inputElem = document.getElementById(inputId);
+            if (selectElem.value === 'その他') {
+                inputElem.style.display = 'block';
+                inputElem.required = true;
+            } else {
+                inputElem.style.display = 'none';
+                inputElem.required = false;
+            }
+        }
+
+        // URL Parameter Check
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const mode = urlParams.get('open');
+            if (mode === 'trial') openModal('trial');
+            else if (mode === 'contact') openModal('contact');
+        });
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
     </script>
 </body>
 </html>
