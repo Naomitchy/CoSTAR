@@ -36,6 +36,7 @@
             letter-spacing: 0.05em;
             font-feature-settings: "palt";
             overflow-x: hidden;
+            scroll-behavior: smooth; /* スムーズスクロール */
         }
 
         h1, h2, h3, .logo, .quote-large, .hero-content p {
@@ -81,7 +82,7 @@
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 20px; /* 少し間隔を調整 */
         }
         .nav-link { font-size: 0.85rem; color: #ccc; cursor: pointer; font-weight: 500; }
         .nav-link:hover { color: var(--accent-color); }
@@ -267,7 +268,7 @@
         }
         @keyframes slideIn { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
         
-        /* 修正: 閉じるボタン */
+        /* 閉じるボタン */
         .close-btn {
             position: absolute; top: 15px; right: 20px;
             color: #aaa; font-size: 35px; font-weight: bold; cursor: pointer; transition: 0.3s;
@@ -282,7 +283,7 @@
             width: 100%; padding: 12px; border: 1px solid #555; background-color: rgba(255,255,255,0.05);
             color: #fff; border-radius: 4px; font-size: 1rem; box-sizing: border-box; font-family: inherit;
         }
-        /* 修正: プルダウン選択肢の視認性 */
+        /* プルダウン選択肢の視認性 */
         .form-select option { background-color: var(--secondary-bg); color: #fff; }
         .form-input:focus, .form-textarea:focus, .form-select:focus {
             outline: none; border-color: var(--accent-color); background-color: rgba(255,255,255,0.1);
@@ -294,7 +295,7 @@
         .form-note { font-size: 0.85rem; color: #ccc; margin-bottom: 30px; line-height: 1.6; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px;}
         .form-note ul { padding-left: 20px; margin: 0; }
 
-        /* 修正: 日程表グリッド */
+        /* 日程表グリッド */
         .schedule-grid {
             display: grid; grid-template-columns: 1fr auto auto; gap: 15px 30px;
             align-items: center; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 4px; margin-top: 10px;
@@ -313,7 +314,8 @@
             .price-card.recommended { transform: scale(1); margin: 20px 0 40px 0; }
             .service-card.main-service { order: -1; }
             .nav-actions { gap: 15px; }
-            .nav-link { display: none; }
+            /* 修正: スマホでもnav-link（Note）を表示させるため、display:noneを削除 */
+            /* .nav-link { display: none; }  <-- 削除済み */
             .concept-grid { grid-template-columns: 1fr; gap: 40px; }
             .profile-flex { flex-direction: column; gap: 30px;}
             .profile-img { width: 100%; height: auto; aspect-ratio: 3/4; flex: none;}
@@ -333,8 +335,7 @@
             <div class="logo">CoSTAR</div>
             <div class="nav-actions">
                 <a href="https://note.com/gifted_holly763" target="_blank" class="nav-link">Note</a>
-                <button class="nav-link" style="background:none; border:none; color:#ccc; font-size:0.85rem; font-weight:500; cursor:pointer;" onclick="openModal('contact')">お問い合わせ</button>
-                <button class="nav-btn" onclick="openModal('trial')">体験セッション</button>
+                <a href="#contact" class="nav-btn">Contact</a>
             </div>
         </div>
     </header>
