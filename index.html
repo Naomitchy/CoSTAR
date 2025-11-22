@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoSTAR | あなたの物語を、最高傑作へ。</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 基本設定 --- */
+        :root {
+            --bg-color: #0B1021; /* 深い夜空の色 */
+            --text-color: #E0E0E0; /* 星の光のような白 */
+            --accent-color: #D4AF37; /* ゴールド */
+            --secondary-bg: #151E32; /* セクション背景 */
+            --disabled-text: #666; /* 準備中用 */
+        }
+
+        body {
+            margin: 0;
+            /* 本文は読みやすいゴシック体 (Noto Sans JP) */
+            font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.9;
+            letter-spacing: 0.05em;
+            /* 文字詰めを自動調整してプロっぽく見せる */
+            font-feature-settings: "palt";
+            overflow-x: hidden;
+        }
+
+        /* 見出しは知的でシャープな明朝体 (Noto Serif JP) */
+        h1, h2, h3, .logo, .quote-large, .hero-content p {
+            font-family: "Noto Serif JP", serif;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        a:hover { opacity: 0.7; }
+        
+        .container {
+            max-width: 1000px; 
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- ヘッダー --- */
+        header {
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            background-color: rgba(11, 16, 33, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        .nav-link { font-size: 0.85rem; color: #ccc; cursor: pointer; font-weight: 500; }
+        .nav-link:hover { color: var(--accent-color); }
+        .nav-btn {
+            font-size: 0.85rem;
+            padding: 8px 20px;
+            border: 1px solid var(--accent-color);
+            border-radius: 20px;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+        .nav-btn:hover { background-color: var(--accent-color); color: var(--bg-color); }
+
+        /* --- ボタン共通 --- */
+        .btn {
+            display: inline-block;
+            padding: 15px 50px;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            border-radius: 30px;
+            font-weight: bold;
+            background: transparent;
+            cursor: pointer;
+            min-width: 220px;
+            text-align: center;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            font-family: "Noto Sans JP", sans-serif; /* ボタンはゴシックで見やすく */
+        }
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+        }
+        .btn-primary { background-color: var(--accent-color); color: var(--bg-color); border: 1px solid var(--accent-color); }
+        .btn-primary:hover { background-color: #fff; color: #000; border-color: #fff; }
+        .btn-outline { background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); }
+        .btn-outline:hover { background-color: rgba(212, 175, 55, 0.1); color: #fff; }
+        .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+        /* --- ヒーロー（トップ画面） --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center bottom, #1B2745 0%, #0B1021 80%);
+            position: relative;
+            overflow: hidden;
+        }
+        #hero-canvas {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            animation: fadeIn 2s ease-out;
+        }
+        .hero-content h1 {
+            font-family: "Noto Serif JP", serif;
+            font-size: 3.2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            letter-spacing: 0.1em;
+            color: #fff;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 60px;
+            color: #ccc;
+            letter-spacing: 0.1em;
+            font-weight: 400;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- セクション共通 --- */
+        section { padding: 100px 0; }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 70px;
+            color: var(--accent-color);
+            letter-spacing: 0.15em;
+            position: relative;
+            font-family: "Noto Serif JP", serif;
+            font-weight: 500;
+        }
+        .section-title::after {
+            content: ""; display: block; width: 40px; height: 1px;
+            background-color: var(--accent-color); margin: 15px auto 0; opacity: 0.5;
+        }
+
+        /* --- Message (Story) --- */
+        .message-section {
+            background-color: #000;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0;
+        }
+        #star-canvas {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+        }
+        .message-content { position: relative; z-index: 2; text-align: center; }
+        .story-text {
+            text-align: left; max-width: 700px; margin: 0 auto; font-size: 1.05rem; color: #ddd;
+        }
+        .story-text p { margin-bottom: 2.5em; }
+        .highlight { color: #fff; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
+        .quote-large {
+            font-size: 1.4rem; 
+            font-family: "Noto Serif JP", serif;
+            color: var(--accent-color);
+            margin: 80px 0; display: block; text-align: center; line-height: 1.8;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 40px 0;
+        }
+
+        /* --- Value --- */
+        .concept-section { background-color: var(--secondary-bg); }
+        .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+        .concept-text h3 {
+            font-size: 1.4rem; line-height: 1.5; color: var(--accent-color);
+            margin-bottom: 25px; border-left: 3px solid var(--accent-color); padding-left: 20px;
+            font-weight: 600;
+        }
+        .concept-text p { margin-bottom: 1.5em; color: #ccc; font-size: 1rem; }
+
+        /* --- Services --- */
+        .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .service-card {
+            background-color: var(--secondary-bg); padding: 35px; border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s;
+            position: relative; display: flex; flex-direction: column; height: 100%; box-sizing: border-box;
+        }
+        .service-card.main-service {
+            border: 1px solid var(--accent-color);
+            background: linear-gradient(145deg, #151E32, #1c2842);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.05);
+        }
+        .service-card.coming-soon { opacity: 0.6; border-style: dashed; }
+        .service-card.coming-soon h3, .service-card.coming-soon p { color: var(--disabled-text); }
+        .service-card h3 { font-size: 1.4rem; margin-bottom: 20px; color: var(--accent-color); font-weight: 600; }
+        .service-desc { flex-grow: 1; font-size: 0.95rem; color: #bbb; }
+        .tag {
+            display: inline-block; font-size: 0.75rem; padding: 4px 12px;
+            background: rgba(255,255,255,0.08); border-radius: 20px; margin-bottom: 20px; align-self: flex-start; letter-spacing: 0.05em;
+            font-family: "Noto Sans JP", sans-serif;
+        }
+        .cs-badge {
+            position: absolute; top: 20px; right: 20px; background-color: #222;
+            color: #888; font-size: 0.7rem; padding: 3px 8px; border-radius: 4px;
+            font-family: "Noto Sans JP", sans-serif;
+        }
+        .service-footer { margin-top: 25px; text-align: center; }
+
+        /* --- Pricing --- */
+        .pricing-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: nowrap; align-items: stretch; }
+        .price-card {
+            background-color: var(--secondary-bg); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px; padding: 35px 25px; width: 100%; max-width: 320px;
+            text-align: center; position: relative; display: flex; flex-direction: column;
+        }
+        .price-card.premium { border: 1px solid #fff; background: linear-gradient(145deg, #2a2a2a, #151E32); }
+        .price-card.premium h3 { color: #fff; letter-spacing: 0.1em; }
+        .price-card.recommended {
+            border: 2px solid var(--accent-color); background: linear-gradient(145deg, #151E32, #1c2842);
+            transform: scale(1.05); z-index: 10; box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+        }
+        .badge {
+            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            background-color: var(--accent-color); color: #000; padding: 4px 12px;
+            font-size: 0.75rem; font-weight: bold; border-radius: 20px; white-space: nowrap;
+            font-family: "Noto Sans JP", sans-serif;
+        }
+        .price-card h3 { font-size: 1.4rem; margin-bottom: 5px; color: #fff; font-weight: 600;}
+        .price-card .desc { font-size: 0.85rem; color: #aaa; margin-bottom: 25px; height: 35px;}
+        .price { margin-bottom: 15px; }
+        .price .amount { font-size: 2rem; font-weight: bold; color: #fff; font-family: "Noto Sans JP", sans-serif;}
+        .price .unit { font-size: 0.8rem; color: #aaa; }
+        .price .original { display: block; text-decoration: line-through; color: #777; font-size: 0.8rem; margin-bottom: 5px; }
+        .save-text { color: var(--accent-color); font-weight: bold; margin-bottom: 20px; font-size: 0.85rem; }
+        .features {
+            list-style: none; padding: 0; text-align: left;
+            border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: auto;
+        }
+        .features li { margin-bottom: 12px; padding-left: 20px; position: relative; font-size: 0.9rem; line-height: 1.4; color: #ccc;}
+        .features li::before { content: "✔"; position: absolute; left: 0; color: var(--accent-color); font-size: 0.8rem;}
+
+        /* --- Profile --- */
+        .profile-flex { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; justify-content: center; }
+        .profile-img {
+            flex: 0 0 350px; height: 450px;
+            background-color: #333; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .profile-text { flex: 1; min-width: 300px; max-width: 600px; }
+        .profile-text h3 { font-size: 1.6rem; font-weight: 600; margin-bottom: 10px; color: #fff;}
+
+        /* --- Footer --- */
+        footer {
+            text-align: center; padding: 80px 0;
+            background-color: #050810; font-size: 0.9rem; color: #777;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* --- スマホ対応 --- */
+        @media (max-width: 900px) {
+            .container { padding: 0 25px; }
+            .service-grid { grid-template-columns: 1fr; gap: 40px;}
+            .pricing-grid { flex-direction: column; align-items: center; }
+            .price-card { width: 100%; max-width: 350px; margin-bottom: 20px; }
+            .price-card.recommended { transform: scale(1); margin: 20px 0 40px 0; }
+            .service-card.main-service { order: -1; }
+            .nav-actions { gap: 15px; }
+            .nav-link { display: none; }
+            .concept-grid { grid-template-columns: 1fr; gap: 40px; }
+            .profile-flex { flex-direction: column; gap: 30px;}
+            .profile-img { width: 100%; height: auto; aspect-ratio: 3/4; flex: none;}
+            
+            .hero-content h1 { font-size: 2rem; }
+            .quote-large { font-size: 1.1rem; margin: 50px 0;}
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-flex">
+            <div class="logo">CoSTAR</div>
+            <div class="nav-actions">
+                <a href="https://note.com/gifted_holly763" target="_blank" class="nav-link">Note</a>
+                <a href="https://forms.gle/fvbMixpopkGeUvLX8" target="_blank" class="nav-link">お問い合わせ</a>
+                <a href="https://forms.gle/xbW8tjgLBrDyG1C36" target="_blank" class="nav-btn">体験セッション</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <canvas id="hero-canvas"></canvas>
+        
+        <div class="container hero-content">
+            <h1>あなたの物語を、<br>最高傑作へ。</h1>
+            <p>主人公たちは、最高の仲間と旅に出る。</p>
+            <a href="#services" class="btn">旅の地図を見る</a>
+        </div>
+    </div>
+
+    <div class="message-section">
+        <canvas id="star-canvas"></canvas>
+        <section class="container message-content">
+            <h2 class="section-title">Message</h2>
+            
+            <div class="story-text">
+                <p>
+                    周りの期待に応えてきた。社会のルールも守ってきた。十分な給与も得られた。<br>
+                    でも、いつの間にか、自分は誰と仲が良いのか分からなくなった。<br>
+                    気軽に「今日、ご飯食べに行かない？」なんて、言えなくなっていた。
+                </p>
+                <p>
+                    心の奥底で知っている。本当の自分は不真面目で自分勝手。<br>
+                    相手の為と見せかけて、保身や損得勘定で動くズルい自分。
+                </p>
+                <p>
+                    パートナーとの関係さえも、役割を演じることになってしまった。<br>
+                    誰にも本音を言えない。建前の中で生きる日々は、もう苦しい。
+                </p>
+                <p>
+                    <span class="highlight">「残りの人生、このまま偽りの中で生き続けるの？」<br>
+                    「このまま死んでいいの？」<br>
+                    「一体自分は何者なのか？」</span>
+                </p>
+                <p>
+                    私はこの問いの答えを探す旅の中で、コーチングと出会いました。<br>
+                    そして気づいたのです。私が「価値のない自分」だと否定し、隠してきた部分こそが、<br>
+                    実は人生を動かす最もパワフルなエネルギーであることを。
+                </p>
+                <p>
+                    あなたの「完璧な仮面」の裏にある、不真面目で、自分勝手な一面も、あなた自身の全てです。<br>
+                    その全てが、あなたが本当に望む未来を創造するためのエネルギーになります。
+                </p>
+                <p>
+                    もしあなたが、「本当に大切にしたい自分」を生きることに飢えているなら。<br>
+                    恐れも、弱さも、すべてを燃料に変えて、一緒に遠くまで行きましょう。
+                </p>
+
+                <span class="quote-large">
+                    "If you want to go fast, go alone.<br>
+                    If you want to go far, go together."<br>
+                    <span style="font-size: 0.8em; display:block; margin-top:10px;">（早く行きたければ一人で行け、遠くへ行きたければみんなで行け）</span>
+                </span>
+            </div>
+        </section>
+    </div>
+
+    <section class="concept-section">
+        <div class="container">
+            <h2 class="section-title">Value</h2>
+            
+            <div class="concept-grid">
+                <div class="concept-text">
+                    <h3>気持ちがいいだけのコーチングでは、<br>人生は変わらない。</h3>
+                    <p>
+                        コーチングの時間は、日常の喧騒から切り離された、あなたにとって心安らぐ非日常の場です。<br>
+                        自分の枠を外し、新しい自分との出会いは、本質的な変化への最初の一歩です。
+                    </p>
+                    <p>
+                        一方で、社会的成果と現実的な変化を求めるあなたは、知っています。気持ちのよいセッションを終えても、日常の喧騒や社会の論理に戻れば、すぐに元通りになるということを。
+                    </p>
+                    <p>
+                        コーチングの時間は冒険（人生）における『休憩と作戦会議』だと考えています。<br>
+                        ここは、あなたの隠された本質的なエネルギーを再充電し、日常という「現実の舞台」へ持ち帰るための戦略（アクション）を決める場です。
+                    </p>
+                </div>
+                <div class="concept-text">
+                    <h3>「180度の変化」より、<br>確かな「2度の変化」を。</h3>
+                    <p>
+                        一度のセッションで劇的に180度変化することは、ほとんどないと考えています。
+                    </p>
+                    <p>
+                        作戦会議で決めた、今までのあなたでは出来なかった180度の行動を現実で試してみる。 実践できた自分は誇らしく、確かに変わった気がするでしょう。
+                    </p>
+                    <p>
+                        しかし、時間がたてばたつほど、今まで慣れ親しんだ過去の自分が、必ず「揺れ戻し」をします。
+                    </p>
+                    <p>
+                        コーチングの価値は、人生の角度を「2度」変えることにあります。<br>
+                        揺れ戻しを乗り越えるための伴走と軌道修正。<br>
+                        この地道な「2度」の積み重ねが、振り返った時に、あなたの人生を「深く、大きく」変化させているのです。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="services">
+        <h2 class="section-title">Services</h2>
+        <div class="service-grid">
+            
+            <div class="service-card coming-soon">
+                <span class="tag">Workshop</span>
+                <span class="cs-badge">準備中</span>
+                <h3>CoSECRET</h3>
+                <div class="service-desc">
+                    <p>知人や家族にも打ち明けられない秘密や悩みを、安全な少人数の場で共有・浄化するワークショップ。</p>
+                </div>
+            </div>
+
+            <div class="service-card main-service">
+                <span class="tag" style="background:var(--accent-color); color:#000; font-weight:bold;">Available Now</span>
+                <h3>Coaching</h3>
+                <div class="service-desc">
+                    <p>プロコーチによるCo-Activeモデルを主軸とした継続的なコーチングセッション。</p>
+                    <br>
+                    <p>人生全体を扱い、本質的な変容とリーダーシップ開発を目指す、CoSTARの中核サービスです。</p>
+                </div>
+                <div class="service-footer">
+                    <a href="#pricing" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.85rem; min-width:auto;">料金を見る</a>
+                    <br><br>
+                    <a href="https://forms.gle/xbW8tjgLBrDyG1C36" target="_blank" style="color:var(--accent-color); text-decoration: underline; font-size:0.9rem;">体験セッションを申し込む</a>
+                </div>
+            </div>
+
+            <div class="service-card coming-soon">
+                <span class="tag">Program</span>
+                <span class="cs-badge">準備中</span>
+                <h3>CoCLEANUP</h3>
+                <div class="service-desc">
+                    <p>「共にやり切る」をコンセプトに、続けられなかった行動（片付け等）を仲間と共に進める短期プログラム。</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="container" id="pricing">
+        <h2 class="section-title">Coaching Price / Commitment</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
+            本質的な変化には時間がかかります。<br>
+            CoSTARでは、新しい自分を定着させるための<br>
+            「3〜10ヶ月の中長期的な関わり」を基本としています。
+        </p>
+
+        <div class="pricing-grid">
+            
+            <div class="price-card">
+                <h3>Single</h3>
+                <p class="desc">単発セッション</p>
+                <div class="price">
+                    <span class="amount">25,000</span>
+                    <span class="unit">円 / 回</span>
+                </div>
+                <ul class="features">
+                    <li>セッション 50分</li>
+                    <li>都度予約</li>
+                    <li>-</li>
+                    <li>-</li>
+                </ul>
+            </div>
+
+            <div class="price-card recommended">
+                <div class="badge">Most Popular</div>
+                <h3>Standard</h3>
+                <p class="desc">本気の変革・3〜6ヶ月コース</p>
+                <div class="price">
+                    <span class="original">175,000円</span>
+                    <span class="amount">140,000</span>
+                    <span class="unit">円 / 一括</span>
+                </div>
+                <p class="save-text">覚悟への応援として <span>20% OFF</span></p>
+                <ul class="features">
+                    <li>導入セッション 120分 × 1回</li>
+                    <li>継続セッション 50分 × 6回</li>
+                    <li>月1〜2回ペース</li>
+                </ul>
+            </div>
+
+            <div class="price-card premium">
+                <h3>Premium</h3>
+                <p class="desc">フル・パートナーシップ（6〜10ヶ月）</p>
+                <div class="price">
+                    <span class="amount">300,000</span>
+                    <span class="unit">円 / 一括</span>
+                </div>
+                <ul class="features">
+                    <li>導入セッション 120分 × 1回</li>
+                    <li>継続セッション 50分 × 10回</li>
+                    <li style="color: var(--accent-color); font-weight:bold;">期間中のメールサポート付</li>
+                    <li style="color: var(--accent-color); font-weight:bold;">緊急セッション権（月1回まで）</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">Guide / Co-Star</h2>
+        <div class="profile-flex">
+            <div class="profile-img">
+                <img src="./IMG_6140.jpg" alt="星野 直道" style="width:100%; height:100%; object-fit: cover;">
+            </div>
+            <div class="profile-text">
+                <h3>星野 直道 / Hoshino Naomichi</h3>
+                <p style="color: var(--accent-color); margin-bottom: 20px;">米国CTI認定 CPCC / ICF認定 ACC</p>
+                <p>
+                    1982年生まれ。大手IT企業、石油元売IT部門のリーダーを経て、Co-Activeコーチングと出会う。<br>
+                    自身が「価値がない」と否定し隠してきた部分こそが、人生を動かす最もパワフルなリソースであることを体感。
+                </p>
+                <p>
+                    完璧な仮面の下にある、あなたの全ての感情と共にいます。<br>
+                    あなたの「最高傑作」の物語を、共に創りましょう。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 30px;">Contact</h2>
+            <p style="margin-bottom: 30px;">
+                まずは、あなたの物語を少しだけ聞かせてください。<br>
+                体験セッションのお申し込み、またはご質問はこちらから。
+            </p>
+            
+            <div class="btn-group">
+                <a href="https://forms.gle/xbW8tjgLBrDyG1C36" target="_blank" class="btn btn-primary">体験セッションに申し込む</a>
+                <a href="https://forms.gle/fvbMixpopkGeUvLX8" target="_blank" class="btn btn-outline">お問い合わせフォーム</a>
+            </div>
+            
+            <br><br>
+            <div style="font-size: 0.9rem;">
+                <a href="https://note.com/gifted_holly763" target="_blank" style="color: #888;">Noteを読む</a>
+            </div>
+            <br><br>
+            <p>&copy; 2025 CoSTAR. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const canvasList = [
+                document.getElementById('hero-canvas'),
+                document.getElementById('star-canvas')
+            ];
+
+            class Star {
+                constructor(width, height) { 
+                    this.width = width; 
+                    this.height = height;
+                    this.reset(); 
+                }
+                reset() {
+                    this.x = Math.random() * this.width;
+                    this.y = Math.random() * this.height;
+                    this.size = Math.random() * 2;
+                    this.speedX = (Math.random() - 0.5) * 0.3; 
+                    this.speedY = (Math.random() - 0.5) * 0.3; 
+                    this.brightness = Math.random();
+                    this.blinkSpeed = Math.random() * 0.02 + 0.005;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    this.brightness += this.blinkSpeed;
+                    if (this.brightness > 1 || this.brightness < 0) { this.blinkSpeed = -this.blinkSpeed; }
+                    if (this.x < 0 || this.x > this.width || this.y < 0 || this.y > this.height) { this.reset(); }
+                }
+                draw(ctx) {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(this.brightness)})`;
+                    ctx.fill();
+                }
+            }
+
+            canvasList.forEach(canvas => {
+                if(!canvas) return;
+                const ctx = canvas.getContext('2d');
+                let width, height;
+                let stars = [];
+                const numStars = 100;
+
+                function resize() {
+                    width = canvas.parentElement.offsetWidth;
+                    height = canvas.parentElement.offsetHeight;
+                    canvas.width = width; 
+                    canvas.height = height;
+                    
+                    stars = [];
+                    for (let i = 0; i < numStars; i++) { stars.push(new Star(width, height)); }
+                }
+
+                function animate() {
+                    ctx.clearRect(0, 0, width, height);
+                    stars.forEach(star => { star.update(); star.draw(ctx); });
+                    requestAnimationFrame(animate);
+                }
+
+                window.addEventListener('resize', resize);
+                resize(); 
+                animate(); 
+            });
+        })();
+    </script>
+</body>
+</html>
