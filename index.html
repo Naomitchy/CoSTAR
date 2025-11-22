@@ -24,11 +24,11 @@
             --accent-color: #D4AF37; /* ゴールド */
             --secondary-bg: #151E32; /* セクション背景 */
             --disabled-text: #666; /* 準備中用 */
+            --modal-bg: rgba(11, 16, 33, 0.95); /* モーダル背景 */
         }
 
         body {
             margin: 0;
-            /* 本文：読みやすい Noto Sans JP */
             font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -38,7 +38,6 @@
             overflow-x: hidden;
         }
 
-        /* 見出し：艶のある Shippori Mincho */
         h1, h2, h3, .logo, .quote-large, .hero-content p {
             font-family: "Shippori Mincho", serif;
         }
@@ -93,6 +92,8 @@
             border-radius: 20px;
             color: var(--accent-color);
             font-weight: 500;
+            cursor: pointer;
+            background: transparent;
         }
         .nav-btn:hover { background-color: var(--accent-color); color: var(--bg-color); }
 
@@ -111,7 +112,7 @@
             font-size: 1rem;
             letter-spacing: 0.1em;
             transition: all 0.3s ease;
-            font-family: "Noto Sans JP", sans-serif; /* ボタンは可読性重視 */
+            font-family: "Noto Sans JP", sans-serif;
         }
         .btn:hover {
             background-color: var(--accent-color);
@@ -124,7 +125,7 @@
         .btn-outline:hover { background-color: rgba(212, 175, 55, 0.1); color: #fff; }
         .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
-        /* --- ヒーロー（トップ画面） --- */
+        /* --- ヒーロー --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -135,34 +136,16 @@
             position: relative;
             overflow: hidden;
         }
-        #hero-canvas {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
-        }
+        #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
+            position: relative; z-index: 2; max-width: 800px; margin: 0 auto; padding: 0 20px;
             animation: fadeIn 2s ease-out;
         }
         .hero-content h1 {
-            font-family: "Shippori Mincho", serif; /* フォント適用 */
-            font-size: 3.5rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-            line-height: 1.4;
-            letter-spacing: 0.1em;
-            color: #fff;
-            text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+            font-size: 3.5rem; font-weight: 600; margin-bottom: 30px; line-height: 1.4;
+            letter-spacing: 0.1em; color: #fff; text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
         }
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 60px;
-            color: #ccc;
-            letter-spacing: 0.1em;
-            font-weight: 500;
-        }
+        .hero-content p { font-size: 1.3rem; margin-bottom: 60px; color: #ccc; letter-spacing: 0.1em; font-weight: 500; }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -172,44 +155,25 @@
         /* --- セクション共通 --- */
         section { padding: 100px 0; }
         .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 70px;
-            color: var(--accent-color);
-            letter-spacing: 0.15em;
-            position: relative;
-            font-family: "Shippori Mincho", serif; /* フォント適用 */
-            font-weight: 600;
+            text-align: center; font-size: 2.2rem; margin-bottom: 70px; color: var(--accent-color);
+            letter-spacing: 0.15em; position: relative; font-family: "Shippori Mincho", serif; font-weight: 600;
         }
         .section-title::after {
             content: ""; display: block; width: 40px; height: 1px;
             background-color: var(--accent-color); margin: 15px auto 0; opacity: 0.5;
         }
 
-        /* --- Message (Story) --- */
-        .message-section {
-            background-color: #000;
-            position: relative;
-            overflow: hidden;
-            padding: 120px 0;
-        }
-        #star-canvas {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
-        }
+        /* --- Message --- */
+        .message-section { background-color: #000; position: relative; overflow: hidden; padding: 120px 0; }
+        #star-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .message-content { position: relative; z-index: 2; text-align: center; }
-        .story-text {
-            text-align: left; max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: #ddd;
-        }
+        .story-text { text-align: left; max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: #ddd; }
         .story-text p { margin-bottom: 2.5em; }
         .highlight { color: #fff; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
         .quote-large {
-            font-size: 1.5rem; 
-            font-family: "Shippori Mincho", serif; /* フォント適用 */
-            color: var(--accent-color);
-            margin: 80px 0; display: block; text-align: center; line-height: 1.8;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 40px 0;
+            font-size: 1.5rem; color: var(--accent-color); margin: 80px 0; display: block;
+            text-align: center; line-height: 1.8; border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding: 40px 0;
         }
 
         /* --- Value --- */
@@ -217,33 +181,15 @@
         .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
         .concept-text h3 {
             font-size: 1.5rem; line-height: 1.6; color: var(--accent-color);
-            margin-bottom: 25px; border-left: 3px solid var(--accent-color); padding-left: 20px;
-            font-weight: 600;
-            font-family: "Shippori Mincho", serif; /* フォント適用 */
+            margin-bottom: 25px; border-left: 3px solid var(--accent-color); padding-left: 20px; font-weight: 600;
         }
         .concept-text p { margin-bottom: 1.5em; color: #ccc; font-size: 1rem; }
-
-        /* Value SVG 追加スタイル (v3) */
+        
         .value-svg-container {
-            text-align: center;
-            margin-top: 60px;
-            margin-bottom: 30px;
-            animation: fadeInSVG 2s ease-out;
-            position: relative;
-            /* SVGを中央寄せしつつ、レスポンシブに */
-            display: flex;
-            justify-content: center;
+            text-align: center; margin-top: 60px; margin-bottom: 30px;
+            animation: fadeInSVG 2s ease-out; position: relative; display: flex; justify-content: center;
         }
-        @keyframes fadeInSVG {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .value-svg {
-            max-width: 100%;
-            height: auto;
-            /* 全体に上品な発光感を */
-            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.15));
-        }
+        .value-svg { max-width: 100%; height: auto; filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.15)); }
 
         /* --- Services --- */
         .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
@@ -253,22 +199,14 @@
             position: relative; display: flex; flex-direction: column; height: 100%; box-sizing: border-box;
         }
         .service-card.main-service {
-            border: 1px solid var(--accent-color);
-            background: linear-gradient(145deg, #151E32, #1c2842);
+            border: 1px solid var(--accent-color); background: linear-gradient(145deg, #151E32, #1c2842);
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.05);
         }
         .service-card.coming-soon { opacity: 0.6; border-style: dashed; }
-        .service-card.coming-soon h3, .service-card.coming-soon p { color: var(--disabled-text); }
-        .service-card h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--accent-color); font-weight: 600; font-family: "Shippori Mincho", serif; }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--accent-color); font-weight: 600; }
         .service-desc { flex-grow: 1; font-size: 0.95rem; color: #bbb; }
-        .tag {
-            display: inline-block; font-size: 0.75rem; padding: 4px 12px;
-            background: rgba(255,255,255,0.08); border-radius: 20px; margin-bottom: 20px; align-self: flex-start; letter-spacing: 0.05em;
-        }
-        .cs-badge {
-            position: absolute; top: 20px; right: 20px; background-color: #222;
-            color: #888; font-size: 0.7rem; padding: 3px 8px; border-radius: 4px;
-        }
+        .tag { display: inline-block; font-size: 0.75rem; padding: 4px 12px; background: rgba(255,255,255,0.08); border-radius: 20px; margin-bottom: 20px; align-self: flex-start; }
+        .cs-badge { position: absolute; top: 20px; right: 20px; background-color: #222; color: #888; font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; }
         .service-footer { margin-top: 25px; text-align: center; }
 
         /* --- Pricing --- */
@@ -279,7 +217,6 @@
             text-align: center; position: relative; display: flex; flex-direction: column;
         }
         .price-card.premium { border: 1px solid #fff; background: linear-gradient(145deg, #2a2a2a, #151E32); }
-        .price-card.premium h3 { color: #fff; letter-spacing: 0.1em; }
         .price-card.recommended {
             border: 2px solid var(--accent-color); background: linear-gradient(145deg, #151E32, #1c2842);
             transform: scale(1.05); z-index: 10; box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
@@ -289,43 +226,102 @@
             background-color: var(--accent-color); color: #000; padding: 4px 12px;
             font-size: 0.75rem; font-weight: bold; border-radius: 20px; white-space: nowrap;
         }
-        .price-card h3 { font-size: 1.5rem; margin-bottom: 5px; color: #fff; font-weight: 600; font-family: "Shippori Mincho", serif; }
+        .price-card h3 { font-size: 1.5rem; margin-bottom: 5px; color: #fff; font-weight: 600; }
         .price-card .desc { font-size: 0.85rem; color: #aaa; margin-bottom: 25px; height: 35px;}
-        .price { margin-bottom: 15px; }
         .price .amount { font-size: 2rem; font-weight: bold; color: #fff;}
         .price .unit { font-size: 0.8rem; color: #aaa; }
         .price .original { display: block; text-decoration: line-through; color: #777; font-size: 0.8rem; margin-bottom: 5px; }
         .save-text { color: var(--accent-color); font-weight: bold; margin-bottom: 20px; font-size: 0.85rem; }
-        .features {
-            list-style: none; padding: 0; text-align: left;
-            border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: auto;
-        }
+        .features { list-style: none; padding: 0; text-align: left; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: auto; }
         .features li { margin-bottom: 12px; padding-left: 20px; position: relative; font-size: 0.9rem; line-height: 1.4; color: #ccc;}
         .features li::before { content: "✔"; position: absolute; left: 0; color: var(--accent-color); font-size: 0.8rem;}
 
         /* --- Profile --- */
         .profile-flex { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; justify-content: center; }
         .profile-img {
-            flex: 0 0 350px; height: 450px;
-            background-color: #333; border-radius: 8px;
+            flex: 0 0 350px; height: 450px; background-color: #333; border-radius: 8px;
             display: flex; align-items: center; justify-content: center; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative;
         }
-        /* ヴィネット加工 */
         .profile-img::after {
             content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 100%);
             pointer-events: none;
         }
         .profile-text { flex: 1; min-width: 300px; max-width: 600px; }
-        .profile-text h3 { font-size: 1.7rem; font-weight: 600; margin-bottom: 10px; color: #fff; font-family: "Shippori Mincho", serif; }
+        .profile-text h3 { font-size: 1.7rem; font-weight: 600; margin-bottom: 10px; color: #fff; }
 
         /* --- Footer --- */
-        footer {
-            text-align: center; padding: 80px 0;
-            background-color: #050810; font-size: 0.9rem; color: #777;
-            border-top: 1px solid rgba(255,255,255,0.05);
+        footer { text-align: center; padding: 80px 0; background-color: #050810; font-size: 0.9rem; color: #777; border-top: 1px solid rgba(255,255,255,0.05); }
+
+        /* --- Modals (Form Style) --- */
+        .modal {
+            display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+            overflow: auto; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: var(--secondary-bg); margin: 5% auto; padding: 40px; border: 1px solid var(--accent-color);
+            width: 90%; max-width: 700px; border-radius: 8px; position: relative;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            animation: slideIn 0.4s ease;
+        }
+        @keyframes slideIn { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        
+        /* 修正: 閉じるボタンを絶対配置にして確実に押せるように */
+        .close-btn {
+            position: absolute; top: 15px; right: 20px;
+            color: #aaa; font-size: 35px; font-weight: bold; cursor: pointer; transition: 0.3s;
+            line-height: 1; z-index: 10;
+        }
+        .close-btn:hover { color: var(--accent-color); }
+        
+        /* Form Elements */
+        .form-group { margin-bottom: 25px; text-align: left; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--accent-color); font-size: 0.95rem; }
+        .form-input, .form-textarea, .form-select {
+            width: 100%; padding: 12px; border: 1px solid #555; background-color: rgba(255,255,255,0.05);
+            color: #fff; border-radius: 4px; font-size: 1rem; box-sizing: border-box; font-family: inherit;
+        }
+        /* 修正: プルダウン内の選択肢の背景色を指定 */
+        .form-select option {
+            background-color: var(--secondary-bg); /* 背景を濃紺に */
+            color: #fff; /* 文字を白に */
+        }
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none; border-color: var(--accent-color); background-color: rgba(255,255,255,0.1);
+        }
+        .form-textarea { resize: vertical; min-height: 100px; }
+        .form-radio-group { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+        .form-radio-label { display: flex; align-items: center; cursor: pointer; font-size: 0.95rem; }
+        .form-radio-label input { margin-right: 10px; accent-color: var(--accent-color); }
+        .form-note { font-size: 0.85rem; color: #ccc; margin-bottom: 30px; line-height: 1.6; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px;}
+        .form-note ul { padding-left: 20px; margin: 0; }
+
+        /* 修正: 日程選択用のグリッドスタイル */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr auto auto; /* 時間ラベル(可変) | 平日 | 土日祝 */
+            gap: 15px 30px;
+            align-items: center;
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .schedule-head {
+            font-weight: bold; text-align: center; color: var(--accent-color);
+        }
+        .schedule-label {
+            font-size: 0.95rem;
+        }
+        .schedule-check {
+            display: flex; justify-content: center; align-items: center;
+        }
+        /* チェックボックスを少し大きく */
+        .schedule-check input[type="checkbox"] {
+            transform: scale(1.5);
+            accent-color: var(--accent-color);
+            cursor: pointer;
         }
 
         /* --- スマホ対応 --- */
@@ -344,6 +340,10 @@
             
             .hero-content h1 { font-size: 2.2rem; }
             .quote-large { font-size: 1.2rem; margin: 50px 0;}
+            .modal-content { width: 95%; margin: 10% auto; padding: 25px; }
+            /* スマホでの日程表調整 */
+            .schedule-grid { gap: 15px 15px; padding: 10px; }
+            .schedule-label { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -354,15 +354,14 @@
             <div class="logo">CoSTAR</div>
             <div class="nav-actions">
                 <a href="https://note.com/gifted_holly763" target="_blank" class="nav-link">Note</a>
-                <a href="https://forms.gle/fvbMixpopkGeUvLX8" target="_blank" class="nav-link">お問い合わせ</a>
-                <a href="https://forms.gle/xbW8tjgLBrDyG1C36" target="_blank" class="nav-btn">体験セッション</a>
+                <button class="nav-link" style="background:none; border:none; color:#ccc; font-size:0.85rem; font-weight:500; cursor:pointer;" onclick="openModal('contact')">お問い合わせ</button>
+                <button class="nav-btn" onclick="openModal('trial')">体験セッション</button>
             </div>
         </div>
     </header>
 
     <div class="hero">
         <canvas id="hero-canvas"></canvas>
-        
         <div class="container hero-content">
             <h1>あなたの物語を、<br>最高傑作へ。</h1>
             <p>主人公たちは、最高の仲間と旅に出る。</p>
@@ -374,12 +373,10 @@
         <canvas id="star-canvas"></canvas>
         <section class="container message-content">
             <h2 class="section-title">Message</h2>
-            
             <div class="story-text">
                 <p style="text-align: center; font-weight: bold; margin-bottom: 3em; color: #fff; font-size: 1.2rem; letter-spacing: 0.1em;">
                     あなたは今、自分の人生の「主役」を生きていますか？
                 </p>
-
                 <p>
                     周りの期待に応えてきた。社会のルールも守ってきた。十分な給与も得られた。<br>
                     でも、いつの間にか、自分は誰と仲が良いのか分からなくなった。<br>
@@ -410,7 +407,6 @@
                     もしあなたが、「本当に大切にしたい自分」を生きることに飢えているなら。<br>
                     恐れも、弱さも、すべてを燃料に変えて、一緒に遠くまで行きましょう。
                 </p>
-
                 <span class="quote-large">
                     "If you want to go fast, go alone.<br>
                     If you want to go far, go together."<br>
@@ -423,7 +419,6 @@
     <section class="container" id="services">
         <h2 class="section-title">Services</h2>
         <div class="service-grid">
-            
             <div class="service-card coming-soon">
                 <span class="tag">Workshop</span>
                 <span class="cs-badge">準備中</span>
@@ -432,7 +427,6 @@
                     <p>知人や家族にも打ち明けられない秘密や悩みを、安全な少人数の場で共有・浄化するワークショップ。</p>
                 </div>
             </div>
-
             <div class="service-card main-service">
                 <span class="tag" style="background:var(--accent-color); color:#000; font-weight:bold;">Available Now</span>
                 <h3>Coaching</h3>
@@ -444,10 +438,9 @@
                 <div class="service-footer">
                     <a href="#pricing" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.85rem; min-width:auto;">料金を見る</a>
                     <br><br>
-                    <a href="https://forms.gle/xbW8tjgLBrDyG1C36" target="_blank" style="color:var(--accent-color); text-decoration: underline; font-size:0.9rem;">体験セッションを申し込む</a>
+                    <button class="nav-btn" style="color:var(--accent-color); text-decoration: underline; font-size:0.9rem; padding:0; border:none;" onclick="openModal('trial')">体験セッションを申し込む</button>
                 </div>
             </div>
-
             <div class="service-card coming-soon">
                 <span class="tag">Program</span>
                 <span class="cs-badge">準備中</span>
@@ -456,14 +449,12 @@
                     <p>「共にやり切る」をコンセプトに、続けられなかった行動（部屋の片付け、朝活等）を共に進める短期プログラム。</p>
                 </div>
             </div>
-
         </div>
     </section>
 
     <section class="concept-section">
         <div class="container">
             <h2 class="section-title">Value of Coaching</h2>
-            
             <div class="concept-grid">
                 <div class="concept-text">
                     <h3>気持ちがいいだけのコーチングでは、<br>人生は変わらない。</h3>
@@ -497,7 +488,7 @@
                     </p>
                 </div>
             </div>
-
+            
             <div class="value-svg-container">
                 <svg class="value-svg" width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -521,18 +512,12 @@
                             </feMerge>
                         </filter>
                     </defs>
-                    
                     <g transform="translate(100, 300)" opacity="0.1" stroke="#fff" stroke-width="0.5" fill="none">
-                        <circle r="80" />
-                        <circle r="60" stroke-dasharray="4,4"/>
-                        <line x1="0" y1="-90" x2="0" y2="90" />
-                        <line x1="-90" y1="0" x2="90" y2="0" />
+                        <circle r="80" /> <circle r="60" stroke-dasharray="4,4"/>
+                        <line x1="0" y1="-90" x2="0" y2="90" /> <line x1="-90" y1="0" x2="90" y2="0" />
                     </g>
-
-                    <path d="M100,300 L750,300" 
-                          stroke="#555" stroke-width="1" stroke-dasharray="5,5" fill="none" opacity="0.5" />
+                    <path d="M100,300 L750,300" stroke="#555" stroke-width="1" stroke-dasharray="5,5" fill="none" opacity="0.5" />
                     <text x="680" y="320" fill="#666" font-size="12" font-family="sans-serif" text-anchor="end">成行きの未来</text>
-                    
                     <g opacity="1">
                         <path d="M100,300 C 250,300 300,290 350,250 S 450,270 550,150 S 700,80 750,50" 
                               stroke="url(#goldGradient)" stroke-width="3" fill="none" filter="url(#glow)" stroke-linecap="round" stroke-dasharray="1000" stroke-dashoffset="1000">
@@ -540,32 +525,26 @@
                               <animate attributeName="opacity" values="1; 1; 0" keyTimes="0; 0.9; 1" dur="8s" repeatCount="indefinite" />
                         </path>
                     </g>
-
                     <circle cx="100" cy="300" r="4" fill="#D4AF37" filter="url(#glow)" />
-                    
                     <g transform="translate(160, 285)">
                          <text x="0" y="0" fill="#D4AF37" font-size="13" font-weight="bold" font-family="Shippori Mincho, serif">2° Shift</text>
                          <line x1="-5" y1="5" x2="-20" y2="15" stroke="#D4AF37" stroke-width="0.5" opacity="0.7" />
                     </g>
-
                     <circle cx="400" cy="260" r="2" fill="#D4AF37" opacity="0.0">
                         <animate attributeName="opacity" values="0; 0.6; 0.6; 0" keyTimes="0; 0.2; 0.9; 1" dur="8s" repeatCount="indefinite" />
                     </circle>
                     <circle cx="550" cy="150" r="2" fill="#D4AF37" opacity="0.0">
                          <animate attributeName="opacity" values="0; 0; 0.8; 0.8; 0" keyTimes="0; 0.2; 0.3; 0.9; 1" dur="8s" repeatCount="indefinite" />
                     </circle>
-                    
                     <g transform="translate(750, 50)" filter="url(#strongGlow)" opacity="0">
                         <path d="M0,-10 L2,-2 L10,0 L2,2 L0,10 L-2,2 L-10,0 L-2,-2 Z" fill="#fff" />
                         <animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="2s" repeatCount="indefinite" additive="sum"/>
                         <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.35; 0.4; 0.9; 1" dur="8s" repeatCount="indefinite" />
                     </g>
-
                     <text x="740" y="30" text-anchor="end" fill="#fff" font-size="18" font-weight="bold" font-family="Shippori Mincho, serif" letter-spacing="0.1em" filter="url(#glow)" opacity="0">
                         The Masterpiece
                         <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.35; 0.4; 0.9; 1" dur="8s" repeatCount="indefinite" />
                     </text>
-                    
                     <line x1="750" y1="65" x2="750" y2="290" stroke="url(#goldGradient)" stroke-width="0.5" stroke-dasharray="2,4" opacity="0">
                         <animate attributeName="opacity" values="0; 0; 0.5; 0.5; 0" keyTimes="0; 0.4; 0.45; 0.9; 1" dur="8s" repeatCount="indefinite" />
                     </line>
@@ -573,10 +552,9 @@
                         想像を超える変化
                         <animate attributeName="opacity" values="0; 0; 0.8; 0.8; 0" keyTimes="0; 0.4; 0.45; 0.9; 1" dur="8s" repeatCount="indefinite" />
                     </text>
-
                 </svg>
             </div>
-            </div>
+        </div>
     </section>
 
     <section class="container" id="pricing">
@@ -589,54 +567,32 @@
         </p>
 
         <div class="pricing-grid">
-            
             <div class="price-card">
                 <h3>Single</h3>
                 <p class="desc">単発セッション</p>
-                <div class="price">
-                    <span class="amount">25,000</span>
-                    <span class="unit">円 / 回</span>
-                </div>
-                <ul class="features">
-                    <li>セッション 50分</li>
-                    <li>都度予約</li>
-                    <li>-</li>
-                    <li>-</li>
-                </ul>
+                <div class="price"><span class="amount">25,000</span><span class="unit">円 / 回</span></div>
+                <ul class="features"><li>セッション 50分</li><li>都度予約</li><li>-</li><li>-</li></ul>
             </div>
-
             <div class="price-card recommended">
                 <div class="badge">Most Popular</div>
                 <h3>Standard</h3>
                 <p class="desc">本気の変革・3〜6ヶ月コース</p>
                 <div class="price">
-                    <span class="original">175,000円</span>
-                    <span class="amount">140,000</span>
-                    <span class="unit">円 / 一括</span>
+                    <span class="original">175,000円</span><span class="amount">140,000</span><span class="unit">円 / 一括</span>
                 </div>
                 <p class="save-text">覚悟への応援として <span>20% OFF</span></p>
-                <ul class="features">
-                    <li>導入セッション 120分 × 1回</li>
-                    <li>継続セッション 50分 × 6回</li>
-                    <li>月1〜2回ペース</li>
-                </ul>
+                <ul class="features"><li>導入セッション 120分 × 1回</li><li>継続セッション 50分 × 6回</li><li>月1〜2回ペース</li></ul>
             </div>
-
             <div class="price-card premium">
                 <h3>Premium</h3>
                 <p class="desc">フル・パートナーシップ（8〜10ヶ月）</p>
-                <div class="price">
-                    <span class="amount">300,000</span>
-                    <span class="unit">円 / 一括</span>
-                </div>
+                <div class="price"><span class="amount">300,000</span><span class="unit">円 / 一括</span></div>
                 <ul class="features">
-                    <li>導入セッション 120分 × 1回</li>
-                    <li>継続セッション 50分 × 15回</li>
+                    <li>導入セッション 120分 × 1回</li><li>継続セッション 50分 × 15回</li>
                     <li style="color: var(--accent-color); font-weight:bold;">期間中のメール/LINEサポート付</li>
                     <li style="color: var(--accent-color); font-weight:bold;">緊急セッション権（3回まで）</li>
                 </ul>
             </div>
-
         </div>
     </section>
 
@@ -648,13 +604,10 @@
             </div>
             <div class="profile-text">
                 <p style="color: var(--accent-color); font-weight: bold; margin-bottom: 5px; letter-spacing: 0.1em;">CoSTAR 代表</p>
-                
                 <h3>星野 直道 / Hoshino Naomichi</h3>
-                
                 <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 25px;">
                     米国CTI認定 CPCC / 国際コーチング連盟 ICF認定 ACC
                 </p>
-                
                 <p>
                     1982年生まれ。大手IT企業を経て、石油元売のIT部門にてシステム開発（PM）、プロセス改革、戦略策定、生成AI組織の立ち上げ、組織リーダーを歴任。<br>
                     自身のリーダーシップへの葛藤からコーチングと出会う。
@@ -675,12 +628,10 @@
                 まずは、あなたの物語を少しだけ聞かせてください。<br>
                 体験セッションのお申し込み、またはご質問はこちらから。
             </p>
-            
             <div class="btn-group">
-                <a href="https://forms.gle/xbW8tjgLBrDyG1C36" target="_blank" class="btn btn-primary">体験セッションに申し込む</a>
-                <a href="https://forms.gle/fvbMixpopkGeUvLX8" target="_blank" class="btn btn-outline">お問い合わせ</a>
+                <button class="btn btn-primary" onclick="openModal('trial')">体験セッションに申し込む</button>
+                <button class="btn btn-outline" onclick="openModal('contact')">お問い合わせ</button>
             </div>
-            
             <br><br>
             <div style="font-size: 0.9rem;">
                 <a href="https://note.com/gifted_holly763" target="_blank" style="color: #888;">Noteを読む</a>
@@ -690,7 +641,185 @@
         </div>
     </footer>
 
+    <div id="modal-trial" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('trial')">&times;</span>
+            <h2 class="section-title" style="margin-bottom:30px; font-size:1.8rem;">体験セッション申込</h2>
+            
+            <div class="form-note">
+                <p style="margin-bottom:10px;">体験セッションは、「本質的な問いかけを体験する場」に加えて、コーチである私との「相性（協働関係が結べるか）を見極める場」としてご活用ください。</p>
+                <ul>
+                    <li>ご入力いただいた情報は、国際コーチング連盟（ICF）の倫理規定に基づき、厳重に守秘いたします。</li>
+                    <li>お申込み後、48時間以内に日程調整のメールをお送りします。</li>
+                    <li>サンプルセッションの時間や料金は下記の通りとなります。ご理解の上、お申込みをお願いいたします。</li>
+                </ul>
+                <div style="margin-top:10px; font-weight:bold; color:var(--accent-color);">
+                    時間: 45分（オリエンテーション20分＋セッション25分）<br>
+                    料金: 5,000円（税込）<br>
+                    形式: オンライン（Zoom）
+                </div>
+            </div>
+
+            <form action="https://ssgform.com/s/P1XZVcpingDQ" method="post">
+                <input type="hidden" name="_redirectTo" value="https://naomitchy.github.io/CoSTAR/">
+                
+                <div class="form-group">
+                    <label class="form-label">メールアドレス <span style="color:#d9534f">*</span></label>
+                    <input type="email" name="email" class="form-input" required placeholder="example@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">お名前（フルネーム） <span style="color:#d9534f">*</span></label>
+                    <input type="text" name="名前" class="form-input" required placeholder="例：山田 花子">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">フリガナ（カタカナ） <span style="color:#d9534f">*</span></label>
+                    <input type="text" name="フリガナ" class="form-input" required placeholder="例：ヤマダ ハナコ">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">現在の職務／役職 <span style="color:#d9534f">*</span></label>
+                    <select name="職務・役職" class="form-select" required>
+                        <option value="" disabled selected>選択してください</option>
+                        <option value="経営者・役員">経営者・役員</option>
+                        <option value="事業責任者・部門長">事業責任者・部門長</option>
+                        <option value="専門職（士業・医師など）">専門職（士業・医師など）</option>
+                        <option value="一般社員（マネジメント経験あり）">一般社員（課長等のマネジメント経験あり）</option>
+                        <option value="一般社員（マネジメント経験なし）">一般社員（マネジメント経験なし）</option>
+                        <option value="フリーランス・個人事業主">フリーランス・個人事業主</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">所属企業の業種 <span style="color:#d9534f">*</span></label>
+                    <select name="業種" class="form-select" required>
+                        <option value="" disabled selected>選択してください</option>
+                        <option value="IT">IT</option>
+                        <option value="金融">金融</option>
+                        <option value="製造">製造</option>
+                        <option value="サービス業">サービス業</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">コーチングを受けようと思った「きっかけ」は何ですか？ <span style="color:#d9534f">*</span></label>
+                    <textarea name="きっかけ" class="form-textarea" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">今、心の奥底で最も満たされていないことは何ですか？ <span style="color:#d9534f">*</span></label>
+                    <textarea name="満たされていないこと" class="form-textarea" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">あなたはなぜ、数あるコーチの中から私のプロフィールのどの部分に惹かれ、この一歩を踏み出されましたか？ <span style="color:#d9534f">*</span></label>
+                    <textarea name="志望動機" class="form-textarea" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">コーチング経験の有無 <span style="color:#d9534f">*</span></label>
+                    <div class="form-radio-group">
+                        <label class="form-radio-label"><input type="radio" name="コーチング経験" value="なし" required> なし</label>
+                        <label class="form-radio-label"><input type="radio" name="コーチング経験" value="過去に経験あり"> 過去に経験あり</label>
+                        <label class="form-radio-label"><input type="radio" name="コーチング経験" value="現在進行中"> 現在進行中</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">体験セッションのご希望の時間帯（複数選択可） <span style="color:#d9534f">*</span></label>
+                    <div class="schedule-grid">
+                        <div></div>
+                        <div class="schedule-head">平日</div>
+                        <div class="schedule-head">土日祝</div>
+
+                        <div class="schedule-label">朝 (7:00-9:00)</div>
+                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 朝(7-9)"></div>
+                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 朝(7-9)"></div>
+
+                        <div class="schedule-label">午前 (9:00-12:00)</div>
+                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 午前(9-12)"></div>
+                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 午前(9-12)"></div>
+
+                        <div class="schedule-label">お昼 (12:00-13:00)</div>
+                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 お昼(12-13)"></div>
+                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 お昼(12-13)"></div>
+
+                        <div class="schedule-label">午後 (13:00-18:00)</div>
+                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 午後(13-18)"></div>
+                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 午後(13-18)"></div>
+
+                        <div class="schedule-label">夜 (18:00-22:00)</div>
+                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 夜(18-22)"></div>
+                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 夜(18-22)"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">ご質問、その他コメント（任意）</label>
+                    <textarea name="コメント" class="form-textarea"></textarea>
+                </div>
+
+                <div style="text-align:center; margin-top:40px;">
+                    <button type="submit" class="btn btn-primary">送信する</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-contact" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('contact')">&times;</span>
+            <h2 class="section-title" style="margin-bottom:30px; font-size:1.8rem;">お問い合わせ</h2>
+            
+            <form action="https://ssgform.com/s/uO8LMqcEYiwN" method="post">
+                <input type="hidden" name="_redirectTo" value="https://naomitchy.github.io/CoSTAR/">
+                
+                <div class="form-group">
+                    <label class="form-label">お名前 <span style="color:#d9534f">*</span></label>
+                    <input type="text" name="名前" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">メールアドレス <span style="color:#d9534f">*</span></label>
+                    <input type="email" name="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">お問い合わせ内容 <span style="color:#d9534f">*</span></label>
+                    <textarea name="問い合わせ内容" class="form-textarea" required></textarea>
+                </div>
+
+                <div style="text-align:center; margin-top:40px;">
+                    <button type="submit" class="btn btn-primary">送信する</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
+        // Modal Control Logic
+        function openModal(type) {
+            document.getElementById('modal-' + type).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // 背景スクロール禁止
+        }
+
+        function closeModal(type) {
+            document.getElementById('modal-' + type).style.display = 'none';
+            document.body.style.overflow = 'auto'; // 背景スクロール再開
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Canvas Animations (Stars)
         (function() {
             const canvasList = [
                 document.getElementById('hero-canvas'),
