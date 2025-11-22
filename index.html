@@ -79,11 +79,7 @@
             letter-spacing: 0.1em;
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
         }
-        /* ロゴリンクのスタイル調整 */
-        .logo a {
-            color: inherit;
-            text-decoration: none;
-        }
+        .logo a { color: inherit; text-decoration: none; }
         .nav-actions {
             display: flex;
             align-items: center;
@@ -119,6 +115,7 @@
             letter-spacing: 0.1em;
             transition: all 0.3s ease;
             font-family: "Noto Sans JP", sans-serif;
+            box-sizing: border-box; /* パディングを含めて幅計算 */
         }
         .btn:hover {
             background-color: var(--accent-color);
@@ -314,12 +311,30 @@
         .schedule-check { display: flex; justify-content: center; align-items: center; }
         .schedule-check input[type="checkbox"] { transform: scale(1.5); accent-color: var(--accent-color); cursor: pointer; }
 
-        /* --- スマホ対応 --- */
+        /* --- スマホ対応（レスポンシブ） --- */
         @media (max-width: 900px) {
             .container { padding: 0 25px; }
+            
+            /* ボタン見切れ修正: 幅を100%にして余白を持たせる */
+            .hero .btn { width: 100%; max-width: 100%; min-width: auto; padding: 15px 20px; }
+            
+            /* Quoteのバランス調整 */
+            .quote-large { font-size: 1.1rem; line-height: 1.7; }
+            
+            /* Value見出しの改行調整: brを無効化して自然に折り返す */
+            .concept-text h3 { font-size: 1.3rem; }
+            .concept-text h3 br { display: none; }
+            
+            /* 料金表カードの幅調整 */
+            .price-card { width: 100%; max-width: 100%; margin-bottom: 20px; margin-left:0; margin-right:0;}
+            .pricing-grid { flex-direction: column; align-items: stretch; padding: 0 10px; }
+            
+            /* フッターボタンの縦並び */
+            .btn-group { flex-direction: column; gap: 15px; }
+            .btn-group .btn { width: 100%; min-width: auto; }
+
+            /* その他レイアウト */
             .service-grid { grid-template-columns: 1fr; gap: 40px;}
-            .pricing-grid { flex-direction: column; align-items: center; }
-            .price-card { width: 100%; max-width: 350px; margin-bottom: 20px; }
             .price-card.recommended { transform: scale(1); margin: 20px 0 40px 0; }
             .service-card.main-service { order: -1; }
             .nav-actions { gap: 15px; }
@@ -328,7 +343,6 @@
             .profile-img { width: 100%; height: auto; aspect-ratio: 3/4; flex: none;}
             
             .hero-content h1 { font-size: 2.2rem; }
-            .quote-large { font-size: 1.2rem; margin: 50px 0;}
             .modal-content { width: 95%; margin: 10% auto; padding: 25px; }
             .schedule-grid { gap: 15px 15px; padding: 10px; }
             .schedule-label { font-size: 0.85rem; }
@@ -425,7 +439,7 @@
                 <div class="service-footer">
                     <a href="#pricing" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.85rem; min-width:auto;">料金を見る</a>
                     <br><br>
-                    <button class="nav-btn" style="color:var(--accent-color); text-decoration: underline; font-size:0.9rem; padding:0; border:none;" onclick="openModal('trial')">体験セッションを申し込む</button>
+                    <button class="nav-btn" style="color:var(--accent-color); text-decoration: underline; font-size:0.9rem; padding:0; border:none;" onclick="openModal('trial')">体験セッション申込</button>
                 </div>
             </div>
             <div class="service-card coming-soon">
@@ -548,7 +562,7 @@
         <h2 class="section-title">Coaching Price</h2>
         <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
             人生の角度を変え、その変化を日常に定着させるには「時間」と「継続」が不可欠です。<br>
-            そのため、単発ではなく、最低でも3～6ヶ月間のパートナーシップを基本推奨としています。
+            そのため、単発ではなく、最低でも3ヶ月間のパートナーシップを基本推奨としています。
         </p>
 
         <div class="pricing-grid">
@@ -573,7 +587,7 @@
                 <p class="desc">フル・パートナーシップ（8〜10ヶ月）</p>
                 <div class="price"><span class="amount">300,000</span><span class="unit">円 / 一括</span></div>
                 <ul class="features">
-                    <li>導入セッション 120分 × 1回</li><li>継続セッション 50分 × 15回</li>
+                    <li>導入セッション 120分 × 1回</li><li>継続セッション 50分 × 14回</li>
                     <li style="color: var(--accent-color); font-weight:bold;">期間中のメール/LINEサポート付</li>
                     <li style="color: var(--accent-color); font-weight:bold;">緊急セッション権（3回まで）</li>
                 </ul>
@@ -614,7 +628,7 @@
                 体験セッションのお申し込み、またはご質問はこちらから。
             </p>
             <div class="btn-group">
-                <button class="btn btn-primary" onclick="openModal('trial')">体験セッションに申し込む</button>
+                <button class="btn btn-primary" onclick="openModal('trial')">体験セッション申込</button>
                 <button class="btn btn-outline" onclick="openModal('contact')">お問い合わせ</button>
             </div>
             <br><br>
@@ -639,7 +653,7 @@
                     <li>サンプルセッションの時間や料金は下記の通りとなります。ご理解の上、お申込みをお願いいたします。</li>
                 </ul>
                 <div style="margin-top:10px; font-weight:bold; color:var(--accent-color);">
-                    時間: 45分（オリエンテーション15分＋セッション25分＋質疑5分）<br>
+                    時間: 45分（オリエンテーション20分＋セッション25分）<br>
                     料金: 5,000円（税込）<br>
                     形式: オンライン（Zoom）
                 </div>
