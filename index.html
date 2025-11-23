@@ -1094,6 +1094,14 @@
 
             dateInputs.forEach(input => {
                 input.setAttribute('min', minDate);
+                
+                // 【追加修正】スマホ等で過去日が選択された場合、強制的にアラートを出してリセット
+                input.addEventListener('change', function() {
+                    if(this.value && this.value < minDate) {
+                        alert('申し込み日より前の日程は選択できません。\n翌日以降の日程を選択してください。');
+                        this.value = ''; // 入力をクリア
+                    }
+                });
             });
 
             // --- 2. 時間選択肢の生成 ---
