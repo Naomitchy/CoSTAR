@@ -332,6 +332,9 @@
         @media (max-width: 900px) {
             .container { padding: 0 25px; }
             
+            /* 修正：文字サイズを2.2remから1.8remに縮小し、見切れや変な改行を防止 */
+            .hero-content h1 { font-size: 1.8rem; }
+
             /* ボタン見切れ修正: 幅を100%にして余白を持たせる */
             .hero .btn { width: 100%; max-width: 100%; min-width: auto; padding: 15px 20px; }
             
@@ -359,7 +362,6 @@
             .profile-flex { flex-direction: column; gap: 30px;}
             .profile-img { width: 100%; height: auto; aspect-ratio: 3/4; flex: none;}
             
-            .hero-content h1 { font-size: 2.2rem; }
             .modal-content { width: 95%; margin: 10% auto; padding: 25px; }
             .schedule-grid { gap: 15px 15px; padding: 10px; }
             .schedule-label { font-size: 0.85rem; }
@@ -381,7 +383,7 @@
     <div class="hero">
         <canvas id="hero-canvas"></canvas>
         <div class="container hero-content">
-            <h1>あなたの物語を、<br>最高傑作へ。</h1>
+            <h1><span style="display:inline-block;">あなたの物語を、</span><br><span style="display:inline-block;">最高傑作へ。</span></h1>
             <p>主人公たちは、最高の仲間と旅に出る。</p>
             <a href="#message" class="btn">物語を始める</a>
         </div>
