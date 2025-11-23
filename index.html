@@ -25,6 +25,7 @@
             --secondary-bg: #151E32; /* セクション背景 */
             --disabled-text: #666; /* 準備中用 */
             --modal-bg: rgba(11, 16, 33, 0.95); /* モーダル背景 */
+            color-scheme: dark; /* ブラウザ標準UIをダークモード対応に */
         }
 
         body {
@@ -317,20 +318,23 @@
         .form-radio-label input { margin-right: 10px; accent-color: var(--accent-color); }
         .form-note { font-size: 0.85rem; color: #ccc; margin-bottom: 30px; line-height: 1.6; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px;}
         .form-note ul { padding-left: 20px; margin: 0; }
-
-        /* 日程表グリッド */
-        .schedule-grid {
-            display: grid; grid-template-columns: 1fr auto auto; gap: 15px 30px;
-            align-items: center; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 4px; margin-top: 10px;
+        
+        /* 日付・時間入力のレイアウト用 */
+        .datetime-row {
+            display: flex; gap: 10px; align-items: center; margin-bottom: 15px;
         }
-        .schedule-head { font-weight: bold; text-align: center; color: var(--accent-color); }
-        .schedule-label { font-size: 0.95rem; }
-        .schedule-check { display: flex; justify-content: center; align-items: center; }
-        .schedule-check input[type="checkbox"] { transform: scale(1.5); accent-color: var(--accent-color); cursor: pointer; }
+        .time-range { display: flex; align-items: center; gap: 5px; flex: 1; }
+        .time-range select { flex: 1; min-width: 0; cursor: pointer; } /* selectに変更 */
 
         /* --- スマホ対応（レスポンシブ） --- */
         @media (max-width: 900px) {
             .container { padding: 0 25px; }
+
+            /* パディングの短縮 */
+            section { padding: 60px 0; }
+            
+            /* line-heightの調整 */
+            body { line-height: 1.7; }
             
             .hero-content h1 { font-size: 1.8rem; }
             
@@ -365,8 +369,10 @@
             .profile-img { width: 100%; height: auto; aspect-ratio: 3/4; flex: none;}
             
             .modal-content { width: 95%; margin: 10% auto; padding: 25px; }
-            .schedule-grid { gap: 15px 15px; padding: 10px; }
-            .schedule-label { font-size: 0.85rem; }
+            
+            /* 日付入力のスマホレイアウト調整 */
+            .datetime-row { flex-direction: column; align-items: stretch; gap: 5px; margin-bottom: 20px; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 4px; }
+            .time-range { width: 100%; }
         }
     </style>
 </head>
@@ -677,7 +683,7 @@
             <span class="close-btn" onclick="closeModal('trial')">&times;</span>
             <h2 class="section-title" style="margin-bottom:30px; font-size:1.8rem;">体験セッション申込</h2>
             
-            <form action="https://ssgform.com/s/P1XZVcpingDQ" method="post">
+            <form action="https://ssgform.com/s/P1XZVcpingDQ" method="post" id="trial-form">
                 <input type="hidden" name="_redirectTo" value="https://naomitchy.github.io/CoSTAR/">
                 
                 <div style="background:rgba(255,255,255,0.05); padding:20px; border-radius:4px; margin-bottom:30px; font-size:0.85rem; line-height:1.7; border:1px solid #444;">
@@ -689,7 +695,7 @@
                         <li><strong>お支払い：</strong>原則として、日程確定後の事前銀行振込（またはカード決済）をお願いしております。</li>
                     </ul>
                     <div style="margin-top:15px; font-weight:bold; color:#fff; border-top:1px solid rgba(255,255,255,0.1); padding-top:10px;">
-                        時間: 45分（オリエンテーション15分＋セッション25分っ＋質疑5分）<br>
+                        時間: 45分（オリエンテーション15分＋セッション25分＋質疑5分）<br>
                         料金: 5,000円（税込）<br>
                         形式: オンライン（Zoom）
                     </div>
@@ -711,84 +717,48 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">現在の職務／役職 <span style="color:#d9534f">*</span></label>
-                    <select name="職務・役職" class="form-select" required onchange="toggleOtherInput(this, 'other-job')">
-                        <option value="" disabled selected>選択してください</option>
-                        <option value="経営者・役員">経営者・役員</option>
-                        <option value="事業責任者・部門長">事業責任者・部門長</option>
-                        <option value="専門職（士業・医師など）">専門職（士業・医師など）</option>
-                        <option value="一般社員（マネジメント経験あり）">一般社員（課長等のマネジメント経験あり）</option>
-                        <option value="一般社員（マネジメント経験なし）">一般社員（マネジメント経験なし）</option>
-                        <option value="フリーランス・個人事業主">フリーランス・個人事業主</option>
-                        <option value="その他">その他</option>
-                    </select>
-                    <input type="text" name="職務・役職_その他" id="other-job" class="form-input" style="display:none; margin-top:10px;" placeholder="具体的にご記入ください">
-                </div>
+                    <label class="form-label">体験セッションの希望日時（第3希望まで） <span style="color:#d9534f">*</span></label>
+                    <p style="font-size:0.8rem; color:#aaa; margin-bottom:15px;">
+                        平日・土日祝の 7:00〜22:00 の間で、セッション可能な時間枠をご指定ください。<br>
+                        <span style="font-size:0.75em; color:#888;">（例：11/25 の 10:00 〜 15:00 の間）</span>
+                    </p>
 
-                <div class="form-group">
-                    <label class="form-label">所属企業の業種 <span style="color:#d9534f">*</span></label>
-                    <select name="業種" class="form-select" required onchange="toggleOtherInput(this, 'other-industry')">
-                        <option value="" disabled selected>選択してください</option>
-                        <option value="IT">IT</option>
-                        <option value="金融">金融</option>
-                        <option value="製造">製造</option>
-                        <option value="サービス業">サービス業</option>
-                        <option value="その他">その他</option>
-                    </select>
-                    <input type="text" name="業種_その他" id="other-industry" class="form-input" style="display:none; margin-top:10px;" placeholder="具体的にご記入ください">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">コーチングを受けようと思った「きっかけ」は何ですか？ <span style="color:#d9534f">*</span></label>
-                    <textarea name="きっかけ" class="form-textarea" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">今、心の奥底で最も満たされていないことは何ですか？ <span style="color:#d9534f">*</span></label>
-                    <textarea name="満たされていないこと" class="form-textarea" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">あなたはなぜ、数あるコーチの中から私のプロフィールのどの部分に惹かれ、この一歩を踏み出されましたか？ <span style="color:#d9534f">*</span></label>
-                    <textarea name="志望動機" class="form-textarea" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">コーチング経験の有無 <span style="color:#d9534f">*</span></label>
-                    <div class="form-radio-group">
-                        <label class="form-radio-label"><input type="radio" name="コーチング経験" value="なし" required> なし</label>
-                        <label class="form-radio-label"><input type="radio" name="コーチング経験" value="過去に経験あり"> 過去に経験あり</label>
-                        <label class="form-radio-label"><input type="radio" name="コーチング経験" value="現在進行中"> 現在進行中</label>
+                    <div style="margin-bottom: 15px;">
+                        <label style="display:block; font-size:0.9rem; color:#ccc; margin-bottom:5px;">第1希望 <span style="color:#d9534f">*</span></label>
+                        <div class="datetime-row">
+                            <input type="date" name="第1希望_日付" class="form-input" required style="flex:1;">
+                            <div class="time-range">
+                                <select name="第1希望_開始" class="form-select time-select" required></select>
+                                <span>〜</span>
+                                <select name="第1希望_終了" class="form-select time-select" required></select>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="form-label">体験セッションのご希望の時間帯（複数選択可） <span style="color:#d9534f">*</span></label>
-                    <div class="schedule-grid">
-                        <div></div>
-                        <div class="schedule-head">平日</div>
-                        <div class="schedule-head">土日祝</div>
-
-                        <div class="schedule-label">早朝 (7:00-9:00)</div>
-                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 早朝(7-9)"></div>
-                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 早朝(7-9)"></div>
-
-                        <div class="schedule-label">午前 (9:00-12:00)</div>
-                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 午前(9-12)"></div>
-                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 午前(9-12)"></div>
-
-                        <div class="schedule-label">お昼 (12:00-13:00)</div>
-                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 お昼(12-13)"></div>
-                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 お昼(12-13)"></div>
-
-                        <div class="schedule-label">午後 (13:00-18:00)</div>
-                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 午後(13-18)"></div>
-                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 午後(13-18)"></div>
-
-                        <div class="schedule-label">夜間 (18:00-22:00)</div>
-                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="平日 夜間(18-22)"></div>
-                        <div class="schedule-check"><input type="checkbox" name="希望日時[]" value="土日祝 夜間(18-22)"></div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="display:block; font-size:0.9rem; color:#ccc; margin-bottom:5px;">第2希望 <span style="color:#d9534f">*</span></label>
+                        <div class="datetime-row">
+                            <input type="date" name="第2希望_日付" class="form-input" required style="flex:1;">
+                            <div class="time-range">
+                                <select name="第2希望_開始" class="form-select time-select" required></select>
+                                <span>〜</span>
+                                <select name="第2希望_終了" class="form-select time-select" required></select>
+                            </div>
+                        </div>
                     </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label style="display:block; font-size:0.9rem; color:#ccc; margin-bottom:5px;">第3希望 <span style="color:#d9534f">*</span></label>
+                        <div class="datetime-row">
+                            <input type="date" name="第3希望_日付" class="form-input" required style="flex:1;">
+                            <div class="time-range">
+                                <select name="第3希望_開始" class="form-select time-select" required></select>
+                                <span>〜</span>
+                                <select name="第3希望_終了" class="form-select time-select" required></select>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="form-group">
@@ -1039,17 +1009,83 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Toggle Other Input Logic
-        function toggleOtherInput(selectElem, inputId) {
-            const inputElem = document.getElementById(inputId);
-            if (selectElem.value === 'その他') {
-                inputElem.style.display = 'block';
-                inputElem.required = true;
-            } else {
-                inputElem.style.display = 'none';
-                inputElem.required = false;
+        // Generate Time Options for Select
+        document.addEventListener('DOMContentLoaded', () => {
+            const timeSelects = document.querySelectorAll('.time-select');
+            
+            timeSelects.forEach(select => {
+                const defaultOpt = document.createElement('option');
+                defaultOpt.value = "";
+                defaultOpt.text = "--:--";
+                defaultOpt.selected = true;
+                defaultOpt.disabled = true;
+                select.appendChild(defaultOpt);
+
+                for (let h = 7; h <= 22; h++) {
+                    const hStr = h.toString().padStart(2, '0');
+                    
+                    let val00 = `${hStr}:00`;
+                    let opt00 = document.createElement('option');
+                    opt00.value = val00;
+                    opt00.text = val00;
+                    select.appendChild(opt00);
+                    
+                    if (h < 22) {
+                        let val30 = `${hStr}:30`;
+                        let opt30 = document.createElement('option');
+                        opt30.value = val30;
+                        opt30.text = val30;
+                        select.appendChild(opt30);
+                    }
+                }
+            });
+
+            // Form Validation Logic added here
+            const trialForm = document.getElementById('trial-form');
+            if(trialForm) {
+                trialForm.addEventListener('submit', function(e) {
+                    const checkList = [
+                        { start: '第1希望_開始', end: '第1希望_終了', label: '第1希望' },
+                        { start: '第2希望_開始', end: '第2希望_終了', label: '第2希望' },
+                        { start: '第3希望_開始', end: '第3希望_終了', label: '第3希望' }
+                    ];
+
+                    for (const check of checkList) {
+                        const startElem = document.getElementsByName(check.start)[0];
+                        const endElem = document.getElementsByName(check.end)[0];
+
+                        if (!startElem || !endElem) continue;
+
+                        const startVal = startElem.value;
+                        const endVal = endElem.value;
+
+                        // Skip if not filled (though required attribute handles this mostly)
+                        if (!startVal || !endVal) continue;
+
+                        // Convert HH:MM to minutes
+                        const [sH, sM] = startVal.split(':').map(Number);
+                        const [eH, eM] = endVal.split(':').map(Number);
+                        
+                        const startTotal = sH * 60 + sM;
+                        const endTotal = eH * 60 + eM;
+
+                        // 1. Check if End is after Start
+                        if (endTotal <= startTotal) {
+                            alert(`${check.label}: 終了時間は開始時間より後の時間を設定してください。`);
+                            e.preventDefault();
+                            return;
+                        }
+
+                        // 2. Check if interval is at least 45 minutes
+                        if ((endTotal - startTotal) < 45) {
+                            alert(`${check.label}: セッション時間は45分です。開始〜終了の間隔は45分以上確保してください。`);
+                            e.preventDefault();
+                            return;
+                        }
+                    }
+                });
             }
-        }
+        });
 
         // URL Parameter Check
         window.addEventListener('DOMContentLoaded', () => {
