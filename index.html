@@ -681,9 +681,11 @@
                     <span class="benefit-badge">特典</span>
                     <span style="font-weight:bold; color:#fff;">継続コースご契約時は、</span>
                 </div>
-                <div style="margin-top:5px;">
+                <div style="margin-top:8px; line-height:1.8;">
                     体験セッション料金（5,000円）を<br class="sp-only">
-                    <span style="font-weight:bold; color:#fff; font-size:1.1em;"><span style="color:var(--accent-color);">全額充当（実質無料）</span>いたします。</span>
+                    <span style="font-weight:bold; color:#fff; font-size:1.1em; display:inline-block;">
+                        <span style="color:var(--accent-color);">全額充当（実質無料）</span>いたします。
+                    </span>
                 </div>
             </div>
         </div>
@@ -1078,8 +1080,23 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Generate Time Options for Select
+        // Generate Time Options for Select & Set Date Limits
         document.addEventListener('DOMContentLoaded', () => {
+            // --- 1. 日付選択制限（明日以降のみ許可） ---
+            const dateInputs = document.querySelectorAll('input[type="date"]');
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1); // 明日に設定
+            
+            const yyyy = tomorrow.getFullYear();
+            const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+            const dd = String(tomorrow.getDate()).padStart(2, '0');
+            const minDate = `${yyyy}-${mm}-${dd}`;
+
+            dateInputs.forEach(input => {
+                input.setAttribute('min', minDate);
+            });
+
+            // --- 2. 時間選択肢の生成 ---
             const timeSelects = document.querySelectorAll('.time-select');
             
             timeSelects.forEach(select => {
