@@ -673,23 +673,24 @@
             <span class="close-btn" onclick="closeModal('trial')">&times;</span>
             <h2 class="section-title" style="margin-bottom:30px; font-size:1.8rem;">体験セッション申込</h2>
             
-            <div class="form-note">
-                <p style="margin-bottom:10px;">体験セッションは、「本質的な問いかけを体験する場」に加えて、コーチである私との「相性（協働関係が結べるか）を見極める場」としてご活用ください。</p>
-                <ul>
-                    <li>ご入力いただいた情報は、国際コーチング連盟（ICF）の倫理規定に基づき、厳重に守秘いたします。</li>
-                    <li>お申込み後、48時間以内に日程調整のメールをお送りします。</li>
-                    <li>サンプルセッションの時間や料金は下記の通りとなります。ご理解の上、お申込みをお願いいたします。</li>
-                </ul>
-                <div style="margin-top:10px; font-weight:bold; color:var(--accent-color);">
-                    時間: 45分（オリエンテーション20分＋セッション25分）<br>
-                    料金: 5,000円（税込）<br>
-                    形式: オンライン（Zoom）
-                </div>
-            </div>
-
             <form action="https://ssgform.com/s/P1XZVcpingDQ" method="post">
                 <input type="hidden" name="_redirectTo" value="https://naomitchy.github.io/CoSTAR/">
                 
+                <div style="background:rgba(255,255,255,0.05); padding:20px; border-radius:4px; margin-bottom:30px; font-size:0.85rem; line-height:1.7; border:1px solid #444;">
+                    <h3 style="color:var(--accent-color); font-size:1rem; margin-top:0; margin-bottom:10px;">お申込みの前にご確認ください</h3>
+                    <ul style="padding-left:20px; margin:0; color:#ccc;">
+                        <li><strong>守秘義務について：</strong>セッションで話された内容は、ICFの倫理規定に基づき厳重に守秘されます。安心してお話しください。</li>
+                        <li><strong>サービスの性質：</strong>コーチングは医療行為・治療ではありません。心身の不調で通院中の方は、医師の許可が必要です。</li>
+                        <li><strong>キャンセルポリシー：</strong>ご入金後の返金は原則いたしかねます。日程変更は前日まで可能です。当日の無断キャンセルは1回分消化となります。</li>
+                        <li><strong>お支払い：</strong>原則として、日程確定後の事前銀行振込（またはカード決済）をお願いしております。</li>
+                    </ul>
+                    <div style="margin-top:15px; font-weight:bold; color:#fff; border-top:1px solid rgba(255,255,255,0.1); padding-top:10px;">
+                        時間: 45分（オリエンテーション20分＋セッション25分）<br>
+                        料金: 5,000円（税込）<br>
+                        形式: オンライン（Zoom）
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label class="form-label">メールアドレス <span style="color:#d9534f">*</span></label>
                     <input type="email" name="email" class="form-input" required placeholder="example@email.com">
@@ -791,8 +792,15 @@
                     <textarea name="コメント" class="form-textarea"></textarea>
                 </div>
 
-                <div style="text-align:center; margin-top:40px;">
-                    <button type="submit" class="btn btn-primary">送信する</button>
+                <div style="margin: 30px 0; text-align: center;">
+                    <label style="cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <input type="checkbox" required style="transform: scale(1.5); accent-color: var(--accent-color);">
+                        <span>上記の内容および<span style="color:var(--accent-color); text-decoration:underline;" onclick="openModal('privacy'); event.preventDefault();">プライバシーポリシー</span>に同意します</span>
+                    </label>
+                </div>
+
+                <div style="text-align:center;">
+                    <button type="submit" class="btn btn-primary">同意して送信する</button>
                 </div>
             </form>
         </div>
