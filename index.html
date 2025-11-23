@@ -1094,14 +1094,7 @@
 
             dateInputs.forEach(input => {
                 input.setAttribute('min', minDate);
-                
-                // 【追加修正】スマホ等で過去日が選択された場合、強制的にアラートを出してリセット
-                input.addEventListener('change', function() {
-                    if(this.value && this.value < minDate) {
-                        alert('申し込み日より前の日程は選択できません。\n翌日以降の日程を選択してください。');
-                        this.value = ''; // 入力をクリア
-                    }
-                });
+                // 修正：即時のchangeイベントリスナーは削除しました
             });
 
             // --- 2. 時間選択肢の生成 ---
@@ -1139,22 +1132,31 @@
             if(trialForm) {
                 trialForm.addEventListener('submit', function(e) {
                     const checkList = [
-                        { start: '第1希望_開始', end: '第1希望_終了', label: '第1希望' },
-                        { start: '第2希望_開始', end: '第2希望_終了', label: '第2希望' },
-                        { start: '第3希望_開始', end: '第3希望_終了', label: '第3希望' }
+                        { date: '第1希望_日付', start: '第1希望_開始', end: '第1希望_終了', label: '第1希望' },
+                        { date: '第2希望_日付', start: '第2希望_開始', end: '第2希望_終了', label: '第2希望' },
+                        { date: '第3希望_日付', start: '第3希望_開始', end: '第3希望_終了', label: '第3希望' }
                     ];
 
                     for (const check of checkList) {
+                        const dateElem = document.getElementsByName(check.date)[0];
                         const startElem = document.getElementsByName(check.start)[0];
                         const endElem = document.getElementsByName(check.end)[0];
 
-                        if (!startElem || !endElem) continue;
+                        if (!dateElem || !startElem || !endElem) continue;
 
+                        const dateVal = dateElem.value;
                         const startVal = startElem.value;
                         const endVal = endElem.value;
 
                         // Skip if not filled (though required attribute handles this mostly)
-                        if (!startVal || !endVal) continue;
+                        if (!dateVal || !startVal || !endVal) continue;
+
+                        // 【追加】送信時に日付チェックを行う
+                        if (dateVal < minDate) {
+                            alert(`${check.label}: 申し込み日より前の日程は選択できません。\n翌日以降の日程を選択してください。`);
+                            e.preventDefault();
+                            return;
+                        }
 
                         // Convert HH:MM to minutes
                         const [sH, sM] = startVal.split(':').map(Number);
