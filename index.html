@@ -246,14 +246,14 @@
         .features li { margin-bottom: 12px; padding-left: 20px; position: relative; font-size: 0.9rem; line-height: 1.4; color: #ccc;}
         .features li::before { content: "✔"; position: absolute; left: 0; color: var(--accent-color); font-size: 0.8rem;}
 
-        /* --- 注釈エリアのデザイン --- */
+        /* --- 注釈エリアのデザイン（修正版） --- */
         .flow-area {
             margin: 40px auto 0;
             max-width: 700px;
             text-align: center;
         }
         .flow-text {
-            font-size: 0.95rem;
+            font-size: 0.85rem; /* 文字を少し小さくしてスッキリさせる */
             color: #ddd;
             margin-bottom: 25px;
             line-height: 1.8;
@@ -666,8 +666,8 @@
 
         <div class="flow-area">
             <div class="flow-text">
-                まずは<span style="color:var(--accent-color); font-weight:bold; cursor:pointer; text-decoration:underline;" onclick="openModal('trial')">体験セッション</span>にて、コーチとの相性をご確認いただいてから、<span style="display:inline-block;">契約のご案内をさせていただきます。</span><br>
-                <span style="display:inline-block;">無理な勧誘はいたしませんのでご安心ください。</span>
+                まずは<span style="color:var(--accent-color); font-weight:bold; cursor:pointer; text-decoration:underline;" onclick="openModal('trial')">体験セッション</span>にて、コーチとの相性をご確認いただいてから、契約のご案内をさせていただきます。<br>
+                無理な勧誘はいたしませんのでご安心ください。
             </div>
             
             <div class="benefit-box">
