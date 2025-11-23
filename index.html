@@ -332,14 +332,16 @@
         @media (max-width: 900px) {
             .container { padding: 0 25px; }
             
-            /* 修正：文字サイズを2.2remから1.8remに縮小し、見切れや変な改行を防止 */
             .hero-content h1 { font-size: 1.8rem; }
+            
+            /* 1行で強制表示 */
+            .hero-content p { font-size: 0.85rem; white-space: nowrap; }
 
             /* ボタン見切れ修正: 幅を100%にして余白を持たせる */
             .hero .btn { width: 100%; max-width: 100%; min-width: auto; padding: 15px 20px; }
             
-            /* Quoteのバランス調整 */
-            .quote-large { font-size: 1.1rem; line-height: 1.7; }
+            /* Quoteのバランス調整：スマホで2行に収まるようサイズ縮小 */
+            .quote-large { font-size: 0.9rem; line-height: 1.7; letter-spacing: 0; }
             
             /* Value見出しの改行調整: brを無効化して自然に折り返す */
             .concept-text h3 { font-size: 1.3rem; }
@@ -580,8 +582,8 @@
     <section class="container" id="pricing">
         <h2 class="section-title">Coaching Price</h2>
         <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
-            人生の角度を変え、その変化を日常に定着させるには「時間」と「継続」が不可欠です。<br>
-            そのため、単発ではなく、最低でも3ヶ月間のパートナーシップを基本推奨としています。
+            人生の角度を変え、定着させるには「継続」が不可欠です。<br>
+            そのため、3ヶ月間以上のパートナーシップを推奨します。
         </p>
 
         <div class="pricing-grid">
@@ -613,7 +615,7 @@
             </div>
         </div>
 
-        <div style="text-align: center; margin-top: 50px; font-size: 0.95rem; color: #ccc;">
+        <div style="text-align: center; margin-top: 50px; font-size: 0.95rem; color: #ccc; position: relative; z-index: 5;">
             <p>
                 法人契約、または特定の期間・頻度でのカスタマイズをご希望の方は、<br class="sp-only" style="display:none;">
                 <span style="color: var(--accent-color); cursor: pointer; text-decoration: underline;" onclick="openModal('contact')">お問い合わせフォーム</span>
@@ -687,7 +689,7 @@
                         <li><strong>お支払い：</strong>原則として、日程確定後の事前銀行振込（またはカード決済）をお願いしております。</li>
                     </ul>
                     <div style="margin-top:15px; font-weight:bold; color:#fff; border-top:1px solid rgba(255,255,255,0.1); padding-top:10px;">
-                        時間: 45分（オリエンテーション20分＋セッション25分）<br>
+                        時間: 45分（オリエンテーション15分＋セッション25分っ＋質疑5分）<br>
                         料金: 5,000円（税込）<br>
                         形式: オンライン（Zoom）
                     </div>
@@ -945,7 +947,7 @@
                 <p>ユーザーから個人情報の開示・訂正・利用停止等を求められた場合には、本人確認の上で、遅滞なくこれに対応いたします。</p>
 
                 <h3>6. お問い合わせ窓口</h3>
-                <p>本ポリシーに関するお問い合わせは、当サイトのお問い合わせフォームよりお願いいたします。</p>
+                <p>本ポリシーに関するお問い合わせは、当サイトの<a href="#" onclick="closeModal('privacy'); openModal('contact'); return false;" style="color: var(--accent-color);">お問い合わせフォーム</a>よりお願いいたします。</p>
             </div>
         </div>
     </div>
