@@ -253,17 +253,17 @@
             text-align: center;
         }
         .flow-text {
-            font-size: 0.85rem; /* 文字を少し小さくしてスッキリさせる */
+            font-size: 0.85rem;
             color: #ddd;
             margin-bottom: 25px;
             line-height: 1.8;
         }
         .benefit-box {
-            background: rgba(212, 175, 55, 0.08); /* 薄いゴールドの背景 */
-            border: 1px solid rgba(212, 175, 55, 0.4); /* ゴールドの枠線 */
+            background: rgba(212, 175, 55, 0.08); 
+            border: 1px solid rgba(212, 175, 55, 0.4); 
             border-radius: 8px;
             padding: 20px;
-            display: inline-block;
+            display: inline-block; /* 必要に応じてblockに */
             width: 100%;
             box-sizing: border-box;
             margin-bottom: 15px;
@@ -287,6 +287,9 @@
             font-size: 0.85rem;
             color: #aaa;
         }
+        
+        /* --- PC/SP 切り替え用 --- */
+        .sp-only { display: none; }
 
         /* --- Profile --- */
         .profile-flex { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; justify-content: center; }
@@ -377,6 +380,9 @@
             
             /* line-heightの調整 */
             body { line-height: 1.7; }
+            
+            /* スマホ用改行クラスの有効化 */
+            .sp-only { display: block; }
             
             .hero-content h1 { font-size: 1.8rem; }
             
@@ -508,7 +514,7 @@
                 <div class="service-footer">
                     <button class="btn btn-outline" style="width:100%; padding: 12px;" onclick="openModal('trial')">体験セッション申込</button>
                     <div style="margin-top: 15px;">
-                        <a href="#value" style="font-size: 0.85rem; color: #aaa; text-decoration: underline;">↓ なぜ、人生が変わるのか？（詳細）</a>
+                        <a href="#value" style="font-size: 0.85rem; color: #aaa; text-decoration: underline; white-space: nowrap;">↓ なぜ、人生が変わるのか？（詳細）</a>
                     </div>
                 </div>
             </div>
@@ -666,24 +672,26 @@
 
         <div class="flow-area">
             <div class="flow-text">
-                まずは<span style="color:var(--accent-color); font-weight:bold; cursor:pointer; text-decoration:underline;" onclick="openModal('trial')">体験セッション</span>にて、コーチとの相性をご確認いただいてから、契約のご案内をさせていただきます。<br>
-                無理な勧誘はいたしませんのでご安心ください。
+                まずは<span style="color:var(--accent-color); font-weight:bold; cursor:pointer; text-decoration:underline;" onclick="openModal('trial')">体験セッション</span>にて、<br class="sp-only">コーチとの相性をご確認いただいてから、<br class="sp-only">契約のご案内をさせていただきます。<br>
+                無理な勧誘はいたしませんので<br class="sp-only">ご安心ください。
             </div>
             
             <div class="benefit-box">
                 <div>
                     <span class="benefit-badge">特典</span>
-                    <span style="font-weight:bold; color:#fff;">継続コース（Standard/Premium）ご契約時は、</span>
+                    <span style="font-weight:bold; color:#fff;">継続コースご契約時は、</span>
                 </div>
                 <div style="margin-top:5px;">
-                    <span style="font-weight:bold; color:#fff; font-size:1.1em;">体験セッション料金（5,000円）を<span style="color:var(--accent-color);">全額充当（実質無料）</span>いたします。</span>
+                    体験セッション料金（5,000円）を<br class="sp-only">
+                    <span style="font-weight:bold; color:#fff; font-size:1.1em;"><span style="color:var(--accent-color);">全額充当（実質無料）</span>いたします。</span>
                 </div>
             </div>
         </div>
 
         <div class="corporate-area">
             <p>
-                法人契約、または特定の期間・頻度でのカスタマイズをご希望の方は、<br class="sp-only" style="display:none;">
+                法人契約、または特定の期間・頻度での<br class="sp-only">
+                カスタマイズをご希望の方は、<br class="sp-only">
                 <span style="color: var(--accent-color); cursor: pointer; text-decoration: underline;" onclick="openModal('contact')">お問い合わせフォーム</span>
                 よりご相談ください。
             </p>
