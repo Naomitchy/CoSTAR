@@ -246,6 +246,48 @@
         .features li { margin-bottom: 12px; padding-left: 20px; position: relative; font-size: 0.9rem; line-height: 1.4; color: #ccc;}
         .features li::before { content: "✔"; position: absolute; left: 0; color: var(--accent-color); font-size: 0.8rem;}
 
+        /* --- 注釈エリアのデザイン --- */
+        .flow-area {
+            margin: 40px auto 0;
+            max-width: 700px;
+            text-align: center;
+        }
+        .flow-text {
+            font-size: 0.95rem;
+            color: #ddd;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        .benefit-box {
+            background: rgba(212, 175, 55, 0.08); /* 薄いゴールドの背景 */
+            border: 1px solid rgba(212, 175, 55, 0.4); /* ゴールドの枠線 */
+            border-radius: 8px;
+            padding: 20px;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .benefit-badge {
+            background-color: var(--accent-color);
+            color: #0B1021;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 3px 10px;
+            border-radius: 4px;
+            vertical-align: text-bottom;
+            margin-right: 8px;
+        }
+        .corporate-area {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
         /* --- Profile --- */
         .profile-flex { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; justify-content: center; }
         .profile-img {
@@ -597,7 +639,7 @@
             <div class="price-card">
                 <h3>Single</h3>
                 <p class="desc">単発セッション</p>
-                <div class="price"><span class="amount">25,000</span><span class="unit">円 / 回</span></div>
+                <div class="price"><span class="amount">25,000</span><span class="unit">円(税込) / 回</span></div>
                 <ul class="features"><li>セッション 50分</li><li>都度予約</li><li>-</li><li>-</li></ul>
             </div>
             <div class="price-card recommended">
@@ -605,7 +647,7 @@
                 <h3>Standard</h3>
                 <p class="desc">本気の変革・3〜6ヶ月コース</p>
                 <div class="price">
-                    <span class="original">175,000円</span><span class="amount">140,000</span><span class="unit">円 / 一括</span>
+                    <span class="original">175,000円(税込)</span><span class="amount">140,000</span><span class="unit">円(税込) / 一括</span>
                 </div>
                 <p class="save-text">覚悟への応援として <span>20% OFF</span></p>
                 <ul class="features"><li>導入セッション 120分 × 1回</li><li>継続セッション 50分 × 6回</li><li>月1〜2回ペース</li></ul>
@@ -613,7 +655,7 @@
             <div class="price-card premium">
                 <h3>Premium</h3>
                 <p class="desc">フル・パートナーシップ（8〜10ヶ月）</p>
-                <div class="price"><span class="amount">300,000</span><span class="unit">円 / 一括</span></div>
+                <div class="price"><span class="amount">300,000</span><span class="unit">円(税込) / 一括</span></div>
                 <ul class="features">
                     <li>導入セッション 120分 × 1回</li><li>継続セッション 50分 × 14回</li>
                     <li style="color: var(--accent-color); font-weight:bold;">期間中のメール/LINEサポート付</li>
@@ -622,12 +664,24 @@
             </div>
         </div>
 
-        <p style="text-align: center; font-size: 0.9rem; color: #ddd; margin-top: 30px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-            まずは<span style="color:var(--accent-color); font-weight:bold; cursor:pointer; text-decoration:underline;" onclick="openModal('trial')">体験セッション</span>にて、コーチである私との相性をご確認いただいてから、契約のご案内をさせていただきます。<br>
-            無理な勧誘はいたしませんのでご安心ください。
-        </p>
+        <div class="flow-area">
+            <div class="flow-text">
+                まずは<span style="color:var(--accent-color); font-weight:bold; cursor:pointer; text-decoration:underline;" onclick="openModal('trial')">体験セッション</span>にて、コーチとの相性をご確認いただいてから、<span style="display:inline-block;">契約のご案内をさせていただきます。</span><br>
+                <span style="display:inline-block;">無理な勧誘はいたしませんのでご安心ください。</span>
+            </div>
+            
+            <div class="benefit-box">
+                <div>
+                    <span class="benefit-badge">特典</span>
+                    <span style="font-weight:bold; color:#fff;">継続コース（Standard/Premium）ご契約時は、</span>
+                </div>
+                <div style="margin-top:5px;">
+                    <span style="font-weight:bold; color:#fff; font-size:1.1em;">体験セッション料金（5,000円）を<span style="color:var(--accent-color);">全額充当（実質無料）</span>いたします。</span>
+                </div>
+            </div>
+        </div>
 
-        <div style="text-align: center; margin-top: 50px; font-size: 0.95rem; color: #ccc; position: relative; z-index: 5;">
+        <div class="corporate-area">
             <p>
                 法人契約、または特定の期間・頻度でのカスタマイズをご希望の方は、<br class="sp-only" style="display:none;">
                 <span style="color: var(--accent-color); cursor: pointer; text-decoration: underline;" onclick="openModal('contact')">お問い合わせフォーム</span>
@@ -699,6 +753,7 @@
                         <li><strong>サービスの性質：</strong>コーチングは医療行為・治療ではありません。心身の不調で通院中の方は、医師の許可が必要です。</li>
                         <li><strong>キャンセルポリシー：</strong>ご入金後の返金は原則いたしかねます。日程変更は前日まで可能です。当日の無断キャンセルは1回分消化となります。</li>
                         <li><strong>お支払い：</strong>原則として、日程確定後の事前銀行振込（またはカード決済）をお願いしております。</li>
+                        <li><strong>特典：</strong>継続コース（Standard/Premium）にご成約いただいた場合、本セッション料金（5,000円 税込）を全額充当いたします。</li>
                     </ul>
                     <div style="margin-top:15px; font-weight:bold; color:#fff; border-top:1px solid rgba(255,255,255,0.1); padding-top:10px;">
                         時間: 45分（オリエンテーション15分＋セッション25分＋質疑5分）<br>
