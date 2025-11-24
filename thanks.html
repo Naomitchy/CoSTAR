@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>送信完了 | CoSTAR</title>
+    
+    <meta name="robots" content="noindex"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 基本設定 (Modern Atelier Theme) --- */
+        :root {
+            --bg-color: #F9FAFB; 
+            --text-color: #333333; 
+            --text-muted: #666666;
+            --accent-color: #B8962E; 
+            --secondary-bg: #FFFFFF; 
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            margin: 0;
+            font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 2.0;
+            letter-spacing: 0.05em;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2 { font-family: "Shippori Mincho", serif; }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* --- Header --- */
+        header {
+            padding: 20px 0;
+            text-align: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            font-family: "Shippori Mincho", serif;
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .thank-you-card {
+            background-color: var(--secondary-bg);
+            padding: 60px 40px;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            width: 100%;
+            border: 1px solid #e5e7eb;
+        }
+
+        .check-icon {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            background-color: rgba(184, 150, 46, 0.1);
+            color: var(--accent-color);
+            line-height: 60px;
+            font-size: 30px;
+            position: relative;
+        }
+        /* Simple CSS Checkmark */
+        .check-icon::after {
+            content: '';
+            display: block;
+            width: 15px;
+            height: 25px;
+            border: solid var(--accent-color);
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+            position: absolute;
+            top: 14px;
+            left: 22px;
+            animation: drawCheck 0.5s ease forwards;
+            opacity: 0;
+        }
+        @keyframes drawCheck {
+            0% { opacity: 0; transform: rotate(45deg) scale(0.5); }
+            100% { opacity: 1; transform: rotate(45deg) scale(1); }
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin: 0 0 20px;
+            color: var(--text-color);
+        }
+
+        .message {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-bottom: 30px;
+        }
+
+        .note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background-color: #f3f4f6;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 50px;
+            background-color: var(--accent-color);
+            color: #fff;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(184, 150, 46, 0.3);
+        }
+        .btn:hover {
+            background-color: #9e8022;
+            transform: translateY(-2px);
+            opacity: 1;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #9ca3af;
+            font-size: 0.85rem;
+        }
+
+        /* --- SP Responsive --- */
+        @media (max-width: 600px) {
+            .thank-you-card { padding: 40px 20px; }
+            h1 { font-size: 1.5rem; }
+            .btn { width: 100%; box-sizing: border-box; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">CoSTAR</a>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="thank-you-card">
+                <div class="check-icon"></div>
+                <h1>送信が完了しました</h1>
+                
+                <div class="message">
+                    <p>お問い合わせ・お申し込みありがとうございます。<br>
+                    お送りいただいた内容は無事に受信いたしました。</p>
+                    <p>内容を確認の上、<strong>2営業日以内</strong>に<br class="sp-only">メールにてご連絡させていただきます。<br>
+                    今しばらくお待ちくださいませ。</p>
+                </div>
+
+                <div class="note">
+                    ※万が一、3日以上経過しても返信がない場合は、メールトラブルの可能性がございます。その際は、大変お手数ですが迷惑メールフォルダをご確認いただくか、再度お問い合わせいただけますと幸いです。
+                </div>
+
+                <a href="index.html" class="btn">トップページへ戻る</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 CoSTAR. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
