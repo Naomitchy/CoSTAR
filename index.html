@@ -17,23 +17,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- 基本設定 --- */
+        /* --- 基本設定 (Modern Atelier Theme) --- */
         :root {
-            --bg-color: #0B1021; /* 深い夜空の色 */
-            --text-color: #E0E0E0; /* 星の光のような白 */
-            --accent-color: #D4AF37; /* ゴールド */
-            --secondary-bg: #151E32; /* セクション背景 */
-            --disabled-text: #666; /* 準備中用 */
-            --modal-bg: rgba(11, 16, 33, 0.95); /* モーダル背景 */
-            color-scheme: dark; /* ブラウザ標準UIをダークモード対応に */
+            /* ベースカラー: 清潔感のあるオフホワイト */
+            --bg-color: #F9FAFB; 
+            --bg-gradient: radial-gradient(circle at center top, #FFFFFF 0%, #F3F4F6 100%);
+            
+            /* 文字色: 視認性の高いチャコールグレー */
+            --text-color: #333333; 
+            --text-muted: #666666;
+            
+            /* アクセント: 白背景に映える落ち着いたゴールド */
+            --accent-color: #B8962E; 
+            
+            /* セクション背景: 純白 */
+            --secondary-bg: #FFFFFF; 
+            
+            /* カードの影: 浮遊感のあるドロップシャドウ */
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --card-shadow-hover: 0 20px 40px rgba(184, 150, 46, 0.15);
+
+            color-scheme: light;
         }
 
         body {
             margin: 0;
             font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-color);
+            background: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.9;
+            line-height: 2.0; /* 読みやすさ重視で行間を広めに */
             letter-spacing: 0.05em;
             font-feature-settings: "palt";
             overflow-x: hidden;
@@ -60,10 +72,11 @@
             padding: 15px 0;
             position: fixed;
             width: 100%;
-            background-color: rgba(11, 16, 33, 0.8);
-            backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.9); /* 白のすりガラス */
+            backdrop-filter: blur(10px);
             z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
         .nav-flex {
             display: flex;
@@ -76,29 +89,27 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--accent-color);
+            color: var(--text-color);
             letter-spacing: 0.1em;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
         }
-        .logo a { color: inherit; text-decoration: none; }
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 20px;
         }
-        .nav-link { font-size: 0.85rem; color: #ccc; cursor: pointer; font-weight: 500; }
+        .nav-link { font-size: 0.85rem; color: var(--text-muted); cursor: pointer; font-weight: 500; }
         .nav-link:hover { color: var(--accent-color); }
         .nav-btn {
             font-size: 0.85rem;
             padding: 8px 20px;
-            border: 1px solid var(--accent-color);
+            border: 1px solid var(--text-color);
             border-radius: 20px;
-            color: var(--accent-color);
+            color: var(--text-color);
             font-weight: 500;
             cursor: pointer;
             background: transparent;
         }
-        .nav-btn:hover { background-color: var(--accent-color); color: var(--bg-color); }
+        .nav-btn:hover { background-color: var(--text-color); color: #fff; }
 
         /* --- ボタン共通 --- */
         .btn {
@@ -116,17 +127,18 @@
             letter-spacing: 0.1em;
             transition: all 0.3s ease;
             font-family: "Noto Sans JP", sans-serif;
-            box-sizing: border-box; /* パディングを含めて幅計算 */
+            box-sizing: border-box;
         }
         .btn:hover {
             background-color: var(--accent-color);
-            color: var(--bg-color);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(184, 150, 46, 0.3);
+            transform: translateY(-2px);
         }
-        .btn-primary { background-color: var(--accent-color); color: var(--bg-color); border: 1px solid var(--accent-color); }
-        .btn-primary:hover { background-color: #fff; color: #000; border-color: #fff; }
+        .btn-primary { background-color: var(--accent-color); color: #fff; border: 1px solid var(--accent-color); }
+        .btn-primary:hover { background-color: #9e8022; border-color: #9e8022; }
         .btn-outline { background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); }
-        .btn-outline:hover { background-color: rgba(212, 175, 55, 0.1); color: #fff; }
+        .btn-outline:hover { background-color: rgba(184, 150, 46, 0.05); color: var(--accent-color); }
         .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
         /* --- ヒーロー --- */
@@ -136,7 +148,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: radial-gradient(circle at center bottom, #1B2745 0%, #0B1021 80%);
+            background: var(--bg-gradient);
             position: relative;
             overflow: hidden;
         }
@@ -149,10 +161,11 @@
             animation: fadeIn 2s ease-out;
         }
         .hero-content h1 {
-            font-size: 3.5rem; font-weight: 600; margin-bottom: 30px; line-height: 1.4;
-            letter-spacing: 0.1em; color: #fff; text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+            font-size: 3.5rem; font-weight: 600; margin-bottom: 30px; line-height: 1.5;
+            letter-spacing: 0.1em; color: var(--text-color); 
+            text-shadow: 2px 2px 0px #fff, 0 0 20px rgba(255,255,255,0.8);
         }
-        .hero-content p { font-size: 1.3rem; margin-bottom: 60px; color: #ccc; letter-spacing: 0.1em; font-weight: 500; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 60px; color: var(--text-muted); letter-spacing: 0.1em; font-weight: 500; }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -162,105 +175,126 @@
         /* --- セクション共通 --- */
         section { padding: 100px 0; }
         .section-title {
-            text-align: center; font-size: 2.2rem; margin-bottom: 70px; color: var(--accent-color);
+            text-align: center; font-size: 2.2rem; margin-bottom: 70px; color: var(--text-color);
             letter-spacing: 0.15em; position: relative; font-family: "Shippori Mincho", serif; font-weight: 600;
         }
         .section-title::after {
-            content: ""; display: block; width: 40px; height: 1px;
-            background-color: var(--accent-color); margin: 15px auto 0; opacity: 0.5;
+            content: ""; display: block; width: 40px; height: 2px;
+            background-color: var(--accent-color); margin: 20px auto 0; opacity: 1;
         }
 
         /* --- Message --- */
-        .message-section { background-color: #000; position: relative; overflow: hidden; padding: 120px 0; }
+        .message-section { 
+            background-color: #FFFFFF; 
+            position: relative; 
+            overflow: hidden; 
+            padding: 120px 0;
+        }
         #star-canvas { 
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
             z-index: 1; pointer-events: none; display: block;
         }
         .message-content { position: relative; z-index: 2; text-align: center; }
-        .story-text { text-align: left; max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: #ddd; }
+        .story-text { text-align: left; max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: var(--text-color); }
         .story-text p { margin-bottom: 2.5em; }
-        .highlight { color: #fff; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
+        .highlight { 
+            color: var(--text-color); font-weight: 700; 
+            background: linear-gradient(transparent 60%, rgba(184, 150, 46, 0.2) 60%); /* マーカー風 */
+            padding-bottom: 2px; 
+        }
         .quote-large {
             font-size: 1.5rem; color: var(--accent-color); margin: 80px 0; display: block;
-            text-align: center; line-height: 1.8; border-top: 1px solid rgba(212, 175, 55, 0.2);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding: 40px 0;
+            text-align: center; line-height: 1.8; 
+            border-top: 1px solid rgba(184, 150, 46, 0.3);
+            border-bottom: 1px solid rgba(184, 150, 46, 0.3); 
+            padding: 40px 0;
+            background-color: rgba(184, 150, 46, 0.03);
         }
-
-        /* --- Value --- */
-        .concept-section { background-color: var(--secondary-bg); }
-        .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
-        .concept-text h3 {
-            font-size: 1.5rem; line-height: 1.6; color: var(--accent-color);
-            margin-bottom: 25px; border-left: 3px solid var(--accent-color); padding-left: 20px; font-weight: 600;
-        }
-        .concept-text p { margin-bottom: 1.5em; color: #ccc; font-size: 1rem; }
-        
-        .value-svg-container {
-            text-align: center; margin-top: 60px; margin-bottom: 30px;
-            animation: fadeInSVG 2s ease-out; position: relative; display: flex; justify-content: center;
-        }
-        .value-svg { max-width: 100%; height: auto; filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.15)); }
 
         /* --- Services --- */
         .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
         .service-card {
-            background-color: var(--secondary-bg); padding: 35px; border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s;
+            background-color: var(--secondary-bg); padding: 35px; border-radius: 4px;
+            border: none; 
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
             position: relative; display: flex; flex-direction: column; height: 100%; box-sizing: border-box;
         }
-        .service-card.main-service {
-            border: 1px solid var(--accent-color); background: linear-gradient(145deg, #151E32, #1c2842);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.05);
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
         }
-        .service-card.coming-soon { opacity: 0.6; border-style: dashed; }
-        .service-card h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--accent-color); font-weight: 600; }
-        .service-desc { flex-grow: 1; font-size: 0.95rem; color: #bbb; }
-        .tag { display: inline-block; font-size: 0.75rem; padding: 4px 12px; background: rgba(255,255,255,0.08); border-radius: 20px; margin-bottom: 20px; align-self: flex-start; }
-        .cs-badge { position: absolute; top: 20px; right: 20px; background-color: #222; color: #888; font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; }
+        .service-card.main-service {
+            border: 1px solid var(--accent-color); 
+            background: #fff;
+        }
+        .service-card.coming-soon { opacity: 0.6; border: 1px dashed #ccc; background: transparent; box-shadow: none; }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--text-color); font-weight: 600; font-family: "Shippori Mincho", serif;}
+        .service-desc { flex-grow: 1; font-size: 0.95rem; color: var(--text-muted); }
+        .tag { 
+            display: inline-block; font-size: 0.75rem; padding: 4px 12px; 
+            background: #f3f4f6; color: #666;
+            border-radius: 20px; margin-bottom: 20px; align-self: flex-start; 
+        }
+        .cs-badge { position: absolute; top: 20px; right: 20px; background-color: #eee; color: #999; font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; }
         .service-footer { margin-top: 25px; text-align: center; }
+
+        /* --- Value --- */
+        .concept-section { background-color: var(--bg-color); }
+        .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+        .concept-text h3 {
+            font-size: 1.5rem; line-height: 1.6; color: var(--text-color);
+            margin-bottom: 25px; border-left: 3px solid var(--accent-color); padding-left: 20px; font-weight: 600;
+        }
+        .concept-text p { margin-bottom: 1.5em; color: var(--text-muted); font-size: 1rem; }
+        
+        .value-svg-container {
+            text-align: center; margin-top: 60px; margin-bottom: 30px;
+            position: relative; display: flex; justify-content: center;
+        }
+        .value-svg { max-width: 100%; height: auto; filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.05)); }
 
         /* --- Pricing --- */
         .pricing-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: nowrap; align-items: stretch; }
         .price-card {
-            background-color: var(--secondary-bg); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px; padding: 35px 25px; width: 100%; max-width: 320px;
+            background-color: var(--secondary-bg); 
+            border: none;
+            border-radius: 4px; padding: 35px 25px; width: 100%; max-width: 320px;
             text-align: center; position: relative; display: flex; flex-direction: column;
+            box-shadow: var(--card-shadow);
         }
-        .price-card.premium { border: 1px solid #fff; background: linear-gradient(145deg, #2a2a2a, #151E32); }
+        .price-card.premium { 
+            background: linear-gradient(145deg, #fdfdfd, #f5f5f5); 
+            border: 1px solid #e5e7eb;
+        }
         .price-card.recommended {
-            border: 2px solid var(--accent-color); background: linear-gradient(145deg, #151E32, #1c2842);
-            transform: scale(1.05); z-index: 10; box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+            border: 2px solid var(--accent-color); 
+            background: #fff;
+            transform: scale(1.05); z-index: 10; 
+            box-shadow: 0 20px 50px rgba(184, 150, 46, 0.15);
         }
         .badge {
             position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-            background-color: var(--accent-color); color: #000; padding: 4px 12px;
+            background-color: var(--accent-color); color: #fff; padding: 4px 12px;
             font-size: 0.75rem; font-weight: bold; border-radius: 20px; white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .price-card h3 { font-size: 1.5rem; margin-bottom: 5px; color: #fff; font-weight: 600; }
-        .price-card .desc { font-size: 0.85rem; color: #aaa; margin-bottom: 25px; height: 35px;}
-        .price .amount { font-size: 2rem; font-weight: bold; color: #fff;}
-        .price .unit { font-size: 0.8rem; color: #aaa; }
-        .price .original { display: block; text-decoration: line-through; color: #777; font-size: 0.8rem; margin-bottom: 5px; }
-        .save-text { color: var(--accent-color); font-weight: bold; margin-bottom: 20px; font-size: 0.85rem; }
-        .features { list-style: none; padding: 0; text-align: left; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: auto; }
-        .features li { margin-bottom: 12px; padding-left: 20px; position: relative; font-size: 0.9rem; line-height: 1.4; color: #ccc;}
+        .price-card h3 { font-size: 1.5rem; margin-bottom: 5px; color: var(--text-color); font-weight: 600; font-family: "Shippori Mincho", serif; }
+        .price-card .desc { font-size: 0.85rem; color: #888; margin-bottom: 25px; height: 35px;}
+        .price .amount { font-size: 2rem; font-weight: bold; color: var(--text-color);}
+        .price .unit { font-size: 0.8rem; color: #888; }
+        .price .original { display: block; text-decoration: line-through; color: #aaa; font-size: 0.8rem; margin-bottom: 5px; }
+        .save-text { color: #d9534f; font-weight: bold; margin-bottom: 20px; font-size: 0.85rem; }
+        .features { list-style: none; padding: 0; text-align: left; border-top: 1px solid #f3f4f6; padding-top: 20px; margin-top: auto; }
+        .features li { margin-bottom: 12px; padding-left: 20px; position: relative; font-size: 0.9rem; line-height: 1.4; color: var(--text-muted);}
         .features li::before { content: "✔"; position: absolute; left: 0; color: var(--accent-color); font-size: 0.8rem;}
 
-        /* --- 注釈エリアのデザイン --- */
-        .flow-area {
-            margin: 40px auto 0;
-            max-width: 700px;
-            text-align: center;
-        }
-        .flow-text {
-            font-size: 0.85rem;
-            color: #ddd;
-            margin-bottom: 25px;
-            line-height: 1.8;
-        }
+        /* --- 注釈エリア --- */
+        .flow-area { margin: 40px auto 0; max-width: 700px; text-align: center; }
+        .flow-text { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.8; }
         .benefit-box {
-            background: rgba(212, 175, 55, 0.08); 
-            border: 1px solid rgba(212, 175, 55, 0.4); 
+            background: #fff;
+            border: 1px solid var(--accent-color);
             border-radius: 8px;
             padding: 20px;
             display: inline-block;
@@ -268,10 +302,11 @@
             box-sizing: border-box;
             margin-bottom: 15px;
             position: relative;
+            box-shadow: 0 4px 15px rgba(184, 150, 46, 0.1);
         }
         .benefit-badge {
             background-color: var(--accent-color);
-            color: #0B1021;
+            color: #fff;
             font-size: 0.75rem;
             font-weight: bold;
             padding: 3px 10px;
@@ -282,132 +317,115 @@
         .corporate-area {
             margin-top: 50px;
             padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid #e5e7eb;
             text-align: center;
             font-size: 0.85rem;
-            color: #aaa;
+            color: #9ca3af;
         }
         
-        /* --- PC/SP 切り替え用 --- */
-        .sp-only { display: none; }
-
         /* --- Profile --- */
         .profile-flex { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; justify-content: center; }
         .profile-img {
-            flex: 0 0 350px; height: 450px; background-color: #333; border-radius: 8px;
+            flex: 0 0 350px; height: 450px; background-color: #e5e7eb; border-radius: 8px;
             display: flex; align-items: center; justify-content: center; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); position: relative;
         }
         .profile-img::after {
             content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 100%);
+            background: radial-gradient(circle at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.1) 100%);
             pointer-events: none;
         }
         .profile-text { flex: 1; min-width: 300px; max-width: 600px; }
-        .profile-text h3 { font-size: 1.7rem; font-weight: 600; margin-bottom: 10px; color: #fff; }
+        .profile-text h3 { font-size: 1.7rem; font-weight: 600; margin-bottom: 10px; color: var(--text-color); }
 
         /* --- Footer --- */
-        footer { text-align: center; padding: 80px 0; background-color: #050810; font-size: 0.9rem; color: #777; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer { 
+            text-align: center; padding: 80px 0; 
+            background-color: #FFFFFF; 
+            font-size: 0.9rem; color: #9ca3af; 
+            border-top: 1px solid #f3f4f6; 
+        }
 
-        /* --- Legal Tables & Text --- */
+        /* --- Legal & Modals --- */
         .legal-table {
             width: 100%; border-collapse: collapse; margin-bottom: 30px; font-size: 0.9rem;
         }
         .legal-table th, .legal-table td {
-            border: 1px solid rgba(255, 255, 255, 0.2); padding: 15px; text-align: left;
+            border: 1px solid #e5e7eb; padding: 15px; text-align: left; color: var(--text-color);
         }
         .legal-table th {
-            background-color: rgba(212, 175, 55, 0.1); color: var(--accent-color); width: 30%; font-weight: bold;
+            background-color: #f9fafb; color: var(--text-color); width: 30%; font-weight: bold;
         }
         .legal-text {
-            font-size: 0.9rem; line-height: 1.8; color: #ccc; margin-bottom: 20px; text-align: left;
+            font-size: 0.9rem; line-height: 1.8; color: var(--text-color); margin-bottom: 20px; text-align: left;
         }
         .legal-text h3 {
-            font-size: 1.1rem; color: #fff; margin-top: 30px; margin-bottom: 10px; border-bottom: 1px solid #444; padding-bottom: 5px;
+            font-size: 1.1rem; color: var(--text-color); margin-top: 30px; margin-bottom: 10px; border-bottom: 1px solid #e5e7eb; padding-bottom: 5px;
         }
 
-        /* --- Modals (Form Style) --- */
         .modal {
             display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
-            overflow: auto; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+            overflow: auto; background-color: rgba(255,255,255,0.6); backdrop-filter: blur(5px);
         }
         .modal-content {
-            background-color: var(--secondary-bg); margin: 5% auto; padding: 40px; border: 1px solid var(--accent-color);
+            background-color: #fff; margin: 5% auto; padding: 40px; 
+            border: none;
             width: 90%; max-width: 700px; border-radius: 8px; position: relative;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
             animation: slideIn 0.4s ease;
+            color: var(--text-color);
         }
         @keyframes slideIn { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
         
         .close-btn {
             position: absolute; top: 15px; right: 20px;
-            color: #aaa; font-size: 35px; font-weight: bold; cursor: pointer; transition: 0.3s;
+            color: #ccc; font-size: 35px; font-weight: bold; cursor: pointer; transition: 0.3s;
             line-height: 1; z-index: 10;
         }
         .close-btn:hover { color: var(--accent-color); }
         
-        /* Form Elements */
         .form-group { margin-bottom: 25px; text-align: left; }
-        .form-label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--accent-color); font-size: 0.95rem; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--text-color); font-size: 0.95rem; }
         .form-input, .form-textarea, .form-select {
-            width: 100%; padding: 12px; border: 1px solid #555; background-color: rgba(255,255,255,0.05);
-            color: #fff; border-radius: 4px; font-size: 1rem; box-sizing: border-box; font-family: inherit;
+            width: 100%; padding: 12px; 
+            border: 1px solid #e5e7eb; background-color: #f9fafb;
+            color: var(--text-color); border-radius: 4px; font-size: 1rem; box-sizing: border-box; font-family: inherit;
+            transition: 0.3s;
         }
-        .form-select option { background-color: var(--secondary-bg); color: #fff; }
         .form-input:focus, .form-textarea:focus, .form-select:focus {
-            outline: none; border-color: var(--accent-color); background-color: rgba(255,255,255,0.1);
+            outline: none; border-color: var(--accent-color); background-color: #fff; box-shadow: 0 0 0 3px rgba(184, 150, 46, 0.1);
         }
         .form-textarea { resize: vertical; min-height: 100px; }
-        .form-radio-group { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
-        .form-radio-label { display: flex; align-items: center; cursor: pointer; font-size: 0.95rem; }
-        .form-radio-label input { margin-right: 10px; accent-color: var(--accent-color); }
-        .form-note { font-size: 0.85rem; color: #ccc; margin-bottom: 30px; line-height: 1.6; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px;}
-        .form-note ul { padding-left: 20px; margin: 0; }
         
-        /* 日付・時間入力のレイアウト用 */
+        /* Datetime Row */
         .datetime-row {
             display: flex; gap: 10px; align-items: center; margin-bottom: 15px;
         }
         .time-range { display: flex; align-items: center; gap: 5px; flex: 1; }
-        .time-range select { flex: 1; min-width: 0; cursor: pointer; } /* selectに変更 */
+        .time-range select { flex: 1; min-width: 0; cursor: pointer; } 
 
-        /* --- スマホ対応（レスポンシブ） --- */
+        /* --- SP Only / Responsive --- */
+        .sp-only { display: none; }
         @media (max-width: 900px) {
             .container { padding: 0 25px; }
-
-            /* パディングの短縮 */
             section { padding: 60px 0; }
-            
-            /* line-heightの調整 */
-            body { line-height: 1.7; }
-            
-            /* スマホ用改行クラスの有効化 */
+            body { line-height: 1.8; }
             .sp-only { display: block; }
             
             .hero-content h1 { font-size: 1.8rem; }
-            
-            /* 1行で強制表示 */
-            .hero-content p { font-size: 0.85rem; white-space: nowrap; }
+            .hero-content p { font-size: 0.9rem; white-space: nowrap; }
 
-            /* ボタン見切れ修正: 幅を100%にして余白を持たせる */
             .hero .btn { width: 100%; max-width: 100%; min-width: auto; padding: 15px 20px; }
-            
-            /* Quoteのバランス調整：スマホで2行に収まるようサイズ縮小 */
             .quote-large { font-size: 0.9rem; line-height: 1.7; letter-spacing: 0; }
-            
-            /* Value見出しの改行調整: brを無効化して自然に折り返す */
             .concept-text h3 { font-size: 1.3rem; }
             .concept-text h3 br { display: none; }
             
-            /* 料金表カードの幅調整 */
-            .price-card { width: 100%; max-width: 100%; margin-bottom: 20px; margin-left:0; margin-right:0;}
+            .price-card { width: 100%; max-width: 100%; margin-bottom: 20px; }
             .pricing-grid { flex-direction: column; align-items: stretch; padding: 0 10px; }
             
-            /* フッターボタンの縦並び */
             .btn-group { flex-direction: column; gap: 15px; }
             .btn-group .btn { width: 100%; min-width: auto; }
 
-            /* その他レイアウト */
             .service-grid { grid-template-columns: 1fr; gap: 40px;}
             .price-card.recommended { transform: scale(1); margin: 20px 0 40px 0; }
             .service-card.main-service { order: -1; }
@@ -416,10 +434,7 @@
             .profile-flex { flex-direction: column; gap: 30px;}
             .profile-img { width: 100%; height: auto; aspect-ratio: 3/4; flex: none;}
             
-            .modal-content { width: 95%; margin: 10% auto; padding: 25px; }
-            
-            /* 日付入力のスマホレイアウト調整 */
-            .datetime-row { flex-direction: column; align-items: stretch; gap: 5px; margin-bottom: 20px; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 4px; }
+            .datetime-row { flex-direction: column; align-items: stretch; gap: 5px; margin-bottom: 20px; background: #f3f4f6; padding: 10px; border-radius: 4px; }
             .time-range { width: 100%; }
         }
     </style>
@@ -450,7 +465,7 @@
         <section class="container message-content">
             <h2 class="section-title">Message</h2>
             <div class="story-text">
-                <p style="text-align: center; font-weight: bold; margin-bottom: 3em; color: #fff; font-size: 1.2rem; letter-spacing: 0.1em;">
+                <p style="text-align: center; font-weight: bold; margin-bottom: 3em; color: var(--text-color); font-size: 1.2rem; letter-spacing: 0.1em;">
                     あなたは今、自分の人生の「主役」を生きていますか？
                 </p>
                 <p>
@@ -510,7 +525,7 @@
                 </div>
             </div>
             <div class="service-card main-service">
-                <span class="tag" style="background:var(--accent-color); color:#000; font-weight:bold;">受付中</span>
+                <span class="tag" style="background:var(--accent-color); color:#fff; font-weight:bold;">受付中</span>
                 <h3>Coaching</h3>
                 <div class="service-desc">
                     <p>プロコーチによるCo-Activeモデルを主軸とした継続的なコーチングセッション。</p>
@@ -520,7 +535,7 @@
                 <div class="service-footer">
                     <button class="btn btn-outline" style="width:100%; padding: 12px;" onclick="openModal('trial')">体験セッション申込</button>
                     <div style="margin-top: 15px;">
-                        <a href="#value" style="font-size: 0.85rem; color: #aaa; text-decoration: underline; white-space: nowrap;">↓ なぜ、人生が変わるのか？（詳細）</a>
+                        <a href="#value" style="font-size: 0.85rem; color: var(--text-muted); text-decoration: underline; white-space: nowrap;">↓ なぜ、人生が変わるのか？（詳細）</a>
                     </div>
                 </div>
             </div>
@@ -577,30 +592,23 @@
                     <defs>
                         <linearGradient id="goldGradient" x1="0%" y1="100%" x2="100%" y2="0%">
                             <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.6" />
-                            <stop offset="50%" style="stop-color:#FADE7A;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#FFF;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#B8962E;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#8A7020;stop-opacity:1" />
                         </linearGradient>
                         <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
                             <feMerge>
                                 <feMergeNode in="coloredBlur"/>
                                 <feMergeNode in="SourceGraphic"/>
                             </feMerge>
                         </filter>
-                        <filter id="strongGlow" x="-50%" y="-50%" width="200%" height="200%">
-                            <feGaussianBlur stdDeviation="4" result="blur"/>
-                            <feMerge>
-                                <feMergeNode in="blur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
                     </defs>
-                    <g transform="translate(100, 300)" opacity="0.1" stroke="#fff" stroke-width="0.5" fill="none">
+                    <g transform="translate(100, 300)" opacity="0.1" stroke="#333" stroke-width="0.5" fill="none">
                         <circle r="80" /> <circle r="60" stroke-dasharray="4,4"/>
                         <line x1="0" y1="-90" x2="0" y2="90" /> <line x1="-90" y1="0" x2="90" y2="0" />
                     </g>
-                    <path d="M100,300 L750,300" stroke="#555" stroke-width="1" stroke-dasharray="5,5" fill="none" opacity="0.5" />
-                    <text x="680" y="320" fill="#666" font-size="12" font-family="sans-serif" text-anchor="end">成行きの未来</text>
+                    <path d="M100,300 L750,300" stroke="#999" stroke-width="1" stroke-dasharray="5,5" fill="none" opacity="0.5" />
+                    <text x="680" y="320" fill="#999" font-size="12" font-family="sans-serif" text-anchor="end">成行きの未来</text>
                     <g opacity="1">
                         <path d="M100,300 C 250,300 300,290 350,250 S 450,270 550,150 S 700,80 750,50" 
                               stroke="url(#goldGradient)" stroke-width="3" fill="none" filter="url(#glow)" stroke-linecap="round" stroke-dasharray="1000" stroke-dashoffset="1000">
@@ -608,30 +616,30 @@
                               <animate attributeName="opacity" values="1; 1; 0" keyTimes="0; 0.9; 1" dur="8s" repeatCount="indefinite" />
                         </path>
                     </g>
-                    <circle cx="100" cy="300" r="4" fill="#D4AF37" filter="url(#glow)" />
+                    <circle cx="100" cy="300" r="4" fill="#B8962E" filter="url(#glow)" />
                     <g transform="translate(160, 285)">
-                         <text x="0" y="0" fill="#D4AF37" font-size="13" font-weight="bold" font-family="Shippori Mincho, serif">2° Shift</text>
-                         <line x1="-5" y1="5" x2="-20" y2="15" stroke="#D4AF37" stroke-width="0.5" opacity="0.7" />
+                         <text x="0" y="0" fill="#B8962E" font-size="13" font-weight="bold" font-family="Shippori Mincho, serif">2° Shift</text>
+                         <line x1="-5" y1="5" x2="-20" y2="15" stroke="#B8962E" stroke-width="0.5" opacity="0.7" />
                     </g>
-                    <circle cx="400" cy="260" r="2" fill="#D4AF37" opacity="0.0">
+                    <circle cx="400" cy="260" r="2" fill="#B8962E" opacity="0.0">
                         <animate attributeName="opacity" values="0; 0.6; 0.6; 0" keyTimes="0; 0.2; 0.9; 1" dur="8s" repeatCount="indefinite" />
                     </circle>
-                    <circle cx="550" cy="150" r="2" fill="#D4AF37" opacity="0.0">
+                    <circle cx="550" cy="150" r="2" fill="#B8962E" opacity="0.0">
                          <animate attributeName="opacity" values="0; 0; 0.8; 0.8; 0" keyTimes="0; 0.2; 0.3; 0.9; 1" dur="8s" repeatCount="indefinite" />
                     </circle>
-                    <g transform="translate(750, 50)" filter="url(#strongGlow)" opacity="0">
-                        <path d="M0,-10 L2,-2 L10,0 L2,2 L0,10 L-2,2 L-10,0 L-2,-2 Z" fill="#fff" />
+                    <g transform="translate(750, 50)" opacity="0">
+                        <path d="M0,-10 L2,-2 L10,0 L2,2 L0,10 L-2,2 L-10,0 L-2,-2 Z" fill="#B8962E" />
                         <animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="2s" repeatCount="indefinite" additive="sum"/>
                         <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.35; 0.4; 0.9; 1" dur="8s" repeatCount="indefinite" />
                     </g>
-                    <text x="740" y="30" text-anchor="end" fill="#fff" font-size="18" font-weight="bold" font-family="Shippori Mincho, serif" letter-spacing="0.1em" filter="url(#glow)" opacity="0">
+                    <text x="740" y="30" text-anchor="end" fill="#333" font-size="18" font-weight="bold" font-family="Shippori Mincho, serif" letter-spacing="0.1em" opacity="0">
                         The Masterpiece
                         <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.35; 0.4; 0.9; 1" dur="8s" repeatCount="indefinite" />
                     </text>
                     <line x1="750" y1="65" x2="750" y2="290" stroke="url(#goldGradient)" stroke-width="0.5" stroke-dasharray="2,4" opacity="0">
                         <animate attributeName="opacity" values="0; 0; 0.5; 0.5; 0" keyTimes="0; 0.4; 0.45; 0.9; 1" dur="8s" repeatCount="indefinite" />
                     </line>
-                    <text x="760" y="180" fill="#D4AF37" font-size="11" writing-mode="tb" letter-spacing="0.2em" opacity="0">
+                    <text x="760" y="180" fill="#B8962E" font-size="11" writing-mode="tb" letter-spacing="0.2em" opacity="0">
                         想像を超える変化
                         <animate attributeName="opacity" values="0; 0; 0.8; 0.8; 0" keyTimes="0; 0.4; 0.45; 0.9; 1" dur="8s" repeatCount="indefinite" />
                     </text>
@@ -642,7 +650,7 @@
 
     <section class="container" id="pricing">
         <h2 class="section-title">Coaching Price</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: var(--text-muted);">
             人生の角度を変え、定着させるには「継続」が不可欠です。<br>
             そのため、3ヶ月間以上のパートナーシップを推奨します。
         </p>
@@ -685,11 +693,11 @@
             <div class="benefit-box">
                 <div>
                     <span class="benefit-badge">特典</span>
-                    <span style="font-weight:bold; color:#fff;">継続コースご契約で</span>
+                    <span style="font-weight:bold; color:var(--text-color);">継続コースご契約で</span>
                 </div>
-                <div style="margin-top:8px; line-height:1.8;">
+                <div style="margin-top:8px; line-height:1.8; color:var(--text-color);">
                     体験セッション代を<br class="sp-only">
-                    <span style="font-weight:bold; color:#fff; font-size:1.1em;">
+                    <span style="font-weight:bold; font-size:1.1em;">
                         <span style="color:var(--accent-color);">全額充当（実質無料）。</span>
                     </span>
                 </div>
@@ -716,7 +724,7 @@
             <div class="profile-text">
                 <p style="color: var(--accent-color); font-weight: bold; margin-bottom: 5px; letter-spacing: 0.1em;">CoSTAR 代表</p>
                 <h3>星野 直道 / Hoshino Naomichi</h3>
-                <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 25px;">
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px;">
                     米国CTI認定 CPCC / 国際コーチング連盟 ICF認定 ACC
                 </p>
                 <p>
@@ -735,7 +743,7 @@
     <footer id="contact">
         <div class="container">
             <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 30px;">Contact</h2>
-            <p style="margin-bottom: 30px;">
+            <p style="margin-bottom: 30px; color: var(--text-muted);">
                 まずは、あなたの物語を少しだけ聞かせてください。<br>
                 体験セッションのお申し込み、またはご質問はこちらから。
             </p>
@@ -744,10 +752,10 @@
                 <button class="btn btn-outline" onclick="openModal('contact')">お問い合わせ</button>
             </div>
             <br><br>
-            <div style="font-size: 0.8rem; display:flex; gap:20px; justify-content:center; flex-wrap:wrap; color: #666;">
+            <div style="font-size: 0.8rem; display:flex; gap:20px; justify-content:center; flex-wrap:wrap; color: #999;">
                 <span style="cursor:pointer; text-decoration:underline;" onclick="openModal('tokusho')">特定商取引法に基づく表記</span>
                 <span style="cursor:pointer; text-decoration:underline;" onclick="openModal('privacy')">プライバシーポリシー</span>
-                <a href="https://note.com/gifted_holly763" target="_blank" style="color: #666;">noteを読む</a>
+                <a href="https://note.com/gifted_holly763" target="_blank" style="color: #999;">noteを読む</a>
             </div>
             <br><br>
             <p>&copy; 2025 CoSTAR. All Rights Reserved.</p>
@@ -762,16 +770,16 @@
             <form action="https://ssgform.com/s/P1XZVcpingDQ" method="post" id="trial-form">
                 <input type="hidden" name="_redirectTo" value="https://naomitchy.github.io/CoSTAR/">
                 
-                <div style="background:rgba(255,255,255,0.05); padding:20px; border-radius:4px; margin-bottom:30px; font-size:0.85rem; line-height:1.7; border:1px solid #444;">
+                <div style="background:#f9fafb; padding:20px; border-radius:4px; margin-bottom:30px; font-size:0.85rem; line-height:1.7; border:1px solid #e5e7eb;">
                     <h3 style="color:var(--accent-color); font-size:1rem; margin-top:0; margin-bottom:10px;">お申込みの前にご確認ください</h3>
-                    <ul style="padding-left:20px; margin:0; color:#ccc;">
+                    <ul style="padding-left:20px; margin:0; color:#666;">
                         <li><strong>守秘義務について：</strong>セッションで話された内容は、ICFの倫理規定に基づき厳重に守秘されます。安心してお話しください。</li>
                         <li><strong>サービスの性質：</strong>コーチングは医療行為・治療ではありません。心身の不調で通院中の方は、医師の許可が必要です。</li>
                         <li><strong>キャンセルポリシー：</strong>ご入金後の返金は原則いたしかねます。日程変更は前日まで可能です。当日の無断キャンセルは1回分消化となります。</li>
                         <li><strong>お支払い：</strong>原則として、日程確定後の事前銀行振込（またはカード決済）をお願いしております。</li>
                         <li><strong>特典：</strong>継続コース（Standard/Premium）にご成約いただいた場合、本セッション料金（5,000円 税込）を全額充当いたします。</li>
                     </ul>
-                    <div style="margin-top:15px; font-weight:bold; color:#fff; border-top:1px solid rgba(255,255,255,0.1); padding-top:10px;">
+                    <div style="margin-top:15px; font-weight:bold; color:var(--text-color); border-top:1px solid #e5e7eb; padding-top:10px;">
                         時間: 45分（オリエンテーション15分＋セッション25分＋質疑5分）<br>
                         料金: 5,000円（税込）<br>
                         形式: オンライン（Zoom）
@@ -795,13 +803,13 @@
 
                 <div class="form-group">
                     <label class="form-label">体験セッションの希望日時（第3希望まで） <span style="color:#d9534f">*</span></label>
-                    <p style="font-size:0.8rem; color:#aaa; margin-bottom:15px;">
+                    <p style="font-size:0.8rem; color:#999; margin-bottom:15px;">
                         平日・土日祝の 7:00〜22:00 の間で、セッション可能な時間枠をご指定ください。<br>
-                        <span style="font-size:0.75em; color:#888;">（例：11/25 の 10:00 〜 15:00 の間）</span>
+                        <span style="font-size:0.75em; color:#aaa;">（例：11/25 の 10:00 〜 15:00 の間）</span>
                     </p>
 
                     <div style="margin-bottom: 15px;">
-                        <label style="display:block; font-size:0.9rem; color:#ccc; margin-bottom:5px;">第1希望 <span style="color:#d9534f">*</span></label>
+                        <label style="display:block; font-size:0.9rem; color:#666; margin-bottom:5px;">第1希望 <span style="color:#d9534f">*</span></label>
                         <div class="datetime-row">
                             <input type="date" name="第1希望_日付" class="form-input" required style="flex:1;">
                             <div class="time-range">
@@ -811,9 +819,8 @@
                             </div>
                         </div>
                     </div>
-
                     <div style="margin-bottom: 15px;">
-                        <label style="display:block; font-size:0.9rem; color:#ccc; margin-bottom:5px;">第2希望 <span style="color:#d9534f">*</span></label>
+                        <label style="display:block; font-size:0.9rem; color:#666; margin-bottom:5px;">第2希望 <span style="color:#d9534f">*</span></label>
                         <div class="datetime-row">
                             <input type="date" name="第2希望_日付" class="form-input" required style="flex:1;">
                             <div class="time-range">
@@ -823,9 +830,8 @@
                             </div>
                         </div>
                     </div>
-
                     <div style="margin-bottom: 15px;">
-                        <label style="display:block; font-size:0.9rem; color:#ccc; margin-bottom:5px;">第3希望 <span style="color:#d9534f">*</span></label>
+                        <label style="display:block; font-size:0.9rem; color:#666; margin-bottom:5px;">第3希望 <span style="color:#d9534f">*</span></label>
                         <div class="datetime-row">
                             <input type="date" name="第3希望_日付" class="form-input" required style="flex:1;">
                             <div class="time-range">
@@ -835,7 +841,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="form-group">
@@ -844,7 +849,7 @@
                 </div>
 
                 <div style="margin: 30px 0; text-align: center;">
-                    <label style="cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <label style="cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--text-color);">
                         <input type="checkbox" required style="transform: scale(1.5); accent-color: var(--accent-color);">
                         <span>上記の内容および<span style="color:var(--accent-color); text-decoration:underline;" onclick="openModal('privacy'); event.preventDefault();">プライバシーポリシー</span>に同意します</span>
                     </label>
@@ -861,25 +866,20 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('contact')">&times;</span>
             <h2 class="section-title" style="margin-bottom:30px; font-size:1.8rem;">お問い合わせ</h2>
-            
             <form action="https://ssgform.com/s/uO8LMqcEYiwN" method="post">
                 <input type="hidden" name="_redirectTo" value="https://naomitchy.github.io/CoSTAR/">
-                
                 <div class="form-group">
                     <label class="form-label">お名前 <span style="color:#d9534f">*</span></label>
                     <input type="text" name="名前" class="form-input" required>
                 </div>
-                
                 <div class="form-group">
                     <label class="form-label">メールアドレス <span style="color:#d9534f">*</span></label>
                     <input type="email" name="email" class="form-input" required>
                 </div>
-                
                 <div class="form-group">
                     <label class="form-label">お問い合わせ内容 <span style="color:#d9534f">*</span></label>
                     <textarea name="問い合わせ内容" class="form-textarea" required></textarea>
                 </div>
-
                 <div style="text-align:center; margin-top:40px;">
                     <button type="submit" class="btn btn-primary">送信する</button>
                 </div>
@@ -891,70 +891,16 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('tokusho')">&times;</span>
             <h2 class="section-title" style="margin-bottom:30px; font-size:1.5rem;">特定商取引法に基づく表記</h2>
-            
             <table class="legal-table">
-                <tr>
-                    <th>事業者名</th>
-                    <td>星野 直道（屋号：CoSTAR）</td>
-                </tr>
-                <tr>
-                    <th>所在地</th>
-                    <td>
-                        〒277-0882<br>
-                        千葉県柏市柏の葉2-5-9
-                    </td>
-                </tr>
-                <tr>
-                    <th>連絡先</th>
-                    <td>
-                        電話番号：090-5442-7389<br>
-                        メールアドレス：costar.japan@gmail.com<br>
-                        ※お電話での勧誘・営業は固くお断りいたします。
-                    </td>
-                </tr>
-                <tr>
-                    <th>販売価格</th>
-                    <td>当サイトの料金ページ（Service/Price）に表示された金額（税込）をご参照ください。</td>
-                </tr>
-                <tr>
-                    <th>商品代金以外の<br>必要料金</th>
-                    <td>
-                        ・銀行振込手数料（銀行振込の場合）<br>
-                        ・インターネット接続料金、通信料金（オンラインセッション等の利用に伴う費用）
-                    </td>
-                </tr>
-                <tr>
-                    <th>お支払い方法</th>
-                    <td>
-                        ・銀行振込<br>
-                        ・クレジットカード決済（Stripe/Square等、指定の決済リンクよりお支払い）
-                    </td>
-                </tr>
-                <tr>
-                    <th>お支払い時期</th>
-                    <td>
-                        ・銀行振込：原則として前払い制（指定期日までにお振込み）<br>
-                        ・クレジットカード：お申込み確定時、または請求メール送付時に即時決済
-                    </td>
-                </tr>
-                <tr>
-                    <th>商品の引渡時期</th>
-                    <td>
-                        決済完了後、事前の日程調整に基づき、セッション当日にサービスを提供いたします。
-                    </td>
-                </tr>
-                <tr>
-                    <th>キャンセル・返金</th>
-                    <td>
-                        サービスの性質上、セッション提供後の返金はお受けしておりません。<br>
-                        <br>
-                        【キャンセルポリシー】<br>
-                        ・前日までのご連絡：日程変更にて対応<br>
-                        ・当日のご連絡・無断欠席：1回分のセッション消化とみなします（返金不可）<br>
-                        <br>
-                        ※継続コースの中途解約については、契約締結時にお渡しする契約書の条項に基づき対応いたします。
-                    </td>
-                </tr>
+                <tr><th>事業者名</th><td>星野 直道（屋号：CoSTAR）</td></tr>
+                <tr><th>所在地</th><td>〒277-0882<br>千葉県柏市柏の葉2-5-9</td></tr>
+                <tr><th>連絡先</th><td>電話番号：090-5442-7389<br>メールアドレス：costar.japan@gmail.com<br>※お電話での勧誘・営業は固くお断りいたします。</td></tr>
+                <tr><th>販売価格</th><td>当サイトの料金ページ（Service/Price）に表示された金額（税込）をご参照ください。</td></tr>
+                <tr><th>商品代金以外の<br>必要料金</th><td>・銀行振込手数料（銀行振込の場合）<br>・インターネット接続料金、通信料金（オンラインセッション等の利用に伴う費用）</td></tr>
+                <tr><th>お支払い方法</th><td>・銀行振込<br>・クレジットカード決済（Stripe/Square等、指定の決済リンクよりお支払い）</td></tr>
+                <tr><th>お支払い時期</th><td>・銀行振込：原則として前払い制（指定期日までにお振込み）<br>・クレジットカード：お申込み確定時、または請求メール送付時に即時決済</td></tr>
+                <tr><th>商品の引渡時期</th><td>決済完了後、事前の日程調整に基づき、セッション当日にサービスを提供いたします。</td></tr>
+                <tr><th>キャンセル・返金</th><td>サービスの性質上、セッション提供後の返金はお受けしておりません。<br><br>【キャンセルポリシー】<br>・前日までのご連絡：日程変更にて対応<br>・当日のご連絡・無断欠席：1回分のセッション消化とみなします（返金不可）<br><br>※継続コースの中途解約については、契約締結時にお渡しする契約書の条項に基づき対応いたします。</td></tr>
             </table>
         </div>
     </div>
@@ -963,16 +909,12 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('privacy')">&times;</span>
             <h2 class="section-title" style="margin-bottom:30px; font-size:1.5rem;">プライバシーポリシー</h2>
-            
             <div class="legal-text">
                 <p>CoSTAR（以下、「当方」といいます。）は、当方が提供するサービス（以下、「本サービス」といいます。）における、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。</p>
-
                 <h3>1. 個人情報の定義</h3>
                 <p>「個人情報」とは、個人情報保護法にいう「個人情報」を指すものとし、生存する個人に関する情報であって、当該情報に含まれる氏名、生年月日、住所、電話番号、連絡先その他の記述等により特定の個人を識別できる情報を指します。</p>
-
                 <h3>2. 個人情報の収集方法</h3>
                 <p>当方は、ユーザーが本サービスへの問い合わせや申し込みをする際に、氏名、生年月日、住所、電話番号、メールアドレス、職務経歴、現在の悩みなどの個人情報をお尋ねすることがあります。</p>
-
                 <h3>3. 個人情報の利用目的</h3>
                 <p>当方が個人情報を収集・利用する目的は、以下のとおりです。</p>
                 <ul>
@@ -981,18 +923,10 @@
                     <li>メンテナンス、重要なお知らせなど必要に応じたご連絡のため</li>
                     <li>上記の利用目的に付随する目的</li>
                 </ul>
-
                 <h3>4. 個人情報の第三者提供</h3>
                 <p>当方は、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。ただし、個人情報保護法その他の法令で認められる場合を除きます。</p>
-                <ul>
-                    <li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難であるとき</li>
-                    <li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難であるとき</li>
-                    <li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがあるとき</li>
-                </ul>
-
                 <h3>5. 個人情報の開示・訂正・利用停止</h3>
                 <p>ユーザーから個人情報の開示・訂正・利用停止等を求められた場合には、本人確認の上で、遅滞なくこれに対応いたします。</p>
-
                 <h3>6. お問い合わせ窓口</h3>
                 <p>本ポリシーに関するお問い合わせは、当サイトの<a href="#" onclick="closeModal('privacy'); openModal('contact'); return false;" style="color: var(--accent-color);">お問い合わせフォーム</a>よりお願いいたします。</p>
             </div>
@@ -1000,7 +934,7 @@
     </div>
 
     <script>
-        // Canvas Animations (Stars) - Priority Execution
+        // Canvas Animations (Gold Particles for Light Theme)
         (function() {
             const canvasList = [
                 document.getElementById('hero-canvas'),
@@ -1016,23 +950,29 @@
                 reset() {
                     this.x = Math.random() * this.width;
                     this.y = Math.random() * this.height;
-                    this.size = Math.random() * 2; // Reverted to gentle size
-                    this.speedX = (Math.random() - 0.5) * 0.3; 
-                    this.speedY = (Math.random() - 0.5) * 0.3; 
-                    this.brightness = Math.random();
-                    this.blinkSpeed = Math.random() * 0.02 + 0.005;
+                    this.size = Math.random() * 2; 
+                    this.speedX = (Math.random() - 0.5) * 0.5; // Movement for particles
+                    this.speedY = (Math.random() - 0.5) * 0.5; 
+                    this.alpha = Math.random() * 0.6; // Transparency
+                    this.blinkSpeed = Math.random() * 0.01 + 0.002;
                 }
                 update() {
                     this.x += this.speedX;
                     this.y += this.speedY;
-                    this.brightness += this.blinkSpeed;
-                    if (this.brightness > 1 || this.brightness < 0) { this.blinkSpeed = -this.blinkSpeed; }
-                    if (this.x < 0 || this.x > this.width || this.y < 0 || this.y > this.height) { this.reset(); }
+                    this.alpha += this.blinkSpeed;
+                    if (this.alpha > 0.8 || this.alpha < 0.1) { this.blinkSpeed = -this.blinkSpeed; }
+                    
+                    // Wrap around screen
+                    if (this.x < 0) this.x = this.width;
+                    if (this.x > this.width) this.x = 0;
+                    if (this.y < 0) this.y = this.height;
+                    if (this.y > this.height) this.y = 0;
                 }
                 draw(ctx) {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(this.brightness)})`;
+                    // Gold Dust color
+                    ctx.fillStyle = `rgba(184, 150, 46, ${this.alpha})`; 
                     ctx.fill();
                 }
             }
@@ -1042,10 +982,9 @@
                 const ctx = canvas.getContext('2d');
                 let width, height;
                 let stars = [];
-                const numStars = 100; // Reverted to gentle count
+                const numStars = 80; 
 
                 function resize() {
-                    // Force resize calculation to ensure visibility
                     if(canvas.id === 'hero-canvas'){
                         width = window.innerWidth;
                         height = window.innerHeight;
@@ -1053,10 +992,8 @@
                         width = canvas.parentElement.offsetWidth;
                         height = canvas.parentElement.offsetHeight;
                     }
-                    
                     canvas.width = width; 
                     canvas.height = height;
-                    
                     stars = [];
                     for (let i = 0; i < numStars; i++) { stars.push(new Star(width, height)); }
                 }
@@ -1068,8 +1005,7 @@
                 }
 
                 window.addEventListener('resize', resize);
-                window.addEventListener('load', resize); // Ensure init on load
-                
+                window.addEventListener('load', resize);
                 resize(); 
                 animate(); 
             });
@@ -1086,54 +1022,41 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Generate Time Options for Select & Set Date Limits
+        // Form Logic
         document.addEventListener('DOMContentLoaded', () => {
-            // --- 1. 日付選択制限（明日以降のみ許可） ---
+            // Date Limit
             const dateInputs = document.querySelectorAll('input[type="date"]');
             const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1); // 明日に設定
-            
+            tomorrow.setDate(tomorrow.getDate() + 1); 
             const yyyy = tomorrow.getFullYear();
             const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
             const dd = String(tomorrow.getDate()).padStart(2, '0');
             const minDate = `${yyyy}-${mm}-${dd}`;
+            dateInputs.forEach(input => { input.setAttribute('min', minDate); });
 
-            dateInputs.forEach(input => {
-                input.setAttribute('min', minDate);
-                // 修正：即時のchangeイベントリスナーは削除しました
-            });
-
-            // --- 2. 時間選択肢の生成 ---
+            // Time Options
             const timeSelects = document.querySelectorAll('.time-select');
-            
             timeSelects.forEach(select => {
                 const defaultOpt = document.createElement('option');
-                defaultOpt.value = "";
-                defaultOpt.text = "--:--";
-                defaultOpt.selected = true;
-                defaultOpt.disabled = true;
+                defaultOpt.value = ""; defaultOpt.text = "--:--";
+                defaultOpt.selected = true; defaultOpt.disabled = true;
                 select.appendChild(defaultOpt);
-
                 for (let h = 7; h <= 22; h++) {
                     const hStr = h.toString().padStart(2, '0');
-                    
                     let val00 = `${hStr}:00`;
                     let opt00 = document.createElement('option');
-                    opt00.value = val00;
-                    opt00.text = val00;
+                    opt00.value = val00; opt00.text = val00;
                     select.appendChild(opt00);
-                    
                     if (h < 22) {
                         let val30 = `${hStr}:30`;
                         let opt30 = document.createElement('option');
-                        opt30.value = val30;
-                        opt30.text = val30;
+                        opt30.value = val30; opt30.text = val30;
                         select.appendChild(opt30);
                     }
                 }
             });
 
-            // Form Validation Logic added here
+            // Validation
             const trialForm = document.getElementById('trial-form');
             if(trialForm) {
                 trialForm.addEventListener('submit', function(e) {
@@ -1147,49 +1070,35 @@
                         const dateElem = document.getElementsByName(check.date)[0];
                         const startElem = document.getElementsByName(check.start)[0];
                         const endElem = document.getElementsByName(check.end)[0];
-
                         if (!dateElem || !startElem || !endElem) continue;
-
                         const dateVal = dateElem.value;
                         const startVal = startElem.value;
                         const endVal = endElem.value;
-
-                        // Skip if not filled (though required attribute handles this mostly)
                         if (!dateVal || !startVal || !endVal) continue;
 
-                        // 【追加】送信時に日付チェックを行う
                         if (dateVal < minDate) {
-                            alert(`${check.label}: 申し込み日より前の日程は選択できません。\n翌日以降の日程を選択してください。`);
-                            e.preventDefault();
-                            return;
+                            alert(`${check.label}: 申し込み日より前の日程は選択できません。`);
+                            e.preventDefault(); return;
                         }
-
-                        // Convert HH:MM to minutes
                         const [sH, sM] = startVal.split(':').map(Number);
                         const [eH, eM] = endVal.split(':').map(Number);
-                        
                         const startTotal = sH * 60 + sM;
                         const endTotal = eH * 60 + eM;
 
-                        // 1. Check if End is after Start
                         if (endTotal <= startTotal) {
                             alert(`${check.label}: 終了時間は開始時間より後の時間を設定してください。`);
-                            e.preventDefault();
-                            return;
+                            e.preventDefault(); return;
                         }
-
-                        // 2. Check if interval is at least 45 minutes
                         if ((endTotal - startTotal) < 45) {
-                            alert(`${check.label}: セッション時間は45分です。開始〜終了の間隔は45分以上確保してください。`);
-                            e.preventDefault();
-                            return;
+                            alert(`${check.label}: セッション時間は45分です。`);
+                            e.preventDefault(); return;
                         }
                     }
                 });
             }
         });
 
-        // URL Parameter Check
+        // URL Parameter
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const mode = urlParams.get('open');
