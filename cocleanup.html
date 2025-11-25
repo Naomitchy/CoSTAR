@@ -156,19 +156,23 @@
         .radio-label:hover { background: #f9f9f9; border-color: var(--accent-color); }
         .radio-label input { accent-color: var(--accent-color); transform: scale(1.2); } 
         
+        /* ボタン修正：スマホではみ出さないよう調整 */
         .btn-submit {
-            display: inline-block;
-            min-width: 280px; max-width: 100%;
-            padding: 18px 40px;
+            display: block; /* 中央揃えのためにblock化 */
+            width: 100%;
+            max-width: 320px; /* 程よい幅に制限 */
+            margin: 0 auto; /* 左右中央揃え */
+            padding: 18px 20px;
             background: var(--urgent-color); color: #fff;
             border: none; border-radius: 50px; 
             font-size: 1.1rem; font-weight: bold; letter-spacing: 0.05em;
             cursor: pointer; transition: 0.3s;
             box-shadow: 0 5px 15px rgba(217, 83, 79, 0.2);
+            box-sizing: border-box; /* パディングを含めた幅計算にする（重要） */
         }
         .btn-submit:hover { background: #c9302c; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(217, 83, 79, 0.3); }
 
-        /* Datetime Row (完全一致スタイル) */
+        /* Datetime Row (index.htmlと統一) */
         .datetime-row {
             display: flex; gap: 10px; align-items: center; margin-bottom: 15px;
         }
@@ -185,10 +189,11 @@
             .menu-header { flex-direction: column; text-align: center; gap: 10px; font-size: 1.2rem; }
             .menu-header span { display: inline-block; } 
             
+            .form-wrapper { padding: 25px 20px; } /* スマホでの余白調整 */
             .form-wrapper h3 { font-size: 1.2rem; }
             .radio-group { flex-direction: column; }
             
-            /* 日時選択のスマホ最適化（index.htmlと同じ） */
+            /* 日時選択のスマホ最適化 */
             .datetime-row { flex-direction: column; align-items: stretch; gap: 5px; margin-bottom: 20px; background: #f3f4f6; padding: 10px; border-radius: 4px; }
             .time-range { width: 100%; }
             
