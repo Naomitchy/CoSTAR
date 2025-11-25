@@ -46,9 +46,9 @@
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         .container { max-width: 800px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
 
-        /* --- 文節改行コントロール（スマホ対策） --- */
-        .inline-phrase { display: inline-block; } /* 文節の塊をつくる */
-        .sp-br { display: none; } /* PCでは消す改行 */
+        /* --- 文節改行コントロール --- */
+        .inline-phrase { display: inline-block; } 
+        .sp-br { display: none; }
 
         /* --- Header --- */
         header { padding: 15px 0; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
@@ -99,7 +99,6 @@
             font-weight: bold; font-size: 1.1rem; margin-bottom: 20px; 
             color: var(--text-color);
         }
-        /* Pain内の文章を見やすくする */
         .pain-voice {
             margin-bottom: 1.2em;
             line-height: 1.8;
@@ -121,7 +120,7 @@
             font-family: "Shippori Mincho", serif; font-size: 1.3rem;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .menu-header .price { font-weight: bold; background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.9em; }
+        .menu-header .price { font-weight: bold; background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.9em; white-space: nowrap; }
         .menu-body { padding: 30px; }
         .menu-list { list-style: none; padding: 0; margin: 20px 0; }
         .menu-list li {
@@ -144,6 +143,9 @@
             font-size: 1rem; box-sizing: border-box;
             font-family: inherit;
         }
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none; border-color: var(--accent-color); background-color: #fff; box-shadow: 0 0 0 3px rgba(184, 150, 46, 0.1);
+        }
         .form-input::placeholder, .form-textarea::placeholder { color: #aaa; opacity: 1; }
         
         .radio-group { display: flex; gap: 15px; flex-wrap: wrap; }
@@ -153,28 +155,43 @@
         }
         .radio-label:hover { background: #f9f9f9; border-color: var(--accent-color); }
         .radio-label input { accent-color: var(--accent-color); transform: scale(1.2); } 
+        
         .btn-submit {
-            width: 100%; padding: 15px; background: var(--urgent-color); color: #fff;
-            border: none; border-radius: 30px; font-size: 1.1rem; font-weight: bold;
+            display: inline-block;
+            min-width: 280px; max-width: 100%;
+            padding: 18px 40px;
+            background: var(--urgent-color); color: #fff;
+            border: none; border-radius: 50px; 
+            font-size: 1.1rem; font-weight: bold; letter-spacing: 0.05em;
             cursor: pointer; transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(217, 83, 79, 0.2);
         }
-        .btn-submit:hover { background: #c9302c; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(217, 83, 79, 0.3); }
+        .btn-submit:hover { background: #c9302c; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(217, 83, 79, 0.3); }
 
-        /* Datetime Row */
-        .datetime-row { display: flex; gap: 10px; margin-bottom: 10px; }
-        .datetime-row input[type="date"] { flex: 1; }
-        .datetime-row select { width: 80px; }
+        /* Datetime Row (完全一致スタイル) */
+        .datetime-row {
+            display: flex; gap: 10px; align-items: center; margin-bottom: 15px;
+        }
+        .time-range { display: flex; align-items: center; gap: 5px; flex: 1; }
+        .time-range select { flex: 1; min-width: 0; cursor: pointer; } 
 
         /* --- Mobile Adjustments --- */
         @media (max-width: 600px) {
-            .sp-br { display: inline; } /* スマホでのみ有効な改行 */
-            .lp-tag { font-size: 0.8rem; padding: 6px 15px; }
+            .sp-br { display: inline; } 
+            .lp-tag { font-size: 0.75rem; padding: 6px 15px; }
             .lp-title { font-size: 2.0rem; }
-            .lp-subtitle { font-size: 1.0rem; line-height: 1.8; }
-            .menu-header { flex-direction: column; text-align: center; gap: 10px; }
+            .lp-subtitle { font-size: 0.95rem; line-height: 1.8; }
+            
+            .menu-header { flex-direction: column; text-align: center; gap: 10px; font-size: 1.2rem; }
+            .menu-header span { display: inline-block; } 
+            
+            .form-wrapper h3 { font-size: 1.2rem; }
             .radio-group { flex-direction: column; }
-            .datetime-row { flex-direction: column; }
-            .datetime-row select { width: 100%; }
+            
+            /* 日時選択のスマホ最適化（index.htmlと同じ） */
+            .datetime-row { flex-direction: column; align-items: stretch; gap: 5px; margin-bottom: 20px; background: #f3f4f6; padding: 10px; border-radius: 4px; }
+            .time-range { width: 100%; }
+            
             .container { padding: 0 25px; }
         }
     </style>
@@ -193,12 +210,12 @@
         <canvas id="hero-canvas"></canvas>
         <div class="container">
             <span class="lp-tag">5名限定モニター募集中<br class="sp-br">（2026年1月末まで）</span>
-            
-            <h1 class="lp-title mincho">独りで、やらない。</h1>
-            
+            <h1 class="lp-title mincho">
+                <span class="inline-phrase">独りで、</span><span class="inline-phrase">やらない。</span>
+            </h1>
             <p class="lp-subtitle">
-                <span class="inline-phrase">ずっと先送りにしてきた「未完了」を、</span><br>
-                <span class="inline-phrase">今日、コーチと共に終わらせる。</span>
+                <span class="inline-phrase">ずっと先送りにしてきた</span><span class="inline-phrase">「未完了」を、</span><br class="sp-br">
+                <span class="inline-phrase">今日、</span><span class="inline-phrase">コーチと共に</span><span class="inline-phrase">終わらせる。</span>
             </p>
         </div>
     </div>
@@ -225,9 +242,9 @@
             </div>
 
             <div class="pain-box">
-                <div class="pain-title">Web：デジタル迷子の孤独</div>
+                <div class="pain-title">HP作成：デジタル迷子の孤独</div>
                 <div class="pain-voice">
-                    「プロに見積もりを頼んだら『え！こんなにかかるの？』と驚愕。今の私にはとても払えない」
+                    「『自分のHPを持たなきゃ』と思い、プロに見積もりを頼んだら『え！こんなにかかるの？』と驚愕。今の私にはとても払えない」
                 </div>
                 <div class="pain-voice">
                     「仮に頼めたとしても、『ここの改行を直して』なんて細かい修正を頼むのが申し訳なくて言えない。というか言うのも面倒くさい」
@@ -241,8 +258,8 @@
             </div>
             
             <p style="text-align: center; font-weight: bold; margin-top: 50px;">
-                あなたができないのは、能力がないからではありません。<br>
-                ただ、「独りで戦おうとしている」からです。
+                <span class="inline-phrase">あなたができないのは、</span><span class="inline-phrase">能力がないからではありません。</span><br>
+                <span class="inline-phrase">ただ、「独りで戦おうとしている」</span><span class="inline-phrase">からです。</span>
             </p>
         </div>
     </section>
@@ -282,7 +299,7 @@
 
             <div class="menu-card">
                 <div class="menu-header">
-                    <span>Aコース：お部屋のCleanUp</span>
+                    <span class="inline-phrase">Aコース：</span><span class="inline-phrase">お部屋のCleanUp</span>
                     <span class="price">モニター価格：3,000円</span>
                 </div>
                 <div class="menu-body">
@@ -298,7 +315,7 @@
 
             <div class="menu-card">
                 <div class="menu-header">
-                    <span>Bコース：Webサイト作成</span>
+                    <span class="inline-phrase">Bコース：</span><span class="inline-phrase">Webサイト作成</span>
                     <span class="price">モニター価格：10,000円</span>
                 </div>
                 <div class="menu-body">
@@ -324,7 +341,9 @@
             </div>
 
             <div class="form-wrapper">
-                <h3 style="text-align:center; margin-bottom:30px; font-size:1.4rem;">CoCLEANUP モニター申込</h3>
+                <h3 style="text-align:center; margin-bottom:30px;">
+                    <span class="inline-phrase">CoCLEANUP</span> <span class="inline-phrase">モニター申込</span>
+                </h3>
                 
                 <div style="background:#fff4f4; padding:20px; border-radius:4px; margin-bottom:30px; border:1px solid var(--urgent-color); font-size:0.9rem;">
                     <strong>【参加条件】</strong>
@@ -376,26 +395,54 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">希望日時（第3希望まで） <span style="color:#d9534f">*</span></label>
-                        
-                        <div class="datetime-row">
-                            <input type="date" name="第1希望_日付" required>
-                            <select name="第1希望_開始" class="time-select" required></select>
-                            <span>〜</span>
-                            <select name="第1希望_終了" class="time-select" required></select>
+                        <label class="form-label">
+                            希望日時 <span class="inline-phrase">（第3希望まで）</span> <span style="color:#d9534f">*</span>
+                        </label>
+                        <p style="font-size:0.8rem; color:#999; margin-bottom:15px;">
+                            平日・土日祝の 7:00〜22:00 の間で、セッション可能な時間枠をご指定ください。<br>
+                            <span style="font-size:0.75em; color:#aaa;">（例：11/25 の 10:00 〜 15:00 の間）</span>
+                        </p>
+
+                        <div style="margin-bottom: 15px;">
+                            <label style="display:block; font-size:0.9rem; color:#666; margin-bottom:5px;">第1希望 <span style="color:#d9534f">*</span></label>
+                            <div class="datetime-row">
+                                <input type="date" name="第1希望_日付" class="form-input" required style="flex:1;">
+                                <div class="time-range">
+                                    <select name="第1希望_開始" class="form-select time-select" required></select>
+                                    <span>〜</span>
+                                    <select name="第1希望_終了" class="form-select time-select" required></select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="datetime-row">
-                            <input type="date" name="第2希望_日付" required>
-                            <select name="第2希望_開始" class="time-select" required></select>
-                            <span>〜</span>
-                            <select name="第2希望_終了" class="time-select" required></select>
+
+                        <div style="margin-bottom: 15px;">
+                            <label style="display:block; font-size:0.9rem; color:#666; margin-bottom:5px;">第2希望 <span style="color:#d9534f">*</span></label>
+                            <div class="datetime-row">
+                                <input type="date" name="第2希望_日付" class="form-input" required style="flex:1;">
+                                <div class="time-range">
+                                    <select name="第2希望_開始" class="form-select time-select" required></select>
+                                    <span>〜</span>
+                                    <select name="第2希望_終了" class="form-select time-select" required></select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="datetime-row">
-                            <input type="date" name="第3希望_日付" required>
-                            <select name="第3希望_開始" class="time-select" required></select>
-                            <span>〜</span>
-                            <select name="第3希望_終了" class="time-select" required></select>
+
+                        <div style="margin-bottom: 15px;">
+                            <label style="display:block; font-size:0.9rem; color:#666; margin-bottom:5px;">第3希望 <span style="color:#d9534f">*</span></label>
+                            <div class="datetime-row">
+                                <input type="date" name="第3希望_日付" class="form-input" required style="flex:1;">
+                                <div class="time-range">
+                                    <select name="第3希望_開始" class="form-select time-select" required></select>
+                                    <span>〜</span>
+                                    <select name="第3希望_終了" class="form-select time-select" required></select>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">ご質問、その他コメント（任意）</label>
+                        <textarea name="コメント" class="form-textarea"></textarea>
                     </div>
 
                     <div style="text-align: center; margin-top:30px;">
@@ -497,7 +544,6 @@
             const form = document.getElementById('cocleanup-lp-form');
             if(form) {
                 form.addEventListener('submit', function(e) {
-                    // 1. 選択コースの判定
                     const courseRadios = document.querySelectorAll('input[name="希望コース"]');
                     let selectedCourse = "";
                     for(const radio of courseRadios){
@@ -507,13 +553,11 @@
                         }
                     }
 
-                    // Aコースなら60分、Bコースなら120分
                     let minMinutes = 60; 
                     if(selectedCourse.includes("Bコース")) {
                         minMinutes = 120;
                     }
 
-                    // 2. 各希望日時のチェック
                     const checkList = [
                         { date: '第1希望_日付', start: '第1希望_開始', end: '第1希望_終了', label: '第1希望' },
                         { date: '第2希望_日付', start: '第2希望_開始', end: '第2希望_終了', label: '第2希望' },
@@ -525,9 +569,7 @@
                         const startElem = document.getElementsByName(check.start)[0];
                         const endElem = document.getElementsByName(check.end)[0];
 
-                        // 日付・開始・終了が全て埋まっている行だけチェック
                         if (dateElem && startElem && endElem && dateElem.value && startElem.value && endElem.value) {
-                            
                             const [sH, sM] = startElem.value.split(':').map(Number);
                             const [eH, eM] = endElem.value.split(':').map(Number);
                             
