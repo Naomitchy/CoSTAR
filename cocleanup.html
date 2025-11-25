@@ -39,11 +39,16 @@
             color: var(--text-color);
             line-height: 2.0;
             letter-spacing: 0.05em;
+            word-wrap: break-word;
         }
 
         h1, h2, h3, .mincho, .logo { font-family: "Shippori Mincho", serif; }
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         .container { max-width: 800px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+
+        /* --- 文節改行コントロール（スマホ対策） --- */
+        .inline-phrase { display: inline-block; } /* 文節の塊をつくる */
+        .sp-br { display: none; } /* PCでは消す改行 */
 
         /* --- Header --- */
         header { padding: 15px 0; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
@@ -64,11 +69,11 @@
         }
         .lp-tag {
             display: inline-block; background: var(--urgent-color); color: #fff;
-            padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: bold;
-            margin-bottom: 30px; position: relative; z-index: 2;
+            padding: 8px 20px; border-radius: 30px; font-size: 0.9rem; font-weight: bold;
+            margin-bottom: 30px; position: relative; z-index: 2; line-height: 1.6;
         }
         .lp-title {
-            font-size: 2.5rem; margin-bottom: 20px; line-height: 1.4; font-weight: 600; position: relative; z-index: 2;
+            font-size: 2.8rem; margin-bottom: 20px; line-height: 1.4; font-weight: 600; position: relative; z-index: 2;
         }
         .lp-subtitle {
             font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; position: relative; z-index: 2;
@@ -80,7 +85,7 @@
         .gray-section { background: var(--bg-color); }
         
         .section-head { text-align: center; margin-bottom: 50px; }
-        .section-head h2 { font-size: 1.8rem; margin-bottom: 15px; position: relative; display: inline-block;}
+        .section-head h2 { font-size: 1.8rem; margin-bottom: 15px; position: relative; display: inline-block; line-height: 1.5; }
         .section-head h2::after { content:""; display:block; width:40px; height:2px; background:var(--accent-color); margin: 15px auto 0; }
 
         /* --- Pain (Dialogue) --- */
@@ -91,9 +96,15 @@
             box-shadow: var(--card-shadow);
         }
         .pain-title { 
-            font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; 
+            font-weight: bold; font-size: 1.1rem; margin-bottom: 20px; 
             color: var(--text-color);
         }
+        /* Pain内の文章を見やすくする */
+        .pain-voice {
+            margin-bottom: 1.2em;
+            line-height: 1.8;
+        }
+        .pain-voice:last-child { margin-bottom: 0; }
 
         /* --- Solution --- */
         .solution-text { font-size: 1.1rem; line-height: 2.2; text-align: justify; }
@@ -154,12 +165,17 @@
         .datetime-row input[type="date"] { flex: 1; }
         .datetime-row select { width: 80px; }
 
+        /* --- Mobile Adjustments --- */
         @media (max-width: 600px) {
-            .lp-title { font-size: 1.8rem; }
+            .sp-br { display: inline; } /* スマホでのみ有効な改行 */
+            .lp-tag { font-size: 0.8rem; padding: 6px 15px; }
+            .lp-title { font-size: 2.0rem; }
+            .lp-subtitle { font-size: 1.0rem; line-height: 1.8; }
             .menu-header { flex-direction: column; text-align: center; gap: 10px; }
             .radio-group { flex-direction: column; }
             .datetime-row { flex-direction: column; }
             .datetime-row select { width: 100%; }
+            .container { padding: 0 25px; }
         }
     </style>
 </head>
@@ -176,31 +192,52 @@
     <div class="lp-hero">
         <canvas id="hero-canvas"></canvas>
         <div class="container">
-            <span class="lp-tag">5名限定モニター募集中（2026年1月末まで）</span>
+            <span class="lp-tag">5名限定モニター募集中<br class="sp-br">（2026年1月末まで）</span>
+            
             <h1 class="lp-title mincho">独りで、やらない。</h1>
-            <p class="lp-subtitle">ずっと先送りにしてきた「未完了」を、<br>今日、コーチと共に終わらせる。</p>
+            
+            <p class="lp-subtitle">
+                <span class="inline-phrase">ずっと先送りにしてきた「未完了」を、</span><br>
+                <span class="inline-phrase">今日、コーチと共に終わらせる。</span>
+            </p>
         </div>
     </div>
 
     <section class="white-section">
         <div class="container">
             <div class="section-head">
-                <h2 class="mincho">こんな「痛み」を抱えていませんか？</h2>
+                <h2 class="mincho">
+                    <span class="inline-phrase">こんな「痛み」を</span><span class="inline-phrase">抱えていませんか？</span>
+                </h2>
             </div>
             
             <div class="pain-box">
                 <div class="pain-title">Room：画面越しのパラドックス</div>
-                <p>画面の中のあなたは、完璧なプロフェッショナルとして振る舞っている。<br>
-                でも、カメラの画角から一歩外れた場所や、バーチャル背景の裏側は、「見なかったこと」にしているモノで溢れていませんか？<br>
-                物理的に「散らかった部屋」を別の部屋に押し込んでも、あなたの心のCPUは、その「隠した事実」の処理にメモリを使い続けています。</p>
+                <div class="pain-voice">
+                    画面の中のあなたは、完璧なプロフェッショナルとして振る舞っている。
+                </div>
+                <div class="pain-voice">
+                    でも、カメラの画角から一歩外れた場所や、バーチャル背景の裏側は、「見なかったこと」にしているモノで溢れていませんか？
+                </div>
+                <div class="pain-voice">
+                    物理的に「散らかった部屋」を別の部屋に押し込んでも、あなたの心のCPUは、その「隠した事実」の処理にメモリを使い続けています。
+                </div>
             </div>
 
             <div class="pain-box">
                 <div class="pain-title">Web：デジタル迷子の孤独</div>
-                <p>「プロに見積もりを頼んだら『え！こんなにかかるの？』と驚愕。今の私にはとても払えない」<br>
-                「仮に頼めたとしても、『ここの改行を直して』なんて細かい修正を頼むのが申し訳なくて言えない。というか言うのも面倒くさい」<br>
-                「既存のテンプレート（WordPress等）は便利だけど、自由度がなくて私の世界観が出せない。かといって、プログラミングなんて自分には無理」<br>
-                「生成AIという魔法の杖があるらしいけど、独りで振るう勇気が出ない」</p>
+                <div class="pain-voice">
+                    「プロに見積もりを頼んだら『え！こんなにかかるの？』と驚愕。今の私にはとても払えない」
+                </div>
+                <div class="pain-voice">
+                    「仮に頼めたとしても、『ここの改行を直して』なんて細かい修正を頼むのが申し訳なくて言えない。というか言うのも面倒くさい」
+                </div>
+                <div class="pain-voice">
+                    「既存のテンプレート（WordPress等）は便利だけど、自由度がなくて私の世界観が出せない。かといって、プログラミングなんて自分には無理」
+                </div>
+                <div class="pain-voice">
+                    「生成AIという魔法の杖があるらしいけど、独りで振るう勇気が出ない」
+                </div>
             </div>
             
             <p style="text-align: center; font-weight: bold; margin-top: 50px;">
@@ -213,7 +250,9 @@
     <section class="gray-section">
         <div class="container">
             <div class="section-head">
-                <h2 class="mincho">CoCLEANUPのアプローチ</h2>
+                <h2 class="mincho">
+                    <span class="inline-phrase">CoCLEANUPの</span><span class="inline-phrase">アプローチ</span>
+                </h2>
             </div>
             <div class="solution-text">
                 <p>
