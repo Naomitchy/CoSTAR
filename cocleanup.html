@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSJK8WXM');</script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoCLEANUP | 独りで、やらない。</title>
+    
+    <meta property="og:title" content="CoCLEANUP | 独りで、やらない。">
+    <meta property="og:description" content="ずっと先送りにしてきた「片付け」や「HP作成」。コーチと共に、今日完了させませんか？">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://costar-works.com/cocleanup.html">
+    <meta property="og:image" content="https://costar-works.com/IMG_6140.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 共通設定 --- */
+        :root {
+            --bg-color: #F9FAFB; 
+            --text-color: #333333; 
+            --text-muted: #666666;
+            --accent-color: #B8962E;
+            --urgent-color: #d9534f;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            margin: 0;
+            font-family: "Noto Sans JP", sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 2.0;
+            letter-spacing: 0.05em;
+        }
+
+        h1, h2, h3, .mincho, .logo { font-family: "Shippori Mincho", serif; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+
+        /* --- Header --- */
+        header { padding: 15px 0; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.1em; color: var(--text-color); }
+
+        /* --- Hero Section --- */
+        .lp-hero {
+            padding: 120px 0 100px;
+            text-align: center;
+            background: radial-gradient(circle at center, #FFFFFF 0%, #F3F4F6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        #hero-canvas { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            z-index: 1; pointer-events: none; display: block;
+        }
+        .lp-tag {
+            display: inline-block; background: var(--urgent-color); color: #fff;
+            padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: bold;
+            margin-bottom: 30px; position: relative; z-index: 2;
+        }
+        .lp-title {
+            font-size: 2.5rem; margin-bottom: 20px; line-height: 1.4; font-weight: 600; position: relative; z-index: 2;
+        }
+        .lp-subtitle {
+            font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; position: relative; z-index: 2;
+        }
+
+        /* --- Section Styles --- */
+        section { padding: 80px 0; }
+        .white-section { background: #fff; }
+        .gray-section { background: var(--bg-color); }
+        
+        .section-head { text-align: center; margin-bottom: 50px; }
+        .section-head h2 { font-size: 1.8rem; margin-bottom: 15px; position: relative; display: inline-block;}
+        .section-head h2::after { content:""; display:block; width:40px; height:2px; background:var(--accent-color); margin: 15px auto 0; }
+
+        /* --- Pain (Dialogue) --- */
+        .pain-box {
+            background: #fff; 
+            border-left: 6px solid var(--accent-color);
+            padding: 30px; margin-bottom: 30px; border-radius: 0 4px 4px 0;
+            box-shadow: var(--card-shadow);
+        }
+        .pain-title { 
+            font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; 
+            color: var(--text-color);
+        }
+
+        /* --- Solution --- */
+        .solution-text { font-size: 1.1rem; line-height: 2.2; text-align: justify; }
+        .highlight { background: linear-gradient(transparent 70%, rgba(184, 150, 46, 0.2) 70%); font-weight: bold; }
+
+        /* --- Menu Cards --- */
+        .menu-card {
+            background: #fff; border-radius: 8px; overflow: hidden;
+            box-shadow: var(--card-shadow); margin-bottom: 40px;
+            border: 1px solid #eee;
+        }
+        .menu-header {
+            background: var(--text-color); color: #fff; padding: 15px 30px;
+            font-family: "Shippori Mincho", serif; font-size: 1.3rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .menu-header .price { font-weight: bold; background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.9em; }
+        .menu-body { padding: 30px; }
+        .menu-list { list-style: none; padding: 0; margin: 20px 0; }
+        .menu-list li {
+            position: relative; padding-left: 25px; margin-bottom: 15px; color: var(--text-muted);
+        }
+        .menu-list li::before {
+            content: "✔"; position: absolute; left: 0; color: var(--accent-color);
+        }
+        .menu-list strong { color: var(--text-color); }
+
+        /* --- Form Area --- */
+        .form-wrapper {
+            background: #fff; padding: 40px; border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); border-top: 5px solid var(--urgent-color);
+        }
+        .form-group { margin-bottom: 25px; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: bold; }
+        .form-input, .form-textarea, .form-select {
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px;
+            font-size: 1rem; box-sizing: border-box;
+            font-family: inherit;
+        }
+        .form-input::placeholder, .form-textarea::placeholder { color: #aaa; opacity: 1; }
+        
+        .radio-group { display: flex; gap: 15px; flex-wrap: wrap; }
+        .radio-label {
+            border: 1px solid #ddd; padding: 15px; border-radius: 4px; flex: 1; min-width: 200px;
+            cursor: pointer; display: flex; align-items: center; gap: 10px;
+        }
+        .radio-label:hover { background: #f9f9f9; border-color: var(--accent-color); }
+        .radio-label input { accent-color: var(--accent-color); transform: scale(1.2); } 
+        .btn-submit {
+            width: 100%; padding: 15px; background: var(--urgent-color); color: #fff;
+            border: none; border-radius: 30px; font-size: 1.1rem; font-weight: bold;
+            cursor: pointer; transition: 0.3s;
+        }
+        .btn-submit:hover { background: #c9302c; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(217, 83, 79, 0.3); }
+
+        /* Datetime Row */
+        .datetime-row { display: flex; gap: 10px; margin-bottom: 10px; }
+        .datetime-row input[type="date"] { flex: 1; }
+        .datetime-row select { width: 80px; }
+
+        @media (max-width: 600px) {
+            .lp-title { font-size: 1.8rem; }
+            .menu-header { flex-direction: column; text-align: center; gap: 10px; }
+            .radio-group { flex-direction: column; }
+            .datetime-row { flex-direction: column; }
+            .datetime-row select { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSJK8WXM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <header>
+        <div class="nav-flex">
+            <div class="logo"><a href="index.html">CoSTAR</a></div>
+            <a href="index.html" style="font-size:0.9rem; color:#666;">← Topに戻る</a>
+        </div>
+    </header>
+
+    <div class="lp-hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="container">
+            <span class="lp-tag">5名限定モニター募集中（2026年1月末まで）</span>
+            <h1 class="lp-title mincho">独りで、やらない。</h1>
+            <p class="lp-subtitle">ずっと先送りにしてきた「未完了」を、<br>今日、コーチと共に終わらせる。</p>
+        </div>
+    </div>
+
+    <section class="white-section">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="mincho">こんな「痛み」を抱えていませんか？</h2>
+            </div>
+            
+            <div class="pain-box">
+                <div class="pain-title">Room：画面越しのパラドックス</div>
+                <p>画面の中のあなたは、完璧なプロフェッショナルとして振る舞っている。<br>
+                でも、カメラの画角から一歩外れた場所や、バーチャル背景の裏側は、「見なかったこと」にしているモノで溢れていませんか？<br>
+                物理的に「散らかった部屋」を別の部屋に押し込んでも、あなたの心のCPUは、その「隠した事実」の処理にメモリを使い続けています。</p>
+            </div>
+
+            <div class="pain-box">
+                <div class="pain-title">Web：デジタル迷子の孤独</div>
+                <p>「プロに見積もりを頼んだら『え！こんなにかかるの？』と驚愕。今の私にはとても払えない」<br>
+                「仮に頼めたとしても、『ここの改行を直して』なんて細かい修正を頼むのが申し訳なくて言えない。というか言うのも面倒くさい」<br>
+                「既存のテンプレート（WordPress等）は便利だけど、自由度がなくて私の世界観が出せない。かといって、プログラミングなんて自分には無理」<br>
+                「生成AIという魔法の杖があるらしいけど、独りで振るう勇気が出ない」</p>
+            </div>
+            
+            <p style="text-align: center; font-weight: bold; margin-top: 50px;">
+                あなたができないのは、能力がないからではありません。<br>
+                ただ、「独りで戦おうとしている」からです。
+            </p>
+        </div>
+    </section>
+
+    <section class="gray-section">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="mincho">CoCLEANUPのアプローチ</h2>
+            </div>
+            <div class="solution-text">
+                <p>
+                    CoCLEANUPは、ただの「お片付け代行」でも「Web制作代行」でもありません。<br>
+                    <span class="highlight">「同じ時間に、コーチも一緒に何かに取り組む」</span>という、共犯関係のプログラムです。
+                </p>
+                <p>
+                    Zoomを繋ぎます。監視はしませんが、接続は切れません。<br>
+                    あなたが片付けをしている間、コーチの私も、同じ空間（Zoom）で溜まった事務作業や自身の課題に取り組みます。<br>
+                    <span style="font-size:0.9em; color:var(--text-muted);">（もちろん、進め方のアドバイスや、詰まった時の相談はいつでも可能です）</span>
+                </p>
+                <p>
+                    「誰かと一緒なら、不思議と身体が動く」<br>
+                    このシンプルな真実を使って、あなたの重たい腰を上げ、<br>
+                    終わった後の<span class="highlight">「私にもできた！」という完了の喜び</span>を分かち合いたいのです。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="white-section">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="mincho">選べる2つのコース</h2>
+                <p>今、あなたが最もエネルギーを奪われている「未完了」を選んでください。</p>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-header">
+                    <span>Aコース：お部屋のCleanUp</span>
+                    <span class="price">モニター価格：3,000円</span>
+                </div>
+                <div class="menu-body">
+                    <p>散らかった部屋、開かずの段ボール、溜まった書類。<br>一人では見ないふりをしてきた場所に、光を当てます。</p>
+                    <ul class="menu-list">
+                        <li><strong>導入コーチング（15分）：</strong>いきなり手を動かしません。まず「片付いた後の景色」と「その時の感情」をコーチと一緒にイメージし、完了へのエネルギーを高めてからスタートします。</li>
+                        <li><strong>恥の共有：</strong>「見せるのも嫌」な場所をコーチに見せることで、心理的なブロックが外れます。（※カメラOFFも可）</li>
+                        <li><strong>実況中継：</strong>作業中に出てきた「思い出」や「感情」を実況しながら進めることで、モノへの執着を手放せます。</li>
+                        <li><strong>時間：</strong>60分（コーチング15分＋作業45分）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-header">
+                    <span>Bコース：Webサイト作成</span>
+                    <span class="price">モニター価格：10,000円</span>
+                </div>
+                <div class="menu-body">
+                    <p>元ITエンジニアのコーチが伴走。生成AIを使って、あなただけのHPをその場で作成し、世界に公開します。</p>
+                    <ul class="menu-list">
+                        <li><strong>導入コーチング：</strong>作成前に、「誰に、何を届けたいHPなのか」をコーチと対話して言語化します。想いの乗ったHPを作りましょう。</li>
+                        <li><strong>AIプロンプト伴走：</strong>「何と言えばいいか分からない」をサポート。一緒にAIへの指示文を作ります。</li>
+                        <li><strong>黒い画面は使いません：</strong>エンジニアしか使えない難しいコマンドは不要。ドラッグ＆ドロップで自分で更新する方法を伝授します。</li>
+                        <li><strong>維持費0円の公開：</strong>サーバー代がかからない「GitHub Pages」を使って公開します。</li>
+                        <li><strong>時間：</strong>90分〜120分</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="gray-section" id="apply">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="mincho" style="color:var(--urgent-color);">Monitor Offer</h2>
+                <p>サービス開始に伴い、フィードバックをいただけるモニター様を募集します。</p>
+            </div>
+
+            <div class="form-wrapper">
+                <h3 style="text-align:center; margin-bottom:30px; font-size:1.4rem;">CoCLEANUP モニター申込</h3>
+                
+                <div style="background:#fff4f4; padding:20px; border-radius:4px; margin-bottom:30px; border:1px solid var(--urgent-color); font-size:0.9rem;">
+                    <strong>【参加条件】</strong>
+                    <ul style="margin:10px 0 0 20px; padding:0;">
+                        <li>実施後のアンケートへの回答</li>
+                        <li>「お客様の声（イニシャル可）」としての掲載許可</li>
+                        <li>期間：2026年1月末まで（定員5名に達し次第終了）</li>
+                    </ul>
+                </div>
+
+                <form action="https://ssgform.com/s/w75AEtpovOxd" method="post" id="cocleanup-lp-form">
+                    <input type="hidden" name="_redirectTo" value="https://costar-works.com/thanks.html">
+                    <input type="hidden" name="申込種別" value="CoCLEANUPモニター(LP経由)">
+
+                    <div class="form-group">
+                        <label class="form-label">希望コース <span style="color:#d9534f">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="希望コース" value="Aコース：お部屋（3,000円）" required>
+                                <span>Aコース：お部屋（3,000円）</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="希望コース" value="Bコース：HP作成（10,000円）" required>
+                                <span>Bコース：HP作成（10,000円）</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">お名前 <span style="color:#d9534f">*</span></label>
+                        <input type="text" name="名前" class="form-input" required placeholder="例：山田 花子">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">メールアドレス <span style="color:#d9534f">*</span></label>
+                        <input type="email" name="email" class="form-input" required placeholder="例：example@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">現状の課題 <span style="color:#d9534f">*</span></label>
+                        <p style="font-size:0.8rem; color:#666; margin-bottom:5px;">例：段ボールが半年そのままになっている / HPを作りたいが何からすればいいか分からない</p>
+                        <textarea name="現状の課題" class="form-textarea" required rows="3" placeholder="あなたの状況を教えてください"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">今回のゴール <span style="color:#d9534f">*</span></label>
+                        <p style="font-size:0.8rem; color:#666; margin-bottom:5px;">例：段ボール3箱を空にする / 自己紹介ページを公開する</p>
+                        <textarea name="今回のゴール" class="form-textarea" required rows="2" placeholder="この時間で完了させたいことは何ですか？"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">希望日時（第3希望まで） <span style="color:#d9534f">*</span></label>
+                        
+                        <div class="datetime-row">
+                            <input type="date" name="第1希望_日付" required>
+                            <select name="第1希望_開始" class="time-select" required></select>
+                            <span>〜</span>
+                            <select name="第1希望_終了" class="time-select" required></select>
+                        </div>
+                        <div class="datetime-row">
+                            <input type="date" name="第2希望_日付" required>
+                            <select name="第2希望_開始" class="time-select" required></select>
+                            <span>〜</span>
+                            <select name="第2希望_終了" class="time-select" required></select>
+                        </div>
+                        <div class="datetime-row">
+                            <input type="date" name="第3希望_日付" required>
+                            <select name="第3希望_開始" class="time-select" required></select>
+                            <span>〜</span>
+                            <select name="第3希望_終了" class="time-select" required></select>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top:30px;">
+                        <button type="submit" class="btn-submit">この内容で申し込む</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align:center; padding:50px 0; font-size:0.8rem; color:#999;">
+        <p>&copy; 2025 CoSTAR. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Canvas Animations (Red Confetti / Paper Snow)
+        (function() {
+            const canvas = document.getElementById('hero-canvas');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let stars = [];
+            const numStars = 50; 
+
+            class Star {
+                constructor(width, height) { 
+                    this.width = width; this.height = height; this.reset(); 
+                }
+                reset() {
+                    this.x = Math.random() * this.width;
+                    this.y = Math.random() * this.height;
+                    this.size = Math.random() * 4 + 2; 
+                    this.speedX = (Math.random() - 0.5) * 1; 
+                    this.speedY = Math.random() * 1 + 0.5; 
+                    this.alpha = Math.random() * 0.6 + 0.2; 
+                    this.rotation = Math.random() * 360;
+                }
+                update() {
+                    this.x += this.speedX; this.y += this.speedY; 
+                    if (this.x < 0) this.x = this.width; if (this.x > this.width) this.x = 0;
+                    if (this.y > this.height) { this.y = 0; this.x = Math.random() * this.width; }
+                }
+                draw(ctx) {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.fillStyle = `rgba(217, 83, 79, ${this.alpha})`; 
+                    ctx.fillRect(0, 0, this.size, this.size);
+                    ctx.restore();
+                }
+            }
+
+            function resize() {
+                width = canvas.parentElement.offsetWidth;
+                height = canvas.parentElement.offsetHeight;
+                canvas.width = width; canvas.height = height;
+                stars = [];
+                for (let i = 0; i < numStars; i++) { stars.push(new Star(width, height)); }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                stars.forEach(star => { star.update(); star.draw(ctx); });
+                requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('resize', resize);
+            window.addEventListener('load', resize);
+            resize(); animate(); 
+        })();
+
+        // Form Logic & Validation
+        document.addEventListener('DOMContentLoaded', () => {
+            // Date Limit
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const yyyy = tomorrow.getFullYear();
+            const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+            const dd = String(tomorrow.getDate()).padStart(2, '0');
+            const minDate = `${yyyy}-${mm}-${dd}`;
+            document.querySelectorAll('input[type="date"]').forEach(el => el.setAttribute('min', minDate));
+
+            // Time Select Generation
+            document.querySelectorAll('.time-select').forEach(select => {
+                const def = document.createElement('option');
+                def.text = "--:--";
+                select.appendChild(def);
+                for(let h=7; h<=22; h++){
+                    let s = h.toString().padStart(2,'0');
+                    let o1 = document.createElement('option'); o1.value=`${s}:00`; o1.text=`${s}:00`;
+                    select.appendChild(o1);
+                    if(h<22){
+                        let o2 = document.createElement('option'); o2.value=`${s}:30`; o2.text=`${s}:30`;
+                        select.appendChild(o2);
+                    }
+                }
+            });
+
+            // Validation Logic (Time Check based on Course)
+            const form = document.getElementById('cocleanup-lp-form');
+            if(form) {
+                form.addEventListener('submit', function(e) {
+                    // 1. 選択コースの判定
+                    const courseRadios = document.querySelectorAll('input[name="希望コース"]');
+                    let selectedCourse = "";
+                    for(const radio of courseRadios){
+                        if(radio.checked) {
+                            selectedCourse = radio.value;
+                            break;
+                        }
+                    }
+
+                    // Aコースなら60分、Bコースなら120分
+                    let minMinutes = 60; 
+                    if(selectedCourse.includes("Bコース")) {
+                        minMinutes = 120;
+                    }
+
+                    // 2. 各希望日時のチェック
+                    const checkList = [
+                        { date: '第1希望_日付', start: '第1希望_開始', end: '第1希望_終了', label: '第1希望' },
+                        { date: '第2希望_日付', start: '第2希望_開始', end: '第2希望_終了', label: '第2希望' },
+                        { date: '第3希望_日付', start: '第3希望_開始', end: '第3希望_終了', label: '第3希望' }
+                    ];
+
+                    for (const check of checkList) {
+                        const dateElem = document.getElementsByName(check.date)[0];
+                        const startElem = document.getElementsByName(check.start)[0];
+                        const endElem = document.getElementsByName(check.end)[0];
+
+                        // 日付・開始・終了が全て埋まっている行だけチェック
+                        if (dateElem && startElem && endElem && dateElem.value && startElem.value && endElem.value) {
+                            
+                            const [sH, sM] = startElem.value.split(':').map(Number);
+                            const [eH, eM] = endElem.value.split(':').map(Number);
+                            
+                            const startTotal = sH * 60 + sM;
+                            const endTotal = eH * 60 + eM;
+
+                            if (endTotal <= startTotal) {
+                                alert(`${check.label}: 終了時間は開始時間より後を選択してください。`);
+                                e.preventDefault();
+                                return;
+                            }
+
+                            const duration = endTotal - startTotal;
+                            if (duration < minMinutes) {
+                                alert(`${check.label}: 選択されたコースは、${minMinutes}分以上の時間の確保が必要です。\n（現在の選択範囲：${duration}分）`);
+                                e.preventDefault();
+                                return;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
