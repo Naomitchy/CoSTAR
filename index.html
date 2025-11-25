@@ -33,7 +33,9 @@
             --text-muted: #666666;
             
             /* アクセント: 白背景に映える落ち着いたゴールド */
-            --accent-color: #B8962E; 
+            --accent-color: #B8962E;
+            /* 強調用（モニター募集など） */
+            --urgent-color: #d9534f;
             
             /* セクション背景: 純白 */
             --secondary-bg: #FFFFFF; 
@@ -77,7 +79,7 @@
             padding: 15px 0;
             position: fixed;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.9); /* 白のすりガラス */
+            background-color: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             z-index: 100;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -204,13 +206,12 @@
         .story-text p { margin-bottom: 2.5em; }
         .highlight { 
             color: var(--text-color); font-weight: 700; 
-            background: linear-gradient(transparent 60%, rgba(184, 150, 46, 0.2) 60%); /* マーカー風 */
+            background: linear-gradient(transparent 60%, rgba(184, 150, 46, 0.2) 60%); 
             padding-bottom: 2px; 
         }
-        /* --- 修正箇所: 文字色を濃くして視認性を向上 --- */
         .quote-large {
             font-size: 1.5rem; 
-            color: #8F7320; /* 修正: 視認性確保のため少し濃いゴールドに変更 */
+            color: #8F7320; 
             margin: 80px 0; display: block;
             text-align: center; line-height: 1.8; 
             border-top: 1px solid rgba(184, 150, 46, 0.3);
@@ -235,6 +236,11 @@
         .service-card.main-service {
             border: 1px solid var(--accent-color); 
             background: #fff;
+        }
+        /* モニター募集用デザイン：薄い赤のグラデーション */
+        .service-card.monitor-service {
+            border: 2px solid var(--urgent-color);
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
         }
         .service-card.coming-soon { opacity: 0.6; border: 1px dashed #ccc; background: transparent; box-shadow: none; }
         .service-card h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--text-color); font-weight: 600; font-family: "Shippori Mincho", serif;}
@@ -548,12 +554,20 @@
                     </div>
                 </div>
             </div>
-            <div class="service-card coming-soon">
-                <span class="tag">Program</span>
-                <span class="cs-badge">準備中</span>
+            
+            <div class="service-card monitor-service">
+                <span class="tag" style="background:var(--urgent-color); color:#fff; font-weight:bold;">モニター募集中</span>
+                <span class="cs-badge" style="color:var(--urgent-color); border:1px solid var(--urgent-color); background:#fff;">5名限定</span>
                 <h3>CoCLEANUP</h3>
                 <div class="service-desc">
-                    <p>「共にやり切る」をコンセプトに、続けられなかった行動（部屋の片付け、朝活等）を共に進める短期プログラム。</p>
+                    <p>コンセプトは「独りで、やらない。」</p>
+                    <br>
+                    <p>ずっと先送りにしてきた「部屋の片付け」や「自分だけのHP作成」。コーチと共に、今日完了させませんか？</p>
+                </div>
+                <div class="service-footer">
+                    <a href="cocleanup.html" class="btn btn-primary" style="width:100%; padding: 12px; background-color:var(--urgent-color); border-color:var(--urgent-color); display:inline-block; box-sizing:border-box;">モニター詳細・申込</a>
+                    
+                    <div style="margin-top: 15px; min-height: 1.5em; visibility: hidden;">&nbsp;</div>
                 </div>
             </div>
         </div>
@@ -1054,8 +1068,8 @@
                 draw(ctx) {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    // Gold Dust color
-                    ctx.fillStyle = `rgba(184, 150, 46, ${this.alpha})`; 
+                    // Gold Dust color - Updated to Champagne Gold to match LP
+                    ctx.fillStyle = `rgba(215, 196, 165, ${this.alpha})`; 
                     ctx.fill();
                 }
             }
@@ -1219,4 +1233,3 @@
     </script>
 </body>
 </html>
-}
