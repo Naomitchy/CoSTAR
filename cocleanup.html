@@ -230,7 +230,13 @@
         @media (max-width: 600px) {
             .sp-br { display: inline; } 
             .lp-tag { font-size: 0.75rem; padding: 6px 15px; }
-            .service-name-hero { font-size: 2.5rem; }
+            
+            /* 修正箇所: タイトルを1行に収めるための設定 */
+            .service-name-hero { 
+                font-size: clamp(1.5rem, 11vw, 2.5rem); 
+                white-space: nowrap; 
+            }
+            
             .lp-title { font-size: 2.0rem; }
             .lp-subtitle { font-size: 0.95rem; line-height: 1.8; }
             
