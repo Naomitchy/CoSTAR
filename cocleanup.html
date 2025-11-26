@@ -231,13 +231,18 @@
             .sp-br { display: inline; } 
             .lp-tag { font-size: 0.75rem; padding: 6px 15px; }
             
-            /* 修正箇所: タイトルを1行に収めるための設定 */
+            /* タイトルを1行に収めるための設定 */
             .service-name-hero { 
                 font-size: clamp(1.5rem, 11vw, 2.5rem); 
                 white-space: nowrap; 
             }
             
-            .lp-title { font-size: 2.0rem; }
+            /* キャッチコピー「独りで、やらない。」も1行に収める設定 */
+            .lp-title { 
+                font-size: clamp(1.2rem, 8vw, 2.0rem); 
+                white-space: nowrap; 
+            }
+            
             .lp-subtitle { font-size: 0.95rem; line-height: 1.8; }
             
             .menu-header { flex-direction: column; text-align: center; gap: 10px; font-size: 1.2rem; }
@@ -277,7 +282,7 @@
             </h1>
             <p class="lp-subtitle">
                 <span class="inline-phrase">ずっと先送りにしてきた</span><span class="inline-phrase">「未完了」を、</span><br class="sp-br">
-                <span class="inline-phrase">今日、</span><span class="inline-phrase">コーチと共に</span><span class="inline-phrase">終わらせる。</span>
+                <span class="inline-phrase">今日、</span><span class="inline-phrase">共に</span><span class="inline-phrase">終わらせる。</span>
             </p>
         </div>
     </div>
