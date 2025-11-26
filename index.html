@@ -562,11 +562,10 @@
                 <div class="service-desc">
                     <p>コンセプトは「独りで、やらない。」</p>
                     <br>
-                    <p>ずっと先送りにしてきた「部屋の片付け」や「自分だけのHP作成」。コーチと共に、今日完了させませんか？</p>
+                    <p>ずっと先送りにしてきた<span style="display:inline-block;">「部屋の片付け」や</span><span style="display:inline-block;">「自分だけのHP作成」。</span><br>コーチと共に、<span style="display:inline-block;">今日完了させませんか？</span></p>
                 </div>
                 <div class="service-footer">
                     <a href="cocleanup.html" class="btn btn-primary" style="width:100%; padding: 12px; background-color:var(--urgent-color); border-color:var(--urgent-color); display:inline-block; box-sizing:border-box;">モニター詳細・申込</a>
-                    
                     <div style="margin-top: 15px; min-height: 1.5em; visibility: hidden;">&nbsp;</div>
                 </div>
             </div>
@@ -1068,8 +1067,8 @@
                 draw(ctx) {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    // Gold Dust color - Updated to Champagne Gold to match LP
-                    ctx.fillStyle = `rgba(215, 196, 165, ${this.alpha})`; 
+                    // Gold Dust color
+                    ctx.fillStyle = `rgba(184, 150, 46, ${this.alpha})`; 
                     ctx.fill();
                 }
             }
@@ -1079,7 +1078,7 @@
                 const ctx = canvas.getContext('2d');
                 let width, height;
                 let stars = [];
-                const numStars = 80; 
+                const numStars = 80; // Revert to 80 stars
 
                 function resize() {
                     if(canvas.id === 'hero-canvas'){
