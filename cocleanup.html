@@ -72,8 +72,23 @@
             padding: 8px 20px; border-radius: 30px; font-size: 0.9rem; font-weight: bold;
             margin-bottom: 30px; position: relative; z-index: 2; line-height: 1.6;
         }
+        /* サービス名（TOP追加用） */
+        .service-name-hero {
+            font-family: "Shippori Mincho", serif;
+            font-size: 3.5rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+            color: var(--text-color);
+            position: relative; z-index: 2;
+            font-weight: 700;
+            /* スマホでの不自然な改行を防ぐ設定 */
+            word-break: keep-all; 
+            overflow-wrap: break-word;
+        }
         .lp-title {
-            font-size: 2.8rem; margin-bottom: 20px; line-height: 1.4; font-weight: 600; position: relative; z-index: 2;
+            font-size: 2.0rem; margin-bottom: 20px; line-height: 1.4; font-weight: 600; position: relative; z-index: 2;
+            word-break: keep-all; 
+            overflow-wrap: break-word;
         }
         .lp-subtitle {
             font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; position: relative; z-index: 2;
@@ -85,7 +100,10 @@
         .gray-section { background: var(--bg-color); }
         
         .section-head { text-align: center; margin-bottom: 50px; }
-        .section-head h2 { font-size: 1.8rem; margin-bottom: 15px; position: relative; display: inline-block; line-height: 1.5; }
+        .section-head h2 { 
+            font-size: 1.8rem; margin-bottom: 15px; position: relative; display: inline-block; line-height: 1.5;
+            word-break: keep-all; 
+        }
         .section-head h2::after { content:""; display:block; width:40px; height:2px; background:var(--accent-color); margin: 15px auto 0; }
 
         /* --- Pain (Dialogue) --- */
@@ -156,40 +174,70 @@
         .radio-label:hover { background: #f9f9f9; border-color: var(--accent-color); }
         .radio-label input { accent-color: var(--accent-color); transform: scale(1.2); } 
         
-        /* ボタン修正：スマホではみ出さないよう調整 */
+        /* 申し込みボタン */
         .btn-submit {
-            display: block; /* 中央揃えのためにblock化 */
-            width: 100%;
-            max-width: 320px; /* 程よい幅に制限 */
-            margin: 0 auto; /* 左右中央揃え */
+            display: block;
+            width: 100%; max-width: 320px; margin: 0 auto;
             padding: 18px 20px;
             background: var(--urgent-color); color: #fff;
             border: none; border-radius: 50px; 
             font-size: 1.1rem; font-weight: bold; letter-spacing: 0.05em;
             cursor: pointer; transition: 0.3s;
             box-shadow: 0 5px 15px rgba(217, 83, 79, 0.2);
-            box-sizing: border-box; /* パディングを含めた幅計算にする（重要） */
+            box-sizing: border-box;
         }
         .btn-submit:hover { background: #c9302c; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(217, 83, 79, 0.3); }
 
-        /* Datetime Row (index.htmlと統一) */
+        /* お問い合わせボタン（アウトライン） */
+        .btn-outline {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid var(--text-color); color: var(--text-color);
+            border-radius: 30px; font-weight: bold; background: transparent;
+            cursor: pointer; transition: 0.3s; text-align: center;
+        }
+        .btn-outline:hover { background: var(--text-color); color: #fff; }
+
+        /* Datetime Row */
         .datetime-row {
             display: flex; gap: 10px; align-items: center; margin-bottom: 15px;
         }
         .time-range { display: flex; align-items: center; gap: 5px; flex: 1; }
         .time-range select { flex: 1; min-width: 0; cursor: pointer; } 
 
+        /* --- Modal Styles --- */
+        .modal {
+            display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+            overflow: auto; background-color: rgba(255,255,255,0.6); backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: #fff; margin: 5% auto; padding: 40px; 
+            border: none;
+            width: 90%; max-width: 700px; border-radius: 8px; position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            animation: slideIn 0.4s ease;
+            color: var(--text-color);
+        }
+        @keyframes slideIn { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        .close-btn {
+            position: absolute; top: 15px; right: 20px;
+            color: #ccc; font-size: 35px; font-weight: bold; cursor: pointer; transition: 0.3s;
+            line-height: 1; z-index: 10;
+        }
+        .close-btn:hover { color: var(--accent-color); }
+
         /* --- Mobile Adjustments --- */
         @media (max-width: 600px) {
             .sp-br { display: inline; } 
             .lp-tag { font-size: 0.75rem; padding: 6px 15px; }
+            .service-name-hero { font-size: 2.5rem; }
             .lp-title { font-size: 2.0rem; }
             .lp-subtitle { font-size: 0.95rem; line-height: 1.8; }
             
             .menu-header { flex-direction: column; text-align: center; gap: 10px; font-size: 1.2rem; }
             .menu-header span { display: inline-block; } 
             
-            .form-wrapper { padding: 25px 20px; } /* スマホでの余白調整 */
+            .form-wrapper { padding: 25px 20px; } 
             .form-wrapper h3 { font-size: 1.2rem; }
             .radio-group { flex-direction: column; }
             
@@ -215,6 +263,9 @@
         <canvas id="hero-canvas"></canvas>
         <div class="container">
             <span class="lp-tag">5名限定モニター募集中<br class="sp-br">（2026年1月末まで）</span>
+            
+            <h2 class="service-name-hero">CoCLEANUP</h2>
+
             <h1 class="lp-title mincho">
                 <span class="inline-phrase">独りで、</span><span class="inline-phrase">やらない。</span>
             </h1>
@@ -279,7 +330,7 @@
             <div class="solution-text">
                 <p>
                     CoCLEANUPは、ただの「お片付け代行」でも「Web制作代行」でもありません。<br>
-                    <span class="highlight">「同じ時間に、コーチも一緒に何かに取り組む」</span>という、共犯関係のプログラムです。
+                    <span class="highlight">「同じ時間に、コーチも一緒に取り組む」</span>という、共犯関係のプログラムです。
                 </p>
                 <p>
                     Zoomを繋ぎます。監視はしませんが、接続は切れません。<br>
@@ -305,7 +356,7 @@
             <div class="menu-card">
                 <div class="menu-header">
                     <span class="inline-phrase">Aコース：</span><span class="inline-phrase">お部屋のCleanUp</span>
-                    <span class="price">モニター価格：3,000円</span>
+                    <span class="price">モニター価格：3,000円（税込）</span>
                 </div>
                 <div class="menu-body">
                     <p>散らかった部屋、開かずの段ボール、溜まった書類。<br>一人では見ないふりをしてきた場所に、光を当てます。</p>
@@ -321,15 +372,15 @@
             <div class="menu-card">
                 <div class="menu-header">
                     <span class="inline-phrase">Bコース：</span><span class="inline-phrase">Webサイト作成</span>
-                    <span class="price">モニター価格：10,000円</span>
+                    <span class="price">モニター価格：10,000円（税込）</span>
                 </div>
                 <div class="menu-body">
-                    <p>元ITエンジニアのコーチが伴走。生成AIを使って、あなただけのHPをその場で作成し、世界に公開します。</p>
+                    <p>元ITエンジニアのコーチが伴走。AIを使ってあなただけのWebページを作り、その場でインターネット上（スマホやPC）に見られるようにします。<br>「ドメイン」などの難しい設定や契約は一切不要。まずはURLを知っている人だけに教えられる、あなただけの場所を作りましょう。</p>
                     <ul class="menu-list">
                         <li><strong>導入コーチング：</strong>作成前に、「誰に、何を届けたいHPなのか」をコーチと対話して言語化します。想いの乗ったHPを作りましょう。</li>
-                        <li><strong>AIプロンプト伴走：</strong>「何と言えばいいか分からない」をサポート。一緒にAIへの指示文を作ります。</li>
+                        <li><strong>AIプロンプト伴走：</strong>「何と言えばいいか分からない」をサポート。一緒にAIへ指示を出し、Webページのデータ（デザイン）を生成します。</li>
                         <li><strong>黒い画面は使いません：</strong>エンジニアしか使えない難しいコマンドは不要。ドラッグ＆ドロップで自分で更新する方法を伝授します。</li>
-                        <li><strong>維持費0円の公開：</strong>サーバー代がかからない「GitHub Pages」を使って公開します。</li>
+                        <li><strong>維持費0円で公開：</strong>サーバー代がかからない無料の公開サービス（GitHub Pages）を使います。</li>
                         <li><strong>時間：</strong>90分〜120分</li>
                     </ul>
                 </div>
@@ -367,12 +418,12 @@
                         <label class="form-label">希望コース <span style="color:#d9534f">*</span></label>
                         <div class="radio-group">
                             <label class="radio-label">
-                                <input type="radio" name="希望コース" value="Aコース：お部屋（3,000円）" required>
-                                <span>Aコース：お部屋（3,000円）</span>
+                                <input type="radio" name="希望コース" value="Aコース：お部屋（3,000円 税込）" required>
+                                <span>Aコース：お部屋（3,000円 税込）</span>
                             </label>
                             <label class="radio-label">
-                                <input type="radio" name="希望コース" value="Bコース：HP作成（10,000円）" required>
-                                <span>Bコース：HP作成（10,000円）</span>
+                                <input type="radio" name="希望コース" value="Bコース：HP作成（10,000円 税込）" required>
+                                <span>Bコース：HP作成（10,000円 税込）</span>
                             </label>
                         </div>
                     </div>
@@ -458,12 +509,50 @@
         </div>
     </section>
 
-    <footer style="text-align:center; padding:50px 0; font-size:0.8rem; color:#999;">
+    <section class="white-section" style="border-top:1px solid #eee; text-align:center; padding: 60px 20px;">
+        <div class="container">
+            <h3 class="mincho" style="font-size:1.5rem; margin-bottom:20px;">その他の「未完了」もご相談ください</h3>
+            <p style="margin-bottom:30px; color:var(--text-muted);">「部屋の片付け」や「HP作成」以外でも、一人では腰が重いタスクがあればお気軽にご相談ください。<br>あなたに合わせたプランをご提案します。</p>
+            <button class="btn-outline" onclick="openModal('contact')">お問い合わせ</button>
+        </div>
+    </section>
+
+    <footer style="text-align:center; padding:50px 0; font-size:0.8rem; color:#999; background:var(--bg-color);">
         <p>&copy; 2025 CoSTAR. All Rights Reserved.</p>
     </footer>
 
+    <div id="modal-contact" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('contact')">&times;</span>
+            <h2 class="section-title" style="margin-bottom:30px; font-size:1.8rem;">お問い合わせ</h2>
+            
+            <form action="https://ssgform.com/s/1jc1dcHXlhf0" method="post">
+                <input type="hidden" name="_redirectTo" value="https://costar-works.com/thanks.html">
+                
+                <div class="form-group">
+                    <label class="form-label">お名前 <span style="color:#d9534f">*</span></label>
+                    <input type="text" name="名前" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">メールアドレス <span style="color:#d9534f">*</span></label>
+                    <input type="email" name="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">お問い合わせ内容 <span style="color:#d9534f">*</span></label>
+                    <textarea name="問い合わせ内容" class="form-textarea" required></textarea>
+                </div>
+
+                <div style="text-align:center; margin-top:40px;">
+                    <button type="submit" class="btn-submit">送信する</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
-        // Canvas Animations (Red Confetti / Paper Snow)
+        // Canvas Animations (Red Confetti)
         (function() {
             const canvas = document.getElementById('hero-canvas');
             if(!canvas) return;
@@ -518,6 +607,24 @@
             resize(); animate(); 
         })();
 
+        // Modal Control
+        function openModal(type) {
+            document.getElementById('modal-' + type).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(type) {
+            document.getElementById('modal-' + type).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
         // Form Logic & Validation
         document.addEventListener('DOMContentLoaded', () => {
             // Date Limit
@@ -560,7 +667,7 @@
 
                     let minMinutes = 60; 
                     if(selectedCourse.includes("Bコース")) {
-                        minMinutes = 120;
+                        minMinutes = 90; // 90分以上に設定 (テキストが90〜120分のため)
                     }
 
                     const checkList = [
