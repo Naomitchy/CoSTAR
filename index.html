@@ -142,6 +142,7 @@
             box-shadow: 0 5px 15px rgba(184, 150, 46, 0.3);
             transform: translateY(-2px);
         }
+        .btn:disabled { background-color: #ccc !important; border-color: #ccc !important; color: #fff !important; cursor: not-allowed; box-shadow: none !important; transform: none !important; }
         .btn-primary { background-color: var(--accent-color); color: #fff; border: 1px solid var(--accent-color); }
         .btn-primary:hover { background-color: #9e8022; border-color: #9e8022; }
         .btn-outline { background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); }
@@ -928,18 +929,9 @@
                     <td>星野 直道（屋号：CoSTAR）</td>
                 </tr>
                 <tr>
-                    <th>所在地</th>
-                    <td>
-                        〒277-0882<br>
-                        千葉県柏市柏の葉2-5-9
-                    </td>
-                </tr>
-                <tr>
                     <th>連絡先</th>
                     <td>
-                        電話番号：090-5442-7389<br>
-                        メールアドレス：costar.japan@gmail.com<br>
-                        ※お電話での勧誘・営業は固くお断りいたします。
+                        メールアドレス：costar.japan@gmail.com
                     </td>
                 </tr>
                 <tr>
@@ -1229,6 +1221,32 @@
                 document.body.style.overflow = 'auto';
             }
         }
+
+        // --- 二重送信防止 & 送信中ローディング表示 ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const forms = document.querySelectorAll('form');
+            
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    // 1. 既存のバリデーション（日付チェックなど）でエラーになっている場合は何もしない
+                    if (e.defaultPrevented) return;
+
+                    // 2. 送信ボタンを取得
+                    const btn = this.querySelector('button[type="submit"]');
+                    
+                    if (btn) {
+                        // 3. 送信処理が確実に開始された直後にボタンを無効化（iOS等での不具合防止のためsetTimeoutを使用）
+                        setTimeout(() => {
+                            btn.disabled = true;       // ボタンを押せなくする
+                            btn.dataset.originalText = btn.textContent; // 元のテキストを保存（念のため）
+                            btn.textContent = '送信中...'; // ボタンの文字を変更
+                            btn.style.opacity = '0.7';   // 少し薄くして押せない感を出す
+                            btn.style.cursor = 'wait';   // マウスカーソルを待機状態に
+                        }, 10);
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
