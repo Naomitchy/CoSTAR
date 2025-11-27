@@ -139,7 +139,25 @@
             font-family: "Shippori Mincho", serif; font-size: 1.3rem;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .menu-header .price { font-weight: bold; background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.9em; white-space: nowrap; }
+        
+        /* 価格表示の調整（二重価格） */
+        .menu-header .price-box {
+            text-align: right;
+            line-height: 1.2;
+        }
+        .menu-header .original-price {
+            display: block;
+            font-size: 0.7em;
+            text-decoration: line-through;
+            opacity: 0.8;
+            font-weight: normal;
+        }
+        .menu-header .monitor-price {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #fff; 
+        }
+
         .menu-body { padding: 30px; }
         .menu-list { list-style: none; padding: 0; margin: 20px 0; }
         .menu-list li {
@@ -251,6 +269,22 @@
             .menu-header { flex-direction: column; text-align: center; gap: 10px; font-size: 1.2rem; }
             .menu-header span { display: inline-block; } 
             
+            /* スマホでの価格表示調整 */
+            .menu-header .price-box {
+                text-align: center;
+                margin-top: 5px;
+                background: rgba(255,255,255,0.1);
+                padding: 5px 15px;
+                border-radius: 4px;
+            }
+            .menu-header .original-price {
+                display: inline-block;
+                margin-right: 10px;
+            }
+            .menu-header .monitor-price {
+                display: inline-block;
+            }
+
             .form-wrapper { padding: 25px 20px; } 
             .form-wrapper h3 { font-size: 1.2rem; }
             .radio-group { flex-direction: column; }
@@ -328,8 +362,8 @@
             </div>
             
             <p style="text-align: center; font-weight: bold; margin-top: 50px;">
-                <span class="inline-phrase">あなたができないのは、</span><span class="inline-phrase">能力がないからではありません。</span><br>
-                <span class="inline-phrase">ただ、「独りで戦おうとしている」</span><span class="inline-phrase">からです。</span>
+                あなたができないのは、能力がないからではありません。<br>
+                ただ、「独りで戦おうとしている」からです。
             </p>
         </div>
     </section>
@@ -363,21 +397,30 @@
     <section class="white-section">
         <div class="container">
             <div class="section-head">
-                <h2 class="mincho">選べる2つのコース</h2>
+                <h2 class="mincho"><span class="inline-phrase">選べる</span><span class="inline-phrase">2つのコース</span></h2>
                 <p>今、あなたが最もエネルギーを奪われている「未完了」を選んでください。</p>
             </div>
 
             <div class="menu-card">
                 <div class="menu-header">
                     <span class="inline-phrase">Aコース：</span><span class="inline-phrase">お部屋のCleanUp</span>
-                    <span class="price">モニター価格：3,000円（税込）</span>
+                    <div class="price-box">
+                        <span class="original-price">通常 8,000円</span>
+                        <span class="monitor-price">モニター 3,000円(税込)</span>
+                    </div>
                 </div>
                 <div class="menu-body">
-                    <p>散らかった部屋、開かずの段ボール、溜まった書類。<br>一人では見ないふりをしてきた場所に、光を当てます。</p>
+                    <p>
+                        散らかった部屋は、滞った思考の現れです。<br>
+                        開かずの段ボールや書類に向き合い、物理的に「過去」と決別することで、新しい運気が入るスペース（余白）を作ります。
+                    </p>
                     <ul class="menu-list">
-                        <li><strong>導入コーチング（15分）：</strong>いきなり手を動かしません。まず「片付いた後の景色」と「その時の感情」をコーチと一緒にイメージし、完了へのエネルギーを高めてからスタートします。</li>
-                        <li><strong>恥の共有：</strong>「見せるのも嫌」な場所をコーチに見せることで、心理的なブロックが外れます。（※カメラOFFも可）</li>
-                        <li><strong>実況中継：</strong>作業中に出てきた「思い出」や「感情」を実況しながら進めることで、モノへの執着を手放せます。</li>
+                        <li><strong>未来のレンダリング（導入コーチング）：</strong>「原因探し」はしません。「片付いた部屋で、どんな気持ちで過ごしたいか？」その時の高揚感や安らぎを先にありありと描き（レンダリングし）、完了へ向かうエネルギーを充填します。</li>
+                        
+                        <li><strong>恥の開放：</strong>「見せるのも嫌」な場所をコーチに共有することで、心理的なブロックが外れます。深い自己開示は、その後の人生を変える信頼関係（ラポール）の入り口となります。（※カメラOFFも可）</li>
+                        
+                        <li><strong>過去との決別（実況中継）：</strong>作業中に出てきた「思い出」や「感情」を実況しながら進めることで、モノへの執着を手放し、脳のメモリを強制的に解放します。</li>
+                        
                         <li><strong>時間：</strong>60分（コーチング15分＋作業45分）</li>
                     </ul>
                 </div>
@@ -386,15 +429,25 @@
             <div class="menu-card">
                 <div class="menu-header">
                     <span class="inline-phrase">Bコース：</span><span class="inline-phrase">Webサイト作成</span>
-                    <span class="price">モニター価格：10,000円（税込）</span>
+                    <div class="price-box">
+                        <span class="original-price">通常 35,000円</span>
+                        <span class="monitor-price">モニター 10,000円(税込)</span>
+                    </div>
                 </div>
                 <div class="menu-body">
-                    <p>元ITエンジニアのコーチが伴走。AIを使ってあなただけのWebページを作り、その場でインターネット上（スマホやPC）に見られるようにします。<br>「ドメイン」などの難しい設定や契約は一切不要。まずはURLを知っている人だけに教えられる、あなただけの場所を作りましょう。</p>
+                    <p>
+                        元ITエンジニアのコーチが伴走。AIを使ってあなただけのWebページを作り、その場で公開。<br>
+                        Web上に「自分の家（Home）」を持つ安心感が、あなたをビジネスの挑戦（腹決め）へと駆り立てます。
+                    </p>
                     <ul class="menu-list">
-                        <li><strong>導入コーチング：</strong>作成前に、「誰に、何を届けたいHPなのか」をコーチと対話して言語化します。想いの乗ったHPを作りましょう。</li>
-                        <li><strong>AIプロンプト伴走：</strong>「何と言えばいいか分からない」をサポート。一緒にAIへ指示を出し、Webページのデータ（デザイン）を生成します。</li>
-                        <li><strong>黒い画面は使いません：</strong>エンジニアしか使えない難しいコマンドは不要。でも、コーチと離れた後も、あなたはAIでプロのように自由にデザインの修正が可能になります。</li>
+                        <li><strong>魂を刻む導入コーチング：</strong>単なる作成作業ではありません。対話を通じて「本当に大切にしたい価値観」を言語化し、あなたの魂の入った言葉をサイトに刻みます。</li>
+                        
+                        <li><strong>創造の喜び（AI伴走）：</strong>テンプレートに想いを押し込める必要はありません。「何と言えばいいか分からない」をAIと共に突破し、白紙のキャンバスにあなただけの色を描きます。</li>
+                        
+                        <li><strong>主導権を取り戻す（黒い画面は不要）：</strong>難しい技術は不要ですが、コーチと離れた後も、あなたはAIで自由に修正が可能になります。修正のたびにプロに頭を下げる必要はありません。</li>
+                        
                         <li><strong>維持費0円で公開：</strong>サーバー代がかからない無料の公開サービス（GitHub Pages）を使います。</li>
+                        
                         <li><strong>時間：</strong>90分〜120分</li>
                     </ul>
                 </div>
@@ -525,8 +578,13 @@
 
     <section class="white-section" style="border-top:1px solid #eee; text-align:center; padding: 60px 20px;">
         <div class="container">
-            <h3 class="mincho" style="font-size:1.5rem; margin-bottom:20px;">その他の「未完了」もご相談ください</h3>
-            <p style="margin-bottom:30px; color:var(--text-muted);">「部屋の片付け」や「HP作成」以外でも、一人では腰が重いタスクがあればお気軽にご相談ください。<br>あなたに合わせたプランをご提案します。</p>
+            <h3 class="mincho" style="font-size:1.5rem; margin-bottom:20px;">
+                その他の「未完了」もご相談ください
+            </h3>
+            <p style="margin-bottom:30px; color:var(--text-muted);">
+                「部屋の片付け」や「HP作成」以外でも、一人では腰が重いタスクがあればお気軽にご相談ください。<br>
+                あなたに合わせたプランをご提案します。
+            </p>
             <button class="btn-outline" onclick="openModal('contact')">お問い合わせ</button>
         </div>
     </section>
