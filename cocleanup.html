@@ -187,6 +187,8 @@
             box-sizing: border-box;
         }
         .btn-submit:hover { background: #c9302c; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(217, 83, 79, 0.3); }
+        /* ボタン無効化時のスタイル */
+        .btn-submit:disabled { background: #ccc !important; box-shadow: none !important; transform: none !important; cursor: not-allowed; }
 
         /* お問い合わせボタン（アウトライン） */
         .btn-outline {
@@ -715,6 +717,32 @@
                     }
                 });
             }
+        });
+
+        // --- 二重送信防止 & 送信中ローディング表示 ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const forms = document.querySelectorAll('form');
+            
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    // 1. 既存のバリデーション（日付チェックなど）でエラーになっている場合は何もしない
+                    if (e.defaultPrevented) return;
+
+                    // 2. 送信ボタンを取得
+                    const btn = this.querySelector('button[type="submit"]');
+                    
+                    if (btn) {
+                        // 3. 送信処理が確実に開始された直後にボタンを無効化（iOS等での不具合防止のためsetTimeoutを使用）
+                        setTimeout(() => {
+                            btn.disabled = true;       // ボタンを押せなくする
+                            btn.dataset.originalText = btn.textContent; // 元のテキストを保存（念のため）
+                            btn.textContent = '送信中...'; // ボタンの文字を変更
+                            btn.style.opacity = '0.7';   // 少し薄くして押せない感を出す
+                            btn.style.cursor = 'wait';   // マウスカーソルを待機状態に
+                        }, 10);
+                    }
+                });
+            });
         });
     </script>
 </body>
