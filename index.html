@@ -15,7 +15,7 @@
     <meta property="og:description" content="孤独な主人公たちへ。完璧な仮面を脱いで、本当の自分に出会う旅に出かけよう。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://costar-works.com/">
-    <meta property="og:image" content="https://costar-works.com/IMG_6140.jpg">
+    <meta property="og:image" content="image_1.png">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -245,6 +245,13 @@
             background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
         }
         .service-card.coming-soon { opacity: 0.6; border: 1px dashed #ccc; background: transparent; box-shadow: none; }
+        
+        /* ▼▼▼ PCでの並び順指定 (左: CoCLEAUP, 中央: Coaching, 右: CoSECRET) ▼▼▼ */
+        .service-card.monitor-service { order: 1; } /* CoCLEAUP */
+        .service-card.main-service { order: 2; }    /* Coaching */
+        .service-card.coming-soon { order: 3; }     /* CoSECRET */
+        /* ▲▲▲ ここまで ▲▲▲ */
+
         .service-card h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--text-color); font-weight: 600; font-family: "Shippori Mincho", serif;}
         .service-desc { flex-grow: 1; font-size: 0.95rem; color: var(--text-muted); }
         .tag { 
@@ -443,8 +450,13 @@
             .btn-group .btn { width: 100%; min-width: auto; }
 
             .service-grid { grid-template-columns: 1fr; gap: 40px;}
-            .price-card.recommended { transform: scale(1); margin: 20px 0 40px 0; }
-            .service-card.main-service { order: -1; }
+            
+            /* ▼▼▼ SPでの並び順指定 (上: Coaching, 真ん中: CoCLEAUP, 下: CoSECRET) ▼▼▼ */
+            .service-card.main-service { order: 1; }    /* Coaching */
+            .service-card.monitor-service { order: 2; } /* CoCLEAUP */
+            .service-card.coming-soon { order: 3; }     /* CoSECRET */
+            /* ▲▲▲ ここまで ▲▲▲ */
+
             .nav-actions { gap: 15px; }
             .concept-grid { grid-template-columns: 1fr; gap: 40px; }
             .profile-flex { flex-direction: column; gap: 30px;}
