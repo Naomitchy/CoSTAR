@@ -73,7 +73,6 @@
             padding: 8px 20px; border-radius: 30px; font-size: 0.9rem; font-weight: bold;
             margin-bottom: 30px; position: relative; z-index: 2; line-height: 1.6;
         }
-        /* サービス名（TOP追加用） */
         .service-name-hero {
             font-family: "Shippori Mincho", serif;
             font-size: 3.5rem;
@@ -82,7 +81,6 @@
             color: var(--text-color);
             position: relative; z-index: 2;
             font-weight: 700;
-            /* スマホでの不自然な改行を防ぐ設定 */
             word-break: keep-all; 
             overflow-wrap: break-word;
         }
@@ -139,24 +137,11 @@
             font-family: "Shippori Mincho", serif; font-size: 1.3rem;
             display: flex; justify-content: space-between; align-items: center;
         }
-        
-        /* 価格表示の調整（二重価格） */
-        .menu-header .price-box {
-            text-align: right;
-            line-height: 1.2;
-        }
+        .menu-header .price-box { text-align: right; line-height: 1.2; }
         .menu-header .original-price {
-            display: block;
-            font-size: 0.7em;
-            text-decoration: line-through;
-            opacity: 0.8;
-            font-weight: normal;
+            display: block; font-size: 0.7em; text-decoration: line-through; opacity: 0.8; font-weight: normal;
         }
-        .menu-header .monitor-price {
-            font-weight: bold;
-            font-size: 1.1em;
-            color: #fff; 
-        }
+        .menu-header .monitor-price { font-weight: bold; font-size: 1.1em; color: #fff; }
 
         .menu-body { padding: 30px; }
         .menu-list { list-style: none; padding: 0; margin: 20px 0; }
@@ -167,6 +152,66 @@
             content: "✔"; position: absolute; left: 0; color: var(--accent-color);
         }
         .menu-list strong { color: var(--text-color); }
+
+        /* --- Sample HP Preview (New) --- */
+        .sample-area {
+            margin: 25px 0;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+        }
+        .sample-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #fff;
+            background: #666;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+        .sample-img-container {
+            display: block;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+            position: relative;
+            background: #eee; /* 画像読み込み前の背景 */
+            min-height: 150px; /* 画像がない時の高さ確保 */
+        }
+        .sample-img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+        .sample-img-container:hover img {
+            transform: scale(1.02);
+        }
+        .sample-caption {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+        .sample-caption strong {
+            color: var(--text-color);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+        .sample-link {
+            color: var(--accent-color);
+            font-weight: bold;
+            text-decoration: underline;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        .sample-link:hover { color: #9e8022; }
+
 
         /* --- Form Area --- */
         .form-wrapper {
@@ -183,7 +228,6 @@
         .form-input:focus, .form-textarea:focus, .form-select:focus {
             outline: none; border-color: var(--accent-color); background-color: #fff; box-shadow: 0 0 0 3px rgba(184, 150, 46, 0.1);
         }
-        .form-input::placeholder, .form-textarea::placeholder { color: #aaa; opacity: 1; }
         
         .radio-group { display: flex; gap: 15px; flex-wrap: wrap; }
         .radio-label {
@@ -193,7 +237,6 @@
         .radio-label:hover { background: #f9f9f9; border-color: var(--accent-color); }
         .radio-label input { accent-color: var(--accent-color); transform: scale(1.2); } 
         
-        /* 申し込みボタン */
         .btn-submit {
             display: block;
             width: 100%; max-width: 320px; margin: 0 auto;
@@ -206,10 +249,8 @@
             box-sizing: border-box;
         }
         .btn-submit:hover { background: #c9302c; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(217, 83, 79, 0.3); }
-        /* ボタン無効化時のスタイル */
         .btn-submit:disabled { background: #ccc !important; box-shadow: none !important; transform: none !important; cursor: not-allowed; }
 
-        /* お問い合わせボタン（アウトライン） */
         .btn-outline {
             display: inline-block;
             padding: 12px 30px;
@@ -219,7 +260,6 @@
         }
         .btn-outline:hover { background: var(--text-color); color: #fff; }
 
-        /* Datetime Row */
         .datetime-row {
             display: flex; gap: 10px; align-items: center; margin-bottom: 15px;
         }
@@ -251,48 +291,23 @@
         @media (max-width: 600px) {
             .sp-br { display: inline; } 
             .lp-tag { font-size: 0.75rem; padding: 6px 15px; }
-            
-            /* タイトルを1行に収めるための設定 */
-            .service-name-hero { 
-                font-size: clamp(1.5rem, 11vw, 2.5rem); 
-                white-space: nowrap; 
-            }
-            
-            /* キャッチコピー「独りで、やらない。」も1行に収める設定 */
-            .lp-title { 
-                font-size: clamp(1.2rem, 8vw, 2.0rem); 
-                white-space: nowrap; 
-            }
-            
+            .service-name-hero { font-size: clamp(1.5rem, 11vw, 2.5rem); white-space: nowrap; }
+            .lp-title { font-size: clamp(1.2rem, 8vw, 2.0rem); white-space: nowrap; }
             .lp-subtitle { font-size: 0.95rem; line-height: 1.8; }
             
             .menu-header { flex-direction: column; text-align: center; gap: 10px; font-size: 1.2rem; }
             .menu-header span { display: inline-block; } 
-            
-            /* スマホでの価格表示調整 */
             .menu-header .price-box {
-                text-align: center;
-                margin-top: 5px;
-                background: rgba(255,255,255,0.1);
-                padding: 5px 15px;
-                border-radius: 4px;
+                text-align: center; margin-top: 5px; background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 4px;
             }
-            .menu-header .original-price {
-                display: inline-block;
-                margin-right: 10px;
-            }
-            .menu-header .monitor-price {
-                display: inline-block;
-            }
+            .menu-header .original-price { display: inline-block; margin-right: 10px; }
+            .menu-header .monitor-price { display: inline-block; }
 
             .form-wrapper { padding: 25px 20px; } 
             .form-wrapper h3 { font-size: 1.2rem; }
             .radio-group { flex-direction: column; }
-            
-            /* 日時選択のスマホ最適化 */
             .datetime-row { flex-direction: column; align-items: stretch; gap: 5px; margin-bottom: 20px; background: #f3f4f6; padding: 10px; border-radius: 4px; }
             .time-range { width: 100%; }
-            
             .container { padding: 0 25px; }
         }
     </style>
@@ -439,6 +454,20 @@
                         元ITエンジニアのコーチが伴走。AIを使ってあなただけのWebページを作り、その場で公開。<br>
                         Web上に「自分の家（Home）」を持つ安心感が、あなたをビジネスの挑戦（腹決め）へと駆り立てます。
                     </p>
+
+                    <div class="sample-area">
+                        <span class="sample-label">作成サンプル</span>
+                        
+                        <a href="https://naomitchy.github.io/CoCLEANUP-sample-HP/" target="_blank" class="sample-img-container">
+                            <img src="sample_hp.jpg" alt="作成されたWebサイトのイメージ（クリックでデモへ移動）">
+                        </a>
+
+                        <div class="sample-caption">
+                            <strong>「海のような、自然体な感じで」と伝えただけ。</strong>
+                            テンプレートを選ぶのではありません。「大切にしたい価値観」をAIに伝えると、あなたにぴったりの言葉とデザインが提案されます。<br>
+                            <a href="https://naomitchy.github.io/CoCLEANUP-sample-HP/" target="_blank" class="sample-link">実際のWebサイトを見てみる（Demo）→</a>
+                        </div>
+                    </div>
                     <ul class="menu-list">
                         <li><strong>魂を刻む導入コーチング：</strong>単なる作成作業ではありません。対話を通じて「本当に大切にしたい価値観」を言語化し、あなたの魂の入った言葉をサイトに刻みます。</li>
                         
@@ -739,7 +768,7 @@
 
                     let minMinutes = 60; 
                     if(selectedCourse.includes("Bコース")) {
-                        minMinutes = 90; // 90分以上に設定 (テキストが90〜120分のため)
+                        minMinutes = 90; // 90分以上に設定
                     }
 
                     const checkList = [
@@ -784,20 +813,17 @@
             
             forms.forEach(form => {
                 form.addEventListener('submit', function(e) {
-                    // 1. 既存のバリデーション（日付チェックなど）でエラーになっている場合は何もしない
                     if (e.defaultPrevented) return;
 
-                    // 2. 送信ボタンを取得
                     const btn = this.querySelector('button[type="submit"]');
                     
                     if (btn) {
-                        // 3. 送信処理が確実に開始された直後にボタンを無効化（iOS等での不具合防止のためsetTimeoutを使用）
                         setTimeout(() => {
-                            btn.disabled = true;       // ボタンを押せなくする
-                            btn.dataset.originalText = btn.textContent; // 元のテキストを保存（念のため）
-                            btn.textContent = '送信中...'; // ボタンの文字を変更
-                            btn.style.opacity = '0.7';   // 少し薄くして押せない感を出す
-                            btn.style.cursor = 'wait';   // マウスカーソルを待機状態に
+                            btn.disabled = true;       
+                            btn.dataset.originalText = btn.textContent; 
+                            btn.textContent = '送信中...'; 
+                            btn.style.opacity = '0.7';   
+                            btn.style.cursor = 'wait';   
                         }, 10);
                     }
                 });
