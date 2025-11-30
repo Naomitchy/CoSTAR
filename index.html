@@ -447,19 +447,22 @@
             body { line-height: 1.8; }
             .sp-only { display: block; }
             
-            /* ▼▼▼ 修正箇所：文字サイズをさらに調整して泣き別れ防止 ▼▼▼ */
+            /* ▼▼▼ 修正箇所：隙間調整 ▼▼▼ */
             .hero-content h1 { 
-                font-size: 1.25rem;  /* 1.4rem -> 1.25rem に微調整 */
-                line-height: 1.6;
+                font-size: 1.25rem;
+                line-height: 1.5; /* 行間を少し詰めました */
+            }
+            /* SP表示時のみ改行タグを無効化して隙間を削除 */
+            .hero-content h1 br {
+                display: none;
             }
             .hero-content h1 span {
                 display: block !important;
                 width: 100%;
             }
 
-            /* ▼▼▼ 追加箇所：Message冒頭文の文字サイズ調整 ▼▼▼ */
             .message-intro {
-                font-size: 1.0rem !important; /* PCは1.2remだが、SPでは1.0remにして1行に収める */
+                font-size: 1.0rem !important;
             }
 
             .hero-content p { 
