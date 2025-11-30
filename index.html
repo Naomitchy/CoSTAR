@@ -204,6 +204,18 @@
             z-index: 1; pointer-events: none; display: block;
         }
         .message-content { position: relative; z-index: 2; text-align: center; }
+        
+        /* Message Intro Style (PC Default) */
+        .message-intro {
+            text-align: center; 
+            font-weight: bold; 
+            margin-bottom: 3em; 
+            color: var(--text-color); 
+            font-size: 1.2rem; 
+            letter-spacing: 0.1em; 
+            line-height: 1.8;
+        }
+
         .story-text { text-align: left; max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: var(--text-color); }
         .story-text p { margin-bottom: 2.5em; }
         .highlight { 
@@ -435,8 +447,26 @@
             body { line-height: 1.8; }
             .sp-only { display: block; }
             
-            .hero-content h1 { font-size: 1.8rem; }
-            .hero-content p { font-size: 0.9rem; white-space: nowrap; }
+            /* ▼▼▼ 修正箇所：文字サイズをさらに調整して泣き別れ防止 ▼▼▼ */
+            .hero-content h1 { 
+                font-size: 1.25rem;  /* 1.4rem -> 1.25rem に微調整 */
+                line-height: 1.6;
+            }
+            .hero-content h1 span {
+                display: block !important;
+                width: 100%;
+            }
+
+            /* ▼▼▼ 追加箇所：Message冒頭文の文字サイズ調整 ▼▼▼ */
+            .message-intro {
+                font-size: 1.0rem !important; /* PCは1.2remだが、SPでは1.0remにして1行に収める */
+            }
+
+            .hero-content p { 
+                font-size: 0.9rem; 
+                white-space: normal;
+                word-wrap: break-word;
+            }
 
             .hero .btn { width: 100%; max-width: 100%; min-width: auto; padding: 15px 20px; }
             .quote-large { font-size: 0.9rem; line-height: 1.7; letter-spacing: 0; }
@@ -451,11 +481,9 @@
 
             .service-grid { grid-template-columns: 1fr; gap: 40px;}
             
-            /* ▼▼▼ SPでの並び順指定 (上: Coaching, 真ん中: CoCLEAUP, 下: CoSECRET) ▼▼▼ */
             .service-card.main-service { order: 1; }    /* Coaching */
             .service-card.monitor-service { order: 2; } /* CoCLEAUP */
             .service-card.coming-soon { order: 3; }     /* CoSECRET */
-            /* ▲▲▲ ここまで ▲▲▲ */
 
             .nav-actions { gap: 15px; }
             .concept-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -500,7 +528,7 @@
         <section class="container message-content">
             <h2 class="section-title">Message</h2>
             <div class="story-text">
-                <p style="text-align: center; font-weight: bold; margin-bottom: 3em; color: var(--text-color); font-size: 1.2rem; letter-spacing: 0.1em; line-height: 1.8;">
+                <p class="message-intro">
                     常識のレールを外れるのではない。<br>
                     「本来の自分」という軌道に戻るだけです。
                 </p>
