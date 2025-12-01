@@ -439,6 +439,12 @@
         .time-range { display: flex; align-items: center; gap: 5px; flex: 1; }
         .time-range select { flex: 1; min-width: 0; cursor: pointer; } 
 
+        /* --- 切り替え用クラス --- */
+        /* ▼▼▼ 修正箇所：PC/スマホ文章の表示切り替え ▼▼▼ */
+        .sp-only-text { display: none; }
+        .pc-only-text { display: block; }
+        /* ▲▲▲ ここまで ▲▲▲ */
+
         /* --- SP Only / Responsive --- */
         .sp-only { display: none; }
         @media (max-width: 900px) {
@@ -446,6 +452,11 @@
             section { padding: 60px 0; }
             body { line-height: 1.8; }
             .sp-only { display: block; }
+            
+            /* ▼▼▼ 修正箇所：スマホ表示時の文章切り替え ▼▼▼ */
+            .sp-only-text { display: block; }
+            .pc-only-text { display: none; }
+            /* ▲▲▲ ここまで ▲▲▲ */
             
             /* ▼▼▼ 修正箇所：タイトル泣き別れ対策 ▼▼▼ */
             .hero-content h1 { 
@@ -467,25 +478,25 @@
                 font-size: 1.0rem !important;
             }
 
-            /* ▼▼▼ 修正箇所：2行強制収め（自動縮小＆強制改行禁止） ▼▼▼ */
+            /* ▼▼▼ 修正箇所：スマホ用文章の強制改行・文字サイズ調整 ▼▼▼ */
             .hero-content p { 
-                /* 画面幅の2.8%に設定。狭い画面でも確実に2行に収まるサイズ感 */
-                font-size: clamp(9px, 2.8vw, 1.2rem); 
-                line-height: 1.6;
-                white-space: nowrap; /* brタグ以外での改行を禁止 */
-                letter-spacing: -0.02em; /* 少しだけ文字を詰める */
+                /* 画面幅の3.6%。計算上「空気を読んで…」の22文字が1行に収まるサイズ */
+                font-size: 3.6vw; 
+                line-height: 1.8;
+                
+                /* <br>以外での自動改行を強制禁止 */
+                white-space: nowrap; 
+                letter-spacing: -0.05em; /* 念のため文字間を少し詰める */
             }
             /* ▲▲▲ 修正ここまで ▲▲▲ */
 
-            /* ▼▼▼ 修正箇所：ボタンを小ぶりに調整 ▼▼▼ */
             .hero .btn { 
-                width: auto; /* 全幅をやめる */
-                max-width: 80%; /* 画面の8割程度 */
-                min-width: 200px; /* 最低限の幅 */
+                width: auto; 
+                max-width: 80%; 
+                min-width: 200px; 
                 padding: 12px 30px; 
                 font-size: 0.95rem; 
             }
-            /* ▲▲▲ 修正ここまで ▲▲▲ */
 
             .quote-large { font-size: 0.9rem; line-height: 1.7; letter-spacing: 0; }
             .concept-text h3 { font-size: 1.3rem; }
@@ -534,9 +545,15 @@
                 <span style="display:inline-block;">笑われる側へ行こう。</span>
             </h1>
             
-            <p>
-                空気を読んで、正解を選んで、誰かの期待に応え続ける人生。<br>
+            <p class="pc-only-text">
+                空気を読んで、正解を選んで、 誰かの期待に応え続ける人生。<br>
                 それで得た成功に、あなたの魂は震えていますか？
+            </p>
+            
+            <p class="sp-only-text">
+                空気を読んで、正解を選んで、 誰かの期待に<br>
+                応え続ける人生。 それで得た成功に、<br>
+                あなたの魂は震えていますか？
             </p>
             <a href="#message" class="btn">自分の人生を生きる</a>
         </div>
