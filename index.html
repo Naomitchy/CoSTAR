@@ -447,29 +447,37 @@
             body { line-height: 1.8; }
             .sp-only { display: block; }
             
-            /* ▼▼▼ 修正箇所：隙間調整 ▼▼▼ */
+            /* ▼▼▼ 修正箇所：タイトル泣き別れ対策 ▼▼▼ */
             .hero-content h1 { 
-                font-size: 1.25rem;
-                line-height: 1.5; /* 行間を少し詰めました */
+                font-size: clamp(1.15rem, 6.5vw, 2.4rem);
+                line-height: 1.35; 
+                font-weight: 700;
+                margin-bottom: 25px;
+                text-shadow: 0 0 15px rgba(255,255,255, 0.9);
             }
-            /* SP表示時のみ改行タグを無効化して隙間を削除 */
-            .hero-content h1 br {
-                display: none;
-            }
+            .hero-content h1 br { display: none; }
             .hero-content h1 span {
                 display: block !important;
                 width: 100%;
+                font-feature-settings: "palt";
+                white-space: nowrap;
             }
 
             .message-intro {
                 font-size: 1.0rem !important;
             }
 
+            /* ▼▼▼ 修正箇所：2行強制収め（自動縮小＆強制改行禁止） ▼▼▼ */
             .hero-content p { 
-                font-size: 0.9rem; 
-                white-space: normal;
-                word-wrap: break-word;
+                /* 2.8vw = 画面幅の2.8%。iPhone SE(320px)だと約9px、iPhone14(390px)だと約11px。
+                   これで2行に収まるように計算しています。
+                */
+                font-size: clamp(9px, 2.8vw, 1.2rem); 
+                line-height: 1.6;
+                white-space: nowrap; /* brタグ以外での改行を禁止 */
+                letter-spacing: -0.02em; /* 少しだけ文字を詰める */
             }
+            /* ▲▲▲ 修正ここまで ▲▲▲ */
 
             .hero .btn { width: 100%; max-width: 100%; min-width: auto; padding: 15px 20px; }
             .quote-large { font-size: 0.9rem; line-height: 1.7; letter-spacing: 0; }
@@ -518,6 +526,7 @@
                 <span style="display:inline-block;">「あいつは変わった」と、</span><br>
                 <span style="display:inline-block;">笑われる側へ行こう。</span>
             </h1>
+            
             <p>
                 空気を読んで、正解を選んで、誰かの期待に応え続ける人生。<br>
                 それで得た成功に、あなたの魂は震えていますか？
