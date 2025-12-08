@@ -211,9 +211,9 @@
             font-weight: bold; 
             margin-bottom: 3em; 
             color: var(--text-color); 
-            font-size: 1.2rem; 
+            font-size: 1.3rem; 
             letter-spacing: 0.1em; 
-            line-height: 1.8;
+            line-height: 2.0;
         }
 
         .story-text { text-align: left; max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: var(--text-color); }
@@ -258,11 +258,10 @@
         }
         .service-card.coming-soon { opacity: 0.6; border: 1px dashed #ccc; background: transparent; box-shadow: none; }
         
-        /* ▼▼▼ PCでの並び順指定 (左: CoCLEAUP, 中央: Coaching, 右: CoSECRET) ▼▼▼ */
-        .service-card.monitor-service { order: 1; } /* CoCLEAUP */
-        .service-card.main-service { order: 2; }    /* Coaching */
-        .service-card.coming-soon { order: 3; }     /* CoSECRET */
-        /* ▲▲▲ ここまで ▲▲▲ */
+        /* PC並び順 */
+        .service-card.monitor-service { order: 1; } 
+        .service-card.main-service { order: 2; }    
+        .service-card.coming-soon { order: 3; }     
 
         .service-card h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--text-color); font-weight: 600; font-family: "Shippori Mincho", serif;}
         .service-desc { flex-grow: 1; font-size: 0.95rem; color: var(--text-muted); }
@@ -276,9 +275,17 @@
 
         /* --- Value --- */
         .concept-section { background-color: var(--bg-color); }
-        .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+        
+        /* 3つのValueを配置するためのグリッド設定 */
+        .concept-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 40px; 
+            align-items: start; 
+        }
+        
         .concept-text h3 {
-            font-size: 1.5rem; line-height: 1.6; color: var(--text-color);
+            font-size: 1.4rem; line-height: 1.6; color: var(--text-color);
             margin-bottom: 25px; border-left: 3px solid var(--accent-color); padding-left: 20px; font-weight: 600;
         }
         .concept-text p { margin-bottom: 1.5em; color: var(--text-muted); font-size: 1rem; }
@@ -289,75 +296,57 @@
         }
         .value-svg { max-width: 100%; height: auto; filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.05)); }
 
-        /* --- Pricing --- */
-        .pricing-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: nowrap; align-items: stretch; }
-        .price-card {
-            background-color: var(--secondary-bg); 
-            border: none;
-            border-radius: 4px; padding: 35px 25px; width: 100%; max-width: 320px;
-            text-align: center; position: relative; display: flex; flex-direction: column;
-            box-shadow: var(--card-shadow);
-        }
-        .price-card.premium { 
-            background: linear-gradient(145deg, #fdfdfd, #f5f5f5); 
+        /* --- Partnership (Pricing) --- */
+        .partnership-box {
+            background-color: #fff;
+            max-width: 800px;
+            margin: 0 auto;
             border: 1px solid #e5e7eb;
-        }
-        .price-card.recommended {
-            border: 2px solid var(--accent-color); 
-            background: #fff;
-            transform: scale(1.05); z-index: 10; 
-            box-shadow: 0 20px 50px rgba(184, 150, 46, 0.15);
-        }
-        .badge {
-            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-            background-color: var(--accent-color); color: #fff; padding: 4px 12px;
-            font-size: 0.75rem; font-weight: bold; border-radius: 20px; white-space: nowrap;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .price-card h3 { font-size: 1.5rem; margin-bottom: 5px; color: var(--text-color); font-weight: 600; font-family: "Shippori Mincho", serif; }
-        .price-card .desc { font-size: 0.85rem; color: #888; margin-bottom: 25px; height: 35px;}
-        .price .amount { font-size: 2rem; font-weight: bold; color: var(--text-color);}
-        .price .unit { font-size: 0.8rem; color: #888; }
-        .price .original { display: block; text-decoration: line-through; color: #aaa; font-size: 0.8rem; margin-bottom: 5px; }
-        .save-text { color: #d9534f; font-weight: bold; margin-bottom: 20px; font-size: 0.85rem; }
-        .features { list-style: none; padding: 0; text-align: left; border-top: 1px solid #f3f4f6; padding-top: 20px; margin-top: auto; }
-        .features li { margin-bottom: 12px; padding-left: 20px; position: relative; font-size: 0.9rem; line-height: 1.4; color: var(--text-muted);}
-        .features li::before { content: "✔"; position: absolute; left: 0; color: var(--accent-color); font-size: 0.8rem;}
-
-        /* --- 注釈エリア --- */
-        .flow-area { margin: 40px auto 0; max-width: 700px; text-align: center; }
-        .flow-text { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.8; }
-        .benefit-box {
-            background: #fff;
-            border: 1px solid var(--accent-color);
-            border-radius: 8px;
-            padding: 20px;
-            display: inline-block;
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 15px;
-            position: relative;
-            box-shadow: 0 4px 15px rgba(184, 150, 46, 0.1);
-        }
-        .benefit-badge {
-            background-color: var(--accent-color);
-            color: #fff;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 3px 10px;
+            border-top: 4px solid var(--accent-color);
             border-radius: 4px;
-            vertical-align: text-bottom;
-            margin-right: 8px;
-        }
-        .corporate-area {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid #e5e7eb;
+            padding: 60px 40px;
+            box-shadow: var(--card-shadow);
             text-align: center;
-            font-size: 0.85rem;
-            color: #9ca3af;
         }
-        
+        .partnership-title {
+            font-family: "Shippori Mincho", serif;
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-bottom: 30px;
+        }
+        .partnership-desc {
+            font-size: 1.0rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            line-height: 2.0;
+            text-align: left;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .plan-highlight {
+            background: #fcfcfc;
+            border: 1px solid #eee;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .plan-name { font-weight: bold; font-size: 1.2rem; color: var(--text-color); margin-bottom: 10px; display:block;}
+        .plan-price { font-size: 2.2rem; font-weight: bold; color: var(--accent-color); font-family: "Noto Sans JP", sans-serif;}
+        .plan-price span { font-size: 1rem; color: #999; font-weight: normal; margin-left: 5px; }
+        .plan-detail { list-style: none; padding: 0; margin: 20px 0 0; display:flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .plan-detail li { font-size: 0.95rem; color: var(--text-color); font-weight: 500;}
+        .plan-note { font-size: 0.85rem; color: #999; margin-top: 15px; }
+
+        /* ↓↓↓ 今回追加したクラス ↓↓↓ */
+        .corporate-area {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
         /* --- Profile --- */
         .profile-flex { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; justify-content: center; }
         .profile-img {
@@ -440,10 +429,8 @@
         .time-range select { flex: 1; min-width: 0; cursor: pointer; } 
 
         /* --- 切り替え用クラス --- */
-        /* ▼▼▼ 修正箇所：PC/スマホ文章の表示切り替え ▼▼▼ */
         .sp-only-text { display: none; }
         .pc-only-text { display: block; }
-        /* ▲▲▲ ここまで ▲▲▲ */
 
         /* --- SP Only / Responsive --- */
         .sp-only { display: none; }
@@ -453,12 +440,9 @@
             body { line-height: 1.8; }
             .sp-only { display: block; }
             
-            /* ▼▼▼ 修正箇所：スマホ表示時の文章切り替え ▼▼▼ */
             .sp-only-text { display: block; }
             .pc-only-text { display: none; }
-            /* ▲▲▲ ここまで ▲▲▲ */
             
-            /* ▼▼▼ 修正箇所：タイトル泣き別れ対策 ▼▼▼ */
             .hero-content h1 { 
                 font-size: clamp(1.15rem, 6.5vw, 2.4rem);
                 line-height: 1.35; 
@@ -475,20 +459,15 @@
             }
 
             .message-intro {
-                font-size: 1.0rem !important;
+                font-size: 1.1rem !important;
             }
 
-            /* ▼▼▼ 修正箇所：スマホ用文章の強制改行・文字サイズ調整 ▼▼▼ */
             .hero-content p { 
-                /* 画面幅の3.6%。計算上「空気を読んで…」の22文字が1行に収まるサイズ */
                 font-size: 3.6vw; 
                 line-height: 1.8;
-                
-                /* <br>以外での自動改行を強制禁止 */
                 white-space: nowrap; 
-                letter-spacing: -0.05em; /* 念のため文字間を少し詰める */
+                letter-spacing: -0.05em; 
             }
-            /* ▲▲▲ 修正ここまで ▲▲▲ */
 
             .hero .btn { 
                 width: auto; 
@@ -501,21 +480,21 @@
             .quote-large { font-size: 0.9rem; line-height: 1.7; letter-spacing: 0; }
             .concept-text h3 { font-size: 1.3rem; }
             .concept-text h3 br { display: none; }
+            .concept-grid { grid-template-columns: 1fr; gap: 40px; } /* スマホは1列 */
             
-            .price-card { width: 100%; max-width: 100%; margin-bottom: 20px; }
-            .pricing-grid { flex-direction: column; align-items: stretch; padding: 0 10px; }
+            .partnership-box { padding: 30px 20px; }
+            .plan-detail { flex-direction: column; gap: 10px; }
             
             .btn-group { flex-direction: column; gap: 15px; }
             .btn-group .btn { width: 100%; min-width: auto; }
 
             .service-grid { grid-template-columns: 1fr; gap: 40px;}
             
-            .service-card.main-service { order: 1; }    /* Coaching */
-            .service-card.monitor-service { order: 2; } /* CoCLEAUP */
-            .service-card.coming-soon { order: 3; }     /* CoSECRET */
+            .service-card.main-service { order: 1; }    
+            .service-card.monitor-service { order: 2; } 
+            .service-card.coming-soon { order: 3; }     
 
             .nav-actions { gap: 15px; }
-            .concept-grid { grid-template-columns: 1fr; gap: 40px; }
             .profile-flex { flex-direction: column; gap: 30px;}
             .profile-img { width: 100%; height: auto; aspect-ratio: 3/4; flex: none;}
             
@@ -547,15 +526,15 @@
             
             <p class="pc-only-text">
                 空気を読んで、正解を選んで、 誰かの期待に応え続ける人生。<br>
-                それで得た成功に、あなたの魂は震えていますか？
+                それで得た成功に、あなたの魂は震えていますか？<br>     
             </p>
-            
-            <p class="sp-only-text">
+			
+			<p class="sp-only-text">
                 空気を読んで、正解を選んで、 誰かの期待に<br>
                 応え続ける人生。 それで得た成功に、<br>
                 あなたの魂は震えていますか？
             </p>
-            <a href="#message" class="btn">自分の人生を生きる</a>
+            <a href="#message" class="btn">物語を始める</a>
         </div>
     </div>
 
@@ -570,9 +549,7 @@
                 </p>
 
                 <p>
-                    周りの期待に応えてきた。社会のルールも守ってきた。十分な給与も得られた。
-                </p>
-                <p>
+                    周りの期待に応えてきた。社会のルールも守ってきた。十分な給与も得られた。<br>
                     でも、いつの間にか、自分は誰と仲が良いのか分からなくなった。<br>
                     気軽に「今日、ご飯食べに行かない？」なんて、言えなくなっていた。
                 </p>
@@ -586,9 +563,9 @@
                     誰にも本音を言えない。建前の中で生きる日々は、もう苦しい。
                 </p>
                 <p>
-                    <span class="highlight">「残りの人生、このまま偽りの中で生き続けるの？」<br>
-                    「このまま死んでいいの？」<br>
-                    「一体自分は何者なのか？」</span>
+                    <span class="highlight">「残りの人生、このまま偽りの中で生き続けるの？」</span><br>
+                    <span class="highlight">「このまま死んでいいの？」</span><br>
+                    <span class="highlight">「一体自分は何者なのか？」</span>
                 </p>
                 <p>
                     私はこの問いの答えを探す旅の中で、コーチングと出会いました。<br>
@@ -596,22 +573,22 @@
                     実は人生を動かす最もパワフルなリソース（エネルギー）であることを教えてくれました。
                 </p>
                 <p>
-                    完璧な自分にならなくていい。 <br>
-					矛盾も、葛藤も、情けない感情も、すべて携えて進めばいい。 <br>
-                    そう腹が決まった瞬間、世界は色を変えました。<br>
+                    矛盾も、葛藤も、情けない感情も、すべて携えて進めばいい。<br>
+                    そう腹が決まった瞬間、世界は色を変えました。
                 </p>
                 <p>
-				    もしあなたが、他人の評価や世間体ではなく、<br>
-					「本当に大切にしたい自分」を生きることに飢えているなら。 <br>
+                    もしあなたが、他人の評価や世間体ではなく、<br>
+                    「本当に大切にしたい自分」を生きることに飢えているなら。<br>
                     その「恐れ」や「弱さ」をエネルギーに変えて、人生を大胆に動かしたいと願うなら。
-				</p>
+                </p>
                 <p>
-				    ぜひ、私に会いに来てください。<br>
-					私がその「再起動」のプロセスを、あなたと共に創ります。
-				</p>
+                    ぜひ、私に会いに来てください。<br>
+                    私は、あなたの新しい生き方の「目撃者」です。
+                </p>
                 <p>
                     「あいつは変わった。」と笑わせておけばいい。<br>
-                    あなたの人生は、あなただけのものです。
+                    大丈夫。本当の自分と繋がれば、絶対に相手と繋がることができます。<br>
+					独りでは、辿り着けない場所へ、共に行きましょう。
                 </p>
 
                 <span class="quote-large">
@@ -638,12 +615,12 @@
                 <span class="tag" style="background:var(--accent-color); color:#fff; font-weight:bold;">受付中</span>
                 <h3>Coaching</h3>
                 <div class="service-desc">
-                    <p>プロコーチによるCo-Activeモデルを主軸とした継続的なコーチングセッション。</p>
+                    <p>プロコーチとの定期的な対話による、人生変革プロジェクト。</p>
                     <br>
-                    <p>人生全体を扱い、本質的な変容とリーダーシップ開発を目指す、CoSTARの中核サービスです。</p>
+                    <p>「自分を知り、自分を生きる」プロセスを、あなただけの「共演者（Co-star）」と共に歩みます。</p>
                 </div>
                 <div class="service-footer">
-                    <a href="#value" class="btn btn-outline" style="width:100%; padding: 12px; display:inline-block; box-sizing:border-box;">詳細を見る</a>
+                    <a href="#partnership" class="btn btn-outline" style="width:100%; padding: 12px; display:inline-block; box-sizing:border-box;">詳細を見る</a>
                 </div>
             </div>
             
@@ -667,8 +644,9 @@
         <div class="container">
             <h2 class="section-title">Value of Coaching</h2>
             <div class="concept-grid">
+                
                 <div class="concept-text">
-                    <h3>気持ちがいいだけのコーチングでは、<br>人生は変わらない。</h3>
+                    <h3>気持ちがいいだけでは、<br>現実は動かない。</h3>
                     <p>
                         コーチングの時間は、冒険（人生）における『隠れ家（聖域）』のようなものだと考えています。日々戦う戦場から離れ、重い仮面と防具を脱ぎ捨て、生身の自分に戻る時間。
                     </p>
@@ -683,6 +661,25 @@
                         本質的なエネルギーを再装填し、再び現実の舞台へ。ただの「癒やし」では終わらせず、現実を確実に動かす力を養います。
                     </p>
                 </div>
+
+                <div class="concept-text">
+                    <h3>あなたを「直さない」<br>という約束。</h3>
+                    <p>
+                        コーチングに対して、「悪いところを直してもらう」あるいは「正解を教えてもらう」というイメージがあるかもしれません。
+                    </p>
+                    <p>
+                        しかし、私はあなたを「直す」ことはしません。なぜなら、あなたは壊れてなどいないからです。<br>
+						人の力は偉大です。コーチをしている時、いつも驚かされます。私がコーチを続ける理由といってもいいでしょう。
+                    </p>
+                    <p>
+                        極端なことを言えば、コーチの仕事は、クライアントの人生を目撃することだと考えています。<br>
+                    </p>
+                    <p>
+                        「怪しい」と感じるかもしれません。是非、頭ではなく体で味わってみてください。<br>
+                        あなたが自分を疑う時も、私は信じることを止めません。
+                    </p>
+                </div>
+
                 <div class="concept-text">
                     <h3>「180度の変化」より、<br>確かな「2度の変化」を。</h3>
                     <p>
@@ -695,11 +692,13 @@
                         しかし、時間がたてばたつほど、今まで慣れ親しんだ過去の自分が、必ず「揺れ戻し」をします。
                     </p>
                     <p>
-                        コーチングの価値は、人生の角度を「2度」変えることにあります。<br>
-                        揺れ戻しを乗り越えるための伴走と軌道修正。<br>
+                        コーチングの価値は、人生の角度を「2度」変えることにあります。揺れ戻しを乗り越えるための伴走と軌道修正。
+					</p>
+                    <p>	
                         この地道な「2度」の積み重ねが、振り返った時に、あなたの人生を「深く、大きく」変化させているのです。
                     </p>
                 </div>
+
             </div>
             
             <div class="value-svg-container">
@@ -763,66 +762,44 @@
         </div>
     </section>
 
-    <section class="container" id="pricing">
-        <h2 class="section-title">Coaching Price</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: var(--text-muted);">
-            人生の角度を変え、定着させるには「継続」が不可欠です。<br>
-            そのため、3ヶ月間以上のパートナーシップを推奨します。
-        </p>
+    <section class="container" id="partnership">
+        <h2 class="section-title">Partnership</h2>
+        
+        <div class="partnership-box">
+            <h3 class="partnership-title">Coaching Partnership</h3>
+            
+            <div class="partnership-desc">
+                <p>
+                    本質的な変容には、痛みを伴う決断と、それを支える時間が必要です。<br>
+                    小手先のテクニックでその場を凌ぐのではなく、あなたの人生全体（Whole Life）を扱うため、単発のセッションは提供しておりません。
+                </p>
+                <p>
+                    私たちが結ぶのは、契約書以上の「同盟関係」です。<br>
+                    あなたが「自分の人生を生きる」と腹を括るなら、私はあなたと同じ熱量で、あなたの人生というプロジェクトにコミットし続けます。
+                </p>
+            </div>
 
-        <div class="pricing-grid">
-            <div class="price-card">
-                <h3>Single</h3>
-                <p class="desc">単発セッション</p>
-                <div class="price"><span class="amount">25,000</span><span class="unit">円(税込) / 回</span></div>
-                <ul class="features"><li>セッション 50分</li><li>都度予約</li><li>-</li><li>-</li></ul>
-            </div>
-            <div class="price-card recommended">
-                <div class="badge">Most Popular</div>
-                <h3>Standard</h3>
-                <p class="desc">本気の変革・3〜6ヶ月コース</p>
-                <div class="price">
-                    <span class="original">175,000円(税込)</span><span class="amount">140,000</span><span class="unit">円(税込) / 一括</span>
-                </div>
-                <p class="save-text">覚悟への応援として <span>20% OFF</span></p>
-                <ul class="features"><li>導入セッション 120分 × 1回</li><li>継続セッション 50分 × 6回</li><li>月1〜2回ペース</li></ul>
-            </div>
-            <div class="price-card premium">
-                <h3>Premium</h3>
-                <p class="desc">フル・パートナーシップ（8〜10ヶ月）</p>
-                <div class="price"><span class="amount">300,000</span><span class="unit">円(税込) / 一括</span></div>
-                <ul class="features">
-                    <li>導入セッション 120分 × 1回</li><li>継続セッション 50分 × 14回</li>
-                    <li style="color: var(--accent-color); font-weight:bold;">期間中のメール/LINEサポート付</li>
-                    <li style="color: var(--accent-color); font-weight:bold;">緊急セッション権（3回まで）</li>
+            <div class="plan-highlight">
+                <span class="plan-name">Model Plan（モデルプラン）</span>
+                <div class="plan-price">140,000<span>円 (税込)</span></div>
+                <ul class="plan-detail">
+                    <li>導入セッション 120分 × 1回</li>
+                    <li>継続セッション 50分 × 6回</li>
+                    <li>期間目安：約3ヶ月〜</li>
                 </ul>
             </div>
-        </div>
-
-        <div class="flow-area">
-            <div class="flow-text">
-                まずは<span style="color:var(--accent-color); font-weight:bold; cursor:pointer; text-decoration:underline;" onclick="openModal('trial')">体験セッション</span>にて、<br class="sp-only">コーチとの相性をご確認いただいてから、<br class="sp-only">契約のご案内をさせていただきます。<br>
-                無理な勧誘はいたしませんので<br class="sp-only">ご安心ください。
-            </div>
             
-            <div class="benefit-box">
-                <div>
-                    <span class="benefit-badge">特典</span>
-                    <span style="font-weight:bold; color:var(--text-color);">継続コースご契約で</span>
-                </div>
-                <div style="margin-top:8px; line-height:1.8; color:var(--text-color);">
-                    体験セッション代を<br class="sp-only">
-                    <span style="font-weight:bold; font-size:1.1em;">
-                        <span style="color:var(--accent-color);">全額充当（実質無料）。</span>
-                    </span>
-                </div>
-            </div>
+            <p style="font-size:0.9rem; color:#666; margin-bottom:30px;">
+                ※上記は一例です。実際の頻度や期間は、体験セッションにて、<br class="pc-only-text">
+                あなたの旅の目的地に合わせて合意（Design）します。
+            </p>
+
+            <button class="btn btn-primary" onclick="openModal('trial')">体験セッション申込</button>
         </div>
 
         <div class="corporate-area">
             <p>
-                法人契約、または特定の期間・頻度での<br class="sp-only">
-                カスタマイズをご希望の方は、<br class="sp-only">
+                法人契約、またはエグゼクティブ・リーダーシップ開発をご希望の方は、<br class="sp-only">
                 <span style="color: var(--accent-color); cursor: pointer; text-decoration: underline;" onclick="openModal('contact')">お問い合わせフォーム</span>
                 よりご相談ください。
             </p>
@@ -843,12 +820,15 @@
                     米国CTI認定 CPCC / 国際コーチング連盟 ICF認定 ACC
                 </p>
                 <p>
-                    1982年生まれ。大手IT企業を経て、石油元売のIT部門にてシステム開発（PM）、プロセス改革、戦略策定、生成AI組織の立ち上げ、組織リーダーを歴任。<br>
+                    1982年生まれ。大手IT企業を経て、石油元売のIT部門にてシステム開発（PM）、プロセス改革、生成AI組織の立ち上げ、組織リーダーを歴任。<br>
                     自身のリーダーシップへの葛藤からコーチングと出会う。
                 </p>
                 <p>
-                    自身が「価値がない」と否定し隠してきた部分こそが、人生を動かす最もパワフルなリソースであることを体感。<br>
-                    完璧な仮面の下にある、あなたの全ての感情と共にいます。<br>
+                    私自身、「価値がない」と自分を否定し、隠してきた部分こそが、人生を動かす最もパワフルなリソースであることを体感しました。
+                </p>
+                <p>
+                    私はあなたの人生を「目撃」し続けます。<br>
+                    完璧な仮面の下にある、あなたの全ての感情と共に。<br>
                     あなたの「最高傑作」の物語を、共に創りましょう。
                 </p>
             </div>
@@ -859,8 +839,8 @@
         <div class="container">
             <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 30px;">Contact</h2>
             <p style="margin-bottom: 30px; color: var(--text-muted);">
-                まずは、あなたの物語を少しだけ聞かせてください。<br>
-                体験セッションのお申し込み、またはご質問はこちらから。
+                まずは、体験セッションにて、<br>
+                私たちが互いのパートナーとして相応しいか、確かめ合いましょう。
             </p>
             <div class="btn-group">
                 <button class="btn btn-primary" onclick="openModal('trial')">体験セッション申込</button>
@@ -886,18 +866,23 @@
                 <input type="hidden" name="_redirectTo" value="https://costar-works.com/thanks.html">
                 
                 <div style="background:#f9fafb; padding:20px; border-radius:4px; margin-bottom:30px; font-size:0.85rem; line-height:1.7; border:1px solid #e5e7eb;">
-                    <h3 style="color:var(--accent-color); font-size:1rem; margin-top:0; margin-bottom:10px;">お申込みの前にご確認ください</h3>
+                    <h3 style="color:var(--accent-color); font-size:1rem; margin-top:0; margin-bottom:10px;">お申込みの前に</h3>
+                    <p style="margin-bottom:10px;">
+                        これは単なる「お試し」ではありません。<br>
+                        私という人間が、あなたの人生を共に歩むパートナーとして相応しいか。
+                        そして、あなたが今、本当に人生を動かす覚悟があるか。<br>
+                        互いの「共鳴（Chemistry）」を確かめ合う、真剣勝負の時間です。
+                    </p>
                     <ul style="padding-left:20px; margin:0; color:#666;">
-                        <li><strong>守秘義務について：</strong>セッションで話された内容は、ICFの倫理規定に基づき厳重に守秘されます。安心してお話しください。</li>
-                        <li><strong>サービスの性質：</strong>コーチングは医療行為・治療ではありません。心身の不調で通院中の方は、医師の許可が必要です。</li>
-                        <li><strong>キャンセルポリシー：</strong>ご入金後の返金は原則いたしかねます。日程変更は前日まで可能です。当日の無断キャンセルは1回分消化となります。</li>
-                        <li><strong>お支払い：</strong>原則として、日程確定後の事前銀行振込（またはカード決済）をお願いしております。</li>
-                        <li><strong>特典：</strong>継続コース（Standard/Premium）にご成約いただいた場合、本セッション料金（5,000円 税込）を全額充当いたします。</li>
+                        <li><strong>守秘義務：</strong>セッション内容はICF倫理規定に基づき厳重に守秘されます。</li>
+                        <li><strong>キャンセルポリシー：</strong>ご入金後の返金は原則いたしかねます。日程変更は前日まで可能です。</li>
+                        <li><strong>お支払い：</strong>事前銀行振込（またはカード決済）をお願いしております。</li>
                     </ul>
                     <div style="margin-top:15px; font-weight:bold; color:var(--text-color); border-top:1px solid #e5e7eb; padding-top:10px;">
-                        時間: 45分（オリエンテーション15分＋セッション25分＋質疑5分）<br>
+                        時間: 45分（オリエンテーション含）<br>
                         料金: 5,000円（税込）<br>
-                        形式: オンライン（Zoom）
+                        形式: オンライン（Zoom）<br>
+                        <span style="font-size:0.8em; font-weight:normal; color:#666;">※本契約に至った場合、この料金は初回費用に充当されます。</span>
                     </div>
                 </div>
 
@@ -917,10 +902,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">体験セッションの希望日時（第3希望まで） <span style="color:#d9534f">*</span></label>
+                    <label class="form-label">希望日時（第3希望まで） <span style="color:#d9534f">*</span></label>
                     <p style="font-size:0.8rem; color:#999; margin-bottom:15px;">
-                        平日・土日祝の 7:00〜22:00 の間で、セッション可能な時間枠をご指定ください。<br>
-                        <span style="font-size:0.75em; color:#aaa;">（例：11/25 の 10:00 〜 15:00 の間）</span>
+                        平日・土日祝の 7:00〜22:00 の間でご指定ください。<br>
                     </p>
 
                     <div style="margin-bottom: 15px;">
@@ -1033,7 +1017,7 @@
                 </tr>
                 <tr>
                     <th>販売価格</th>
-                    <td>当サイトの料金ページ（Service/Price）に表示された金額（税込）をご参照ください。</td>
+                    <td>当サイトのPartnershipセクションに表示された金額（税込）をご参照ください。</td>
                 </tr>
                 <tr>
                     <th>商品代金以外の<br>必要料金</th>
@@ -1325,20 +1309,17 @@
             
             forms.forEach(form => {
                 form.addEventListener('submit', function(e) {
-                    // 1. 既存のバリデーション（日付チェックなど）でエラーになっている場合は何もしない
                     if (e.defaultPrevented) return;
 
-                    // 2. 送信ボタンを取得
                     const btn = this.querySelector('button[type="submit"]');
                     
                     if (btn) {
-                        // 3. 送信処理が確実に開始された直後にボタンを無効化（iOS等での不具合防止のためsetTimeoutを使用）
                         setTimeout(() => {
-                            btn.disabled = true;       // ボタンを押せなくする
-                            btn.dataset.originalText = btn.textContent; // 元のテキストを保存（念のため）
-                            btn.textContent = '送信中...'; // ボタンの文字を変更
-                            btn.style.opacity = '0.7';   // 少し薄くして押せない感を出す
-                            btn.style.cursor = 'wait';   // マウスカーソルを待機状態に
+                            btn.disabled = true;       
+                            btn.dataset.originalText = btn.textContent; 
+                            btn.textContent = '送信中...'; 
+                            btn.style.opacity = '0.7';   
+                            btn.style.cursor = 'wait';   
                         }, 10);
                     }
                 });
