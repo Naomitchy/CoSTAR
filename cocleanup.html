@@ -153,6 +153,20 @@
         }
         .menu-list strong { color: var(--text-color); }
 
+        /* --- FAQ Styles --- */
+        .faq-item {
+            background: #fff; padding: 25px; border-radius: 8px; margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid #eee;
+        }
+        .faq-q {
+            color: var(--accent-color); font-weight: bold; margin-bottom: 10px; font-size: 1.05rem;
+            display: flex; gap: 10px; align-items: flex-start;
+        }
+        .faq-q::before { content: "Q."; font-size: 1.2rem; line-height: 1.2; }
+        .faq-a {
+            font-size: 0.95rem; line-height: 1.9; color: var(--text-color); padding-left: 30px;
+        }
+
         /* --- Sample HP Preview (New) --- */
         .sample-area {
             margin: 25px 0;
@@ -309,6 +323,8 @@
             .datetime-row { flex-direction: column; align-items: stretch; gap: 5px; margin-bottom: 20px; background: #f3f4f6; padding: 10px; border-radius: 4px; }
             .time-range { width: 100%; }
             .container { padding: 0 25px; }
+            .faq-q { flex-direction: column; gap: 0; }
+            .faq-a { padding-left: 0; margin-top: 10px; }
         }
     </style>
 </head>
@@ -392,18 +408,20 @@
             </div>
             <div class="solution-text">
                 <p>
-                    CoCLEANUPは、ただの「お片付け代行」でも「Web制作代行」でもありません。<br>
-                    <span class="highlight">「同じ時間に、コーチも一緒に取り組む」</span>という、共犯関係のプログラムです。
+                    CoCLEANUPは、単なる「作業代行」や「監視」ではありません。<br>
+                    あなたが「完了」させるその瞬間を、<span class="highlight">誰よりも信じ、最後まで見届ける「証人」</span>としてのプログラムです。
                 </p>
                 <p>
-                    Zoomを繋ぎます。監視はしませんが、接続は切れません。<br>
-                    あなたが片付けをしている間、コーチの私も、同じ空間（Zoom）で溜まった作業や自身の課題に取り組みます。<br>
-                    <span style="font-size:0.9em; color:var(--text-muted);">（もちろん、進め方や、詰まった時の相談はいつでも可能です）</span>
+                    独りだと、ついスマホを見たり、「明日でいいか」と自分に言い訳をしてしまう。<br>
+                    そんな時、画面の向こうには、あなたの可能性を信じて疑わないコーチがいます。
                 </p>
                 <p>
-                    「誰かと一緒なら、不思議と身体が動く」<br>
-                    このシンプルな真実を使って、あなたの重たい腰を上げ、<br>
-                    終わった後の<span class="highlight">「私にもできた！」という完了の喜び</span>を分かち合いたいのです。
+                    私は別の作業をしません。あなただけを見ています。<br>
+                    逃げ出しそうな時は引き戻し、手が止まったら問いかけ、心が折れそうな時は全力で励ます。
+                </p>
+                <p>
+                    <span class="highlight">「あなた以上に、あなたがやり切ることを信じている人間が、そこにいる」</span><br>
+                    その程よい緊張感と安心感が、あなたの重たい腰を上げ、先送りに終止符を打ちます。
                 </p>
             </div>
         </div>
@@ -420,7 +438,7 @@
                 <div class="menu-header">
                     <span class="inline-phrase">Aコース：</span><span class="inline-phrase">お部屋のCleanUp</span>
                     <div class="price-box">
-                        <span class="original-price">通常 8,000円</span>
+                        <span class="original-price">通常 15,000円</span>
                         <span class="monitor-price">モニター 3,000円(税込)</span>
                     </div>
                 </div>
@@ -432,9 +450,9 @@
                     <ul class="menu-list">
                         <li><strong>未来のレンダリング（導入コーチング）：</strong>「原因探し」はしません。「片付いた部屋で、どんな気持ちで過ごしたいか？」その時の高揚感や安らぎを先にありありと描き（レンダリング）、完了へ向かうエネルギーを充填します。</li>
                         
-                        <li><strong>恥の開放：</strong>「見せるのも嫌」な場所をコーチに共有することで、心理的なブロックが外れます。深い自己開示は、その後の人生を変える信頼関係の入り口となります。</li>
+                        <li><strong>恥の開放と受容：</strong>「こんな汚い部屋、見せられない」という恥を、まずは私に見せてください。私は評価判断しません。ただ「あるものを、ある」と認めることで、心理的なブロックが外れます。</li>
                         
-                        <li><strong>過去との決別（実況中継）：</strong>作業中に出てきた「思い出」や「感情」を実況しながら進めることで、モノへの執着を手放し、脳のメモリを強制的に解放します。</li>
+                        <li><strong>証人としての介在（実況中継）：</strong>あなたが手を動かしている間、コーチはずっと見守ります。手が止まれば「今、何を感じましたか？」と声をかけます。捨てられないモノがあれば、納得して手放せるまで対話をします。</li>
                         
                         <li><strong>時間：</strong>60分（コーチング15分＋作業45分）</li>
                     </ul>
@@ -445,7 +463,7 @@
                 <div class="menu-header">
                     <span class="inline-phrase">Bコース：</span><span class="inline-phrase">Webサイト作成</span>
                     <div class="price-box">
-                        <span class="original-price">通常 35,000円</span>
+                        <span class="original-price">通常 45,000円</span>
                         <span class="monitor-price">モニター 10,000円(税込)</span>
                     </div>
                 </div>
@@ -473,9 +491,9 @@
                         
                         <li><strong>創造の喜び（AI伴走）：</strong>テンプレートに想いを押し込める必要はありません。「何と言えばいいか分からない」をAIと共に突破し、白紙のキャンバスにあなただけの色を描きます。</li>
                         
-                        <li><strong>主導権を取り戻す（黒い画面は不要）：</strong>難しい技術は不要ですが、コーチと離れた後も、あなたはAIで自由に修正が可能になります。修正のたびにプロに頭を下げる必要はありません。</li>
+                        <li><strong>完了への叱咤激励：</strong>「もっといい文章が思いついたら...」という完璧主義は、ここでは通用しません。「今のベストで出す」ことへの恐怖に対し、コーチが勇気づけ、時に背中を強く押します。</li>
                         
-                        <li><strong>維持費0円で公開：</strong>サーバー代がかからない無料の公開サービス（GitHub Pages）を使います。</li>
+                        <li><strong>「最初の読者」になる：</strong>技術的な公開設定（GitHub Pages）のサポートはもちろん、URLが発行された瞬間、コーチがそのサイトの「世界で最初の訪問者」となり、その誕生を祝福します。</li>
                         
                         <li><strong>時間：</strong>90分〜120分</li>
                     </ul>
@@ -485,7 +503,44 @@
         </div>
     </section>
 
-    <section class="gray-section" id="apply">
+    <section class="gray-section" style="padding: 60px 0;">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="mincho">FAQ</h2>
+                <p>よくあるご質問</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-q">コーチは作業を手伝ってくれないのですか？ 見ているだけで本当に進むのでしょうか？</div>
+                <div class="faq-a">
+                    はい、驚くほど進みます。<br>
+                    例えば、図書館で勉強したり、カフェで仕事をすると捗った経験はありませんか？ 人は「他者の目」があるだけで、集中力が劇的に変わります。<br>
+                    さらにCoCLEANUPでは、単なる他人ではなく、あなたの味方であるコーチが「完了」へのコミットメントを持ち続けます。「サボれない」ではなく「応援されている」という環境が、あなたの背中を強力に押し続けます。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">部屋が汚すぎて、画面に映すのが本当に恥ずかしいのですが…</div>
+                <div class="faq-a">
+                    そのお気持ち、痛いほどよく分かります。でも、その「恥ずかしさ」こそが、片付けを遠ざけている正体なのです。<br>
+                    コーチには守秘義務があり、決してあなたの部屋を評価したり、批判することはありません。<br>
+                    「見せたくない場所」を信頼できる相手に開示できた瞬間、心のブロックが外れ、驚くほど手が動くようになります。安心して飛び込んでください。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">（HP作成）文章や画像など、何も準備できていないのですが…</div>
+                <div class="faq-a">
+                    全く問題ありません。むしろ、準備ゼロの「真っ白な状態」から作り上げるライブ感を大切にしています。<br>
+                    「何を書けばいいかわからない」という状態から、コーチとAIが対話をしながら、その場であなたの想いを言語化していきます。<br>
+                    事前準備は一切不要です。あなたの「作りたい」という気持ちだけを持って、手ぶらでご参加ください。
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="gray-section" id="apply" style="padding-top:20px;">
         <div class="container">
             <div class="section-head">
                 <h2 class="mincho" style="color:var(--urgent-color);">Monitor Offer</h2>
