@@ -25,26 +25,15 @@
     <style>
         /* --- 基本設定 (Modern Atelier Theme) --- */
         :root {
-            /* ベースカラー: 清潔感のあるオフホワイト */
             --bg-color: #F9FAFB; 
             --bg-gradient: radial-gradient(circle at center top, #FFFFFF 0%, #F3F4F6 100%);
-            
-            /* 文字色: 視認性の高いチャコールグレー */
             --text-color: #333333; 
             --text-muted: #666666;
-            
-            /* アクセント: 白背景に映える落ち着いたゴールド */
             --accent-color: #B8962E;
-            /* 強調用（モニター募集など） */
             --urgent-color: #d9534f;
-            
-            /* セクション背景: 純白 */
             --secondary-bg: #FFFFFF; 
-            
-            /* カードの影: 浮遊感のあるドロップシャドウ */
             --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             --card-shadow-hover: 0 20px 40px rgba(184, 150, 46, 0.15);
-
             color-scheme: light;
         }
 
@@ -53,14 +42,14 @@
             font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
             background: var(--bg-color);
             color: var(--text-color);
-            line-height: 2.0; /* 読みやすさ重視で行間を広めに */
+            line-height: 2.0;
             letter-spacing: 0.05em;
             font-feature-settings: "palt";
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, .logo, .quote-large, .hero-content p {
+        h1, h2, h3, .logo, .quote-large, .hero-content p, .plan-name-main {
             font-family: "Shippori Mincho", serif;
         }
 
@@ -205,17 +194,10 @@
         }
         .message-content { position: relative; z-index: 2; text-align: center; }
         
-        /* Message Intro Style (PC Default) */
         .message-intro {
-            text-align: center; 
-            font-weight: bold; 
-            margin-bottom: 3em; 
-            color: var(--text-color); 
-            font-size: 1.3rem; 
-            letter-spacing: 0.1em; 
-            line-height: 2.0;
+            text-align: center; font-weight: bold; margin-bottom: 3em; 
+            color: var(--text-color); font-size: 1.3rem; letter-spacing: 0.1em; line-height: 2.0;
         }
-
         .story-text { text-align: left; max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: var(--text-color); }
         .story-text p { margin-bottom: 2.5em; }
         .highlight { 
@@ -224,41 +206,26 @@
             padding-bottom: 2px; 
         }
         .quote-large {
-            font-size: 1.5rem; 
-            color: #8F7320; 
-            margin: 80px 0; display: block;
+            font-size: 1.5rem; color: #8F7320; margin: 80px 0; display: block;
             text-align: center; line-height: 1.8; 
             border-top: 1px solid rgba(184, 150, 46, 0.3);
             border-bottom: 1px solid rgba(184, 150, 46, 0.3); 
-            padding: 40px 0;
-            background-color: rgba(184, 150, 46, 0.03);
+            padding: 40px 0; background-color: rgba(184, 150, 46, 0.03);
         }
 
         /* --- Services --- */
         .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
         .service-card {
             background-color: var(--secondary-bg); padding: 35px; border-radius: 4px;
-            border: none; 
-            box-shadow: var(--card-shadow);
+            border: none; box-shadow: var(--card-shadow);
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative; display: flex; flex-direction: column; height: 100%; box-sizing: border-box;
         }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--card-shadow-hover);
-        }
-        .service-card.main-service {
-            border: 1px solid var(--accent-color); 
-            background: #fff;
-        }
-        /* モニター募集用デザイン：薄い赤のグラデーション */
-        .service-card.monitor-service {
-            border: 2px solid var(--urgent-color);
-            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
-        }
+        .service-card:hover { transform: translateY(-5px); box-shadow: var(--card-shadow-hover); }
+        .service-card.main-service { border: 1px solid var(--accent-color); background: #fff; }
+        .service-card.monitor-service { border: 2px solid var(--urgent-color); background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); }
         .service-card.coming-soon { opacity: 0.6; border: 1px dashed #ccc; background: transparent; box-shadow: none; }
         
-        /* PC並び順 */
         .service-card.monitor-service { order: 1; } 
         .service-card.main-service { order: 2; }    
         .service-card.coming-soon { order: 3; }     
@@ -275,21 +242,12 @@
 
         /* --- Value --- */
         .concept-section { background-color: var(--bg-color); }
-        
-        /* 3つのValueを配置するためのグリッド設定 */
-        .concept-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 40px; 
-            align-items: start; 
-        }
-        
+        .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start; }
         .concept-text h3 {
             font-size: 1.4rem; line-height: 1.6; color: var(--text-color);
             margin-bottom: 25px; border-left: 3px solid var(--accent-color); padding-left: 20px; font-weight: 600;
         }
         .concept-text p { margin-bottom: 1.5em; color: var(--text-muted); font-size: 1rem; }
-        
         .value-svg-container {
             text-align: center; margin-top: 60px; margin-bottom: 30px;
             position: relative; display: flex; justify-content: center;
@@ -298,54 +256,42 @@
 
         /* --- Partnership (Pricing) --- */
         .partnership-box {
-            background-color: #fff;
-            max-width: 800px;
-            margin: 0 auto;
-            border: 1px solid #e5e7eb;
-            border-top: 4px solid var(--accent-color);
-            border-radius: 4px;
-            padding: 60px 40px;
-            box-shadow: var(--card-shadow);
-            text-align: center;
+            background-color: #fff; max-width: 850px; margin: 0 auto;
+            border: 1px solid #e5e7eb; border-top: 4px solid var(--accent-color);
+            border-radius: 4px; padding: 60px 40px; box-shadow: var(--card-shadow); text-align: center;
         }
-        .partnership-title {
-            font-family: "Shippori Mincho", serif;
-            font-size: 1.8rem;
-            color: var(--text-color);
-            margin-bottom: 30px;
-        }
+        .partnership-title { font-family: "Shippori Mincho", serif; font-size: 1.8rem; color: var(--text-color); margin-bottom: 30px; }
         .partnership-desc {
-            font-size: 1.0rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            line-height: 2.0;
-            text-align: left;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.0rem; color: var(--text-muted); margin-bottom: 40px;
+            line-height: 2.0; text-align: left; max-width: 650px; margin-left: auto; margin-right: auto;
         }
-        .plan-highlight {
-            background: #fcfcfc;
-            border: 1px solid #eee;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            text-align: center;
+        
+        /* New Plans Styling */
+        .plans-wrapper {
+            display: flex; gap: 20px; justify-content: center; margin-bottom: 30px;
         }
-        .plan-name { font-weight: bold; font-size: 1.2rem; color: var(--text-color); margin-bottom: 10px; display:block;}
-        .plan-price { font-size: 2.2rem; font-weight: bold; color: var(--accent-color); font-family: "Noto Sans JP", sans-serif;}
-        .plan-price span { font-size: 1rem; color: #999; font-weight: normal; margin-left: 5px; }
-        .plan-detail { list-style: none; padding: 0; margin: 20px 0 0; display:flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .plan-detail li { font-size: 0.95rem; color: var(--text-color); font-weight: 500;}
-        .plan-note { font-size: 0.85rem; color: #999; margin-top: 15px; }
+        .plan-card {
+            flex: 1; background: #fcfcfc; border: 1px solid #eee; border-radius: 8px; padding: 30px 20px; text-align: center;
+            display: flex; flex-direction: column;
+        }
+        .plan-card.highlight {
+            border: 1px solid var(--accent-color); background: #fff;
+            box-shadow: 0 5px 15px rgba(184, 150, 46, 0.1);
+        }
+        .plan-name-main { font-size: 1.2rem; font-weight: 600; margin-bottom: 5px; color: var(--text-color); line-height: 1.3; }
+        .plan-name-sub { font-size: 0.85rem; color: #666; display: block; margin-bottom: 15px; font-weight: normal;}
+        .plan-price { font-size: 2.0rem; font-weight: bold; color: var(--accent-color); font-family: "Noto Sans JP", sans-serif; line-height: 1;}
+        .plan-price span { font-size: 0.9rem; color: #999; font-weight: normal; margin-left: 3px; }
+        .plan-monthly { font-size: 0.8rem; color: #888; margin-top: 5px; margin-bottom: 20px; }
+        
+        .plan-detail { 
+            list-style: none; padding: 0; margin: 0; 
+            text-align: left; display: inline-block; font-size: 0.9rem; color: var(--text-color);
+        }
+        .plan-detail li { margin-bottom: 8px; padding-left: 1.2em; text-indent: -1.2em;}
+        .plan-detail li::before { content: "✔"; color: var(--accent-color); margin-right: 5px; }
 
-        /* ↓↓↓ 今回追加したクラス ↓↓↓ */
-        .corporate-area {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
+        .corporate-area { text-align: center; margin-top: 40px; font-size: 0.95rem; color: var(--text-muted); }
 
         /* --- Profile --- */
         .profile-flex { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; justify-content: center; }
@@ -364,28 +310,16 @@
 
         /* --- Footer --- */
         footer { 
-            text-align: center; padding: 80px 0; 
-            background-color: #FFFFFF; 
-            font-size: 0.9rem; color: #9ca3af; 
-            border-top: 1px solid #f3f4f6; 
+            text-align: center; padding: 80px 0; background-color: #FFFFFF; 
+            font-size: 0.9rem; color: #9ca3af; border-top: 1px solid #f3f4f6; 
         }
 
         /* --- Legal & Modals --- */
-        .legal-table {
-            width: 100%; border-collapse: collapse; margin-bottom: 30px; font-size: 0.9rem;
-        }
-        .legal-table th, .legal-table td {
-            border: 1px solid #e5e7eb; padding: 15px; text-align: left; color: var(--text-color);
-        }
-        .legal-table th {
-            background-color: #f9fafb; color: var(--text-color); width: 30%; font-weight: bold;
-        }
-        .legal-text {
-            font-size: 0.9rem; line-height: 1.8; color: var(--text-color); margin-bottom: 20px; text-align: left;
-        }
-        .legal-text h3 {
-            font-size: 1.1rem; color: var(--text-color); margin-top: 30px; margin-bottom: 10px; border-bottom: 1px solid #e5e7eb; padding-bottom: 5px;
-        }
+        .legal-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; font-size: 0.9rem; }
+        .legal-table th, .legal-table td { border: 1px solid #e5e7eb; padding: 15px; text-align: left; color: var(--text-color); }
+        .legal-table th { background-color: #f9fafb; color: var(--text-color); width: 30%; font-weight: bold; }
+        .legal-text { font-size: 0.9rem; line-height: 1.8; color: var(--text-color); margin-bottom: 20px; text-align: left; }
+        .legal-text h3 { font-size: 1.1rem; color: var(--text-color); margin-top: 30px; margin-bottom: 10px; border-bottom: 1px solid #e5e7eb; padding-bottom: 5px; }
 
         .modal {
             display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
@@ -393,111 +327,67 @@
         }
         .modal-content {
             background-color: #fff; margin: 5% auto; padding: 40px; 
-            border: none;
-            width: 90%; max-width: 700px; border-radius: 8px; position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-            animation: slideIn 0.4s ease;
-            color: var(--text-color);
+            border: none; width: 90%; max-width: 700px; border-radius: 8px; position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15); animation: slideIn 0.4s ease; color: var(--text-color);
         }
         @keyframes slideIn { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
-        
         .close-btn {
-            position: absolute; top: 15px; right: 20px;
-            color: #ccc; font-size: 35px; font-weight: bold; cursor: pointer; transition: 0.3s;
-            line-height: 1; z-index: 10;
+            position: absolute; top: 15px; right: 20px; color: #ccc; font-size: 35px; font-weight: bold; cursor: pointer; transition: 0.3s; line-height: 1; z-index: 10;
         }
         .close-btn:hover { color: var(--accent-color); }
         
         .form-group { margin-bottom: 25px; text-align: left; }
         .form-label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--text-color); font-size: 0.95rem; }
         .form-input, .form-textarea, .form-select {
-            width: 100%; padding: 12px; 
-            border: 1px solid #e5e7eb; background-color: #f9fafb;
-            color: var(--text-color); border-radius: 4px; font-size: 1rem; box-sizing: border-box; font-family: inherit;
-            transition: 0.3s;
+            width: 100%; padding: 12px; border: 1px solid #e5e7eb; background-color: #f9fafb;
+            color: var(--text-color); border-radius: 4px; font-size: 1rem; box-sizing: border-box; font-family: inherit; transition: 0.3s;
         }
         .form-input:focus, .form-textarea:focus, .form-select:focus {
             outline: none; border-color: var(--accent-color); background-color: #fff; box-shadow: 0 0 0 3px rgba(184, 150, 46, 0.1);
         }
         .form-textarea { resize: vertical; min-height: 100px; }
-        
-        /* Datetime Row */
-        .datetime-row {
-            display: flex; gap: 10px; align-items: center; margin-bottom: 15px;
-        }
+        .datetime-row { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; }
         .time-range { display: flex; align-items: center; gap: 5px; flex: 1; }
         .time-range select { flex: 1; min-width: 0; cursor: pointer; } 
 
-        /* --- 切り替え用クラス --- */
         .sp-only-text { display: none; }
         .pc-only-text { display: block; }
-
-        /* --- SP Only / Responsive --- */
         .sp-only { display: none; }
+
         @media (max-width: 900px) {
             .container { padding: 0 25px; }
             section { padding: 60px 0; }
             body { line-height: 1.8; }
             .sp-only { display: block; }
-            
             .sp-only-text { display: block; }
             .pc-only-text { display: none; }
             
             .hero-content h1 { 
-                font-size: clamp(1.15rem, 6.5vw, 2.4rem);
-                line-height: 1.35; 
-                font-weight: 700;
-                margin-bottom: 25px;
+                font-size: clamp(1.15rem, 6.5vw, 2.4rem); line-height: 1.35; font-weight: 700; margin-bottom: 25px;
                 text-shadow: 0 0 15px rgba(255,255,255, 0.9);
             }
             .hero-content h1 br { display: none; }
-            .hero-content h1 span {
-                display: block !important;
-                width: 100%;
-                font-feature-settings: "palt";
-                white-space: nowrap;
-            }
-
-            .message-intro {
-                font-size: 1.1rem !important;
-            }
-
-            .hero-content p { 
-                font-size: 3.6vw; 
-                line-height: 1.8;
-                white-space: nowrap; 
-                letter-spacing: -0.05em; 
-            }
-
-            .hero .btn { 
-                width: auto; 
-                max-width: 80%; 
-                min-width: 200px; 
-                padding: 12px 30px; 
-                font-size: 0.95rem; 
-            }
-
+            .hero-content h1 span { display: block !important; width: 100%; font-feature-settings: "palt"; white-space: nowrap; }
+            .message-intro { font-size: 1.1rem !important; }
+            .hero-content p { font-size: 3.6vw; line-height: 1.8; white-space: nowrap; letter-spacing: -0.05em; }
+            .hero .btn { width: auto; max-width: 80%; min-width: 200px; padding: 12px 30px; font-size: 0.95rem; }
             .quote-large { font-size: 0.9rem; line-height: 1.7; letter-spacing: 0; }
             .concept-text h3 { font-size: 1.3rem; }
             .concept-text h3 br { display: none; }
-            .concept-grid { grid-template-columns: 1fr; gap: 40px; } /* スマホは1列 */
+            .concept-grid { grid-template-columns: 1fr; gap: 40px; }
             
             .partnership-box { padding: 30px 20px; }
-            .plan-detail { flex-direction: column; gap: 10px; }
+            .plans-wrapper { flex-direction: column; } /* プランを縦並び */
             
             .btn-group { flex-direction: column; gap: 15px; }
             .btn-group .btn { width: 100%; min-width: auto; }
-
             .service-grid { grid-template-columns: 1fr; gap: 40px;}
-            
             .service-card.main-service { order: 1; }    
             .service-card.monitor-service { order: 2; } 
             .service-card.coming-soon { order: 3; }     
-
             .nav-actions { gap: 15px; }
             .profile-flex { flex-direction: column; gap: 30px;}
             .profile-img { width: 100%; height: auto; aspect-ratio: 3/4; flex: none;}
-            
             .datetime-row { flex-direction: column; align-items: stretch; gap: 5px; margin-bottom: 20px; background: #f3f4f6; padding: 10px; border-radius: 4px; }
             .time-range { width: 100%; }
         }
@@ -780,16 +670,29 @@
                 </p>
             </div>
 
-            <div class="plan-highlight">
-                <span class="plan-name">Model Plan（モデルプラン）</span>
-                <div class="plan-price">140,000<span>円 (税込)</span></div>
-                <ul class="plan-detail">
-                    <li>導入セッション 120分 × 1回</li>
-                    <li>継続セッション 50分 × 6回</li>
-                    <li>期間目安：約3ヶ月〜</li>
-                </ul>
+            <div class="plans-wrapper">
+                <div class="plan-card">
+                    <h4 class="plan-name-main">Plan A: Foundation<span class="plan-name-sub">基盤構築</span></h4>
+                    <div class="plan-price">140,000<span>円 (税込)</span></div>
+                    <div class="plan-monthly">（月額換算：約46,000円）</div>
+                    <ul class="plan-detail">
+                        <li>導入 120分 × 1回</li>
+                        <li>継続 50分 × 6回</li>
+                        <li>期間目安：3ヶ月〜</li>
+                    </ul>
+                </div>
+
+                <div class="plan-card highlight">
+                    <h4 class="plan-name-main">Plan B: Transformation<span class="plan-name-sub">変容・探求</span></h4>
+                    <div class="plan-price">270,000<span>円 (税込)</span></div>
+                    <div class="plan-monthly">（月額換算：45,000円）</div>
+                    <ul class="plan-detail">
+                        <li>導入 120分 × 1回</li>
+                        <li>継続 50分 × 12回</li>
+                        <li>期間目安：6ヶ月〜</li>
+                    </ul>
+                </div>
             </div>
-            
             <p style="font-size:0.9rem; color:#666; margin-bottom:30px;">
                 ※上記は一例です。実際の頻度や期間は、体験セッションにて、<br class="pc-only-text">
                 あなたの旅の目的地に合わせて合意（Design）します。
