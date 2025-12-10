@@ -175,7 +175,7 @@
         /* ▼▼▼ アイデア2（改）：クリック発火型の狂気（グリッチ） ▼▼▼ */
         @keyframes glitch-anim {
             0% { transform: translate(0); text-shadow: none; }
-            20% { transform: translate(-3px, 3px); text-shadow: 3px 0 #d9534f, -3px 0 #3498db; } /* 揺れ幅を少し大きく */
+            20% { transform: translate(-3px, 3px); text-shadow: 3px 0 #d9534f, -3px 0 #3498db; }
             40% { transform: translate(-3px, -3px); text-shadow: -3px 0 #d9534f, 3px 0 #3498db; }
             60% { transform: translate(3px, 3px); text-shadow: 3px 0 #d9534f, -3px 0 #3498db; }
             80% { transform: translate(3px, -3px); text-shadow: -3px 0 #d9534f, 3px 0 #3498db; }
@@ -1287,6 +1287,28 @@
                         this.classList.remove('glitch-active');
                     }, 500);
                 });
+            }
+        });
+
+        // --- アイデア1：深夜2時のゴースト (Time Axis Hack) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const now = new Date();
+            const hour = now.getHours();
+            
+            // 2:00 〜 3:59 の間だけ発動
+            // テストしたい場合は、ここを if (hour >= 0 && hour < 24) などに変えてください
+            if (hour >= 2 && hour < 4) {
+                const heroTitle = document.querySelector('.hero-content h1');
+                if (heroTitle) {
+                    // テキストを書き換え（レイアウト崩れを防ぐためspan構造は維持）
+                    heroTitle.innerHTML = `
+                        <span style="display:inline-block;">……まだ起きているんですか？</span><br>
+                        <span style="display:inline-block;">私もです。</span>
+                    `;
+                    
+                    // オプション：ゴーストモード時は文字色を少し淡くするなど
+                    heroTitle.style.opacity = "0.8";
+                }
             }
         });
     </script>
