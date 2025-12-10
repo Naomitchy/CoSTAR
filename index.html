@@ -368,7 +368,14 @@
             }
             .hero-content h1 br { display: none; }
             .hero-content h1 span { display: block !important; width: 100%; font-feature-settings: "palt"; white-space: nowrap; }
-            .message-intro { font-size: 1.1rem !important; }
+            
+            .message-intro { 
+                font-size: clamp(0.7rem, 3.8vw, 1.1rem) !important;
+                letter-spacing: 0.05em;
+                word-break: keep-all;
+                line-height: 1.8;
+            }
+
             .hero-content p { font-size: 3.6vw; line-height: 1.8; white-space: nowrap; letter-spacing: -0.05em; }
             .hero .btn { width: auto; max-width: 80%; min-width: 200px; padding: 12px 30px; font-size: 0.95rem; }
             .quote-large { font-size: 0.9rem; line-height: 1.7; letter-spacing: 0; }
@@ -377,7 +384,24 @@
             .concept-grid { grid-template-columns: 1fr; gap: 40px; }
             
             .partnership-box { padding: 30px 20px; }
-            .plans-wrapper { flex-direction: column; } /* プランを縦並び */
+            .plans-wrapper { flex-direction: column; } 
+            
+            /* ▼▼▼ 追加箇所：スマホでの料金表示調整 ▼▼▼ */
+            .plan-price {
+                font-size: 1.6rem; /* 文字サイズを少し小さく */
+                display: flex;       /* Flexboxで横並びを制御 */
+                align-items: baseline; /* ベースラインで揃える */
+                justify-content: center; /* 中央寄せ */
+                flex-wrap: wrap; /* 画面が極端に狭い場合は折り返しを許可 */
+                gap: 5px; /* 金額と単位の間の隙間 */
+            }
+
+            .plan-price span {
+                font-size: 0.8rem; /* 単位の文字サイズも合わせて少し小さく */
+                white-space: nowrap; /* 「円 (税込)」を改行させない */
+                margin-left: 0; /* gapで間隔を空けるのでmarginはリセット */
+            }
+            /* ▲▲▲ 追加箇所ここまで ▲▲▲ */
             
             .btn-group { flex-direction: column; gap: 15px; }
             .btn-group .btn { width: 100%; min-width: auto; }
@@ -733,8 +757,7 @@
                 <p>
                     私はあなたの人生を「目撃」し続けます。<br>
                     完璧な仮面の下にある、あなたの全ての感情と共に。<br>
-                    あなたの「最高傑作」の物語を、共に創りましょう。<br>
-					見たこともない景色が、その先に待っています。
+                    見たこともない景色が、その先に待っています。
                 </p>
             </div>
         </div>
