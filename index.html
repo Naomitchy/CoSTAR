@@ -162,6 +162,8 @@
             font-size: 3.5rem; font-weight: 600; margin-bottom: 30px; line-height: 1.5;
             letter-spacing: 0.1em; color: var(--text-color); 
             text-shadow: 2px 2px 0px #fff, 0 0 20px rgba(255,255,255,0.8);
+            transition: all 0.3s;
+            cursor: pointer; /* クリックできることを示す */
         }
         .hero-content p { font-size: 1.2rem; margin-bottom: 60px; color: var(--text-muted); letter-spacing: 0.1em; font-weight: 500; }
         
@@ -169,6 +171,23 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* ▼▼▼ アイデア2（改）：クリック発火型の狂気（グリッチ） ▼▼▼ */
+        @keyframes glitch-anim {
+            0% { transform: translate(0); text-shadow: none; }
+            20% { transform: translate(-3px, 3px); text-shadow: 3px 0 #d9534f, -3px 0 #3498db; } /* 揺れ幅を少し大きく */
+            40% { transform: translate(-3px, -3px); text-shadow: -3px 0 #d9534f, 3px 0 #3498db; }
+            60% { transform: translate(3px, 3px); text-shadow: 3px 0 #d9534f, -3px 0 #3498db; }
+            80% { transform: translate(3px, -3px); text-shadow: -3px 0 #d9534f, 3px 0 #3498db; }
+            100% { transform: translate(0); text-shadow: none; }
+        }
+
+        /* JSでこのクラスがついた時だけアニメーション */
+        .glitch-active {
+            animation: glitch-anim 0.1s infinite !important; /* 高速振動 */
+            color: #333 !important;
+        }
+        /* ▲▲▲ ここまで ▲▲▲ */
 
         /* --- セクション共通 --- */
         section { padding: 100px 0; }
@@ -386,7 +405,7 @@
             .partnership-box { padding: 30px 20px; }
             .plans-wrapper { flex-direction: column; } 
             
-            /* ▼▼▼ 追加箇所：スマホでの料金表示調整 ▼▼▼ */
+            /* ▼▼▼ スマホでの料金表示調整 ▼▼▼ */
             .plan-price {
                 font-size: 1.6rem; /* 文字サイズを少し小さく */
                 display: flex;       /* Flexboxで横並びを制御 */
@@ -401,7 +420,7 @@
                 white-space: nowrap; /* 「円 (税込)」を改行させない */
                 margin-left: 0; /* gapで間隔を空けるのでmarginはリセット */
             }
-            /* ▲▲▲ 追加箇所ここまで ▲▲▲ */
+            /* ▲▲▲ 料金表示調整ここまで ▲▲▲ */
             
             .btn-group { flex-direction: column; gap: 15px; }
             .btn-group .btn { width: 100%; min-width: auto; }
@@ -717,6 +736,7 @@
                     </ul>
                 </div>
             </div>
+            
             <p style="font-size:0.9rem; color:#666; margin-bottom:30px;">
                 ※上記は一例です。実際の頻度や期間は、体験セッションにて、<br class="pc-only-text">
                 あなたの旅の目的地に合わせて合意（Design）します。
@@ -1252,6 +1272,22 @@
                     }
                 });
             });
+        });
+
+        // --- クリックでグリッチ発火 ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroTitle = document.querySelector('.hero-content h1');
+            if(heroTitle) {
+                heroTitle.addEventListener('click', function() {
+                    // クラスを追加してアニメーション開始
+                    this.classList.add('glitch-active');
+                    
+                    // 0.5秒後にクラスを外して停止
+                    setTimeout(() => {
+                        this.classList.remove('glitch-active');
+                    }, 500);
+                });
+            }
         });
     </script>
 </body>
