@@ -163,7 +163,7 @@
             letter-spacing: 0.1em; color: var(--text-color); 
             text-shadow: 2px 2px 0px #fff, 0 0 20px rgba(255,255,255,0.8);
             transition: all 0.3s;
-            cursor: pointer; /* クリックできることを示す */
+            cursor: pointer;
         }
         .hero-content p { font-size: 1.2rem; margin-bottom: 60px; color: var(--text-muted); letter-spacing: 0.1em; font-weight: 500; }
         
@@ -172,7 +172,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ▼▼▼ アイデア2（改）：クリック発火型の狂気（グリッチ） ▼▼▼ */
+        /* Glitch Animation */
         @keyframes glitch-anim {
             0% { transform: translate(0); text-shadow: none; }
             20% { transform: translate(-3px, 3px); text-shadow: 3px 0 #d9534f, -3px 0 #3498db; }
@@ -181,13 +181,10 @@
             80% { transform: translate(3px, -3px); text-shadow: -3px 0 #d9534f, 3px 0 #3498db; }
             100% { transform: translate(0); text-shadow: none; }
         }
-
-        /* JSでこのクラスがついた時だけアニメーション */
         .glitch-active {
-            animation: glitch-anim 0.1s infinite !important; /* 高速振動 */
+            animation: glitch-anim 0.1s infinite !important;
             color: #333 !important;
         }
-        /* ▲▲▲ ここまで ▲▲▲ */
 
         /* --- セクション共通 --- */
         section { padding: 100px 0; }
@@ -273,25 +270,75 @@
         }
         .value-svg { max-width: 100%; height: auto; filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.05)); }
 
-        /* --- Partnership (Pricing) --- */
+        /* --- Partnership (Pricing & Narrative Project) --- */
         .partnership-box {
-            background-color: #fff; max-width: 850px; margin: 0 auto;
+            background-color: #fff; max-width: 900px; margin: 0 auto;
             border: 1px solid #e5e7eb; border-top: 4px solid var(--accent-color);
             border-radius: 4px; padding: 60px 40px; box-shadow: var(--card-shadow); text-align: center;
         }
         .partnership-title { font-family: "Shippori Mincho", serif; font-size: 1.8rem; color: var(--text-color); margin-bottom: 30px; }
-        .partnership-desc {
-            font-size: 1.0rem; color: var(--text-muted); margin-bottom: 40px;
-            line-height: 2.0; text-align: left; max-width: 650px; margin-left: auto; margin-right: auto;
-        }
         
-        /* New Plans Styling */
+        /* Campaign Box for Narrative Project */
+        .campaign-box {
+            background: linear-gradient(135deg, #FFFEF9 0%, #FFF8E5 100%);
+            border: 1px solid #E5D5A0;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 40px auto 50px;
+            position: relative;
+            max-width: 750px;
+            box-shadow: 0 5px 20px rgba(184, 150, 46, 0.1);
+        }
+        .campaign-tag {
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 10px rgba(184, 150, 46, 0.3);
+            white-space: nowrap;
+        }
+        .campaign-header {
+            font-family: "Shippori Mincho", serif;
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .campaign-desc {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .campaign-terms {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 15px;
+            border-radius: 6px;
+            text-align: left;
+            font-size: 0.9rem;
+            color: #555;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .campaign-terms ul { margin: 0; padding-left: 20px; }
+        .campaign-terms li { margin-bottom: 5px; }
+        .campaign-terms li:last-child { margin-bottom: 0; }
+        .campaign-alert { font-weight: bold; color: var(--accent-color); }
+
+        /* Plans Styling */
         .plans-wrapper {
             display: flex; gap: 20px; justify-content: center; margin-bottom: 30px;
         }
         .plan-card {
             flex: 1; background: #fcfcfc; border: 1px solid #eee; border-radius: 8px; padding: 30px 20px; text-align: center;
-            display: flex; flex-direction: column;
+            display: flex; flex-direction: column; position: relative;
         }
         .plan-card.highlight {
             border: 1px solid var(--accent-color); background: #fff;
@@ -299,9 +346,16 @@
         }
         .plan-name-main { font-size: 1.2rem; font-weight: 600; margin-bottom: 5px; color: var(--text-color); line-height: 1.3; }
         .plan-name-sub { font-size: 0.85rem; color: #666; display: block; margin-bottom: 15px; font-weight: normal;}
-        .plan-price { font-size: 2.0rem; font-weight: bold; color: var(--accent-color); font-family: "Noto Sans JP", sans-serif; line-height: 1;}
-        .plan-price span { font-size: 0.9rem; color: #999; font-weight: normal; margin-left: 3px; }
-        .plan-monthly { font-size: 0.8rem; color: #888; margin-top: 5px; margin-bottom: 20px; }
+        
+        .price-row { margin-bottom: 20px; }
+        .price-label { font-size: 0.75rem; color: #999; display: block; margin-bottom: 2px;}
+        .price-original { 
+            text-decoration: line-through; color: #aaa; font-size: 0.9rem; margin-right: 5px; 
+        }
+        .price-campaign { 
+            font-size: 1.8rem; font-weight: bold; color: var(--accent-color); font-family: "Noto Sans JP", sans-serif; line-height: 1; 
+        }
+        .price-campaign span { font-size: 0.8rem; color: var(--accent-color); font-weight: normal; margin-left: 2px; }
         
         .plan-detail { 
             list-style: none; padding: 0; margin: 0; 
@@ -405,22 +459,10 @@
             .partnership-box { padding: 30px 20px; }
             .plans-wrapper { flex-direction: column; } 
             
-            /* ▼▼▼ スマホでの料金表示調整 ▼▼▼ */
-            .plan-price {
-                font-size: 1.6rem; /* 文字サイズを少し小さく */
-                display: flex;       /* Flexboxで横並びを制御 */
-                align-items: baseline; /* ベースラインで揃える */
-                justify-content: center; /* 中央寄せ */
-                flex-wrap: wrap; /* 画面が極端に狭い場合は折り返しを許可 */
-                gap: 5px; /* 金額と単位の間の隙間 */
-            }
-
-            .plan-price span {
-                font-size: 0.8rem; /* 単位の文字サイズも合わせて少し小さく */
-                white-space: nowrap; /* 「円 (税込)」を改行させない */
-                margin-left: 0; /* gapで間隔を空けるのでmarginはリセット */
-            }
-            /* ▲▲▲ 料金表示調整ここまで ▲▲▲ */
+            /* 価格表示の調整 */
+            .price-campaign { font-size: 1.6rem; }
+            .campaign-box { padding: 25px 20px; }
+            .campaign-header { font-size: 1.2rem; }
             
             .btn-group { flex-direction: column; gap: 15px; }
             .btn-group .btn { width: 100%; min-width: auto; }
@@ -483,7 +525,7 @@
 
                 <p>
                     周りの期待に応えてきた。社会のルールも守ってきた。十分な給与も得られた。<br>
-                    でも、いつの間にか、気軽に「今日、ご飯食べに行かない？」なんて、言えなくなっていた<br>
+                    でも、いつの間にか、気軽に「今日、ご飯食べに行かない？」なんて、言えなくなっていた。<br>
                     私は誰からも愛されていないのではないか。
                 </p>
                 <p>
@@ -517,12 +559,12 @@
                 </p>
                 <p>
                     ぜひ、私に会いに来てください。<br>
-                    私は、あなたの新しい物語を、共に創ります。
+                    私は、あなたの新しい物語を、共に創れる人です。<br>
                 </p>
                 <p>
                     「あいつは変わった。」と笑わせておけばいい。<br>
                     大丈夫。本当の自分と繋がれば、絶対に相手と繋がれることを、私は知っています。<br>
-					独りでは、辿り着けない場所へ、共に行きましょう。
+					ひとりでは、辿り着けない場所へ、共に行きましょう。
                 </p>
 
                 <span class="quote-large">
@@ -551,7 +593,7 @@
                 <div class="service-desc">
                     <p>プロコーチとの定期的な対話による、人生変革プロジェクト。</p>
                     <br>
-                    <p>「自分を知り、自分を生きる」プロセスを、あなただけの「共演者（Co-star）」と共に歩みます。</p>
+                    <p>「自分を知り、自分を生きる」プロセスを、人生の主人公である「あなた」と共に歩みます。</p>
                 </div>
                 <div class="service-footer">
                     <a href="#value" class="btn btn-outline" style="width:100%; padding: 12px; display:inline-block; box-sizing:border-box;">詳細を見る</a>
@@ -609,8 +651,7 @@
                         極端なことを言えば、コーチの仕事は、クライアントの人生を目撃することだと考えています。<br>
                     </p>
                     <p>
-                        「怪しい」と感じるかもしれません。是非、頭ではなく体で味わってみてください。<br>
-                        あなたが自分を疑う時も、私は信じることを止めません。
+                        「それで人生変わるの？」と感じるかもしれません。是非、頭ではなく体で味わってみてください。あなたが自分を疑う時も、私は信じることを止めません。
                     </p>
                 </div>
 
@@ -705,19 +746,45 @@
             <div class="partnership-desc">
                 <p>
                     本質的な変容には、痛みを伴う決断と、それを支える時間が必要です。<br>
-                    小手先のテクニックでその場を凌ぐのではなく、あなたの人生全体（Whole Life）を扱うため、単発のセッションは提供しておりません。
+                    小手先のテクニックでその場を凌ぐのではなく、あなたの人生全体を扱うため、<br>
+                    単発のセッションは提供しておりません。
                 </p>
                 <p>
                     私たちが結ぶのは、契約書以上の「同盟関係」です。<br>
-                    あなたが「自分の人生を生きる」と腹を括るなら、私はあなたと同じ熱量で、あなたの人生というプロジェクトにコミットし続けます。
+                    あなたが「自分の人生を生きる」と腹を括るなら、私はあなたと同じ熱量で、<br>
+                    あなたの人生というプロジェクトにコミットし続けます。
                 </p>
+            </div>
+
+            <div class="campaign-box">
+                <span class="campaign-tag">3名限定 Monitor Offer</span>
+                <h4 class="campaign-header">CoSTAR First Narrative Project</h4>
+                <div class="campaign-desc">
+                    事業立ち上げに伴い、Webサイト等に掲載する「事例（Case Study）」を構築するためのプロジェクトです。<br>
+                    通常のセッションに加え、変化のプロセスを記録・言語化する工程にご協力いただきます。
+                </div>
+                <div class="campaign-terms">
+                    <ul>
+                        <li><span class="campaign-alert">参加条件：</span>プロセス記録のコンテンツ化（匿名記事化）への承諾</li>
+                        <li><span class="campaign-alert">提供内容：</span>正規プランと同内容を <span style="font-weight:bold; color:#d9534f;">特別価格</span> にて提供</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="plans-wrapper">
                 <div class="plan-card">
                     <h4 class="plan-name-main">Plan A: Foundation<span class="plan-name-sub">基盤構築</span></h4>
-                    <div class="plan-price">140,000<span>円 (税込)</span></div>
-                    <div class="plan-monthly">（月額換算：約46,000円）</div>
+                    
+                    <div class="price-row">
+                        <span class="price-label">通常価格（税込）</span>
+                        <span class="price-original">140,000円</span>
+                    </div>
+                    
+                    <div style="margin-bottom:20px; border-top:1px dashed #ddd; padding-top:10px;">
+                        <span class="price-label" style="color:var(--accent-color); font-weight:bold;">Narrative Project 価格</span>
+                        <div class="price-campaign">88,000<span>円 (税込)</span></div>
+                    </div>
+
                     <ul class="plan-detail">
                         <li>導入 120分 × 1回</li>
                         <li>継続 50分 × 6回</li>
@@ -727,8 +794,17 @@
 
                 <div class="plan-card highlight">
                     <h4 class="plan-name-main">Plan B: Transformation<span class="plan-name-sub">変容・探求</span></h4>
-                    <div class="plan-price">270,000<span>円 (税込)</span></div>
-                    <div class="plan-monthly">（月額換算：45,000円）</div>
+                    
+                    <div class="price-row">
+                        <span class="price-label">通常価格（税込）</span>
+                        <span class="price-original">270,000円</span>
+                    </div>
+                    
+                    <div style="margin-bottom:20px; border-top:1px dashed #ddd; padding-top:10px;">
+                        <span class="price-label" style="color:var(--accent-color); font-weight:bold;">Narrative Project 価格</span>
+                        <div class="price-campaign">165,000<span>円 (税込)</span></div>
+                    </div>
+
                     <ul class="plan-detail">
                         <li>導入 120分 × 1回</li>
                         <li>継続 50分 × 12回</li>
@@ -737,12 +813,15 @@
                 </div>
             </div>
             
-            <p style="font-size:0.9rem; color:#666; margin-bottom:30px;">
-                ※上記は一例です。実際の頻度や期間は、体験セッションにて、<br class="pc-only-text">
-                あなたの旅の目的地に合わせて合意（Design）します。
+            <p style="font-size:0.9rem; color:#666; margin-bottom:10px;">
+                ※実際の頻度や期間は、体験セッションにて、あなたの旅の目的地に合わせて合意（Design）します。
+            </p>
+            <p style="font-size:0.9rem; color:#d9534f; font-weight:bold; margin-bottom:30px;">
+                ※本契約は、必ず「体験セッション」を経て、双方が合意した場合のみ締結されます。<br>
+                まずは体験セッション（適合性確認）へお進みください。
             </p>
 
-            <button class="btn btn-primary" onclick="openModal('trial')">体験セッション申込</button>
+            <button class="btn btn-primary" onclick="openModal('trial')">体験セッション（適合性確認）申込</button>
         </div>
 
         <div class="corporate-area">
@@ -791,7 +870,7 @@
                 私たちが互いのパートナーとして相応しいか、確かめ合いましょう。
             </p>
             <div class="btn-group">
-                <button class="btn btn-primary" onclick="openModal('trial')">体験セッション申込</button>
+                <button class="btn btn-primary" onclick="openModal('trial')">体験セッション（適合性確認）申込</button>
                 <button class="btn btn-outline" onclick="openModal('contact')">お問い合わせ</button>
             </div>
             <br><br>
@@ -814,16 +893,14 @@
                 <input type="hidden" name="_redirectTo" value="https://costar-works.com/thanks.html">
                 
                 <div style="background:#f9fafb; padding:20px; border-radius:4px; margin-bottom:30px; font-size:0.85rem; line-height:1.7; border:1px solid #e5e7eb;">
-                    <h3 style="color:var(--accent-color); font-size:1rem; margin-top:0; margin-bottom:10px;">お申込みの前に</h3>
+                    <h3 style="color:var(--accent-color); font-size:1rem; margin-top:0; margin-bottom:10px;">Chemistry Check（適合性確認）</h3>
                     <p style="margin-bottom:10px;">
-                        これは単なる「お試し」ではありません。<br>
-                        私という人間が、あなたの人生を共に歩むパートナーとして相応しいか。
-                        そして、あなたが今、本当に人生を動かす覚悟があるか。<br>
-                        互いの「共鳴（Chemistry）」を確かめ合う、真剣勝負の時間です。
+                        コーチングが機能するためには、コーチとクライアントの相性、および目的の一致が不可欠です。<br>
+                        本セッションは、契約前のミスマッチを防ぐための「適合性確認」を兼ねています。<br>
+                        無理な勧誘は一切行いません。また、当方からお引き受けできないと判断する場合もございますので、予めご了承ください。
                     </p>
                     <ul style="padding-left:20px; margin:0; color:#666;">
                         <li><strong>守秘義務：</strong>セッション内容はICF倫理規定に基づき厳重に守秘されます。</li>
-                        <li><strong>キャンセルポリシー：</strong>ご入金後の返金は原則いたしかねます。日程変更は前日まで可能です。</li>
                         <li><strong>お支払い：</strong>事前銀行振込（またはカード決済）をお願いしております。</li>
                     </ul>
                     <div style="margin-top:15px; font-weight:bold; color:var(--text-color); border-top:1px solid #e5e7eb; padding-top:10px;">
