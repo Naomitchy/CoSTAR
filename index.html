@@ -426,6 +426,13 @@
         .sp-only-text { display: none; }
         .pc-only-text { display: block; }
         .sp-only { display: none; }
+        
+        /* --- プログラム詳細のレイアウト調整（追加） --- */
+        .program-row {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
 
         @media (max-width: 900px) {
             .container { padding: 0 25px; }
@@ -475,6 +482,15 @@
             .profile-img { width: 100%; height: auto; aspect-ratio: 3/4; flex: none;}
             .datetime-row { flex-direction: column; align-items: stretch; gap: 5px; margin-bottom: 20px; background: #f3f4f6; padding: 10px; border-radius: 4px; }
             .time-range { width: 100%; }
+
+            /* --- プログラム詳細のスマホ用調整（追加） --- */
+            .program-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .program-row > div:first-child {
+                align-self: flex-start;
+            }
         }
     </style>
 </head>
@@ -822,8 +838,7 @@
                 </h4>
                 <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 20px;">
                     「型」や「基本」を否定するつもりは毛頭ありません。私自身、それに支えられています。<br><br>
-                    ただ、「正しいコーチング」であろうとするあまり、自分自身の「音色」や「体温」を押し殺している人を見るのは、もったいなくて見ていられません。<br><br>
-                    あなたが隠そうとしている「人間臭さ」や「衝動」の中にこそ、クライアントを動かす最大の武器が眠っています。<br>
+                    ただ、「正しいコーチング」であろうとするあまり、自分自身の「音色」や「体温」を押し殺している人を見るのは、もったいなくて見ていられません。あなたが隠そうとしている「人間臭さ」や「衝動」の中にこそ、クライアントを動かす最大の武器が眠っています。<br><br>
                     私がまず、誰よりも自由に、勇気を持ってお節介に関わります。その「理屈を超えたインパクト」を浴びることで、あなたの内側にあるリミッターが勝手に外れていく。そんな体験を、ここにしに来てください。
                 </p>
 
@@ -834,7 +849,7 @@
                     <div style="padding: 25px;">
                         
                         <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px;">
-                            <div style="display: flex; gap: 15px; align-items: flex-start;">
+                            <div class="program-row">
                                 <div style="background: #f3f4f6; color: var(--text-color); font-weight: bold; padding: 5px 10px; border-radius: 4px; white-space: nowrap;">Day 1</div>
                                 <div>
                                     <div style="font-weight: bold; color: var(--text-color); margin-bottom: 5px;">Source Discovery (90分)</div>
@@ -845,7 +860,7 @@
                                 </div>
                             </div>
                             
-                            <div style="display: flex; gap: 15px; align-items: flex-start;">
+                            <div class="program-row">
                                 <div style="background: #f3f4f6; color: var(--text-color); font-weight: bold; padding: 5px 10px; border-radius: 4px; white-space: nowrap;">Day 2</div>
                                 <div>
                                     <div style="font-weight: bold; color: var(--text-color); margin-bottom: 5px;">Integration (60分)</div>
@@ -913,9 +928,7 @@
                     私自身、「価値がない」と自分を否定し、隠してきた部分こそが、人生を動かす最もパワフルなリソースであることを体感しました。
                 </p>
                 <p>
-                    私は、あなたが目を背けている「最高のリソース（可能性）」に、勇気をもって踏み込みます。<br>
-                    私の「自由で勇気ある在り方」を踏み台にして、さっさとリミッターを外してください。<br>
-                    その先に待つ、見たこともない景色を、共に見に行きましょう。
+                    私は、あなたが目を背けている「最高のリソース（可能性）」に、勇気をもって踏み込みます。私の「自由で勇気ある在り方」を踏み台にして、リミッターを外してください。その先に待つ、見たこともない景色を、共に見に行きましょう。
                 </p>
             </div>
         </div>
