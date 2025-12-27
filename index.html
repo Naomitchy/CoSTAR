@@ -585,6 +585,16 @@
             .partnership-box > div:nth-last-of-type(2) p { 
                 text-align: left; 
             }
+            
+            /* Step案内セクションのスマホ最適化 */
+            .step-item {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 12px !important;
+            }
+            .step-item > div:first-child {
+                margin-bottom: 5px;
+            }
 
             .concept-text h3 { font-size: 1.3rem; }
             .concept-text h3 br { display: none; }
@@ -656,7 +666,7 @@
             <a href="#logbook" class="sp-nav-link">LOGBOOK</a>
             <a href="#contact" class="sp-nav-link">CONTACT</a>
             <div style="margin-top: 40px;">
-                <button class="btn btn-primary" onclick="openModal('trial'); closeSpMenu();">体験セッション申込</button>
+                <button class="btn btn-primary" onclick="openModal('application'); closeSpMenu();">お申込み・ご相談</button>
             </div>
         </nav>
     </div>
@@ -698,7 +708,7 @@
                         周りの期待に応えてきた。社会のルールも守ってきた。十分な報酬も得られた。
                     </p>
                     <p>
-                        でも、いつの間にか、気軽に「今日、ご飯食べに行かない？」なんて、言えなくなっていた。<br>
+                        でも, いつの間にか、気軽に「今日、ご飯食べに行かない？」なんて、言えなくなっていた。<br>
                         私は誰からも愛されていないのではないか。
                     </p>
                     <p>
@@ -707,7 +717,7 @@
                         そんな人間が愛されるわけがない。
                     </p>
                     <p>
-                        言いたいことを飲み込み、空気を読み、<br>
+                        言いたいことを飲み込み、空気を読み, <br>
                         「誰かににとっての正解」を選び続ける日々。<br>
                         孤独。誰にも本音を言えない。建前の中で生きる日々は、もう苦しい。
                     </p>
@@ -718,15 +728,15 @@
                     </p>
                     <p>
                         私はこの問いの答えを探す旅の中で、コーチングと出会いました。<br>
-                        このプロセスは、私が「価値のない自分」だと否定し、隠してきた部分こそが、<br>
+                        このプロセスは、私が「価値のない自分」だと否定し, 隠してきた部分こそが、<br>
                         実は人生を動かす最もパワフルなリソース（エネルギー）であることを教えてくれました。
                     </p>
                     <p>
-                        矛盾も、葛藤も、情けない感情も、すべて携えて進めばいい。<br>
-                        はじめて自分に生きることを許可した瞬間、世界は色を変えました。
+                        矛盾も、葛藤も, 情けない感情も、すべて携えて進めばいい。<br>
+                        はじめて自分に生きることを許可した瞬間, 世界は色を変えました。
                     </p>  
                     <p>
-                        もしあなたが、他人の評価や世間体ではなく、<br>
+                        もしあなたが、他人の評価や世間体ではなく, <br>
                         「本当に大切にしたい自分」を生きることに飢えているなら。<br>
                         「この程度でいいだろう」と、自分の怪物性を飼い慣らしていることに後悔しているなら。
                     </p>
@@ -783,7 +793,7 @@
                     <p>
                         <span style="display:inline-block; white-space:nowrap;">私はこの問いの答えを探す旅の中で、</span><br>
                         <span style="display:inline-block; white-space:nowrap;">コーチングと出会いました。</span><br>
-                        <span style="display:inline-block; white-space:nowrap;">このプロセスは、私が「価値のない自分」だと否定し、</span><br>
+                        <span style="display:inline-block; white-space:nowrap;">このプロセスは、私が「価値のない自分」だと否定し, </span><br>
                         <span style="display:inline-block; white-space:nowrap;">隠してきた部分こそが、実は人生を動かす最も</span><br>
                         <span style="display:inline-block; white-space:nowrap;">パワフルなリソース（エネルギー）であることを</span><br>
                         <span style="display:inline-block; white-space:nowrap;">教えてくれました。</span>
@@ -792,12 +802,12 @@
                     <p>
                         <span style="display:inline-block; white-space:nowrap;">矛盾も、葛藤も、情けない感情も, </span><br>
                         <span style="display:inline-block; white-space:nowrap;">すべて携えて進めばいい。</span><br>
-                        <span style="display:inline-block; white-space:nowrap;">はじめて自分に生きることを許可した瞬間、</span><br>
+                        <span style="display:inline-block; white-space:nowrap;">はじめて自分に生きることを許可した瞬間, </span><br>
                         <span style="display:inline-block; white-space:nowrap;">世界は色を変えました。</span>
                     </p>
 
                     <p>
-                        <span style="display:inline-block; white-space:nowrap;">もしあなたが、他人の評価や世間体ではなく、</span><br>
+                        <span style="display:inline-block; white-space:nowrap;">もしあなたが、他人の評価や世間体ではなく, </span><br>
                         <span style="display:inline-block; white-space:nowrap;">「本当に大切にしたい自分」を生きることに</span><br>
                         <span style="display:inline-block; white-space:nowrap;">「この程度でいいだろう」と、自分の怪物性を</span><br>
                         <span style="display:inline-block; white-space:nowrap;">飼い慣らしてしていることに後悔しているなら。</span>
@@ -836,7 +846,7 @@
                 <div class="service-desc">
                     <p style="font-weight:bold; color:var(--text-color); margin-bottom:10px;">ビジネスに、魂の設計図を。</p>
                     <p>機能や数字だけの戦略は、やがて枯渇します。<br>
-                    あなたの原体験と美学が宿ったコンセプトを策定し、揺るがない事業の背骨（戦略）を構築するパートナーシップ。</p>
+                    あなたの原体験と美学が宿ったコンセプトを策定し, 揺るがない事業の背骨（戦略）を構築するパートナーシップ。</p>
                 </div>
             </div>
             <div class="service-card main-service">
@@ -859,7 +869,7 @@
                 <div class="service-desc">
                     <p>「独りで、やらない。」</p>
                     <br>
-                    <p>ずっと先送りにしてきた<span style="display:inline-block;">「部屋の片付け」や</span><span style="display:inline-block;">「自分だけのHP作成」。</span><br>コーチと共に、<span style="display:inline-block;">今日完了させませんか？</span></p>
+                    <p>ずっと先送りにしてきた<span style="display:inline-block;">「部屋の片付け」や</span><span style="display:inline-block;">「自分だけのHP作成」。</span><br>コーチと共に, <span style="display:inline-block;">今日完了させませんか？</span></p>
                 </div>
                 <div class="service-footer">
                     <a href="cocleanup.html" class="btn btn-primary" style="width:100%; padding: 12px; background-color:var(--urgent-color); border-color:var(--urgent-color); display:inline-block; box-sizing:border-box;">モニター詳細・申込</a>
@@ -876,17 +886,17 @@
                 <div class="concept-text">
                     <h3>気持ちがいいだけでは、<br>現実が動かない。</h3>
                     <p>
-                        コーチングの時間は、冒険（人生）における『隠れ家（聖域）』のようなものだと考えています。日々戦う戦場から離れ、重い仮面と防具を脱ぎ捨て、生身の自分に戻る時間。
+                        コーチングの時間は, 冒険（人生）における『隠れ家（聖域）』のようなものだと考えています。日々戦う戦場から離れ、重い仮面と防具を脱ぎ捨て、生身の自分に戻る時間。
                     </p>
                     <p>
-                        一方で、現実的な変化を求めるあなたは、知っています。いくら心安らいでも、現実の行動や人間関係が変わらなければ、戦況は好転しないということを。
+                        一方で, 現実的な変化を求めるあなたは、知っています。いくら心安らいでも、現実の行動や人間関係が変わらなければ、戦況は好転しないということを。
                     </p>
                     <p>
-                        だからこそ、ここは単なる休憩所ではありません。<br>
+                        だからこそ, ここは単なる休憩所ではありません。<br>
                         あなたが隠してきた「弱さ」や「ズルさ」という未開発の資源を、次の一手を打つための「最強の武器」へと精製する場所です。
                     </p>
                     <p>
-                        本質的なエネルギーを再装填し、再び現実の舞台へ. ただの「癒やし」では終わらせず、現実を確実に動かす力を養います。
+                        本質的なエネルギーを再装填し, 再び現実の舞台へ. ただの「癒やし」では終わらせず、現実を確実に動かす力を養います。
                     </p>
                 </div>
 
@@ -897,7 +907,7 @@
                     </p>
                     <p>
                         しかし、私はあなたを「直す」ことはしません。なぜなら、あなたは壊れてなどいないからです。<br>
-						人の力は偉大です。コーチをしている時、いつも驚かされます。私がコーチを続ける理由といってもいいでしょう。
+						人の力は偉大です。コーチをしている時, いつも驚かされます。私がコーチを続ける理由といってもいいでしょう。
                     </p>
                     <p>
                         極端なことを言えば、コーチの仕事は、クライアントの人生を目撃することだと考えています。<br>
@@ -910,10 +920,10 @@
                 <div class="concept-text">
                     <h3>「180度の変化」より、<br>確かな「2度の変化」を。</h3>
                     <p>
-                        一度のセッションで劇的に180度変化することは、ほとんどないと考えています。
+                        一度のセッションで劇的に180度変化することは, ほとんどないと考えています。
                     </p>
                     <p>
-                        セッションで決めた、今までのあなたでは出来なかった180度の行動を現実で試してみる。実践できた自分は誇らしく、確かに変わった気がするでしょう。
+                        セッションで決めた, 今までのあなたでは出来なかった180度の行動を現実で試してみる。実践できた自分は誇らしく、確かに変わった気がするでしょう。
                     </p>
                     <p>
                         しかし、時間がたてばたつほど、今まで慣れ親しんだ過去の自分が、必ず「揺れ戻し」をします。
@@ -922,7 +932,7 @@
                         コーチングの価値は、人生の角度を「2度」変えることにあります。揺れ戻しを乗り越えるための伴走と軌道修正。
 					</p>
                     <p>	
-                        この地道な「2度」の積み重ねが、振り返った時に、あなたの人生を「深く、大きく」変化させているのです。
+                        この地道な「2度」の積み重ねが, 振り返った時に、あなたの人生を「深く、大きく」変化させているのです。
                     </p>
                 </div>
 
@@ -998,7 +1008,7 @@
             <div class="partnership-desc">
                 <p>
                     CoSTARのコーチングは、あらかじめ決められた「商品」を売るものではありません。<br>
-                    あなたの現状、目指す目的地、そして歩むスピードに合わせて、対話の中でプログラムを共に設計（デザイン）していきます。
+                    あなたの現状、目指す目的地, そして歩むスピードに合わせて、対話の中でプログラムを共に設計（デザイン）していきます。
                 </p>
                 <p>
                     私たちが結ぶのは、単なる契約を超えた「同盟関係」です。<br>
@@ -1062,17 +1072,41 @@
                 <h4 style="font-family: 'Shippori Mincho', serif; margin-bottom: 20px; color: var(--text-color); font-size: 1.4rem;">まずは、入り口でお会いしましょう。</h4>
                 <p style="font-size: 0.95rem; line-height: 1.8; margin-bottom: 25px;">
                     あなたが本当に求めている変化は何なのか。そして、私がその旅のパートナーとして相応しいか。<br>
-                    まずは45分間の「体験セッション（適合性確認）」にてお確かめください。
+                    当方では, 以下のステップでの対話を推奨しております。
                 </p>
-                <div style="margin-bottom: 30px; font-weight: bold; color: var(--text-color);">
-                    体験セッション料： 5,000円（税込）<br>
-                    <span style="font-size: 0.85rem; font-weight: normal; color: #666;">※本契約に至った場合、この料金は初回費用に充当されます。</span>
+                
+                <div style="text-align: left; background: #f9fafb; padding: 25px; border-radius: 6px; margin-bottom: 30px; font-size: 0.95rem;">
+                    <div class="step-item" style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 20px;">
+                        <div style="background: var(--accent-color); color: #fff; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;">Step 1</div>
+                        <div>
+                            <strong>オンライン無料相談（15〜20分）</strong><br>
+                            <span style="font-size: 0.85rem; color: #666;">まずは「話してみる」ことから。相性の確認や疑問の解消にお使いください。</span>
+                        </div>
+                    </div>
+                    <div class="step-item" style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 20px;">
+                        <div style="background: var(--text-muted); color: #fff; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;">Step 2</div>
+                        <div>
+                            <strong>体験セッション（45分 / 5,000円）</strong><br>
+                            <span style="font-size: 0.85rem; color: #666;">実際のコーチングを体感し、変化の兆しを掴んでいただきます。</span>
+                        </div>
+                    </div>
+                    <div class="step-item" style="display: flex; gap: 15px; align-items: flex-start;">
+                        <div style="background: var(--text-muted); color: #fff; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;">Step 3</div>
+                        <div>
+                            <strong>本契約・物語の開始</strong><br>
+                            <span style="font-size: 0.85rem; color: #666;">双方が合意した場合のみ、本格的な伴走をスタートします。</span>
+                        </div>
+                    </div>
                 </div>
-                <button class="btn btn-primary" onclick="openModal('trial')">体験セッション申込</button>
+
+                <div class="btn-group">
+                    <button class="btn btn-outline" onclick="openModal('application')">無料相談を申し込む</button>
+                    <button class="btn btn-primary" onclick="openModal('application')">体験セッションを申し込む</button>
+                </div>
             </div>
 
             <p style="font-size:0.9rem; color:#d9534f; font-weight:bold; margin-top: 40px;">
-                ※本契約は、必ず「体験セッション」を経て、双方が合意した場合のみ締結されます。
+                ※本契約は, 必ず「体験セッション」を経て、双方が合意した場合のみ締結されます。
             </p>
 
             <div class="mentor-area" style="margin-top: 50px; border-top: 1px solid #e5e7eb; padding-top: 40px; text-align: left;">
@@ -1083,7 +1117,7 @@
                 <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 20px;">
                     「型」や「基本」を否定するつもりは毛頭ありません。私自身、それに支えられています。<br><br>
                     ただ、「正しいコーチング」であろうとするあまり、自分自身の「音色」や「体温」を押し殺している人を見るのは、もったいなくて見ていられません。あなたが隠しようとしている「人間臭さ」や「衝動」の中にこそ、クライアントを動かす最大の武器が眠っています。<br><br>
-                    私がまず、誰よりも自由に、勇気を持ってお節介に関わります。その「理屈を超えたインパクト」を浴びることで、あなたの内側にあるリミッターが勝手に外れていく。そんな体験を、ここにしに来てください。
+                    私がまず、誰よりも自由に、勇気を持ってお節介に関わります。その「理屈を超えたインパクト」を浴びることで、あなたの内側にあるリミッターが勝手に外れていく。そんな体験を, ここにしに来てください。
                 </p>
 
                 <div style="background: #fff; border: 1px solid var(--accent-color); border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
@@ -1110,7 +1144,7 @@
                                     <div style="font-weight: bold; color: var(--text-color); margin-bottom: 5px;">Integration (60分)</div>
                                     <p style="font-size: 0.9rem; color: #666; margin: 0;">
                                         Day1から数週間後、実際のクライアントの録音、または再度ロールプレイを通じて、あなたのスタイルが定着しているかを確認します。<br>
-                                        迷いを捨て、あなたの色が乗ったコーチングを完成させましょう。
+                                        迷いを捨て, あなたの色が乗ったコーチングを完成させましょう。
                                     </p>
                                 </div>
                             </div>
@@ -1126,22 +1160,20 @@
                                 <span style="font-size: 1rem; color: var(--text-color);">円</span>
                             </div>
                         </div>
+                        
+                        <div style="margin-top: 30px; text-align: center;">
+                            <button class="btn btn-primary" onclick="openModal('application')">メンターコーチング申込</button>
+                        </div>
 
                     </div>
                 </div>
-
-                <p style="font-size:0.85rem; color:#666; margin-top:20px; line-height: 1.6;">
-                    ※すでに私（星野）と面識のある方は、体験セッションなしでお申込みいただけます。その場合は 
-                    <span style="color: var(--accent-color); cursor: pointer; text-decoration: underline; font-weight: bold;" onclick="openModal('contact')">お問い合わせフォーム</span> 
-                    より直接その旨をご連絡ください。
-                </p>
             </div>
         </div>
 
         <div class="corporate-area">
             <p>
                 法人契約、またはエグゼクティブ・リーダーシップ開発をご希望の方は、<br class="sp-only">
-                <span style="color: var(--accent-color); cursor: pointer; text-decoration: underline;" onclick="openModal('contact')">お問い合わせフォーム</span>
+                <span style="color: var(--accent-color); cursor: pointer; text-decoration: underline;" onclick="openModal('application')">お問い合わせフォーム</span>
                 よりご相談ください。
             </p>
         </div>
@@ -1160,11 +1192,11 @@
                     米国CTI認定 CPCC / 国際コーチング連盟 ICF認定 ACC
                 </p>
                 <p>
-                    1982年生まれ。大手IT企業を経て、石油元売のIT部門にてシステム開発（PM）、プロセス改革、生成AI組織の立ち上げ、組織リーダーを歴任。<br>
+                    1982年生まれ。大手IT企業を経て、石油元売のIT部門にてシステム開発（PM）、プロセス改革、生成AI組織の立ち上げ, 組織リーダーを歴任。<br>
                     自身のリーダーシップへの葛藤からコーチングと出会う。
                 </p>
                 <p>
-                    私自身、「価値がない」と自分を否定し、隠してきた部分こそが、人生を動かす最もパワフルなリソースであることを体感しました。
+                    私自身、「価値がない」と自分を否定し, 隠してきた部分こそが、人生を動かす最もパワフルなリソースであることを体感しました。
                 </p>
                 <p>
                     私は、あなたが目を背けている「最高のリソース（可能性）」に、勇気をもって踏み込みます。私の「自由で勇気ある在り方」を踏み台にして、リミッターを外してください。その先に待つ、見たこともない景色を、共に見に行きましょう。
@@ -1189,12 +1221,11 @@
         <div class="container">
             <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 30px;">Contact</h2>
             <p style="margin-bottom: 30px; color: var(--text-muted);">
-                まずは、体験セッションにて、<br>
+                まずは、無料相談または体験セッションにて、<br>
                 私たちが互いのパートナーとして相応しいか、確かめましょう。
             </p>
             <div class="btn-group">
-                <button class="btn btn-primary" onclick="openModal('trial')">体験セッション申込</button>
-                <button class="btn btn-outline" onclick="openModal('contact')">お問い合わせ</button>
+                <button class="btn btn-primary" onclick="openModal('application')">お申込み・ご相談</button>
             </div>
             <br><br>
             <div style="font-size: 0.8rem; display:flex; gap:20px; justify-content:center; flex-wrap:wrap; color: #999;">
@@ -1207,31 +1238,28 @@
         </div>
     </footer>
 
-    <div id="modal-trial" class="modal">
+    <div id="modal-application" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('trial')">&times;</span>
-            <h2 class="section-title" style="margin-bottom:30px; font-size:1.8rem;">体験セッション申込</h2>
+            <span class="close-btn" onclick="closeModal('application')">&times;</span>
+            <h2 class="section-title" style="margin-bottom:30px; font-size:1.8rem;">お申込み・お問い合わせ</h2>
             
-            <form action="https://ssgform.com/s/P1XZVcpingDQ" method="post" id="trial-form">
+            <form action="https://ssgform.com/s/P1XZVcpingDQ" method="post" id="application-form">
                 <input type="hidden" name="_redirectTo" value="https://costar-works.com/thanks.html">
                 
-                <div style="background:#f9fafb; padding:20px; border-radius:4px; margin-bottom:30px; font-size:0.85rem; line-height:1.7; border:1px solid #e5e7eb;">
-                    <h3 style="color:var(--accent-color); font-size:1rem; margin-top:0; margin-bottom:10px;">Chemistry Check（適合性確認）</h3>
-                    <p style="margin-bottom:10px;">
-                        コーチングが機能するためには、コーチとクライアントの相性、および目的の一致が不可欠です。<br>
-                        本セッションは、契約前のミスマッチを防ぐための「適合性確認」を兼ねています。<br>
-                        無理な勧誘は一切行いません。また、当方からお引き受けできないと判断する場合もございますので、予めご了承ください。
-                    </p>
-                    <ul style="padding-left:20px; margin:0; color:#666;">
-                        <li><strong>守秘義務：</strong>セッション内容はICF倫理規定に基づき厳重に守秘されます。</li>
-                        <li><strong>お支払い：</strong>事前銀行振込（またはカード決済）をお願いしております。</li>
-                    </ul>
-                    <div style="margin-top:15px; font-weight:bold; color:var(--text-color); border-top:1px solid #e5e7eb; padding-top:10px;">
-                        時間: 45分（オリエンテーション含）<br>
-                        料金: 5,000円（税込）<br>
-                        形式: オンライン（Zoom）<br>
-                        <span style="font-size:0.8em; font-weight:normal; color:#666;">※本契約に至った場合、この料金は初回費用に充当されます。</span>
-                    </div>
+                <div class="form-group">
+                    <label class="form-label">お問い合わせ・お申込み種別 <span style="color:#d9534f">*</span></label>
+                    <select name="種別" class="form-select" required id="form-type-select">
+                        <option value="" disabled selected>選択してください</option>
+                        <option value="無料相談">オンライン無料相談 (15-20分 / 無料)</option>
+                        <option value="体験セッション">体験セッション (45分 / 5,000円)</option>
+                        <option value="メンターコーチング">メンターコーチング お申込</option>
+                        <option value="その他">その他 お問い合わせ</option>
+                    </select>
+                </div>
+
+                <div id="inquiry-notice" style="background:#f9fafb; padding:20px; border-radius:4px; margin-bottom:30px; font-size:0.85rem; line-height:1.7; border:1px solid #e5e7eb; display:none;">
+                    <h3 id="notice-title" style="color:var(--accent-color); font-size:1rem; margin-top:0; margin-bottom:10px;">案内事項</h3>
+                    <div id="notice-content"></div>
                 </div>
 
                 <div class="form-group">
@@ -1244,99 +1272,63 @@
                     <input type="text" name="名前" class="form-input" required placeholder="例：山田 花子">
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label">フリガナ（カタカナ） <span style="color:#d9534f">*</span></label>
-                    <input type="text" name="フリガナ" class="form-input" required placeholder="例：ヤマダ ハナコ">
+                <div id="datetime-fields" style="display:none;">
+                    <div class="form-group">
+                        <label class="form-label">希望日時（第3希望まで） <span style="color:#d9534f">*</span></label>
+                        <p style="font-size:0.8rem; color:#999; margin-bottom:15px;">
+                            平日・土日祝の 7:00〜22:00 の間でご指定ください。
+                        </p>
+
+                        <div style="margin-bottom: 15px;">
+                            <label style="display:block; font-size:0.9rem; color:#666; margin-bottom:5px;">第1希望 <span style="color:#d9534f">*</span></label>
+                            <div class="datetime-row">
+                                <input type="date" name="第1希望_日付" class="form-input" style="flex:1;">
+                                <div class="time-range">
+                                    <select name="第1希望_開始" class="form-select time-select"></select>
+                                    <span>〜</span>
+                                    <select name="第1希望_終了" class="form-select time-select"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <label style="display:block; font-size:0.9rem; color:#666; margin-bottom:5px;">第2希望</label>
+                            <div class="datetime-row">
+                                <input type="date" name="第2希望_日付" class="form-input" style="flex:1;">
+                                <div class="time-range">
+                                    <select name="第2希望_開始" class="form-select time-select"></select>
+                                    <span>〜</span>
+                                    <select name="第2希望_終了" class="form-select time-select"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <label style="display:block; font-size:0.9rem; color:#666; margin-bottom:5px;">第3希望</label>
+                            <div class="datetime-row">
+                                <input type="date" name="第3希望_日付" class="form-input" style="flex:1;">
+                                <div class="time-range">
+                                    <select name="第3希望_開始" class="form-select time-select"></select>
+                                    <span>〜</span>
+                                    <select name="第3希望_終了" class="form-select time-select"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">希望日時（第3希望まで） <span style="color:#d9534f">*</span></label>
-                    <p style="font-size:0.8rem; color:#999; margin-bottom:15px;">
-                        平日・土日祝の 7:00〜22:00 の間でご指定ください。<br>
-                    </p>
-
-                    <div style="margin-bottom: 15px;">
-                        <label style="display:block; font-size:0.9rem; color:#666; margin-bottom:5px;">第1希望 <span style="color:#d9534f">*</span></label>
-                        <div class="datetime-row">
-                            <input type="date" name="第1希望_日付" class="form-input" required style="flex:1;">
-                            <div class="time-range">
-                                <select name="第1希望_開始" class="form-select time-select" required></select>
-                                <span>〜</span>
-                                <select name="第1希望_終了" class="form-select time-select" required></select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 15px;">
-                        <label style="display:block; font-size:0.9rem; color:#666; margin-bottom:5px;">第2希望 <span style="color:#d9534f">*</span></label>
-                        <div class="datetime-row">
-                            <input type="date" name="第2希望_日付" class="form-input" required style="flex:1;">
-                            <div class="time-range">
-                                <select name="第2希望_開始" class="form-select time-select" required></select>
-                                <span>〜</span>
-                                <select name="第2希望_終了" class="form-select time-select" required></select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 15px;">
-                        <label style="display:block; font-size:0.9rem; color:#666; margin-bottom:5px;">第3希望 <span style="color:#d9534f">*</span></label>
-                        <div class="datetime-row">
-                            <input type="date" name="第3希望_日付" class="form-input" required style="flex:1;">
-                            <div class="time-range">
-                                <select name="第3希望_開始" class="form-select time-select" required></select>
-                                <span>〜</span>
-                                <select name="第3希望_終了" class="form-select time-select" required></select>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">ご質問、その他コメント（任意）</label>
+                    <label class="form-label" id="comment-label">ご質問、その他コメント</label>
                     <textarea name="コメント" class="form-textarea"></textarea>
                 </div>
 
                 <div style="margin: 30px 0; text-align: center;">
                     <label style="cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--text-color);">
                         <input type="checkbox" required style="transform: scale(1.5); accent-color: var(--accent-color);">
-                        <span>上記の内容および<span style="color:var(--accent-color); text-decoration:underline;" onclick="openModal('privacy'); event.preventDefault();">プライバシーポリシー</span>に同意します</span>
+                        <span><span style="color:var(--accent-color); text-decoration:underline;" onclick="openModal('privacy'); event.preventDefault();">プライバシーポリシー</span>に同意します</span>
                     </label>
                 </div>
 
                 <div style="text-align:center;">
                     <button type="submit" class="btn btn-primary">同意して送信する</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div id="modal-contact" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('contact')">&times;</span>
-            <h2 class="section-title" style="margin-bottom:30px; font-size:1.8rem;">お問い合わせ</h2>
-            
-            <form action="https://ssgform.com/s/1jc1dcHXlhf0" method="post">
-                <input type="hidden" name="_redirectTo" value="https://costar-works.com/thanks.html">
-                
-                <div class="form-group">
-                    <label class="form-label">お名前 <span style="color:#d9534f">*</span></label>
-                    <input type="text" name="名前" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">メールアドレス <span style="color:#d9534f">*</span></label>
-                    <input type="email" name="email" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">お問い合わせ内容 <span style="color:#d9534f">*</span></label>
-                    <textarea name="問い合わせ内容" class="form-textarea" required></textarea>
-                </div>
-
-                <div style="text-align:center; margin-top:40px;">
-                    <button type="submit" class="btn btn-primary">送信する</button>
                 </div>
             </form>
         </div>
@@ -1355,7 +1347,7 @@
                 <tr><th>代金以外の必要料金</th><td>銀行振込手数料、インターネット通信料金</td></tr>
                 <tr><th>お支払い方法</th><td>銀行振込、クレジットカード決済</td></tr>
                 <tr><th>お支払い時期</th><td>原則前払い制、または請求時決済</td></tr>
-                <tr><th>引渡時期</th><td>決済完了後、日程調整に基づき提供</td></tr>
+                <tr><th>引渡時期</th><td>決済完了後, 日程調整に基づき提供</td></tr>
                 <tr><th>キャンセル・返金</th><td>セッション提供後の返金不可。前日までの連絡で日程変更可。当日・無断欠席は消化扱い。</td></tr>
             </table>
         </div>
@@ -1367,7 +1359,7 @@
             <h2 class="section-title" style="margin-bottom:30px; font-size:1.5rem;">プライバシーポリシー</h2>
             <div class="legal-text">
                 <p>CoSTAR（以下、「当方」）は、ユーザーの個人情報の取扱いについて以下の通り定めます。</p>
-                <h3>1. 個人情報の収集</h3><p>本サービス提供、問い合わせ回答のため、氏名、メールアドレス等の個人情報を収集します。</p>
+                <h3>1. 個人情報の収集</h3><p>本サービス提供、問い合わせ回答のため, 氏名、メールアドレス等の個人情報を収集します。</p>
                 <h3>2. 利用目的</h3><p>サービス運営、メンテナンス、重要なお知らせのご連絡に利用します。</p>
                 <h3>3. 第三者提供</h3><p>法令で認められる場合を除き、事前の同意なく第三者に個人情報を提供することはありません。</p>
                 <h3>4. 窓口</h3><p>お問い合わせフォームよりご連絡ください。</p>
@@ -1471,28 +1463,52 @@
                 }
             });
 
-            // Trial Form Validation (Duration Check)
-            const trialForm = document.getElementById('trial-form');
-            trialForm.addEventListener('submit', function(e) {
-                const hopes = ['第1希望', '第2希望', '第3希望'];
-                for (const hope of hopes) {
-                    const startVal = this.querySelector(`[name="${hope}_開始"]`).value;
-                    const endVal = this.querySelector(`[name="${hope}_終了"]`).value;
-                    
-                    if (startVal && endVal) {
-                        const [sH, sM] = startVal.split(':').map(Number);
-                        const [eH, eM] = endVal.split(':').map(Number);
-                        const diffMin = (eH * 60 + eM) - (sH * 60 + sM);
+            // Form dynamic switching
+            const typeSelect = document.getElementById('form-type-select');
+            const inquiryNotice = document.getElementById('inquiry-notice');
+            const noticeTitle = document.getElementById('notice-title');
+            const noticeContent = document.getElementById('notice-content');
+            const dateTimeFields = document.getElementById('datetime-fields');
+            const commentLabel = document.getElementById('comment-label');
 
-                        if (diffMin < 45) {
-                            alert(`${hope}の時間が45分未満です。体験セッションはオリエンテーションを含め45分以上必要となります。恐れ入りますが時間を調整してください。`);
-                            e.preventDefault();
-                            return;
-                        }
+            typeSelect.addEventListener('change', function() {
+                const val = this.value;
+                inquiryNotice.style.display = 'block';
+                dateTimeFields.style.display = (val === '無料相談' || val === '体験セッション' || val === 'メンターコーチング') ? 'block' : 'none';
+                
+                if (val === '無料相談') {
+                    noticeTitle.innerText = "オンライン無料相談 (15-20分)";
+                    noticeContent.innerHTML = "コーチとの相性確認や、コーチングに関する疑問解消のためのカジュアルな場です。<br>この相談を経てから、体験セッションへ進むことを推奨しております。";
+                    commentLabel.innerText = "相談したいこと、現在の状況など（任意）";
+                } else if (val === '体験セッション') {
+                    noticeTitle.innerText = "体験セッション (45分 / 5,000円)";
+                    noticeContent.innerHTML = "実際のコーチングを体感いただくためのセッションです。<br>料金は事前振込（またはカード決済）となります。本契約に至った場合は初回費用に充当されます。";
+                    commentLabel.innerText = "セッションで扱いたいテーマ、期待すること（任意）";
+                } else if (val === 'メンターコーチング') {
+                    noticeTitle.innerText = "メンターコーチング お申込";
+                    noticeContent.innerHTML = "My Style Discovery Package (全2回)のお申込です。<br>コーチング学習者・実践者の方が対象となります。";
+                    commentLabel.innerText = "現在のコーチングにおける課題など（任意）";
+                } else {
+                    inquiryNotice.style.display = 'none';
+                    commentLabel.innerText = "お問い合わせ内容";
+                }
+            });
+
+            // Form Validation
+            const applicationForm = document.getElementById('application-form');
+            applicationForm.addEventListener('submit', function(e) {
+                const val = typeSelect.value;
+                if (val === '無料相談' || val === '体験セッション' || val === 'メンターコーチング') {
+                    const date1 = this.querySelector('[name="第1希望_日付"]').value;
+                    const start1 = this.querySelector('[name="第1希望_開始"]').value;
+                    const end1 = this.querySelector('[name="第1希望_終了"]').value;
+                    if (!date1 || !start1 || !end1) {
+                        alert('第1希望の日時は必須です。');
+                        e.preventDefault();
+                        return;
                     }
                 }
-
-                // Double submit prevention (Only if validation passes)
+                
                 const btn = this.querySelector('button[type="submit"]');
                 if (btn) {
                     setTimeout(() => {
@@ -1502,15 +1518,6 @@
                     }, 10);
                 }
             });
-
-            // Contact Form Double submit prevention
-            const contactForm = document.querySelector('#modal-contact form');
-            if(contactForm) {
-                contactForm.addEventListener('submit', function() {
-                    const btn = this.querySelector('button[type="submit"]');
-                    if (btn) { setTimeout(() => { btn.disabled = true; btn.textContent = '送信中...'; btn.style.opacity = '0.7'; }, 10); }
-                });
-            }
         });
 
         // Glitch
