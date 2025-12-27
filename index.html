@@ -569,6 +569,23 @@
             .hero-content p { font-size: 3.6vw; line-height: 1.8; white-space: nowrap; letter-spacing: -0.05em; }
             .hero .btn { width: auto; max-width: 80%; min-width: 200px; padding: 12px 30px; font-size: 0.95rem; }
             .quote-large { font-size: 0.9rem; line-height: 1.7; letter-spacing: 0; }
+            
+            /* セクションタイトル等のサイズ調整 */
+            .section-title { font-size: 1.6rem; margin-bottom: 40px; }
+            .partnership-title { font-size: 1.3rem; margin-bottom: 20px; }
+            .campaign-header { font-size: 1.1rem; }
+            .partnership-box h4 { font-size: 1.1rem !important; }
+            .profile-text h3 { font-size: 1.3rem; }
+
+            /* テキスト配置の調整（画像でご指摘いただいた箇所） */
+            .partnership-desc,
+            .campaign-desc,
+            .corporate-area,
+            .partnership-box > p,
+            .partnership-box > div:nth-last-of-type(2) p { 
+                text-align: left; 
+            }
+
             .concept-text h3 { font-size: 1.3rem; }
             .concept-text h3 br { display: none; }
             .concept-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -583,7 +600,6 @@
             /* 価格表示の調整 */
             .price-campaign { font-size: 1.6rem; }
             .campaign-box { padding: 25px 20px; }
-            .campaign-header { font-size: 1.2rem; }
             
             .btn-group { flex-direction: column; gap: 15px; }
             .btn-group .btn { width: 100%; min-width: auto; }
@@ -1055,6 +1071,10 @@
                 <button class="btn btn-primary" onclick="openModal('trial')">体験セッション申込</button>
             </div>
 
+            <p style="font-size:0.9rem; color:#d9534f; font-weight:bold; margin-top: 40px;">
+                ※本契約は、必ず「体験セッション」を経て、双方が合意した場合のみ締結されます。
+            </p>
+
             <div class="mentor-area" style="margin-top: 50px; border-top: 1px solid #e5e7eb; padding-top: 40px; text-align: left;">
                 <span style="background-color: #666; color: #fff; font-size: 0.75rem; padding: 4px 12px; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 15px;">For Coaches & Students</span>
                 <h4 style="font-family: 'Shippori Mincho', serif; font-size: 1.4rem; color: var(--text-color); margin-top: 0; margin-bottom: 10px;">
@@ -1116,10 +1136,6 @@
                     より直接その旨をご連絡ください。
                 </p>
             </div>
-
-            <p style="font-size:0.9rem; color:#d9534f; font-weight:bold; margin-top: 40px;">
-                ※本契約は、必ず「体験セッション」を経て、双方が合意した場合のみ締結されます。
-            </p>
         </div>
 
         <div class="corporate-area">
