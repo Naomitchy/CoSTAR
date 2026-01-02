@@ -513,7 +513,20 @@
             .ba-huge-label { display: none; }
             .resonance-orbit-wrap { display: flex; flex-direction: column; gap: 80px; align-items: center; }
             .orbit-item { position: static; transform: none !important; max-width: 600px; }
-            .service-grid { grid-template-columns: 1fr; gap: 40px;}
+
+            /* サービスの並び替え設定 */
+            .service-grid { 
+                display: flex; 
+                flex-direction: column;
+                gap: 40px;
+            }
+            /* Coaching for Leadership Development を1番目に */
+            .service-grid .service-card:nth-child(2) { order: 1; }
+            /* CoCLEANUP を2番目に */
+            .service-grid .service-card:nth-child(1) { order: 2; }
+            /* Mentor Coaching を3番目に */
+            .service-grid .service-card:nth-child(3) { order: 3; }
+
             .plans-wrapper { flex-direction: column; }
             .profile-flex { flex-direction: column; }
             .datetime-row { flex-direction: column; }
@@ -759,7 +772,7 @@
                 </div>
                 <h3 style="margin-top: 0; min-height: 5rem; display: flex; align-items: flex-start;">Mentor Coaching</h3>
                 <div class="service-desc">
-                    <div style="min-height: 4.5rem;"><p style="font-weight:bold; color:var(--text-color); margin-top: 0;">「正しいコーチ」を脱ぎ捨て、唯一無二の『怪物へ』。</p></div>
+                    <div style="min-height: 4.5rem;"><p style="font-weight:bold; color:var(--text-color); margin-top: 0;">「正しいコーチ」を脱ぎ捨て、相手を引き寄せる『怪物』へ。</p></div>
                     <p>型をなぞり、正解を選ぼうとして、自分の「音色」を押し殺していませんか？ 魂を揺さぶる音色を呼び覚ますリテイク・セッション。</p>
                 </div>
                 <div class="service-footer">
@@ -1022,7 +1035,7 @@
                         <div style="background: var(--text-muted); color: #fff; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;">Step 3</div>
                         <div>
                             <strong>本契約・物語の開始</strong><br>
-                            <span style="font-size: 0.85rem; color: #666;">双方が合意した場合のみ、本格的な伴走をスタートします。</span>
+                            <span style="font-size: 0.85rem; color: #666;">双方が合合意した場合のみ、本格的な伴走をスタートします。</span>
                         </div>
                     </div>
                 </div>
