@@ -74,7 +74,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .lp-hero {
         padding: 120px 0 100px;
         text-align: center;
-        /* Fixed: Removed duplicate background property. Kept the lighter one suitable for text visibility. */
         background: radial-gradient(circle at center, #FFFFFF 0%, #F3F4F6 100%);
         position: relative;
         overflow: hidden;
@@ -109,12 +108,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     /* --- Section Styles Unified --- */
-    /* Fixed: Unified padding to 80px for all sections */
     section { padding: 80px 0; }
     .white-section { background: #fff; }
     .gray-section { background: var(--bg-color); }
     
-    /* Fixed: Standardized heading margins */
     .section-head { text-align: center; margin-bottom: 60px; }
     .section-head h2 { 
         font-size: 1.8rem; margin-bottom: 25px; margin-top: 0; 
@@ -195,7 +192,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .option-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; color: var(--text-color); display: block; }
     .option-desc { font-size: 0.95rem; line-height: 1.8; color: var(--text-color); }
 
-    /* --- Benefit Box (Refined for Co-STAR SHIP) --- */
+    /* --- Benefit Box --- */
     .benefit-card {
         background: #fff; 
         border: 1px solid #e5e7eb; 
@@ -228,7 +225,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     /* --- Buttons & CTAs --- */
-    /* Fixed: Middle CTA button is now Gold (Accent) */
     .middle-cta-btn {
         display: inline-block; background: var(--accent-color); color: #fff;
         padding: 15px 40px; border-radius: 50px; font-weight: bold; 
@@ -237,22 +233,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .middle-cta-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(184, 150, 46, 0.4); opacity: 0.9; }
 
-    /* Fixed: Submit/Main CTA button is now Gold (Accent) instead of Red */
     .btn-submit {
         display: block;
         width: 100%; max-width: 320px; margin: 0 auto;
         padding: 18px 20px;
-        background: var(--accent-color); /* Changed from urgent-color */
+        background: var(--accent-color); 
         color: #fff;
         border: none; border-radius: 50px; 
         font-size: 1.1rem; font-weight: bold; letter-spacing: 0.05em;
         cursor: pointer; transition: 0.3s;
-        box-shadow: 0 5px 15px rgba(184, 150, 46, 0.3); /* Adjusted shadow color */
+        box-shadow: 0 5px 15px rgba(184, 150, 46, 0.3); 
         box-sizing: border-box;
         text-align: center;
     }
     .btn-submit:hover { 
-        background: #a08226; /* Darker gold */
+        background: #a08226; 
         transform: translateY(-2px); 
         box-shadow: 0 8px 20px rgba(184, 150, 46, 0.4); 
     }
@@ -274,7 +269,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     /* --- Form Area --- */
     .form-wrapper {
         background: #fff; padding: 40px; border-radius: 8px;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.1); border-top: 5px solid var(--accent-color); /* Border also Gold */
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1); border-top: 5px solid var(--accent-color);
     }
     .form-group { margin-bottom: 25px; }
     .form-label { display: block; margin-bottom: 8px; font-weight: bold; }
@@ -313,24 +308,123 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         color: #ccc; font-size: 35px; font-weight: bold; cursor: pointer;
     }
 
-    /* --- Mobile Adjustments --- */
+    /* --- Mobile Adjustments & Typography Fixes --- */
     @media (max-width: 600px) {
-        .sp-br { display: inline; } 
-        .service-name-hero, .lp-title { 
-            white-space: normal; 
+        /* 1. Global Typography & Spacing Tightening */
+        body { 
+            line-height: 1.7; /* Reduce from 2.0 to improve density */
+            letter-spacing: 0.02em; /* Reduce from 0.05em to fit more chars */
         }
-        .service-name-hero { font-size: clamp(2.0rem, 11vw, 3.5rem); }
-        .lp-title { font-size: clamp(1.2rem, 8vw, 2.0rem); }
         
-        .menu-header { flex-direction: column; text-align: center; gap: 10px; }
+        .container { 
+            padding: 0 16px; /* Slightly increase usable width (20px -> 16px) */
+        }
+        
+        section { 
+            padding: 50px 0; /* Reduce vertical spacing (80px -> 50px) */
+        }
+
+        .lp-hero {
+            padding: 90px 0 60px; /* Reduce hero padding */
+        }
+
+        /* 2. Fix CoCOMPLETE Title Break & Hierarchy */
+        .service-name-hero { 
+            /* Clamp adjusted: 8vw to ensure fit on narrow screens, reduced max size */
+            font-size: clamp(2.2rem, 9vw, 3.0rem); 
+            letter-spacing: 0; /* Critical for keeping long English words together */
+            word-break: normal; /* Allow normal flow, but size ensures no break */
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+        
+        .lp-title { 
+            /* Clearly smaller than Hero */
+            font-size: clamp(1.3rem, 5vw, 1.6rem); 
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .lp-subtitle {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .section-head { margin-bottom: 40px; }
+        .section-head h2 { 
+            /* 3rd Hierarchy Level */
+            font-size: 1.5rem; 
+            line-height: 1.4;
+        }
+
+        /* 3. Inline Phrase & Word Break Reset (Fixing "Jagged" Layout) */
+        .inline-phrase { 
+            display: inline; /* Allow natural wrapping within phrases */
+        }
+        
+        .service-name-hero, .lp-title, .section-head h2, .pain-voice {
+            word-break: normal; /* Reset keep-all to prevent awkward gaps in JP text */
+            overflow-wrap: break-word; 
+        }
+
+        /* 4. Card & Box Spacing Optimization */
+        .pain-box, .menu-card, .benefit-card, .faq-item, .form-wrapper {
+            padding: 20px; /* Reduce from 30-45px to gain width */
+        }
+        
+        .benefit-card {
+            padding-top: 35px; /* Adjust for tag position */
+            margin-top: 40px;
+        }
+        .benefit-tag {
+            top: -14px;
+            font-size: 0.75rem;
+            padding: 5px 15px;
+        }
+
+        .menu-header { 
+            flex-direction: column; 
+            text-align: center; 
+            gap: 10px; 
+            padding: 15px 20px;
+            font-size: 1.15rem; /* Smaller card header */
+        }
+        .menu-body { padding: 20px; }
         .menu-header .price-box { text-align: center; }
-        .datetime-row { flex-direction: column; align-items: stretch; gap: 5px; background: #f3f4f6; padding: 10px; border-radius: 4px; }
+        
+        .option-box {
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        /* Font Size Hierarchy inside Cards */
+        .pain-title { font-size: 1.05rem; }
+        .option-title { font-size: 1.1rem; }
+        .benefit-title-text { font-size: 1.15rem; }
+        .faq-q { font-size: 1.0rem; }
+
+        /* Form Adjustments */
+        .datetime-row { 
+            flex-direction: column; 
+            align-items: stretch; 
+            gap: 5px; 
+            background: #f3f4f6; 
+            padding: 10px; 
+            border-radius: 4px; 
+        }
+        
+        .sp-br { display: inline; } /* Optional: Keep existing behavior or set to none if prefer flow */
+        
+        /* Mobile Header Adjustments */
+        .header-links a:first-child { display: none; }
+        .header-cta { font-size: 0.8rem; padding: 6px 12px; }
         
         .comparison-table th, .comparison-table td { padding: 8px; font-size: 0.8rem; }
         
-        /* Mobile Header Adjustments */
-        .header-links a:first-child { display: none; } /* Hide "Top" on small screens if space is tight */
-        .header-cta { font-size: 0.8rem; padding: 6px 12px; }
+        /* Modal tweaks */
+        .modal-content { padding: 25px; margin: 10% auto; width: 85%; }
+        .close-btn { right: 10px; top: 10px; font-size: 28px; }
     }
 </style>
 
