@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NSJK8WXM');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoCOMPLETE | 独りで、やらない。</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23B8962E' d='M256 0L334.24 177.76L512 256L334.24 334.24L256 512L177.76 334.24L0 256L177.76 177.76L256 0Z'/></svg>">
+
+<meta property="og:title" content="CoCOMPLETE | 独りで、やらない。">
+<meta property="og:description" content="ずっと先送りにしてきた「未完了」を、今日、共に終わらせる。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://costar-works.com/cocomplete.html">
+<meta property="og:image" content="https://costar-works.com/IMG_6140.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    /* --- 共通設定 --- */
+    :root {
+        --bg-color: #F9FAFB; 
+        --text-color: #333333; 
+        --text-muted: #666666;
+        --accent-color: #B8962E; /* Gold: Main Action / Brand */
+        --urgent-color: #d9534f; /* Red: Alert / Limit / Emphasis */
+        --community-blue: #3E5C9A; /* Navy Blue for Community Benefit */
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    body {
+        margin: 0;
+        font-family: "Noto Sans JP", sans-serif;
+        background: var(--bg-color);
+        color: var(--text-color);
+        line-height: 2.0;
+        letter-spacing: 0.05em;
+        word-wrap: break-word;
+    }
+
+    h1, h2, h3, h4, .mincho, .logo { font-family: "Shippori Mincho", serif; }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+
+    /* --- 文節改行コントロール --- */
+    .inline-phrase { display: inline-block; } 
+    .sp-br { display: none; }
+
+    /* --- Header --- */
+    header { padding: 15px 0; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .nav-flex { display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+    .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.1em; color: var(--text-color); }
+    
+    /* Header CTA Button Style */
+    .header-cta {
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: #fff;
+        background: var(--accent-color);
+        padding: 8px 18px;
+        border-radius: 20px;
+        margin-left: 15px;
+        display: inline-block;
+    }
+    .header-cta:hover { opacity: 0.8; transform: translateY(-1px); }
+    .header-links { display: flex; align-items: center; gap: 15px; }
+
+    /* --- Hero Section --- */
+    .lp-hero {
+        padding: 120px 0 100px;
+        text-align: center;
+        /* Fixed: Removed duplicate background property. Kept the lighter one suitable for text visibility. */
+        background: radial-gradient(circle at center, #FFFFFF 0%, #F3F4F6 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    #hero-canvas { 
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+        z-index: 1; pointer-events: none; display: block;
+    }
+    .lp-tag {
+        display: inline-block; background: var(--urgent-color); color: #fff;
+        padding: 8px 20px; border-radius: 30px; font-size: 0.9rem; font-weight: bold;
+        margin-bottom: 30px; position: relative; z-index: 2; line-height: 1.6;
+    }
+    .service-name-hero {
+        font-family: "Shippori Mincho", serif;
+        font-size: 3.5rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 10px;
+        color: var(--text-color);
+        position: relative; z-index: 2;
+        font-weight: 700;
+        word-break: keep-all; 
+        overflow-wrap: break-word;
+    }
+    .lp-title {
+        font-size: 2.0rem; margin-bottom: 20px; line-height: 1.4; font-weight: 600; position: relative; z-index: 2;
+        word-break: keep-all; 
+        overflow-wrap: break-word;
+    }
+    .lp-subtitle {
+        font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; position: relative; z-index: 2;
+    }
+
+    /* --- Section Styles Unified --- */
+    /* Fixed: Unified padding to 80px for all sections */
+    section { padding: 80px 0; }
+    .white-section { background: #fff; }
+    .gray-section { background: var(--bg-color); }
+    
+    /* Fixed: Standardized heading margins */
+    .section-head { text-align: center; margin-bottom: 60px; }
+    .section-head h2 { 
+        font-size: 1.8rem; margin-bottom: 25px; margin-top: 0; 
+        position: relative; display: inline-block; line-height: 1.5;
+        word-break: keep-all; 
+    }
+    .section-head h2::after { content:""; display:block; width:40px; height:2px; background:var(--accent-color); margin: 20px auto 0; }
+
+    /* --- Pain (Dialogue) --- */
+    .pain-box {
+        background: #fff; 
+        border-left: 6px solid var(--accent-color);
+        padding: 30px; margin-bottom: 30px; border-radius: 0 4px 4px 0;
+        box-shadow: var(--card-shadow);
+    }
+    .pain-title { 
+        font-weight: bold; font-size: 1.1rem; margin-bottom: 20px; 
+        color: var(--text-color);
+    }
+    .pain-voice {
+        margin-bottom: 1.2em;
+        line-height: 1.8;
+    }
+    .pain-voice:last-child { margin-bottom: 0; }
+
+    /* --- Solution --- */
+    .solution-text { font-size: 1.1rem; line-height: 2.2; text-align: justify; }
+    .highlight { background: linear-gradient(transparent 70%, rgba(184, 150, 46, 0.2) 70%); font-weight: bold; }
+
+    /* --- Menu Cards --- */
+    .menu-card {
+        background: #fff; border-radius: 8px; overflow: hidden;
+        box-shadow: var(--card-shadow); margin-bottom: 40px;
+        border: 1px solid #eee;
+    }
+    .menu-header {
+        background: var(--text-color); color: #fff; padding: 15px 30px;
+        font-family: "Shippori Mincho", serif; font-size: 1.3rem;
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .menu-header .price-box { text-align: right; line-height: 1.2; }
+    .menu-header .original-price {
+        display: block; font-size: 0.7em; text-decoration: line-through; opacity: 0.8; font-weight: normal;
+    }
+    .menu-header .monitor-price { font-weight: bold; font-size: 1.1em; color: #fff; }
+
+    .menu-body { padding: 30px; }
+    .menu-list { list-style: none; padding: 0; margin: 20px 0; }
+    .menu-list li {
+        position: relative; padding-left: 25px; margin-bottom: 15px; color: var(--text-muted);
+    }
+    .menu-list li::before {
+        content: "✔"; position: absolute; left: 0; color: var(--accent-color);
+    }
+    .menu-list strong { color: var(--text-color); }
+
+    /* --- Comparison Table --- */
+    .comparison-table {
+        width: 100%; border-collapse: collapse; margin-top: 20px; margin-bottom: 40px;
+        background: #fff; box-shadow: var(--card-shadow);
+    }
+    .comparison-table th, .comparison-table td {
+        border: 1px solid #eee; padding: 15px; text-align: center; font-size: 0.95rem;
+    }
+    .comparison-table th { background: #f3f4f6; color: var(--text-color); font-weight: bold; }
+    .comparison-table .price-highlight { color: var(--urgent-color); font-weight: bold; font-size: 1.1rem; }
+    .comparison-table .course-name { font-weight: bold; }
+
+    /* --- Option Box Styles --- */
+    .option-box {
+        margin-top: 40px; padding: 30px; background: #FDFBF7; border-radius: 8px; 
+        border: 2px solid var(--accent-color); position: relative;
+    }
+    .option-tag {
+        position: absolute; top: -15px; left: 20px; background: var(--accent-color);
+        color: #fff; padding: 4px 15px; font-size: 0.8rem; font-weight: bold; border-radius: 20px;
+    }
+    .option-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; color: var(--text-color); display: block; }
+    .option-desc { font-size: 0.95rem; line-height: 1.8; color: var(--text-color); }
+
+    /* --- Benefit Box (Refined for Co-STAR SHIP) --- */
+    .benefit-card {
+        background: #fff; 
+        border: 1px solid #e5e7eb; 
+        border-radius: 12px;
+        padding: 45px 35px 35px;
+        margin-top: 50px;
+        margin-bottom: 40px; 
+        position: relative;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+    .benefit-tag {
+        position: absolute;
+        top: -18px;
+        left: 30px;
+        background: var(--community-blue);
+        color: #fff;
+        padding: 6px 22px;
+        border-radius: 30px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        letter-spacing: 0.05em;
+    }
+    .benefit-title-text { 
+        color: var(--community-blue); 
+        font-family: "Shippori Mincho", serif;
+        font-weight: 600; 
+        font-size: 1.3rem;
+        margin-bottom: 20px; 
+        display: block; 
+    }
+
+    /* --- Buttons & CTAs --- */
+    /* Fixed: Middle CTA button is now Gold (Accent) */
+    .middle-cta-btn {
+        display: inline-block; background: var(--accent-color); color: #fff;
+        padding: 15px 40px; border-radius: 50px; font-weight: bold; 
+        box-shadow: 0 4px 15px rgba(184, 150, 46, 0.3); transition: 0.3s;
+        margin: 20px auto 0;
+    }
+    .middle-cta-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(184, 150, 46, 0.4); opacity: 0.9; }
+
+    /* Fixed: Submit/Main CTA button is now Gold (Accent) instead of Red */
+    .btn-submit {
+        display: block;
+        width: 100%; max-width: 320px; margin: 0 auto;
+        padding: 18px 20px;
+        background: var(--accent-color); /* Changed from urgent-color */
+        color: #fff;
+        border: none; border-radius: 50px; 
+        font-size: 1.1rem; font-weight: bold; letter-spacing: 0.05em;
+        cursor: pointer; transition: 0.3s;
+        box-shadow: 0 5px 15px rgba(184, 150, 46, 0.3); /* Adjusted shadow color */
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .btn-submit:hover { 
+        background: #a08226; /* Darker gold */
+        transform: translateY(-2px); 
+        box-shadow: 0 8px 20px rgba(184, 150, 46, 0.4); 
+    }
+
+    /* --- FAQ Styles --- */
+    .faq-item {
+        background: #fff; padding: 25px; border-radius: 8px; margin-bottom: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid #eee;
+    }
+    .faq-q {
+        color: var(--accent-color); font-weight: bold; margin-bottom: 10px; font-size: 1.05rem;
+        display: flex; gap: 10px; align-items: flex-start;
+    }
+    .faq-q::before { content: "Q."; font-size: 1.2rem; line-height: 1.2; }
+    .faq-a {
+        font-size: 0.95rem; line-height: 1.9; color: var(--text-color); padding-left: 30px;
+    }
+
+    /* --- Form Area --- */
+    .form-wrapper {
+        background: #fff; padding: 40px; border-radius: 8px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1); border-top: 5px solid var(--accent-color); /* Border also Gold */
+    }
+    .form-group { margin-bottom: 25px; }
+    .form-label { display: block; margin-bottom: 8px; font-weight: bold; }
+    .form-input, .form-textarea, .form-select {
+        width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px;
+        font-size: 1rem; box-sizing: border-box;
+        font-family: inherit;
+    }
+
+    .btn-outline {
+        display: inline-block;
+        padding: 12px 30px;
+        border: 1px solid var(--text-color); color: var(--text-color);
+        border-radius: 30px; font-weight: bold; background: transparent;
+        cursor: pointer; transition: 0.3s; text-align: center;
+    }
+    .btn-outline:hover { background: var(--text-color); color: #fff; }
+
+    .datetime-row { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; }
+    .time-range { display: flex; align-items: center; gap: 5px; flex: 1; }
+
+    /* --- Modal Styles --- */
+    .modal {
+        display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+        overflow: auto; background-color: rgba(255,255,255,0.6); backdrop-filter: blur(5px);
+    }
+    .modal-content {
+        background-color: #fff; margin: 5% auto; padding: 40px; 
+        width: 90%; max-width: 700px; border-radius: 8px; position: relative;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        animation: slideIn 0.4s ease;
+    }
+    @keyframes slideIn { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+    .close-btn {
+        position: absolute; top: 15px; right: 20px;
+        color: #ccc; font-size: 35px; font-weight: bold; cursor: pointer;
+    }
+
+    /* --- Mobile Adjustments --- */
+    @media (max-width: 600px) {
+        .sp-br { display: inline; } 
+        .service-name-hero, .lp-title { 
+            white-space: normal; 
+        }
+        .service-name-hero { font-size: clamp(2.0rem, 11vw, 3.5rem); }
+        .lp-title { font-size: clamp(1.2rem, 8vw, 2.0rem); }
+        
+        .menu-header { flex-direction: column; text-align: center; gap: 10px; }
+        .menu-header .price-box { text-align: center; }
+        .datetime-row { flex-direction: column; align-items: stretch; gap: 5px; background: #f3f4f6; padding: 10px; border-radius: 4px; }
+        
+        .comparison-table th, .comparison-table td { padding: 8px; font-size: 0.8rem; }
+        
+        /* Mobile Header Adjustments */
+        .header-links a:first-child { display: none; } /* Hide "Top" on small screens if space is tight */
+        .header-cta { font-size: 0.8rem; padding: 6px 12px; }
+    }
+</style>
+
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSJK8WXM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<header>
+    <div class="nav-flex">
+        <div class="logo"><a href="index.html">CoSTAR</a></div>
+        <div class="header-links">
+            <a href="index.html" style="font-size:0.9rem; color:#666;">Topに戻る</a>
+            <a href="#apply" class="header-cta">無料相談・モニター申込</a>
+        </div>
+    </div>
+</header>
+
+<div class="lp-hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="container">
+        <span class="lp-tag">【5名完了・満席御礼】ご好評につき、追加3名様限定でモニター募集中</span>
+        <h1 class="service-name-hero">CoCOMPLETE</h1>
+        <h2 class="lp-title mincho">
+            <span class="inline-phrase">独りで、</span><span class="inline-phrase">やらない。</span>
+        </h2>
+        <p class="lp-subtitle">
+            <span class="inline-phrase">ずっと先送りにしてきた</span><span class="inline-phrase">「未完了」を、</span><br class="sp-br">
+            <span class="inline-phrase">今日、</span><span class="inline-phrase">共に</span><span class="inline-phrase">終わらせる。</span>
+        </p>
+        </div>
+</div>
+
+<section class="white-section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="mincho">
+                <span class="inline-phrase">こんな「未完了」を</span><span class="inline-phrase">抱えていませんか？</span>
+            </h2>
+        </div>
+        
+        <div class="pain-box">
+            <div class="pain-title">未完のWEBサイト</div>
+            <div class="pain-voice">「いつか作らなきゃ」というストレス。その見えない処理負荷が、あなたのビジネスを加速させる足を重くしています。</div>
+            <div class="pain-voice">伝えるストレス。制作会社への気遣い、修正依頼の心理的ハードルが、あなたの「未完了」を促進しています。</div>
+            <div class="pain-voice">窮屈な箱に住むストレス。WordPressなどのツールに自分の思いが制限される感覚が、あなたの創造性を奪う。</div>
+        </div>
+
+        <div class="pain-box">
+            <div class="pain-title">脳内メモリの圧迫</div>
+            <div class="pain-voice">「いつか返信しなきゃ」と思い続けている未読のメール。「更新しなきゃ」と気になっているプロフィールの経歴。「整理しなきゃ」とデスクトップに散乱したファイル。</div>
+            <div class="pain-voice">一つ一つは些細なことかもしれません。しかし、これら「未完了」のタスクは、脳内のバックグラウンド処理で常にメモリを消費し続けています。</div>
+            <div class="pain-voice">あなたが本来の創造性やリーダーシップを発揮できないのは、能力のせいではありません。この見えない負荷が、CPUを占有しているからです。</div>
+        </div>
+        
+        <p style="text-align: center; font-weight: bold; margin-top: 50px;">
+            あなたができないのは、意思が弱いからではありません。<br>
+            ただ、「独りで抱え込んでいる」からです。
+        </p>
+    </div>
+</section>
+
+<section class="gray-section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="mincho">CoCOMPLETEのアプローチ</h2>
+        </div>
+        <div class="solution-text">
+            <p>
+                CoCOMPLETEは、プロコーチによる「心理的安全性」と、ITシステムコンサルタントによる「技術的解決」を融合させた、独自の完了支援プログラムです。
+            </p>
+            <p>
+                私はあなたの作業をただ監視するだけではありません。<span class="highlight">あなたが「完了」させるその瞬間を、誰よりも信じ、最後まで見届ける「証人」</span>となります。
+            </p>
+            <p>
+                技術的な壁（IT）と、心理的な壁（恥や恐れ）。<br>
+                <span class="highlight">この双方を取り除くことで、半年間止まっていた時計の針を、わずか数時間で動かします。</span>
+            </p>
+        </div>
+        
+        </div>
+</section>
+
+<section class="white-section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="mincho">選べる2つのコース</h2>
+            <p>現在、モニター様を限定募集中です</p>
+        </div>
+
+        <div class="menu-card">
+            <div class="menu-header">
+                <span>Aコース：Webサイト作成伴走</span>
+                <div class="price-box">
+                    <span class="original-price">通常 55,000円</span>
+                    <span class="monitor-price">モニター 20,000円(税込)</span>
+                </div>
+            </div>
+            <div class="menu-body">
+                <p style="color:var(--urgent-color); font-weight:bold; margin-bottom:15px;">※既に5名様が完了。追加募集は3枠限定となります。</p>
+                <p>元ITエンジニアのコーチが伴走し、あなたの「感性」を「ITの言葉」で具現化します。120分後には、あなたのHPが世界に公開されます。</p>
+                <ul class="menu-list">
+                    <li><strong>言葉にならない思いをカタチに：</strong>コーチング×AIの力を使い、クライアントが言葉に出来ない声を比喩やシステムにカタチとして表現。ハマらなくて罠を回避し、AIのプロである私と共に完了させます。</li>
+					<li><strong>自律への扉を開ける：</strong>思った瞬間に、自分の手ですぐに修正できる自由。HPを静的なコンテンツから、稼働領域のあるコンテンツにして、あなたのビジネスを柔軟にします。</li>
+                    <li><strong>ビジネスを前進させる：</strong>確かな拠点があるからこそ、外（戦場）で戦える。住所不定では得られない自信は、ビジネスを加速させ、世の中に更に価値提供をします。</li>
+                   </ul>
+
+                <div class="option-box">
+                    <span class="option-tag">オススメ</span>
+                    <span class="option-title mincho">公開後のブラッシュアップ・セッション</span>
+                    <div class="option-desc">
+                        <p>「一度作った後に、自分で中身を触ってみたけれど、やっぱり迷子になった……」そんな時のために、後日行う追加セッション（60分）をご用意しました。</p>
+                        <p style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
+                            <span style="color: var(--accent-color); font-weight: bold;">※モニター様は「5,000円(税込)」で追加可能です。</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-card">
+            <div class="menu-header">
+                <span>Bコース：オーダーメイド完了セッション</span>
+                <div class="price-box">
+                    <span class="original-price">通常 15,000円</span>
+                    <span class="monitor-price">モニター 5,000円(税込)</span>
+                </div>
+            </div>
+            <div class="menu-body">
+                <p>あなたが抱えるあらゆる「未完了」を、60分一本勝負で終わらせるコースです。</p>
+                <ul class="menu-list">
+                    <li><strong>デジタル・クリーンアップ：</strong>数千件の未読メールの一括処理、デスクトップ整理、クラウドストレージの断捨離。</li>
+                    <li><strong>言葉と発信の完了：</strong>SNSプロフィールの更新、ずっと書けなかったブログ記事の公開、提案書の完成。</li>
+                    <li><strong>思考とプロジェクトの完了：</strong>絡み合ったタスクの優先順位付け、ロードマップの策定、止まっていたプロジェクトの再始動。</li>
+                    <li><strong>時間：</strong>60分（コーチング20分＋集中作業40分）</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="benefit-card">
+            <span class="benefit-tag">Community Benefit</span>
+            <span class="benefit-title-text">参加者限定グループ「Co-STAR SHIP」へのご招待</span>
+            <p style="font-size:0.95rem; line-height:1.8;">
+                未完了を完了させた者たちが集うFacebookプライベートグループへ招待します。ここでは、お互いのチャレンジを応援し、完了のエネルギーを循環させ続けます。
+            </p>
+            <p style="font-size:0.85rem; color:#888; margin-top:15px;">
+                ※参加は完全に任意（希望制）です。強制ではありませんのでご安心ください。
+            </p>
+        </div>
+        
+        </div>
+</section>
+
+<section class="gray-section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="mincho">FAQ</h2>
+            <p>よくあるご質問</p>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-q">コーチは具体的に何をしてくれるのですか？</div>
+            <div class="faq-a">あなたの「伴走者」かつ「証人」となります。作業中に手が止まれば問いかけを行い、技術的な不明点（特にAコース）があれば、ITのプロとして即座に選択肢を提示します。独りでは挫折してしまうポイントを、対話と技術の両面からサポートし、完了まで導きます。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">散らかった状況や、整理できていない頭の中を見せるのが恥ずかしいです。</div>
+            <div class="faq-a">その「恥」の感情こそが、完了を妨げている最大の要因です。コーチには守秘義務があり、決してあなたを評価・批判しません。信頼できる第三者に「ありのまま」を開示した瞬間、心理的なブロックが外れ、驚くほど手が進むようになります。安心してお委ねください。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">ITスキルに自信がないですが、Webサイトは作れますか？</div>
+            <div class="faq-a">はい、作れます。CoCOMPLETEの強みは、コーチがシステムエンジニアとしてのバックグラウンドを持っていることです。難しい操作や設定は画面共有などを通じて丁寧にナビゲートしますので、あなたは「どんな表現をしたいか」という感性の部分に集中していただけます。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">申し込み後の流れを教えてください。</div>
+            <div class="faq-a">まずは無料相談（30分）にて、現状の課題とゴールのすり合わせを行います。相性や内容に納得いただいた上で、本セッションの日程を確定します。</div>
+        </div>
+    </div>
+</section>
+
+<section class="white-section" id="apply">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="mincho" style="color:var(--urgent-color);" aria-label="Monitor Offer モニター募集（無料相談）">
+                Monitor Offer
+                <span style="display:block; font-size:1.2rem; margin-top:10px; color:var(--text-color);">モニター募集（無料相談）</span>
+            </h2>
+            <p>サービス開始に伴い、フィードバックをいただけるモニター様を募集します。<br>
+            <span style="font-weight:bold; color:var(--text-color);">Aコースは残り3枠限定となります。</span></p>
+        </div>
+
+        <p style="text-align: center; margin-bottom: 25px; font-weight: bold;">
+            まずは30分の無料相談で、現状の整理と「完了」へのプロセスをご提案します。<br>
+            実際にサポートがお役に立てそうか、相性をご確認いただいてから本申込となります。
+        </p>
+
+        <div class="form-wrapper">
+            <h3 style="text-align:center; margin-bottom:30px;">CoCOMPLETE モニター申込 無料相談</h3>
+            
+            <div style="background:#fff4f4; padding:20px; border-radius:4px; margin-bottom:30px; border:1px solid var(--urgent-color); font-size:0.9rem;">
+                <strong>【参加条件・注意事項】</strong>
+                <ul style="margin:10px 0 0 20px; padding:0;">
+                    <li>実施後のインタビュー・アンケートへのご協力</li>
+                    <li>「お客様の声」としての掲載許可</li>
+                    <li>Aコースをご希望の場合、120分連続した時間を確保いただきます。</li>
+                    <li>期間：2026年2月末まで（定員に達し次第終了）</li>
+                </ul>
+            </div>
+
+            <form action="https://ssgform.com/s/w75AEtpovOxd" method="post" id="cocomplete-lp-form">
+                <input type="hidden" name="申込種別" value="CoCOMPLETEモニター(LP経由)">
+
+                <div class="form-group">
+                    <label class="form-label">希望コース <span style="color:#d9534f">*</span></label>
+                    <select name="希望コース" class="form-select" required>
+                        <option value="">選択してください</option>
+                        <option value="Aコース：Webサイト作成（無料相談）">Aコース：Webサイト作成（無料相談）</option>
+                        <option value="Bコース：オーダーメイド（無料相談）">Bコース：オーダーメイド（無料相談）</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">お名前 <span style="color:#d9534f">*</span></label>
+                    <input type="text" name="名前" class="form-input" required placeholder="例：山田 花子">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">メールアドレス <span style="color:#d9534f">*</span></label>
+                    <input type="email" name="email" class="form-input" required placeholder="例：example@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">着手したい「未完了」の内容 <span style="color:#d9534f">*</span></label>
+                    <textarea name="現状の課題" class="form-textarea" required rows="3" placeholder="例：HPを作りたいが何から始めればいいか分からない、メールが溜まりすぎている、等"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">無料相談 希望日時（第3希望まで必須） <span style="color:#d9534f">*</span></label>
+                    <p style="font-size:0.8rem; color:#999; margin-bottom:15px;">平日・土日祝の 7:00〜22:00 の間で指定してください。</p>
+
+                    <div style="margin-bottom: 15px;">
+                        <label style="font-size:0.85rem; color:#666;">第1希望 <span style="color:#d9534f">*</span></label>
+                        <div class="datetime-row">
+                            <input type="date" name="第1希望_日付" class="form-input" required style="flex:1;">
+                            <div class="time-range">
+                                <select name="第1希望_開始" class="form-select time-select" required></select>
+                                <span>〜</span>
+                                <select name="第1希望_終了" class="form-select time-select" required></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label style="font-size:0.85rem; color:#666;">第2希望 <span style="color:#d9534f">*</span></label>
+                        <div class="datetime-row">
+                            <input type="date" name="第2希望_日付" class="form-input" required style="flex:1;">
+                            <div class="time-range">
+                                <select name="第2希望_開始" class="form-select time-select" required></select>
+                                <span>〜</span>
+                                <select name="第2希望_終了" class="form-select time-select" required></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label style="font-size:0.85rem; color:#666;">第3希望 <span style="color:#d9534f">*</span></label>
+                        <div class="datetime-row">
+                            <input type="date" name="第3希望_日付" class="form-input" required style="flex:1;">
+                            <div class="time-range">
+                                <select name="第3希望_開始" class="form-select time-select" required></select>
+                                <span>〜</span>
+                                <select name="第3希望_終了" class="form-select time-select" required></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top:30px;">
+                    <button type="submit" class="btn-submit">30分の無料個別相談を予約する</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="gray-section" style="text-align:center;">
+    <div class="container">
+        <h3 class="mincho">その他の「未完了」もご相談ください</h3>
+        <p style="margin-bottom:15px; color:var(--text-muted);">一人では腰が重いタスクがあればお気軽にご相談ください。</p>
+        <p style="margin-bottom:30px; font-size:0.9rem; color:#666;">サービスに関するご質問や、HPに書かれていないご相談もこちらからどうぞ。</p>
+        <button class="btn-outline" onclick="openModal('contact')">お問い合わせ</button>
+    </div>
+</section>
+
+<footer style="text-align:center; padding:50px 0; font-size:0.8rem; color:#999; background:var(--bg-color);">
+    <p>&copy; 2025 CoSTAR. All Rights Reserved.</p>
+</footer>
+
+<div id="modal-contact" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('contact')">&times;</span>
+        <h2 class="mincho" style="margin-bottom:30px;">お問い合わせ</h2>
+        <form action="https://ssgform.com/s/1jc1dcHXlhf0" method="post">
+            <input type="hidden" name="_redirectTo" value="https://costar-works.com/thanks.html">
+            <div class="form-group"><label class="form-label">お名前*</label><input type="text" name="名前" class="form-input" required></div>
+            <div class="form-group"><label class="form-label">メールアドレス*</label><input type="email" name="email" class="form-input" required></div>
+            <div class="form-group"><label class="form-label">お問い合わせ内容*</label><textarea name="問い合わせ内容" class="form-textarea" required></textarea></div>
+            <div style="text-align:center; margin-top:30px;"><button type="submit" class="btn-submit">送信する</button></div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Hero Animation (Rising Gold Light)
+    (function() {
+        const canvas = document.getElementById('hero-canvas');
+        if(!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let w, h, particles = [];
+        
+        function resize() { 
+            w = canvas.width = canvas.parentElement.offsetWidth; 
+            h = canvas.height = canvas.parentElement.offsetHeight; 
+        }
+        
+        class P {
+            constructor() { this.reset(true); }
+            reset(initial = false) { 
+                this.x = Math.random() * w; 
+                this.y = initial ? Math.random() * h : h + 10; 
+                this.size = Math.random() * 4 + 1; 
+                this.speed = Math.random() * 0.5 + 0.2; 
+                this.oscillation = Math.random() * 0.02 + 0.005; 
+                this.baseAlpha = Math.random() * 0.5 + 0.1;
+                this.phase = Math.random() * Math.PI * 2;
+            }
+            update() { 
+                this.y -= this.speed; 
+                this.phase += 0.05;
+                // 横揺れ（サイン波）
+                this.currentX = this.x + Math.sin(this.y * 0.02) * 10;
+                // 明滅（呼吸）
+                this.alpha = this.baseAlpha + Math.sin(this.phase) * 0.1;
+                if(this.alpha < 0) this.alpha = 0;
+                
+                if(this.y < -10) this.reset(); 
+            }
+            draw() { 
+                ctx.fillStyle = `rgba(184, 150, 46, ${this.alpha})`; // Gold color
+                ctx.beginPath();
+                ctx.arc(this.currentX, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        window.addEventListener('resize', resize); 
+        resize();
+        
+        for(let i=0; i<60; i++) particles.push(new P());
+        
+        function anim() { 
+            ctx.clearRect(0, 0, w, h); 
+            particles.forEach(p => { p.update(); p.draw(); }); 
+            requestAnimationFrame(anim); 
+        }
+        anim();
+    })();
+
+    // Modal Control
+    function openModal(t) { document.getElementById('modal-'+t).style.display='block'; document.body.style.overflow='hidden'; }
+    function closeModal(t) { document.getElementById('modal-'+t).style.display='none'; document.body.style.overflow='auto'; }
+
+    // Form Logic
+    document.addEventListener('DOMContentLoaded', () => {
+        const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
+        document.querySelectorAll('input[type="date"]').forEach(el => el.setAttribute('min', tomorrow.toISOString().split('T')[0]));
+
+        document.querySelectorAll('.time-select').forEach(select => {
+            select.appendChild(new Option("--:--", ""));
+            for(let h=7; h<=22; h++){
+                let s = h.toString().padStart(2,'0');
+                select.appendChild(new Option(`${s}:00`, `${s}:00`));
+                if(h<22) select.appendChild(new Option(`${s}:30`, `${s}:30`));
+            }
+        });
+
+        // Validation Logic (Simulated)
+        const form = document.getElementById('cocomplete-lp-form');
+        if(form) {
+            form.addEventListener('submit', (e) => {
+                // 必須項目の簡易チェックなどはブラウザのrequired属性で対応
+                // 第1〜3希望の入力チェックロジックがあればここに追加
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
