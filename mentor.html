@@ -428,13 +428,87 @@
             .price-value-large { font-size: 2.2rem; }
             .form-container { padding: 30px 20px; }
         }
+
+        /* --- Mentor Profile Section --- */
+        .mentor-profile-section {
+            background-color: #FFFFFF;
+            padding: 80px 0;
+        }
+
+        .mentor-profile-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* PCでは中央揃え */
+        .mentor-profile-text {
+            text-align: center;
+        }
+
+        .mentor-profile-text p {
+            margin: 0 0 1.6em 0;
+            font-size: 0.98rem;
+            line-height: 2.0;
+            color: var(--text-color);
+        }
+
+        .mentor-profile-meta {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+            text-align: right;
+        }
+
+        .mentor-profile-name {
+            font-family: "Shippori Mincho", serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+        }
+
+        .mentor-profile-name span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .mentor-profile-title {
+            margin: 0 0 8px 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .mentor-profile-link {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .mentor-profile-link:hover {
+            opacity: 0.8;
+        }
+
+        /* スマホ調整 */
+        @media (max-width: 768px) {
+            /* スマホでは左揃えにして、意図しない改行（泣き別れ）を防ぐ */
+            .mentor-profile-text {
+                text-align: left;
+            }
+            
+            .mentor-profile-text p {
+                font-size: 0.9rem;
+                line-height: 1.9;
+            }
+            .mentor-profile-meta {
+                text-align: left;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
+    <header role="banner">
         <div class="nav-flex">
             <div class="logo"><a href="index.html">CoSTAR</a></div>
-            <nav class="pc-nav">
+            <nav class="pc-nav" aria-label="メインナビゲーション">
                 <a href="index.html" class="pc-nav-link">← Topに戻る</a>
             </nav>
             <div class="nav-actions">
@@ -454,6 +528,9 @@
             <p class="tagline">
                 「正しいコーチ」を脱ぎ捨て、<br class="sp-only">
                 相手を引き寄せる『怪物』へ。
+            </p>
+            <p style="margin-top: 12px; font-size: 0.9rem; color:#6b7280;">
+                ※コーチングを学び、すでに実践している方向けのメンタリングセッションです。
             </p>
         </div>
     </div>
@@ -573,15 +650,84 @@
                 <div class="logic-item">
                     <span class="logic-number">03</span>
                     <h3>自己一致</h3>
-                    <p>本音と技術が一致したとき、言葉は単なる「スキル」から、クライアントの魂を揺さぶる「圧倒的な力」へと変わります。私は、あなたがその『怪物性』と解き放つまで、狂気の沙汰であなたと関わります。</p>
+                    <p>本音と技術が一致したとき、言葉は単なる「スキル」から、クライアントの魂を揺さぶる「圧倒的な力」へと変わります。私は、あなたがその『怪物性』を解き放つまで、安心と信頼の枠組みを守りながら、狂気の沙汰であなたと関わります。</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="mentor-profile-section">
+      <div class="container">
+        <h2 class="section-title">Who am I?</h2>
+
+        <div class="mentor-profile-wrapper">
+          <div class="mentor-profile-text">
+            <p>
+              私がコーチにコーチしたいと思い始めたのは、コーチングを学びはじめた頃からでした。
+            </p>
+            <p>
+              それは、コーチという存在が、「なんとか自分を変えたい」<br>
+              「人に本気でかかわりたい」と、誰よりも強く願っている人たちだと、知っているからです。
+            </p>
+            <p>
+              私は、本気で「全人類を怪物化したい」と思っています。<br>
+              ここでいう『怪物』とは、ありのままの自分で生きることを100%許可し、<br>
+			  自分の力を意図的に出し、そして出し惜しみをしない存在のことです。
+            </p>
+            <p>
+              自分を大切にすることは、相手を大切にすることにつながる。<br>
+              そんな『怪物』たちがあふれている世界は、とんでもなくエキサイティングで、<br>
+              「生まれてきて本当によかった」と思える世界だと信じています。
+            </p>
+            <p>
+              でも、もちろん、私ひとりでは全人類を怪物化することはできません。
+            </p>
+            <p>
+              だからこそ、私はコーチに向き合いたい。私を通じて、多くの『怪物コーチ』が生まれていくこと。<br>
+              それが、私がメンターコーチングを提供する理由です。
+            </p>
+
+            <div class="mentor-profile-meta">
+              <p class="mentor-profile-name">
+                星野 直道 <span>| Naomichi Hoshino</span>
+              </p>
+              <p class="mentor-profile-title">
+                米国CTI認定プロコーチ（CPCC）
+              </p>
+              <a href="index.html#profile" class="mentor-profile-link">
+                → 詳しいプロフィールはこちら
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="package-section">
         <div class="container">
             <h2 class="section-title">Program Contents</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto 50px; padding: 0 20px;">
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                    <li style="padding-left: 1.5em; position: relative; color: var(--text-muted); font-weight: 500;">
+                        <span style="position: absolute; left: 0; color: var(--accent-color);">✔</span>
+                        自分の「怪物性（コーチとしての核）」が言語化される
+                    </li>
+                    <li style="padding-left: 1.5em; position: relative; color: var(--text-muted); font-weight: 500;">
+                        <span style="position: absolute; left: 0; color: var(--accent-color);">✔</span>
+                        自分のコーチングに「何を乗せるか」が明確になる
+                    </li>
+                    <li style="padding-left: 1.5em; position: relative; color: var(--text-muted); font-weight: 500;">
+                        <span style="position: absolute; left: 0; color: var(--accent-color);">✔</span>
+                        価格と価値に対して、揺れにくい確信が持てる
+                    </li>
+                    <li style="padding-left: 1.5em; position: relative; color: var(--text-muted); font-weight: 500;">
+                        <span style="position: absolute; left: 0; color: var(--accent-color);">✔</span>
+                        「この人に届けたい」という理想のクライアント像が立ち上がる
+                    </li>
+                </ul>
+            </div>
+
             <div class="package-container">
                 <div class="package-header">
                     Mentor Coaching Package (全3回)
@@ -640,6 +786,9 @@
                 <form action="https://ssgform.com/s/Bk9Kz43AMlPY" method="post" id="application-form">
                     <div class="form-group">
                         <label class="form-label">種別</label>
+                        <p style="font-size:0.8rem; color:#6b7280; margin: 4px 0 10px;">
+                            無料相談は30分Zoom、本申込は日程調整後にご案内メールをお送りします。
+                        </p>
                         <select name="種別" id="form-type-select" class="form-select" required>
                             <option value="" disabled selected>選択してください</option>
                             <option value="無料相談">オンライン無料相談 (30分 / 無料)</option>
@@ -710,23 +859,25 @@
     </footer>
 
     <script>
-        // Hero Background Animation
-        const canvas = document.getElementById('resonance-canvas');
-        const ctx = canvas.getContext('2d');
-        let circles = [];
-        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        class PulseCircle {
-            constructor() { this.init(); }
-            init() { this.x = canvas.width / 2; this.y = canvas.height / 2; this.r = 0; this.alpha = 0.35; this.speed = Math.random() * 0.4 + 0.2; this.lineWidth = Math.random() * 1.5 + 0.5; }
-            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); ctx.strokeStyle = `rgba(184, 150, 46, ${this.alpha})`; ctx.lineWidth = this.lineWidth; ctx.stroke(); }
-            update() { this.r += this.speed; this.alpha -= 0.0006; if (this.alpha <= 0) this.init(); }
-        }
-        function setup() { resize(); for (let i = 0; i < 6; i++) setTimeout(() => circles.push(new PulseCircle()), i * 2500); }
-        function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); circles.forEach(c => { c.update(); c.draw(); }); requestAnimationFrame(animate); }
-        window.addEventListener('resize', resize); setup(); animate();
-
-        // Form Logic
         document.addEventListener('DOMContentLoaded', () => {
+            // Hero Background Animation (Moved inside DOMContentLoaded with null check)
+            const canvas = document.getElementById('resonance-canvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let circles = [];
+                function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+                class PulseCircle {
+                    constructor() { this.init(); }
+                    init() { this.x = canvas.width / 2; this.y = canvas.height / 2; this.r = 0; this.alpha = 0.35; this.speed = Math.random() * 0.4 + 0.2; this.lineWidth = Math.random() * 1.5 + 0.5; }
+                    draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); ctx.strokeStyle = `rgba(184, 150, 46, ${this.alpha})`; ctx.lineWidth = this.lineWidth; ctx.stroke(); }
+                    update() { this.r += this.speed; this.alpha -= 0.0006; if (this.alpha <= 0) this.init(); }
+                }
+                function setup() { resize(); for (let i = 0; i < 6; i++) setTimeout(() => circles.push(new PulseCircle()), i * 2500); }
+                function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); circles.forEach(c => { c.update(); c.draw(); }); requestAnimationFrame(animate); }
+                window.addEventListener('resize', resize); setup(); animate();
+            }
+
+            // Form Logic
             const applicationForm = document.getElementById('application-form');
             const typeSelect = document.getElementById('form-type-select');
             const dateTimeFields = document.getElementById('datetime-fields');
@@ -743,109 +894,113 @@
             });
 
             // 種別変更時の表示制御
-            typeSelect.addEventListener('change', function() {
-                const isRequired = (this.value === '無料相談' || this.value === '本申込');
-                dateTimeFields.style.display = isRequired ? 'block' : 'none';
-                
-                const date1 = document.querySelector('input[name="第1希望_日付"]');
-                const start1 = document.querySelector('select[name="第1希望_開始"]');
-                const end1 = document.querySelector('select[name="第1希望_終了"]');
-                
-                if (date1 && start1 && end1) {
-                    date1.required = isRequired;
-                    start1.required = isRequired;
-                    end1.required = isRequired;
-                }
-            });
+            if (typeSelect) {
+                typeSelect.addEventListener('change', function() {
+                    const isRequired = (this.value === '無料相談' || this.value === '本申込');
+                    if (dateTimeFields) dateTimeFields.style.display = isRequired ? 'block' : 'none';
+                    
+                    const date1 = document.querySelector('input[name="第1希望_日付"]');
+                    const start1 = document.querySelector('select[name="第1希望_開始"]');
+                    const end1 = document.querySelector('select[name="第1希望_終了"]');
+                    
+                    if (date1 && start1 && end1) {
+                        date1.required = isRequired;
+                        start1.required = isRequired;
+                        end1.required = isRequired;
+                    }
+                });
+            }
 
-            // バリデーション (index.htmlと同等の強化チェック)
-            applicationForm.addEventListener('submit', function(e) {
-                const val = typeSelect.value;
+            // バリデーション
+            if (applicationForm) {
+                applicationForm.addEventListener('submit', function(e) {
+                    const val = typeSelect.value;
 
-                // 所要時間の定義 (分)
-                const minDurations = {
-                    '無料相談': 30,
-                    '本申込': 60
-                };
-                const requiredMin = minDurations[val] || 0;
+                    // 所要時間の定義 (分)
+                    const minDurations = {
+                        '無料相談': 30,
+                        '本申込': 60
+                    };
+                    const requiredMin = minDurations[val] || 0;
 
-                const timeToMin = (t) => {
-                    if(!t) return 0;
-                    const [h, m] = t.split(':').map(Number);
-                    return h * 60 + m;
-                };
+                    const timeToMin = (t) => {
+                        if(!t) return 0;
+                        const [h, m] = t.split(':').map(Number);
+                        return h * 60 + m;
+                    };
 
-                const selectedSlots = [];
-                let hasError = false;
-                let errorMsg = "";
+                    const selectedSlots = [];
+                    let hasError = false;
+                    let errorMsg = "";
 
-                if (val === '無料相談' || val === '本申込') {
-                    for (let i = 1; i <= 3; i++) {
-                        const date = this.querySelector(`[name="第${i}希望_日付"]`).value;
-                        const start = this.querySelector(`[name="第${i}希望_開始"]`).value;
-                        const end = this.querySelector(`[name="第${i}希望_終了"]`).value;
+                    if (val === '無料相談' || val === '本申込') {
+                        for (let i = 1; i <= 3; i++) {
+                            const date = this.querySelector(`[name="第${i}希望_日付"]`).value;
+                            const start = this.querySelector(`[name="第${i}希望_開始"]`).value;
+                            const end = this.querySelector(`[name="第${i}希望_終了"]`).value;
 
-                        // 第1希望必須チェック
-                        if (i === 1 && (!date || !start || !end)) {
-                            hasError = true;
-                            errorMsg = "第1希望の日時は必須です。";
-                            break;
-                        }
-
-                        // 行の入力完了チェック
-                        if (date || start || end) {
-                            if (!date || !start || !end) {
+                            // 第1希望必須チェック
+                            if (i === 1 && (!date || !start || !end)) {
                                 hasError = true;
-                                errorMsg = `第${i}希望の日時をすべて入力してください。`;
+                                errorMsg = "第1希望の日時は必須です。";
                                 break;
                             }
 
-                            const startMin = timeToMin(start);
-                            const endMin = timeToMin(end);
+                            // 行の入力完了チェック
+                            if (date || start || end) {
+                                if (!date || !start || !end) {
+                                    hasError = true;
+                                    errorMsg = `第${i}希望の日時をすべて入力してください。`;
+                                    break;
+                                }
 
-                            // 時間逆転チェック
-                            if (endMin <= startMin) {
-                                hasError = true;
-                                errorMsg = `第${i}希望の終了時間は、開始時間より後に設定してください。`;
-                                break;
-                            }
+                                const startMin = timeToMin(start);
+                                const endMin = timeToMin(end);
 
-                            // 所要時間チェック
-                            const duration = endMin - startMin;
-                            if (requiredMin > 0 && duration < requiredMin) {
-                                hasError = true;
-                                errorMsg = `選択された種別の必要時間は ${requiredMin}分以上です（第${i}希望は${duration}分になっています）。`;
-                                break;
-                            }
+                                // 時間逆転チェック
+                                if (endMin <= startMin) {
+                                    hasError = true;
+                                    errorMsg = `第${i}希望の終了時間は、開始時間より後に設定してください。`;
+                                    break;
+                                }
 
-                            // 重複チェック
-                            const slotKey = `${date}_${start}_${end}`;
-                            if (selectedSlots.includes(slotKey)) {
-                                hasError = true;
-                                errorMsg = "同じ日時が複数選択されています。別の日時を指定してください。";
-                                break;
+                                // 所要時間チェック
+                                const duration = endMin - startMin;
+                                if (requiredMin > 0 && duration < requiredMin) {
+                                    hasError = true;
+                                    errorMsg = `選択された種別の必要時間は ${requiredMin}分以上です（第${i}希望は${duration}分になっています）。`;
+                                    break;
+                                }
+
+                                // 重複チェック
+                                const slotKey = `${date}_${start}_${end}`;
+                                if (selectedSlots.includes(slotKey)) {
+                                    hasError = true;
+                                    errorMsg = "同じ日時が複数選択されています。別の日時を指定してください。";
+                                    break;
+                                }
+                                selectedSlots.push(slotKey);
                             }
-                            selectedSlots.push(slotKey);
                         }
                     }
-                }
-                
-                if (hasError) {
-                    alert(errorMsg);
-                    e.preventDefault();
-                    return;
-                }
-                
-                // 送信中表示
-                const btn = this.querySelector('button[type="submit"]');
-                if (btn) {
-                    setTimeout(() => {
-                        btn.disabled = true;
-                        btn.textContent = '送信中...';
-                        btn.style.opacity = '0.7';
-                    }, 10);
-                }
-            });
+                    
+                    if (hasError) {
+                        alert(errorMsg);
+                        e.preventDefault();
+                        return;
+                    }
+                    
+                    // 送信中表示
+                    const btn = this.querySelector('button[type="submit"]');
+                    if (btn) {
+                        setTimeout(() => {
+                            btn.disabled = true;
+                            btn.textContent = '送信中...';
+                            btn.style.opacity = '0.7';
+                        }, 10);
+                    }
+                });
+            }
         });
     </script>
 </body>
