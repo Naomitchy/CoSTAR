@@ -425,8 +425,12 @@
         .form-group { margin-bottom: 25px; text-align: left; }
         .form-label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--text-color); font-size: 0.95rem; }
         .form-input, .form-textarea, .form-select { width: 100%; padding: 12px; border: 1px solid #e5e7eb; background-color: #f9fafb; color: var(--text-color); border-radius: 4px; font-size: 1rem; box-sizing: border-box; font-family: inherit; transition: 0.3s; }
-        .datetime-row { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; }
-        .time-range { display: flex; align-items: center; gap: 5px; flex: 1; }
+        
+        /* 日付・時間入力のレイアウト調整（Update） */
+        .datetime-row { display: flex; gap: 15px; align-items: center; margin-bottom: 15px; }
+        .datetime-row .form-input { flex: 0 0 35%; width: auto; } /* 日付は幅を抑える */
+        .time-range { flex: 1; display: flex; align-items: center; gap: 10px; } /* 時間エリアは残りを埋める */
+        .time-range select { flex: 1; width: 100%; } /* 時間選択肢も均等に広げる */
 
         .sp-only-text { display: none; }
         .pc-only-text { display: block; }
@@ -530,6 +534,9 @@
             .plans-wrapper { flex-direction: column; }
             .profile-flex { flex-direction: column; }
             .datetime-row { flex-direction: column; }
+            
+            /* モバイル時の日時調整 */
+            .datetime-row .form-input { flex: none; width: 100%; }
         }
     </style>
 </head>
@@ -562,7 +569,7 @@
             <a href="#logbook" class="sp-nav-link">LOGBOOK</a>
             <a href="#contact" class="sp-nav-link">CONTACT</a>
             <div style="margin-top: 40px;">
-                <button class="btn btn-primary" onclick="openModal('application'); closeSpMenu();">お申込み・ご相談</button>
+                <button class="btn btn-primary" onclick="openModal('application', '体験セッション'); closeSpMenu();">体験セッションを申し込む</button>
             </div>
         </nav>
     </div>
@@ -604,7 +611,7 @@
                         周りの期待に応えてきた。社会のルールも守ってきた。十分な報酬も得られた。
                     </p>
                     <p>
-                        でも, いつの間にか、気軽に「今日、ご飯食べに行かない？」なんて、言えなくなっていた。<br>
+                        でも、いつの間にか、気軽に「今日、ご飯食べに行かない？」なんて、言えなくなっていた。<br>
                         私は誰からも愛されていないのではないか。
                     </p>
                     <p>
@@ -613,8 +620,7 @@
                         そんな人間が愛されるわけがない。
                     </p>
                     <p>
-                        言いたいことを飲み込み、空気を読み, <br>
-                        「誰かににとっての正解」を選び続ける日々。<br>
+                        言いたいことを飲み込み、空気を読み、「誰かにとっての正解」を選び続ける日々。<br>
                         孤独。誰にも本音を言えない。建前の中で生きる日々は、もう苦しい。
                     </p>
                     <p>
@@ -624,15 +630,15 @@
                     </p>
                     <p>
                         私はこの問いの答えを探す旅の中で、コーチングと出会いました。<br>
-                        このプロセスは、私が「価値のない自分」だと否定し, 隠してきた部分こそが、<br>
+                        このプロセスは、私が「価値のない自分」だと否定し、隠してきた部分こそが、<br>
                         実は人生を動かす最もパワフルなリソース（エネルギー）であることを教えてくれました。
                     </p>
                     <p>
-                        矛盾も、葛藤も, 情けない感情も、すべて携えて進めばいい。<br>
-                        はじめて自分に生きることを許可した瞬間, 世界は色を変えました。
+                        矛盾も、葛藤も、情けない感情も、すべて携えて進めばいい。<br>
+                        はじめて自分に生きることを許可した瞬間、世界は色を変えました。
                     </p>  
                     <p>
-                        もしあなたが、他人の評価や世間体ではなく, <br>
+                        もしあなたが、他人の評価や世間体ではなく、<br>
                         「本当に大切にしたい自分」を生きることに飢えているなら。<br>
                         「この程度でいいだろう」と、自分の「怪物性」（＝底知れぬ可能性、生命の衝動）<br>
 						を飼い慣らしていることに後悔しているなら。
@@ -641,7 +647,7 @@
                         ぜひ、私に会いに来てください。<br>
                         私は、あなたのその「諦め」を許しません。<br>
 						私は、怪物です。誰に何と言われようと、あなたの底知れぬ可能性を信じ抜き、<br>
-						その「怪物性」を共に解き放つ者です。
+						私はその「怪物性」を共に解き放つ者です。
                     </p>
                     <p>
                         「あいつは変わった。」と笑わせておけばいい。<br>
@@ -676,8 +682,8 @@
                     </p>
 
                     <p>
-                        <span style="display:inline-block; white-space:nowrap;">言いたいことを飲み込み、空気を読み, </span><br>
-                        <span style="display:inline-block; white-space:nowrap;">「誰かににとっての正解」を選び続ける日々。</span><br>
+                        <span style="display:inline-block; white-space:nowrap;">言いたいことを飲み込み、空気を読み、</span><br>
+                        <span style="display:inline-block; white-space:nowrap;">「誰かにとっての正解」を選び続ける日々。</span><br>
                         <span style="display:inline-block; white-space:nowrap;">孤独。誰にも本音を言えない。</span><br>
                         <span style="display:inline-block; white-space:nowrap;">建前の中で生きる日々は、もう苦しい。</span>
                     </p>
@@ -691,32 +697,32 @@
                     <p>
                         <span style="display:inline-block; white-space:nowrap;">私はこの問いの答えを探す旅の中で、</span><br>
                         <span style="display:inline-block; white-space:nowrap;">コーチングと出会いました。</span><br>
-                        <span style="display:inline-block; white-space:nowrap;">このプロセスは、私が「価値のない自分」だと否定し, </span><br>
+                        <span style="display:inline-block; white-space:nowrap;">このプロセスは、私が「価値のない自分」だと否定し、</span><br>
                         <span style="display:inline-block; white-space:nowrap;">隠してきた部分こそが、実は人生を動かす最も</span><br>
                         <span style="display:inline-block; white-space:nowrap;">パワフルなリソース（エネルギー）であることを</span><br>
                         <span style="display:inline-block; white-space:nowrap;">教えてくれました。</span>
                     </p>
 
                     <p>
-                        <span style="display:inline-block; white-space:nowrap;">矛盾も、葛藤も、情けない感情も, </span><br>
+                        <span style="display:inline-block; white-space:nowrap;">矛盾も、葛藤も、情けない感情も、</span><br>
                         <span style="display:inline-block; white-space:nowrap;">すべて携えて進めばいい。</span><br>
-                        <span style="display:inline-block; white-space:nowrap;">はじめて自分に生きることを許可した瞬間, </span><br>
+                        <span style="display:inline-block; white-space:nowrap;">はじめて自分に生きることを許可した瞬間、</span><br>
                         <span style="display:inline-block; white-space:nowrap;">世界は色を変えました。</span>
                     </p>
 
                     <p>
-                        <span style="display:inline-block; white-space:nowrap;">もしあなたが、他人の評価や世間体ではなく, </span><br>
+                        <span style="display:inline-block; white-space:nowrap;">もしあなたが、他人の評価や世間体ではなく、</span><br>
                         <span style="display:inline-block; white-space:nowrap;">「本当に大切にしたい自分」を生きることに</span><br>
                         <span style="display:inline-block; white-space:nowrap;">「この程度でいいだろう」と、自分の「怪物性」</span><br>
 						<span style="display:inline-block; white-space:nowrap;">（＝底知れぬ可能性、生命の衝動）を</span><br>
-                        <span style="display:inline-block; white-space:nowrap;">飼い慣らしてしていることに後悔しているなら。</span>
+                        <span style="display:inline-block; white-space:nowrap;">飼い慣らしていることに後悔しているなら。</span>
                     </p>
 
                     <p>
                         <span style="display:inline-block; white-space:nowrap;">ぜひ、私に会いに来てください。</span><br>
-						<span style="display:inline-block; white-space:nowrap;">私は, あなたのその「諦め」を許しません。</span><br>
+						<span style="display:inline-block; white-space:nowrap;">私は、あなたのその「諦め」を許しません。</span><br>
 						<span style="display:inline-block; white-space:nowrap;">私は、怪物です。誰に何と言われようと、あなたの底知れぬ</span><br>
-                        <span style="display:inline-block; white-space:nowrap;">可能性を信じ抜き私は、その「怪物性」を共に解き放つ者です。</span>
+                        <span style="display:inline-block; white-space:nowrap;">可能性を信じ抜き、私はその「怪物性」を共に解き放つ者です。</span>
                     </p>
 
                     <p>
@@ -746,7 +752,7 @@
                 <h3 style="margin-top: 0; min-height: 5rem; display: flex; align-items: flex-start;">CoCLEANUP</h3>
                 <div class="service-desc">
                     <div style="min-height: 4.5rem;"><p style="margin-top: 0;"><strong>「独りで、やらない。」</strong></p></div>
-                    <p>ずっと先送りにしてきた「部屋の片付け」や「自分だけのHP作成」。コーチと共に, 今日完了させませんか？</p>
+                    <p>ずっと先送りにしてきた「部屋の片付け」や「自分だけのHP作成」。コーチと共に、今日完了させませんか？</p>
                 </div>
                 <div class="service-footer">
                     <a href="cocleanup.html" class="btn btn-primary" style="width:100%; padding: 12px; background-color:var(--urgent-color); border-color:var(--urgent-color); display:inline-block; box-sizing:border-box;">モニター詳細・申込</a>
@@ -761,11 +767,14 @@
                     Leadership<br><span style="font-size: 0.75em; font-weight: normal; font-family: sans-serif; margin-top: 5px;">Coaching Program</span>
                 </h3>
                 <div class="service-desc">
-                    <div style="min-height: 4.5rem;"><p style="margin-top: 0;"><strong>「あなたの人生」という唯一無二のプロジェクトのために。</strong></p></div>
-                    <p>コーチングは手法に過ぎません。本質的にはクライアントのリーダーシップ（怪物性）を最大化し、人生を生ききることです。</p>
+                    <div style="min-height: 4.5rem;">
+                        <p style="margin-top: 0;"><strong>「実力はあるのに、生きがいが欠けている」と感じる方へ。</strong></p>
+                    </div>
+                    <p>コーチングは手法に過ぎません。本質的には、あなたのリーダーシップ（怪物性）を最大化し、<br class="pc-only">「このままで終わりたくない」という衝動を、現実の変化へと接続していくプロセスです。</p>
                 </div>
                 <div class="service-footer">
-                    <a href="#value" class="btn btn-outline" style="width:100%; padding: 12px; display:inline-block; box-sizing:border-box;">詳細を見る</a>
+                    <button class="btn btn-primary" style="width:100%; padding:12px; margin-bottom:10px;" onclick="openModal('application', '体験セッション')">体験セッションを申し込む</button>
+                    <a href="#value" class="btn btn-outline" style="width:100%; padding:12px; display:inline-block; box-sizing:border-box;">プログラムの考え方を見る</a>
                 </div>
             </div>
             
@@ -789,6 +798,9 @@
     <section class="logic-section" id="pain" style="background-color: var(--bg-color);">
         <div class="container">
             <h2 class="section-title">成功の影で、心が「窒息」していませんか？</h2>
+            <p style="text-align:center; font-size:0.9rem; color:#666; margin-top:-40px; margin-bottom:40px;">
+                とくに、責任ある立場で成果を出してきたリーダーほど、<br class="sp-only">この「静かな違和感」を抱えやすいと感じています。
+            </p>
             <div class="logic-grid">
                 <div class="logic-item">
                     <span class="logic-number">01</span>
@@ -798,12 +810,12 @@
                 <div class="logic-item">
                     <span class="logic-number">02</span>
                     <h3>成功という名の、静かなる「窒息」</h3>
-                    <p>手に入れた社会的地位、積み上げたキャリア。それらが今, あなたを縛り付ける強固な檻になっている。延長線上の未来に、かつての高揚感がないことは分かっている。それでも、この安定を手放してまで「何者か」になろうとする自分を、もう一人の自分が冷笑している。</p>
+                    <p>手に入れた社会的地位、積み上げたキャリア。それらが今、あなたを縛り付ける強固な檻になっている。延長線上の未来に、かつての高揚感がないことは分かっている。それでも、この安定を手放してまで「何者か」になろうとする自分を、もう一人の自分が冷笑している。</p>
                 </div>
                 <div class="logic-item">
                     <span class="logic-number">03</span>
                     <h3>「怪物」への嫉妬、自分への嫌悪</h3>
-                    <p>自分を剥き出しにして生きる人を、どこかで「恥ずかしい」と思い、軽蔑している。……いや, 本当は「なぜ自分はあんな風に生きられないのか」と、喉が焼けるような嫉妬に震えているのではないですか。自分を殺し、空気を読み, 浅い関係で茶を濁す自分を、心の底では一番愛せていない。</p>
+                    <p>自分を剥き出しにして生きる人を、どこかで「恥ずかしい」と思い、軽蔑している。……いや、本当は「なぜ自分はあんな風に生きられないのか」と、喉が焼けるような嫉妬に震えているのではないですか。自分を殺し、空気を読み、浅い関係で茶を濁す自分を、心の底では一番愛せていない。</p>
                 </div>
             </div>
         </div>
@@ -828,7 +840,7 @@
                     </div>
                     <div class="orbit-item orbit-2">
                         <h4>「自己一致」が生む求心力</h4>
-                        <p>自分を隠すエネルギーを、すべて「創造」へと転換する. 醜さも弱さも引き受け、堂々と芯を貫くリーダーの元には、損得抜きで支えたいという強固なフォロワーが集まり、組織の突破力が劇的に向上します。</p>
+                        <p>自分を隠すエネルギーを、すべて「創造」へと転換する。醜さも弱さも引き受け、堂々と芯を貫くリーダーの元には、損得抜きで支えたいという強固なフォロワーが集まり、組織の突破力が劇的に向上します。</p>
                     </div>
                     <div class="orbit-item orbit-3">
                         <h4>「自己受容」が最強のリソースに</h4>
@@ -851,12 +863,12 @@
                 <div class="logic-item">
                     <span class="logic-number">POINT 02</span>
                     <h3>あなたの「全力」への異常な執着</h3>
-                    <p>あなたが自分を安売りし, 人生を諦めようとする瞬間、私は本当に悲しくなります。あなたが全力で生きることを自分に許さないことが、私は自分のことのように許せない。その執念が、リミッターをこじ開けます。</p>
+                    <p>あなたが自分を安売りし、人生を諦めようとする瞬間、私は本当に悲しくなります。あなたが全力で生きることを自分に許さないことが、私は自分のことのように許せない。その執念が、リミッターをこじ開けます。</p>
                 </div>
                 <div class="logic-item">
                     <span class="logic-number">POINT 03</span>
-                    <h3>「全力で生きる」共犯者としての同盟</h3>
-                    <p>私自身が、40代という転換期で恐怖を抱えながら「怪物」として生きることを選んだ実験台です。私があなたの前で勇気を持ってリミッターを外し続ける生々しい背中を, あなたが全力で生き始めるための踏み台にしてください。</p>
+                    <h3>「全力で生きる」ための踏み台に</h3>
+                    <p>私自身が、40代という転換期で恐怖を抱えながら「怪物」として生きることを選んだ実験台です。私があなたの前で勇気を持ってリミッターを外し続ける生々しい背中を、あなたが全力で生き始めるための踏み台にしてください。</p>
                 </div>
             </div>
         </div>
@@ -868,43 +880,46 @@
             <div class="concept-grid">
                 <div class="concept-text">
                     <h3>気持ちがいいだけでは、<br>現実が動かない。</h3>
+                    <p style="font-weight:bold; color:#555; margin-bottom:0.8em;">コーチングは「癒やし」ではなく、「現実を動かすためのエネルギー補給」の場。</p>
                     <p>
-                        コーチングの時間は, 冒険（人生）における『隠れ家（聖域）』のようなものだと考えています。日々戦う戦場から離れ、重い仮面と防具を脱ぎ捨て、生身の自分に戻る時間。
+                        コーチングの時間は、冒険（人生）における『隠れ家（アジト）』のようなものだと考えています。日々戦う戦場から離れ、重い仮面と防具を脱ぎ捨て、生身の自分に戻る時間。
                     </p>
                     <p>
-                        一方で, 現実的な変化を求めるあなたは、知っています。いくら心安らいでも、現実の行動や人間関係が変わらなければ、戦況は好転しないということを。
+                        一方で、現実的な変化を求めるあなたは、知っています。いくら心安らいでも、現実の行動や人間関係が変わらなければ、戦況は好転しないということを。
                     </p>
                     <p>
-                        だからこそ, ここは単なる休憩所ではありません。<br>
+                        だからこそ、ここは単なる休憩所ではありません。<br>
                         あなたが隠してきた「弱さ」や「ズルさ」という未開発の資源を、次の一手を打つための「最強の武器」へと精製する場所です。
                     </p>
                     <p>
-                        本質的なエネルギーを再装填し, 再び現実の舞台へ. ただの「癒やし」では終わらせず、現実を確実に動かす力を養います。
+                        本質的なエネルギーを再装填し、再び現実の舞台へ。ただの「癒やし」では終わらせず、現実を確実に動かす力を養います。
                     </p>
                 </div>
                 <div class="concept-text">
                     <h3>あなたを「直さない」<br>という約束。</h3>
+                    <p style="font-weight:bold; color:#555; margin-bottom:0.8em;">「悪いところを直す」場所ではありません。本来の姿を思い出すための対話です。</p>
                     <p>
                         コーチングに対して、「悪いところを直してもらう」あるいは「正解を教えてもらう」というイメージがあるかもしれません。
                     </p>
                     <p>
                         しかし、私はあなたを「直す」ことはしません。なぜなら、あなたは壊れてなどいないからです。<br>
-						人の力は偉大です。コーチをしている時, いつも驚かされます。私がコーチを続ける理由といってもいいでしょう。
+						人の力は偉大です。コーチをしている時、いつも驚かされます。私がコーチを続ける理由といってもいいでしょう。
                     </p>
                     <p>
                         極端なことを言えば、コーチの仕事は、クライアントの人生を目撃することだと考えています。<br>
                     </p>
                     <p>
-                        「それで人生変わるの？」と感じるかもしれません。是非, 頭ではなく体で味わってみてください。あなたが自分を疑う時も、私は信じることを止めません。
+                        「それで人生変わるの？」と感じるかもしれません。是非、頭ではなく体で味わってみてください。あなたが自分を疑う時も、私は信じることを止めません。
                     </p>
                 </div>
                 <div class="concept-text">
                     <h3>「180度の変化」より、<br>確かな「2度の変化」を。</h3>
+                    <p style="font-weight:bold; color:#555; margin-bottom:0.8em;">一過性の興奮で終わらせない。恒常的な変化を作るのは、地道な軌道修正です。</p>
                     <p>
-                        一度のセッションで劇的に180度変化することは, ほとんどないと考えています。
+                        一度のセッションで劇的に180度変化することは、ほとんどないと考えています。
                     </p>
                     <p>
-                        セッションで決めた, 今までのあなたでは出来なかった180度の行動を現実で試してみる。実践できた自分は誇らしく、確かに変わった気がするでしょう。
+                        セッションで決めた、今までのあなたでは出来なかった180度の行動を現実で試してみる。実践できた自分は誇らしく、確かに変わった気がするでしょう。
                     </p>
                     <p>
                         しかし、時間がたてばたつほど、今まで慣れ親しんだ過去の自分が、必ず「揺れ戻し」をします。
@@ -913,7 +928,7 @@
                         コーチングの価値は、人生の角度を「2度」変えることにあります。揺れ戻しを乗り越えるための伴走と軌道修正。
 					</p>
                     <p>	
-                        この地道な「2度」の積み重ねが, 振り返った時に、あなたの人生を「深く、大きく」変化させているのです。
+                        この地道な「2度」の積み重ねが、振り返った時に、あなたの人生を「深く、大きく」変化させているのです。
                     </p>
                 </div>
             </div>
@@ -961,6 +976,11 @@
             <h3 class="partnership-title">「あなたの人生」という唯一無二のプロジェクトのために。</h3>
             
             <div class="partnership-desc">
+                <p style="font-size:0.95rem; line-height:1.8;">
+                    どこかで、「このままの延長線上で、本当に生ききれるのか？」という問いが消えない。<br>
+                    当パートナーシップは、その問いから目を逸らさずに、あなたの生き方と<br>
+					リーダーシップを再設計していくための同盟です。
+                </p>
             </div>
 
             <div style="margin: 40px 0; padding: 30px; background: #f9fafb; border-radius: 8px; text-align: left;">
@@ -1015,43 +1035,46 @@
 
             <div style="margin-top: 50px; padding: 40px 20px; border: 1px solid #eee; border-radius: 8px; background: #fff;">
                 <h4 style="font-family: 'Shippori Mincho', serif; margin-bottom: 20px; color: var(--text-color); font-size: 1.4rem;">まずは、入り口でお会いしましょう。</h4>
-                <p style="font-size: 0.95rem; line-height: 1.8; margin-bottom: 25px;">
-                    あなたが本当に求めている変化は何なのか。そして、私がその旅のパートナーとして相応しいか。<br>
-                    当方では, 以下のステップでの対話を推奨しております。
+                <p style="font-size: 0.85rem; color: #666; margin-top: 0; margin-bottom: 20px;">
+                    ※多くの方は、Step 2 の <strong>体験セッション</strong> からお会いしています。<br>
+                    無料相談は「まず軽く話してみたい」方向けの任意ステップです。
                 </p>
                 
                 <div style="text-align: left; background: #f9fafb; padding: 25px; border-radius: 6px; margin-bottom: 30px; font-size: 0.95rem;">
                     <div class="step-item" style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 20px;">
-                        <div style="background: var(--accent-color); color: #fff; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;">Step 1</div>
+                        <div style="background: var(--text-muted); color: #fff; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;">Step 1</div>
                         <div>
-                            <strong>オンライン無料相談（15〜30分）</strong><br>
+                            <strong>オンライン無料相談（任意：15〜30分）</strong><br>
                             <span style="font-size: 0.85rem; color: #666;">まずは「話してみる」ことから。相性の確認や疑問の解消にお使いください。</span>
                         </div>
                     </div>
                     <div class="step-item" style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 20px;">
-                        <div style="background: var(--text-muted); color: #fff; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;">Step 2</div>
+                        <div style="background: var(--accent-color); color: #fff; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;">Step 2</div>
                         <div>
                             <strong>体験セッション（60分 / 5,000円）</strong><br>
-                            <span style="font-size: 0.85rem; color: #666;">実際のコーチングを体感し、変化の兆しを掴んでいただきます。</span>
+                            <span style="font-size: 0.85rem; color: #666;">
+                                組織リーダーやエグゼクティブとしての現在地と、<br class="sp-only">「本当はどう生きたいのか」という奥底の衝動を丁寧に言語化していきます。<br>
+                                コーチングの手法そのものよりも、<br class="sp-only">「この人となら、怖いところまで踏み込めそうか」を確かめる時間です。
+                            </span>
                         </div>
                     </div>
                     <div class="step-item" style="display: flex; gap: 15px; align-items: flex-start;">
                         <div style="background: var(--text-muted); color: #fff; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;">Step 3</div>
                         <div>
                             <strong>本契約・物語の開始</strong><br>
-                            <span style="font-size: 0.85rem; color: #666;">双方が合合意した場合のみ、本格的な伴走をスタートします。</span>
+                            <span style="font-size: 0.85rem; color: #666;">双方が合意した場合のみ、本格的な伴走をスタートします。</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="btn-group">
-                    <button class="btn btn-outline" onclick="openModal('application', '無料相談')">無料相談を申し込む</button>
                     <button class="btn btn-primary" onclick="openModal('application', '体験セッション')">体験セッションを申し込む</button>
+                    <button class="btn btn-outline" onclick="openModal('application', '無料相談')">まずは無料相談で話してみる</button>
                 </div>
             </div>
 
             <p style="font-size:0.9rem; color:#d9534f; font-weight:bold; margin-top: 40px;">
-                ※本契約は, 必ず「体験セッション」を経て、双方が合意した場合のみ締結されます。
+                ※本契約は、必ず「体験セッション」を経て、双方が合意した場合のみ締結されます。
             </p>
 
         </div>
@@ -1059,7 +1082,7 @@
         <div class="corporate-area">
             <p>
                 法人契約、またはエグゼクティブ・リーダーシップ開発をご希望の方は、<br class="sp-only">
-                <span style="color: var(--accent-color); cursor: pointer; text-decoration: underline;" onclick="openModal('application')">お問い合わせフォーム</span>
+                <span style="color: var(--accent-color); cursor: pointer; text-decoration: underline;" onclick="openModal('application', 'その他')">お問い合わせフォーム</span>
                 よりご相談ください。
             </p>
         </div>
@@ -1092,8 +1115,14 @@
 
     <footer id="contact">
         <div class="container">
-            <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 30px;">Contact</h2>
-            <div class="btn-group"><button class="btn btn-primary" onclick="openModal('application')">お申込み・ご相談</button></div>
+            <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 20px;">Contact</h2>
+            <p style="font-size:0.9rem; color:#666; margin-bottom:25px;">
+                「これからの生き方」について、<br class="sp-only">一度じっくり言葉にしてみませんか。
+            </p>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="openModal('application', '体験セッション')">体験セッションを申し込む</button>
+                <button class="btn btn-outline" onclick="openModal('application', '無料相談')">まずは無料相談で話してみる</button>
+            </div>
             <br><br>
             <div style="font-size: 0.8rem; display:flex; gap:20px; justify-content:center; flex-wrap:wrap; color: #999;">
                 <span style="cursor:pointer; text-decoration:underline;" onclick="openModal('tokusho')">特定商取引法に基づく表記</span>
@@ -1110,10 +1139,9 @@
             <input type="hidden" name="_redirectTo" value="https://costar-works.com/thanks.html">
             <div class="form-group"><label class="form-label">種別 <span style="color:#d9534f">*</span></label>
                 <select name="種別" class="form-select" required id="form-type-select">
-                    <option value="" disabled selected>選択してください</option>
+                    <option value="" disabled>選択してください</option>
+                    <option value="体験セッション" selected>体験セッション (60分 / 5,000円)</option>
                     <option value="無料相談">オンライン無料相談 (15-30分 / 無料)</option>
-                    <option value="体験セッション">体験セッション (60分 / 5,000円)</option>
-                    <option value="メンターコーチング">メンターコーチング お申込</option>
                     <option value="その他">その他 お問い合わせ</option>
                 </select>
             </div>
@@ -1271,7 +1299,10 @@
             if (m) { m.style.display = 'block'; document.body.style.overflow = 'hidden';
                 if (type === 'application') {
                     const s = document.getElementById('form-type-select');
-                    if (s) { s.value = selectValue || ""; s.dispatchEvent(new Event('change')); }
+                    if (s) { 
+                        s.value = selectValue || "体験セッション"; 
+                        s.dispatchEvent(new Event('change')); 
+                    }
                 }
             }
         }
@@ -1298,22 +1329,38 @@
             const nTitle = document.getElementById('notice-title');
             const nContent = document.getElementById('notice-content');
             const dtFields = document.getElementById('datetime-fields');
+            
             typeSelect.addEventListener('change', function() {
                 const v = this.value; notice.style.display = 'block';
-                dtFields.style.display = (v === '無料相談' || v === '体験セッション' || v === 'メンターコーチング') ? 'block' : 'none';
-                if (v === '無料相談') { nTitle.innerText = "オンライン無料相談"; nContent.innerHTML = "コーチとの相性確認のための場です。"; }
-                else if (v === '体験セッション') { nTitle.innerText = "体験セッション"; nContent.innerHTML = "実際のコーチングを体感いただく場です（5,000円）。"; }
-                else if (v === 'メンターコーチング') { nTitle.innerText = "メンターコーチング"; nContent.innerHTML = "コーチング学習者・実践者の方が対象です。"; }
+                dtFields.style.display = (v === '無料相談' || v === '体験セッション') ? 'block' : 'none';
+                
+                if (v === '無料相談') { 
+                    nTitle.innerText = "オンライン無料相談"; 
+                    nContent.innerHTML = "コーチとの相性確認のための場です。"; 
+                }
+                else if (v === '体験セッション') { 
+                    nTitle.innerText = "体験セッションについて"; 
+                    nContent.innerHTML = `
+                      <p style="margin-top:0; margin-bottom:10px;">
+                        「実力はあるのに生きがいが欠けている」と感じる方のための60分のセッションです。
+                      </p>
+                      <ul style="padding-left:20px; margin:0; font-size:0.85rem; color:#555;">
+                        <li>現在の役割・状況、これまでの歩みをざっくばらんにお話しいただきます。</li>
+                        <li>「このまま延長線上でいくのか」「軌道を変えるのか」というテーマを一緒に眺めます。</li>
+                        <li>本契約を前提としない、1回完結の対話としてご利用いただいて構いません。</li>
+                      </ul>
+                    `; 
+                }
                 else { notice.style.display = 'none'; }
             });
 
             const applicationForm = document.getElementById('application-form');
             applicationForm.addEventListener('submit', function(e) {
                 const val = typeSelect.value;
-                const minDurations = { '無料相談': 30, '体験セッション': 60, 'メンターコーチング': 60 };
+                const minDurations = { '無料相談': 30, '体験セッション': 60 };
                 const requiredMin = minDurations[val] || 0;
                 const timeToMin = (t) => { if(!t) return 0; const [h, m] = t.split(':').map(Number); return h * 60 + m; };
-                if (val === '無料相談' || val === '体験セッション' || val === 'メンターコーチング') {
+                if (val === '無料相談' || val === '体験セッション') {
                     for (let i = 1; i <= 3; i++) {
                         const d = this.querySelector(`[name="第${i}希望_日付"]`).value;
                         const s = this.querySelector(`[name="第${i}希望_開始"]`).value;
