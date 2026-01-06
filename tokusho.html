@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特定商取引法に基づく表記 | CoSTAR</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23B8962E' d='M256 0L334.24 177.76L512 256L334.24 334.24L256 512L177.76 334.24L0 256L177.76 177.76L256 0Z'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F9FAFB;
+            --text-color: #333333;
+            --accent-color: #B8962E;
+        }
+        body {
+            margin: 0;
+            font-family: "Noto Sans JP", sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+        }
+        header { padding: 20px 0; background: #fff; border-bottom: 1px solid #eee; text-align: center; }
+        .logo { font-family: "Shippori Mincho", serif; font-size: 1.5rem; font-weight: 700; letter-spacing: 0.1em; }
+        .logo a { text-decoration: none; color: var(--text-color); }
+        .container { max-width: 800px; margin: 40px auto; padding: 40px; background: #fff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        h1 { font-family: "Shippori Mincho", serif; font-size: 1.6rem; text-align: center; margin-bottom: 40px; border-bottom: 2px solid var(--accent-color); display: inline-block; width: 100%; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #eee; padding: 15px; text-align: left; font-size: 0.9rem; line-height: 1.6; }
+        th { background: #f9fafb; width: 30%; color: var(--text-color); font-weight: bold; }
+        td { color: #555; }
+        .footer-nav { text-align: center; margin-top: 30px; padding-bottom: 60px; }
+        .btn-back { 
+            display: inline-block; 
+            color: var(--accent-color); 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 0.95rem; 
+            cursor: pointer;
+            border: 1px solid var(--accent-color);
+            padding: 10px 30px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+        .btn-back:hover { background: var(--accent-color); color: #fff; }
+        @media (max-width: 600px) { 
+            .container { padding: 20px 15px; margin: 20px 10px; }
+            th, td { display: block; width: 100%; box-sizing: border-box; }
+            th { border-bottom: none; padding-bottom: 5px; }
+            td { padding-top: 5px; }
+        }
+    </style>
+</head>
+<body>
+    <header><div class="logo"><a href="index.html">CoSTAR</a></div></header>
+    <div class="container">
+        <h1>特定商取引法に基づく表記</h1>
+        <table>
+            <tr>
+                <th>事業者名</th>
+                <td>星野 直道（屋号：CoSTAR）</td>
+            </tr>
+            <tr>
+                <th>住所</th>
+                <td>〒277-0882 千葉県柏市柏の葉2-5-9</td>
+            </tr>
+            <tr>
+                <th>連絡先</th>
+                <td>
+                    電話番号：090-5442-7389<br>
+                    メールアドレス：costar.japan@gmail.com
+                </td>
+            </tr>
+            <tr>
+                <th>販売価格</th>
+                <td>当サイトの各サービス紹介ページをご参照ください。</td>
+            </tr>
+            <tr>
+                <th>代金以外の必要料金</th>
+                <td>・銀行振込手数料（振込の場合）<br>・通信料金（オンラインセッションに伴う費用）</td>
+            </tr>
+            <tr>
+                <th>お支払い方法</th>
+                <td>・銀行振込<br>・クレジットカード決済</td>
+            </tr>
+            <tr>
+                <th>商品の引渡時期</th>
+                <td>決済完了後、日程調整に基づき、セッション当日にサービスを提供します。</td>
+            </tr>
+            <tr>
+                <th>キャンセル・返金</th>
+                <td>
+                    サービスの性質上、提供後の返金は不可。<br>
+                    【ポリシー】前日までの連絡で日程変更可。当日の連絡・無断欠席は1回分消化。
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer-nav">
+        <a onclick="goBack();" class="btn-back">← 前のページに戻る</a>
+    </div>
+
+    <script>
+        function goBack() {
+            if (document.referrer && document.referrer.indexOf(window.location.host) !== -1) {
+                window.history.back();
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>
