@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | CoSTAR</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23B8962E' d='M256 0L334.24 177.76L512 256L334.24 334.24L256 512L177.76 334.24L0 256L177.76 177.76L256 0Z'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F9FAFB;
+            --text-color: #333333;
+            --accent-color: #B8962E;
+        }
+        body {
+            margin: 0;
+            font-family: "Noto Sans JP", sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+        }
+        header { padding: 20px 0; background: #fff; border-bottom: 1px solid #eee; text-align: center; }
+        .logo { font-family: "Shippori Mincho", serif; font-size: 1.5rem; font-weight: 700; letter-spacing: 0.1em; }
+        .logo a { text-decoration: none; color: var(--text-color); }
+        .container { max-width: 800px; margin: 40px auto; padding: 40px; background: #fff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        h1 { font-family: "Shippori Mincho", serif; font-size: 1.6rem; text-align: center; margin-bottom: 40px; border-bottom: 2px solid var(--accent-color); display: inline-block; width: 100%; padding-bottom: 10px; }
+        h2 { font-family: "Shippori Mincho", serif; font-size: 1.15rem; margin-top: 35px; border-left: 3px solid var(--accent-color); padding-left: 15px; }
+        p, li { font-size: 0.95rem; color: #555; }
+        ul { padding-left: 20px; }
+        .footer-nav { text-align: center; margin-top: 30px; padding-bottom: 60px; }
+        .btn-back { 
+            display: inline-block; 
+            color: var(--accent-color); 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 0.95rem; 
+            cursor: pointer;
+            border: 1px solid var(--accent-color);
+            padding: 10px 30px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+        .btn-back:hover { background: var(--accent-color); color: #fff; }
+        @media (max-width: 600px) { .container { padding: 25px; margin: 20px 10px; } h1 { font-size: 1.3rem; } }
+    </style>
+</head>
+<body>
+    <header><div class="logo"><a href="index.html">CoSTAR</a></div></header>
+    <div class="container">
+        <h1>プライバシーポリシー</h1>
+        <p>CoSTAR（以下、「当方」といいます。）は、当方が提供するサービスにおける、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシーを定めます。</p>
+
+        <h2>1. 個人情報の定義</h2>
+        <p>「個人情報」とは、個人情報保護法にいう「個人情報」を指すものとし、生存する個人に関する情報であって、氏名、生年月日、住所、電話番号、連絡先その他の記述等により特定の個人を識別できる情報を指します。</p>
+
+        <h2>2. 個人情報の収集方法</h2>
+        <p>当方は、ユーザーが本サービスへの問い合わせや申し込みをする際に、氏名、住所、電話番号、メールアドレスなどの個人情報をお尋ねすることがあります。</p>
+
+        <h2>3. 個人情報の利用目的</h2>
+        <ul>
+            <li>本サービスの提供・運営のため</li>
+            <li>ユーザーからのお問い合わせに回答するため（本人確認を行うことを含む）</li>
+            <li>メンテナンス、重要なお知らせなど必要に応じたご連絡のため</li>
+        </ul>
+
+        <h2>4. 個人情報の第三者提供</h2>
+        <p>当方は、法令で認められる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。</p>
+
+        <h2>5. お問い合わせ窓口</h2>
+        <p>本ポリシーに関するお問い合わせは、当サイトのお問い合わせフォームよりお願いいたします。</p>
+    </div>
+
+    <div class="footer-nav">
+        <a onclick="goBack();" class="btn-back">← 前のページに戻る</a>
+    </div>
+
+    <script>
+        function goBack() {
+            // サイト内からの遷移であれば、ブラウザの履歴で戻る（入力内容を保持しやすくするため）
+            if (document.referrer && document.referrer.indexOf(window.location.host) !== -1) {
+                window.history.back();
+            } else {
+                // 直接アクセスなどの場合はTopページへ
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>
