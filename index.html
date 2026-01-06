@@ -276,8 +276,16 @@
             width: 100%;
             height: 100%;
             background-image: url('line.jpg');
+            
+            /* ▼▼▼ 追加: パララックス効果（固定） ▼▼▼ */
+            background-attachment: fixed;
+            
             background-size: cover;
-            background-position: center;
+            
+            /* ▼▼▼ 変更: 画像の上部を基準にして表示する ▼▼▼ */
+            background-position: center top;
+            /* （元は background-position: center; でした） */
+            
             background-repeat: no-repeat;
             opacity: 0.08; /* 薄く設定 */
             z-index: 0;
@@ -454,6 +462,16 @@
         
         @media (max-width: 900px) {
             .container { padding: 0 25px; }
+		@media (max-width: 900px) {
+            /* ▼▼▼ スマホ用に追加: パララックスを解除して表示崩れを防ぐ ▼▼▼ */
+            .message-section::before {
+                background-attachment: scroll;
+            }
+            /* ▲▲▲ 追加ここまで ▲▲▲ */
+
+            .container { padding: 0 25px; }
+            section { padding: 60px 0; }
+            /* ... (以下既存のコードが続く) ... */	
             section { padding: 60px 0; }
             .pc-nav { display: none; }
             .hamburger { display: flex; }
