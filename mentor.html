@@ -846,7 +846,17 @@
                         <label class="form-label">メッセージ（任意）</label>
                         <textarea name="内容" class="form-textarea" rows="5"></textarea>
                     </div>
-                    <div style="text-align: center; margin-top: 40px;">
+
+                    <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
+                        <label style="cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                            <input type="checkbox" name="privacy_policy_agree" required style="cursor: pointer; width: 18px; height: 18px;">
+                            <span style="font-size: 0.95rem;">
+                                <a href="privacy.html" target="_blank" style="text-decoration: underline; color: var(--accent-color);">プライバシーポリシー</a>に同意する
+                            </span>
+                        </label>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 10px;">
                         <button type="submit" class="btn">送信</button>
                     </div>
                 </form>
@@ -855,7 +865,12 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 CoSTAR. All Rights Reserved. / <a href="index.html" style="text-decoration: underline;">Back to Top</a></p>
+        <p>&copy; 2025 CoSTAR. All Rights Reserved.</p>
+        <p style="margin-top: 0.5em;">
+            <a href="tokusho.html" style="text-decoration: underline;">特定商取引法に基づく表記</a> / 
+            <a href="privacy.html" style="text-decoration: underline;">プライバシーポリシー</a> / 
+            <a href="index.html" style="text-decoration: underline;">Back to Top</a>
+        </p>
     </footer>
 
     <script>
