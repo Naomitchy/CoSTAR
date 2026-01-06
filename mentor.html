@@ -169,7 +169,21 @@
             background-color: var(--accent-color); margin: 20px auto 0;
         }
 
-        .message-section { background-color: #FFFFFF; }
+        /* --- 修正箇所：Messageセクションの背景画像位置調整 --- */
+        .message-section { 
+            background-color: #FFFFFF;
+            /* 拳の先端(画像上部)が見切れないように、background-positionを
+               'center center' から 'center top' に変更しました。
+               視認性確保のための白透過グラデーション(opacity 0.92)は維持しています。
+            */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('monster.jpg');
+            background-size: cover;
+            background-position: center top; /* 上部基準に変更 */
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* パララックス効果 */
+        }
+        /* -------------------------------------------------------- */
+
         .message-box { 
             max-width: 800px; 
             margin: 0 auto; 
