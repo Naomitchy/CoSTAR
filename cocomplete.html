@@ -172,7 +172,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .menu-header .original-price {
         display: block; font-size: 0.7em; text-decoration: line-through; opacity: 0.8; font-weight: normal;
     }
-    .menu-header .monitor-price { font-weight: bold; font-size: 1.1em; color: #fff; }
+    /* 改行禁止(white-space: nowrap)を追加 */
+    .menu-header .monitor-price { font-weight: bold; font-size: 1.1em; color: #fff; white-space: nowrap; }
 
     .menu-body { padding: 30px; }
     .menu-list { list-style: none; padding: 0; margin: 20px 0; }
@@ -461,6 +462,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }
         .menu-body { padding: 20px; }
         .menu-header .price-box { text-align: center; }
+        .menu-header .monitor-price { font-size: 0.95rem; } /* スマホ時のみ文字サイズを少し縮小 */
         
         .option-box {
             padding: 20px;
@@ -515,7 +517,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="lp-hero">
     <canvas id="hero-canvas"></canvas>
     <div class="container">
-        <span class="lp-tag">【5名完了・満席御礼】ご好評につき、追加3名様限定でモニター募集中</span>
+        <span class="lp-tag">追加3名様限定でモニター募集中</span>
         <h1 class="service-name-hero">CoCOMPLETE</h1>
         <h2 class="lp-title mincho">
             <span class="inline-phrase">独りで、</span><span class="inline-phrase">やらない。</span>
@@ -551,7 +553,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
         <p style="text-align: center; font-weight: bold; margin-top: 50px;">
             あなたができないのは、意思が弱いからではありません。<br>
-            ただ、「独りで抱え込んでいる」からです。
+            「独りで抱え込んでいる」からです。
         </p>
     </div>
 </section>
@@ -559,7 +561,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="gray-section">
     <div class="container">
         <div class="section-head">
-            <h2 class="mincho">CoCOMPLETEのアプローチ</h2>
+            <h2 class="mincho">CoCOMPLETEの関わり</h2>
         </div>
         <div class="solution-text">
             <p>
@@ -692,13 +694,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 Monitor Offer
                 <span style="display:block; font-size:1.2rem; margin-top:10px; color:var(--text-color);">モニター募集（無料相談）</span>
             </h2>
-            <p>サービス開始に伴い、フィードバックをいただけるモニター様を募集します。<br>
+            <p>サービス開始に伴い、フィードバックを頂けるモニター様を募集します。<br>
             <span style="font-weight:bold; color:var(--text-color);">Aコースは残り3枠限定となります。</span></p>
         </div>
 
         <p style="text-align: center; margin-bottom: 25px; font-weight: bold;">
-            まずは30分の無料相談で、現状の整理と「完了」へのプロセスをご提案します。<br>
-            実際にサポートがお役に立てそうか、相性をご確認いただいてから本申込となります。
+            まずは30分の無料相談で、現状の整理と完了へのプロセスをご提案します。<br>
+            実際にお役に立てそうか、相性をご確認いただいてから本申込となります。
         </p>
 
         <div class="form-wrapper">
@@ -790,7 +792,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
 
                 <div style="text-align: center; margin-top:20px;">
-                    <button type="submit" class="btn-submit">30分の無料個別相談を予約する</button>
+                    <button type="submit" class="btn-submit">無料相談を予約する</button>
                 </div>
             </form>
         </div>
@@ -799,7 +801,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="gray-section" style="text-align:center;">
     <div class="container">
-        <h3 class="mincho">その他の「未完了」もご相談ください</h3>
+        <h3 class="mincho">その他の「未完了」も。</h3>
         <p style="margin-bottom:15px; color:var(--text-muted);">一人では腰が重いタスクがあればお気軽にご相談ください。</p>
         <p style="margin-bottom:30px; font-size:0.9rem; color:#666;">サービスに関するご質問や、HPに書かれていないご相談もこちらからどうぞ。</p>
         <button class="btn-outline" onclick="openModal('contact')">お問い合わせ</button>
