@@ -226,27 +226,12 @@
             letter-spacing: 0.1em; color: var(--text-color); 
             text-shadow: 2px 2px 0px #fff, 0 0 20px rgba(255,255,255,0.8);
             transition: all 0.3s;
-            cursor: pointer;
         }
         .hero-content p { font-size: 1.2rem; margin-bottom: 60px; color: var(--text-muted); letter-spacing: 0.1em; font-weight: 500; }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Glitch Animation */
-        @keyframes glitch-anim {
-            0% { transform: translate(0); text-shadow: none; }
-            20% { transform: translate(-3px, 3px); text-shadow: 3px 0 #d9534f, -3px 0 #3498db; }
-            40% { transform: translate(-3px, -3px); text-shadow: -3px 0 #d9534f, 3px 0 #3498db; }
-            60% { transform: translate(3px, 3px); text-shadow: 3px 0 #d9534f, -3px 0 #3498db; }
-            80% { transform: translate(3px, -3px); text-shadow: -3px 0 #d9534f, 3px 0 #3498db; }
-            100% { transform: translate(0); text-shadow: none; }
-        }
-        .glitch-active {
-            animation: glitch-anim 0.1s infinite !important;
-            color: #333 !important;
         }
 
         /* --- セクション共通 --- */
@@ -1305,8 +1290,6 @@
                 window.addEventListener('resize', resize); resize(); animate(); 
             });
         })();
-        const h1 = document.querySelector('.hero-content h1');
-        if(h1) h1.addEventListener('click', function() { this.classList.add('glitch-active'); setTimeout(() => this.classList.remove('glitch-active'), 500); });
     </script>
 </body>
 </html>
