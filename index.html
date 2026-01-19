@@ -49,7 +49,7 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, h4, .logo, .quote-large, .hero-content p, .plan-name-main, .sp-nav-link {
+        h1, h2, h3, h4, .logo, .quote-large, .hero-content p, .plan-name-main {
             font-family: "Shippori Mincho", serif;
         }
 
@@ -74,6 +74,7 @@
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
         }
         .nav-flex {
             display: flex;
@@ -103,8 +104,28 @@
             letter-spacing: 0.2em;
             font-weight: 500;
             text-transform: uppercase;
+            position: relative;
+            padding-bottom: 5px;
         }
-        .pc-nav-link:hover { color: var(--accent-color); }
+        /* Update: ナビゲーションのアクティブアニメーション */
+        .pc-nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        .pc-nav-link:hover::after,
+        .pc-nav-link.active::after {
+            width: 100%;
+        }
+        .pc-nav-link:hover, .pc-nav-link.active {
+            color: var(--accent-color);
+            opacity: 1; /* hover時のopacity低下を上書き */
+        }
 
         .nav-actions {
             display: flex;
@@ -143,6 +164,7 @@
             transition: 0.3s;
         }
 
+        /* --- SP Menu (Editorial Style) --- */
         .sp-menu-overlay {
             display: none;
             position: fixed;
@@ -153,15 +175,62 @@
             background: rgba(255, 255, 255, 0.98);
             z-index: 1050;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* 左上基点 */
+            padding-top: 120px; /* 上部に余白 */
             align-items: center;
-            text-align: center;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
         .sp-menu-overlay.active { display: flex; opacity: 1; }
-        .sp-nav { display: flex; flex-direction: column; gap: 30px; }
-        .sp-nav-link { font-size: 1.8rem; color: var(--text-color); letter-spacing: 0.1em; text-transform: uppercase; }
+        
+        .sp-nav { 
+            display: flex; 
+            flex-direction: column; 
+            width: 100%;
+            max-width: 500px;
+            padding: 0 40px;
+            box-sizing: border-box;
+        }
+        
+        .sp-nav-link { 
+            display: block;
+            text-decoration: none;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06); /* 極細ライン */
+            text-align: left;
+            position: relative;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .sp-nav-link .en {
+            font-family: "Shippori Mincho", serif;
+            font-size: 1.8rem;
+            color: var(--text-color);
+            letter-spacing: 0.05em;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .sp-nav-link .ja {
+            font-family: "Noto Sans JP", sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            display: block;
+            margin-top: 5px;
+            font-weight: 400;
+        }
+
+        /* アニメーション遅延設定 */
+        .sp-menu-overlay.active .sp-nav-link { opacity: 1; transform: translateY(0); }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(1) { transition-delay: 0.05s; }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(2) { transition-delay: 0.1s; }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(3) { transition-delay: 0.15s; }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(4) { transition-delay: 0.2s; }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(5) { transition-delay: 0.25s; }
+
         .sp-menu-close {
             position: absolute;
             top: 20px;
@@ -169,6 +238,7 @@
             font-size: 2.5rem;
             cursor: pointer;
             color: var(--text-muted);
+            font-weight: 300;
         }
 
         /* --- ボタン共通 --- */
@@ -252,7 +322,6 @@
             overflow: hidden; 
             padding: 120px 0;
         }
-        /* 追加: line.jpg を背景に薄く敷く設定 */
         .message-section::before {
             content: "";
             position: absolute;
@@ -261,15 +330,9 @@
             width: 100%;
             height: 100%;
             background-image: url('line.jpg');
-            
-            /* ▼▼▼ 追加: パララックス効果（固定） ▼▼▼ */
             background-attachment: fixed;
-            
             background-size: cover;
-            
-            /* ▼▼▼ 変更: 画像の上部を基準にして表示する ▼▼▼ */
             background-position: center top;
-            
             background-repeat: no-repeat;
             opacity: 0.08; /* 薄く設定 */
             z-index: 0;
@@ -304,10 +367,14 @@
         .service-card {
             background-color: var(--secondary-bg); padding: 35px; border-radius: 4px;
             border: none; box-shadow: var(--card-shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
             position: relative; display: flex; flex-direction: column; height: 100%; box-sizing: border-box;
+            /* Update: カードアニメーションの高度化 */
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-        .service-card:hover { transform: translateY(-5px); box-shadow: var(--card-shadow-hover); }
+        .service-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 20px 40px rgba(184, 150, 46, 0.15); 
+        }
         .service-card.main-service { border: 1px solid var(--accent-color); background: #fff; }
         .service-card.monitor-service { border: 2px solid var(--urgent-color); background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); }
         .service-card.coming-soon { opacity: 0.6; border: 1px dashed #ccc; background: transparent; box-shadow: none; }
@@ -324,7 +391,20 @@
 
         /* --- 新規セクション用スタイル (Pain / Benefit / Logic) --- */
         .logic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; }
-        .logic-item { text-align: left; padding: 20px; }
+        .logic-item { 
+            text-align: left; padding: 20px; 
+            /* Update: Logicアイテムのアニメーション高度化 */
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border-radius: 8px; /* ホバー時の見た目のために追加 */
+            background: transparent;
+        }
+        /* Update: ホバーエフェクト追加 */
+        .logic-item:hover {
+            background: #fff;
+            box-shadow: 0 20px 40px rgba(184, 150, 46, 0.15);
+            transform: translateY(-10px);
+        }
+
         .logic-number { font-family: "Shippori Mincho", serif; color: var(--accent-color); font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; display: block; border-bottom: 1px solid var(--accent-color); width: auto; min-width: 2em; }
         .logic-item h3 { font-size: 1.3rem; margin-bottom: 20px; color: var(--text-color); font-family: "Shippori Mincho", serif; font-weight: 600;}
         .logic-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
@@ -417,6 +497,78 @@
         .logbook-item:hover .logbook-title { color: var(--accent-color); text-decoration: underline; }
         .logbook-footer { text-align: center; margin-top: 50px; }
 
+        /* --- FAQ Section (Added) --- */
+        .faq-section {
+            background-color: #FDFBF7;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #fff;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+            /* Update: FAQアイテムのアニメーション高度化 */
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .faq-item summary {
+            list-style: none; /* Hide default triangle */
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-question {
+            font-family: "Shippori Mincho", serif;
+            font-weight: 600;
+            padding: 20px 30px;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-color);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            transition: background-color 0.2s;
+        }
+        .faq-question:hover {
+            background-color: rgba(184, 150, 46, 0.03);
+        }
+        /* Update: FAQホバーエフェクト強化 */
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        
+        .faq-icon {
+            color: var(--accent-color);
+            font-weight: 300;
+            font-size: 1.8rem;
+            line-height: 1;
+            margin-left: 15px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        details[open] .faq-icon {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            padding: 0 30px 30px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 2.0;
+            border-top: 1px solid #f3f3f3;
+            padding-top: 20px;
+        }
+        .faq-answer p {
+            margin: 0;
+        }
+
         /* --- Footer & Legal --- */
         footer { text-align: center; padding: 80px 0; background-color: #FFFFFF; font-size: 0.9rem; color: #9ca3af; border-top: 1px solid #f3f4f6; }
         .legal-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; font-size: 0.9rem; }
@@ -444,9 +596,72 @@
         .pc-only-text { display: block; }
         .sp-only { display: none; }
         
+        /* Update: 追加アニメーション用クラス */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-marker {
+            background: linear-gradient(transparent 70%, rgba(184, 150, 46, 0) 70%);
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            transition: background-size 1.2s ease-out;
+            font-weight: bold;
+            padding: 0 2px;
+        }
+        .scroll-marker.visible {
+            background: linear-gradient(transparent 65%, rgba(184, 150, 46, 0.25) 65%);
+            background-size: 100% 100%;
+        }
+
+        /* Update: Floating CTA Button */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+        }
+        .floating-cta.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        .page-top-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .page-top-btn:hover {
+            transform: translateY(-5px);
+            background: var(--accent-color);
+            color: #fff;
+        }
+
         @media (max-width: 900px) {
             .container { padding: 0 25px; }
-		@media (max-width: 900px) {
             /* ▼▼▼ スマホ用に追加: パララックスを解除して表示崩れを防ぐ ▼▼▼ */
             .message-section::before {
                 background-attachment: scroll;
@@ -454,8 +669,6 @@
             /* ▲▲▲ 追加ここまで ▲▲▲ */
 
             .container { padding: 0 25px; }
-            section { padding: 60px 0; }
-            /* ... (以下既存のコードが続く) ... */	
             section { padding: 60px 0; }
             .pc-nav { display: none; }
             .hamburger { display: flex; }
@@ -555,6 +768,10 @@
             
             /* モバイル時の日時調整 */
             .datetime-row .form-input { flex: none; width: 100%; }
+            
+            /* FAQ Mobile */
+            .faq-question { padding: 15px 20px; font-size: 1rem; }
+            .faq-answer { padding: 0 20px 20px; }
         }
     </style>
 </head>
@@ -569,6 +786,7 @@
                 <a href="#services" class="pc-nav-link">SERVICES</a>
                 <a href="#profile" class="pc-nav-link">PROFILE</a>
                 <a href="#logbook" class="pc-nav-link">LOGBOOK</a>
+                <a href="#faq" class="pc-nav-link">FAQ</a>
             </nav>
             <div class="nav-actions">
                 <a href="#contact" class="nav-btn">Contact</a>
@@ -582,17 +800,30 @@
     <div class="sp-menu-overlay" id="sp-menu">
         <div class="sp-menu-close" id="sp-menu-close">&times;</div>
         <nav class="sp-nav">
-            <a href="#services" class="sp-nav-link">SERVICES</a>
-            <a href="#profile" class="sp-nav-link">PROFILE</a>
-            <a href="#logbook" class="sp-nav-link">LOGBOOK</a>
-            <a href="#contact" class="sp-nav-link">CONTACT</a>
-            <div style="margin-top: 40px;">
-                <button class="btn btn-primary" onclick="openModal('application', '体験セッション'); closeSpMenu();">体験セッションを申し込む</button>
-            </div>
+            <a href="#services" class="sp-nav-link">
+                <span class="en">SERVICES</span>
+                <span class="ja">提供サービス</span>
+            </a>
+            <a href="#profile" class="sp-nav-link">
+                <span class="en">PROFILE</span>
+                <span class="ja">プロフィール</span>
+            </a>
+            <a href="#logbook" class="sp-nav-link">
+                <span class="en">LOGBOOK</span>
+                <span class="ja">日々の記録</span>
+            </a>
+            <a href="#faq" class="sp-nav-link">
+                <span class="en">FAQ</span>
+                <span class="ja">よくある質問</span>
+            </a>
+            <a href="#contact" class="sp-nav-link">
+                <span class="en">CONTACT</span>
+                <span class="ja">お問い合わせ</span>
+            </a>
         </nav>
     </div>
 
-    <div class="hero">
+    <div class="hero" id="hero">
         <canvas id="hero-canvas"></canvas>
         <div class="container hero-content">
             <h1>
@@ -613,6 +844,12 @@
             <a href="#message" class="btn">物語を始める</a>
         </div>
     </div>
+    
+    <div class="floating-cta" id="floating-cta">
+        <div class="page-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'});">
+            ↑
+        </div>
+    </div>
 
     <div class="message-section" id="message">
         <canvas id="star-canvas"></canvas>
@@ -621,53 +858,53 @@
             <div class="story-text">
                 
                 <div class="pc-only-text">
-                    <p class="message-intro">
+                    <p class="message-intro fade-up">
                         常識のレールを外れるのではない。<br>
-                        「本来の自分」という軌道に戻るだけです。
+                        「<span class="scroll-marker">本来の自分</span>」という軌道に戻るだけです。
                     </p>
-                    <p>
+                    <p class="fade-up">
                         周りの期待に応えてきた。社会のルールも守ってきた。十分な報酬も得られた。
                     </p>
-                    <p>
+                    <p class="fade-up">
                         でも、いつの間にか、気軽に「今日、ご飯食べに行かない？」なんて、言えなくなっていた。<br>
                         私は誰からも愛されていないのではないか。
                     </p>
-                    <p>
+                    <p class="fade-up">
                         心の奥底で知っている。本当の自分は不真面目で、自分勝手。<br>
                         相手の為と見せかけて、保身や損得勘定で動くズルい自分。<br>
                         そんな人間が愛されるわけがない。
                     </p>
-                    <p>
+                    <p class="fade-up">
                         言いたいことを飲み込み、空気を読み、建前の中で生きる日々は、もう苦しい。
                     </p>
-                    <p style="text-align: center; margin: 60px 0;">
+                    <p style="text-align: center; margin: 60px 0;" class="fade-up">
                         <span class="highlight" style="font-size: 1.2rem; display: block; margin-bottom: 15px;">「残りの人生、このまま偽りの中で生き続けるの？」</span>
                         <span class="highlight" style="font-size: 1.2rem; display: block;">「自分の力は、こんなものではない…」</span>
                     </p>
-                    <p>
+                    <p class="fade-up">
                         私はこの問いの答えを探す旅の中で、コーチングと出会いました。<br>
-                        このプロセスは、私が「価値のない自分」だと否定し、隠してきた部分こそが、<br>
+                        このプロセスは、私が「<span class="scroll-marker">価値のない自分</span>」だと否定し、隠してきた部分こそが、<br>
 						実は人生を動かす最もパワフルなリソースであることを教えてくれました。
                     </p>
-                    <p>
+                    <p class="fade-up">
                         矛盾も、葛藤も、情けない感情も、すべて携えて進めばいい。<br>
                         はじめて自分に生きることを許可した瞬間、世界は色を変えました。
                     </p>  
-                    <p>
+                    <p class="fade-up">
                         もしあなたが、他人の評価ではなく<br>
 						「本当に大切にしたい自分」を生きることに飢えているなら。<br>
-                        「この程度でいいだろう」と、自分の「底知れぬ可能性」を<br>
+                        「この程度でいいだろう」と、自分の「<span class="scroll-marker">底知れぬ可能性</span>」を<br>
 						飼い慣らしていることに後悔しているなら。
                     </p>
-                    <p>
+                    <p class="fade-up">
                         ぜひ、私に会いに来てください。<br>
-                        私は、私の「全力」をもって、あなたが「全力で生きること」を実現します。
+                        私は、私の「全力」をもって、あなたが「<span class="scroll-marker">全力で生きること</span>」を実現します。
 		            </p>        
-                    <p>				
+                    <p class="fade-up">				
 						たとえ、あなたが自分の力を信じられない時であっても、<br>
 						私はあなたの「底知れぬ可能性」を信じ抜きます。
                     </p>
-                    <p>
+                    <p class="fade-up">
                         「あいつは変わった。」と笑わせておけばいい。<br>
                         大丈夫。あなたが全力で生きれば生きるほど、相手と繋がれることを、私は知っています。<br>
                         その先に待つ、見たこともない「あなた」を、共に見に行きましょう。
@@ -675,52 +912,52 @@
                 </div>
 
                 <div class="sp-only-text">
-                    <p class="message-intro">
+                    <p class="message-intro fade-up">
                         常識のレールを外れるのではない。<br>
-                        「本来の自分」という軌道に戻るだけです。
+                        「<span class="scroll-marker">本来の自分</span>」という軌道に戻るだけです。
                     </p>
 
-                    <p>
+                    <p class="fade-up">
                         周りの期待に応えてきた。社会のルールも守ってきた。十分な報酬も得られた。
                     </p>
 
-                    <p>
+                    <p class="fade-up">
                         でも、いつの間にか、気軽に「今日、ご飯食べに行かない？」なんて、言えなくなっていた。<br>
                         私は誰からも愛されていないのではないか。
                     </p>
 
-                    <p>
+                    <p class="fade-up">
                         心の奥底で知っている。本当の自分は不真面目で、自分勝手。相手の為と見せかけて、保身や損得勘定で動くズルい自分。そんな人間が愛されるわけがない。
                     </p>
 
-                    <p>
+                    <p class="fade-up">
                         言いたいことを飲み込み、空気を読み、建前の中で生きる日々は、もう苦しい。
                     </p>
 
-                    <p style="margin: 50px 0; border-left: 2px solid var(--accent-color); padding-left: 15px;">
+                    <p style="margin: 50px 0; border-left: 2px solid var(--accent-color); padding-left: 15px;" class="fade-up">
                         <span class="highlight" style="font-weight: bold;">「残りの人生、このまま偽りの中で生き続けるの？」</span><br>
                         <span class="highlight" style="font-weight: bold;">「自分の力は、こんなものではない…」</span>
                     </p>
 
-                    <p>
+                    <p class="fade-up">
                         私はこの問いの答えを探す旅の中で、コーチングと出会いました。<br>
-                        このプロセスは、私が「価値のない自分」だと否定し、隠してきた部分こそが、実は人生を動かす最もパワフルなリソースであることを教えてくれました。
+                        このプロセスは、私が「<span class="scroll-marker">価値のない自分</span>」だと否定し、隠してきた部分こそが、実は人生を動かす最もパワフルなリソースであることを教えてくれました。
                     </p>
 
-                    <p>
+                    <p class="fade-up">
                         矛盾も、葛藤も、情けない感情も、すべて携えて進めばいい。はじめて自分に生きることを許可した瞬間、世界は色を変えました。
                     </p>
 
-                    <p>
-                        もしあなたが、他人の評価ではなく「本当に大切にしたい自分」を生きることに飢えているなら。自分の「底知れぬ可能性」を飼い慣らしていることに後悔しているなら。
+                    <p class="fade-up">
+                        もしあなたが、他人の評価ではなく「本当に大切にしたい自分」を生きることに飢えているなら。自分の「<span class="scroll-marker">底知れぬ可能性</span>」を飼い慣らしていることに後悔しているなら。
                     </p>
 
-                    <p>
-                        ぜひ、私に会いに来てください。私は、私の「全力」をもって、あなたが「全力で生きること」を実現します。<br>
+                    <p class="fade-up">
+                        ぜひ、私に会いに来てください。私は、私の「全力」をもって、あなたが「<span class="scroll-marker">全力で生きること</span>」を実現します。<br>
 						たとえ、あなたが自分の力を信じられない時であっても、私はあなたの「底知れぬ可能性」を信じ抜きます。
                     </p>
 
-                    <p>
+                    <p class="fade-up">
                         「あいつは変わった。」と笑わせておけばいい。<br>
                         大丈夫。あなたが全力で生きれば生きるほど、相手と繋がれることを、私は知っています。その先に待つ「あなた」を、共に見に行きましょう。
                     </p>
@@ -1052,6 +1289,53 @@
         </div>
     </section>
 
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title">FAQ</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        コーチングを受けるのが初めてで、明確な相談内容がまとまっていません。
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>まとまっていなくて大丈夫です。「なんとなくモヤモヤする」「今のままでは嫌だ」という感覚だけを持ってきてください。対話の中で、絡まった糸を解き、本当の願いを一緒に言語化していきます。</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        コンサルティングやティーチングとは何が違いますか？
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>コンサルタントのように「正解やアドバイス」を提供するのではなく、あなたの中にある答えや可能性を「引き出す」アプローチです。既存の枠組み（正解）に当てはめるのではなく、あなただけの納得解を創り出すプロセスを共にします。</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        どのくらいの期間、継続する必要がありますか？
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>人やテーマによりますが、本質的な意識変容と行動の定着には時間がかかるため、多くのクライアント様は3ヶ月〜6ヶ月以上の継続的なパートナーシップを結ばれています。（まずは体験セッションで相性と感覚をお確かめください）</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        セッションはオンラインですか？対面も可能ですか？
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>基本的にはZoomを使用したオンラインセッションとなります。ご希望や状況に応じて、都内近郊での対面セッションも検討可能ですので、お問い合わせ時にお知らせください。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <footer id="contact">
         <div class="container">
             <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 20px;">Contact</h2>
@@ -1155,9 +1439,9 @@
             timeSelects.forEach(select => {
                 const d = document.createElement('option'); d.value = ""; d.text = "--:--"; d.selected = d.disabled = true; select.appendChild(d);
                 for (let h = 7; h <= 22; h++) {
-                    const hS = h.toString().padStart(2, '0');
-                    const o1 = document.createElement('option'); o1.value = o1.text = `${hS}:00`; select.appendChild(o1);
-                    if (h < 22) { const o2 = document.createElement('option'); o2.value = o2.text = `${hS}:30`; select.appendChild(o2); }
+                    const hStr = h.toString().padStart(2, '0');
+                    const o1 = document.createElement('option'); o1.value = o1.text = `${hStr}:00`; select.appendChild(o1);
+                    if (h < 22) { const o2 = document.createElement('option'); o2.value = o2.text = `${hStr}:30`; select.appendChild(o2); }
                 }
             });
 
@@ -1230,6 +1514,62 @@
                 window.addEventListener('resize', resize); resize(); animate(); 
             });
         })();
+
+        // Update: 新規追加アニメーションロジック (Observer API)
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -100px 0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Fade Up & Marker Animations
+            document.querySelectorAll('.fade-up, .scroll-marker').forEach(el => observer.observe(el));
+
+            // Navigation Highlighting
+            const sections = document.querySelectorAll('section[id], div[id="logbook"]'); // Logbook is section id
+            const navLinks = document.querySelectorAll('.pc-nav-link');
+            
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-50% 0px -50% 0px' });
+            
+            sections.forEach(s => navObserver.observe(s));
+
+            // Floating CTA Visibility
+            const floatingCta = document.getElementById('floating-cta');
+            const heroSection = document.getElementById('hero');
+            
+            const ctaObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        floatingCta.classList.add('visible');
+                    } else {
+                        floatingCta.classList.remove('visible');
+                    }
+                });
+            }, { rootMargin: '-100px 0px 0px 0px' });
+            
+            if(heroSection && floatingCta) ctaObserver.observe(heroSection);
+        });
     </script>
 </body>
 </html>
