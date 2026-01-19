@@ -31,6 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         --urgent-color: #d9534f; /* Red: Alert / Limit / Emphasis */
         --community-blue: #3E5C9A; /* Navy Blue for Community Benefit */
         --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        --card-shadow-hover: 0 20px 40px rgba(184, 150, 46, 0.15); /* Added for interaction */
     }
 
     body {
@@ -41,6 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         line-height: 2.0;
         letter-spacing: 0.05em;
         word-wrap: break-word;
+        scroll-behavior: smooth;
     }
 
     h1, h2, h3, h4, .mincho, .logo { font-family: "Shippori Mincho", serif; }
@@ -51,31 +53,139 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .inline-phrase { display: inline-block; } 
     .sp-br { display: none; }
 
-    /* --- Header --- */
-    header { padding: 15px 0; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    /* --- Animations (From Coaching Lab) --- */
+    .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .scroll-marker {
+        background: linear-gradient(transparent 70%, rgba(184, 150, 46, 0) 70%);
+        background-size: 0% 100%;
+        background-repeat: no-repeat;
+        transition: background-size 1.2s ease-out;
+        font-weight: bold;
+        padding: 0 2px;
+    }
+    .scroll-marker.visible {
+        background: linear-gradient(transparent 65%, rgba(184, 150, 46, 0.25) 65%);
+        background-size: 100% 100%;
+    }
+
+    /* --- Header (Updated style) --- */
+    header {
+        padding: 15px 0;
+        position: fixed;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        transition: all 0.3s ease;
+    }
     .nav-flex { display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
     .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.1em; color: var(--text-color); }
+
+    /* PC Nav (New) */
+    .pc-nav {
+        display: flex;
+        gap: 25px;
+        margin-left: auto;
+        margin-right: 40px;
+    }
+    .pc-nav-link {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        letter-spacing: 0.05em;
+        font-weight: 500;
+        position: relative;
+        padding-bottom: 5px;
+        cursor: pointer;
+    }
+    .pc-nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--accent-color);
+        transition: width 0.3s ease;
+    }
+    .pc-nav-link:hover::after,
+    .pc-nav-link.active::after {
+        width: 100%;
+    }
+    .pc-nav-link:hover, .pc-nav-link.active {
+        color: var(--accent-color);
+    }
     
-    /* Header CTA Button Style (Updated to Contact style) */
+    /* Header CTA Button Style */
     .header-cta {
         font-size: 0.9rem;
         font-weight: 500;
-        color: #444;            /* 文字色をダークグレーに */
-        background: #fff;       /* 背景を白に */
-        border: 1px solid #444; /* 枠線を追加 */
-        padding: 6px 24px;      /* 横幅を少し広めに */
-        border-radius: 50px;    /* 丸みを強く */
-        margin-left: 15px;
+        color: #444;            
+        background: #fff;       
+        border: 1px solid #444; 
+        padding: 6px 24px;      
+        border-radius: 50px;    
         display: inline-block;
         letter-spacing: 0.05em;
         transition: 0.3s;
     }
     .header-cta:hover { 
-        background: #444;       /* マウスを乗せた時に反転 */
+        background: #444;       
         color: #fff;
         text-decoration: none;
     }
-    .header-links { display: flex; align-items: center; gap: 15px; }
+
+    /* --- Floating CTA (New) --- */
+    .floating-cta {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 999;
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-end;
+    }
+    .floating-cta.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+    }
+    .page-top-btn {
+        width: 50px;
+        height: 50px;
+        background: rgba(255,255,255,0.9);
+        border: 1px solid #eee;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-color);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+    }
+    .page-top-btn:hover {
+        transform: translateY(-5px);
+        background: var(--accent-color);
+        color: #fff;
+    }
+
 
     /* --- Hero Section --- */
     .lp-hero {
@@ -115,7 +225,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     /* --- Section Styles Unified --- */
-    section { padding: 80px 0; }
+    section { padding: 80px 0; scroll-margin-top: 80px; }
     .white-section { background: #fff; }
     .gray-section { background: var(--bg-color); }
     
@@ -127,13 +237,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .section-head h2::after { content:""; display:block; width:40px; height:2px; background:var(--accent-color); margin: 20px auto 0; }
 
-    /* --- Pain (Dialogue) --- */
+    /* --- Pain (Dialogue) Updated --- */
     .pain-box {
         background: #fff; 
         border-left: 6px solid var(--accent-color);
         padding: 30px; margin-bottom: 30px; border-radius: 0 4px 4px 0;
         box-shadow: var(--card-shadow);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
+    /* Hover Interaction */
+    .pain-box:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--card-shadow-hover);
+        background: #fdfdfd;
+    }
+
     .pain-title { 
         font-weight: bold; font-size: 1.1rem; margin-bottom: 20px; 
         color: var(--text-color);
@@ -157,12 +275,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .solution-text { font-size: 1.1rem; line-height: 2.2; text-align: justify; }
     .highlight { background: linear-gradient(transparent 70%, rgba(184, 150, 46, 0.2) 70%); font-weight: bold; }
 
-    /* --- Menu Cards --- */
+    /* --- Menu Cards Updated --- */
     .menu-card {
         background: #fff; border-radius: 8px; overflow: hidden;
         box-shadow: var(--card-shadow); margin-bottom: 40px;
         border: 1px solid #eee;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
+    /* Hover Interaction */
+    .menu-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--card-shadow-hover);
+    }
+
     .menu-header {
         background: var(--text-color); color: #fff; padding: 15px 30px;
         font-family: "Shippori Mincho", serif; font-size: 1.3rem;
@@ -172,7 +297,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .menu-header .original-price {
         display: block; font-size: 0.7em; text-decoration: line-through; opacity: 0.8; font-weight: normal;
     }
-    /* 改行禁止(white-space: nowrap)を追加 */
     .menu-header .monitor-price { font-weight: bold; font-size: 1.1em; color: #fff; white-space: nowrap; }
 
     .menu-body { padding: 30px; }
@@ -185,7 +309,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .menu-list strong { color: var(--text-color); }
 
-    /* --- Sample Card Styles (Added) --- */
+    /* --- Sample Card Styles --- */
     .sample-card {
         background: #fff;
         border: 1px solid #eee;
@@ -237,19 +361,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         opacity: 0.8;
     }
 
-
-    /* --- Comparison Table --- */
-    .comparison-table {
-        width: 100%; border-collapse: collapse; margin-top: 20px; margin-bottom: 40px;
-        background: #fff; box-shadow: var(--card-shadow);
-    }
-    .comparison-table th, .comparison-table td {
-        border: 1px solid #eee; padding: 15px; text-align: center; font-size: 0.95rem;
-    }
-    .comparison-table th { background: #f3f4f6; color: var(--text-color); font-weight: bold; }
-    .comparison-table .price-highlight { color: var(--urgent-color); font-weight: bold; font-size: 1.1rem; }
-    .comparison-table .course-name { font-weight: bold; }
-
     /* --- Option Box Styles --- */
     .option-box {
         margin-top: 40px; padding: 30px; background: #FDFBF7; border-radius: 8px; 
@@ -262,7 +373,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .option-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; color: var(--text-color); display: block; }
     .option-desc { font-size: 0.95rem; line-height: 1.8; color: var(--text-color); }
 
-    /* --- Benefit Box --- */
+    /* --- Benefit Box Updated --- */
     .benefit-card {
         background: #fff; 
         border: 1px solid #e5e7eb; 
@@ -272,7 +383,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         margin-bottom: 40px; 
         position: relative;
         box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
+    /* Hover Interaction */
+    .benefit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--card-shadow-hover);
+    }
+
     .benefit-tag {
         position: absolute;
         top: -18px;
@@ -295,14 +413,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     /* --- Buttons & CTAs --- */
-    .middle-cta-btn {
-        display: inline-block; background: var(--accent-color); color: #fff;
-        padding: 15px 40px; border-radius: 50px; font-weight: bold; 
-        box-shadow: 0 4px 15px rgba(184, 150, 46, 0.3); transition: 0.3s;
-        margin: 20px auto 0;
-    }
-    .middle-cta-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(184, 150, 46, 0.4); opacity: 0.9; }
-
     .btn-submit {
         display: block;
         width: 100%; max-width: 320px; margin: 0 auto;
@@ -322,18 +432,64 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         box-shadow: 0 8px 20px rgba(184, 150, 46, 0.4); 
     }
 
-    /* --- FAQ Styles --- */
+    /* --- FAQ Styles (Accordion) --- */
     .faq-item {
-        background: #fff; padding: 25px; border-radius: 8px; margin-bottom: 20px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid #eee;
+        background: #fff;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        border: 1px solid rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
     }
-    .faq-q {
-        color: var(--accent-color); font-weight: bold; margin-bottom: 10px; font-size: 1.05rem;
-        display: flex; gap: 10px; align-items: flex-start;
+    .faq-item:hover {
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        transform: translateY(-2px);
     }
-    .faq-q::before { content: "Q."; font-size: 1.2rem; line-height: 1.2; }
-    .faq-a {
-        font-size: 0.95rem; line-height: 1.9; color: var(--text-color); padding-left: 30px;
+    .faq-item summary {
+        list-style: none; /* Hide default triangle */
+    }
+    .faq-item summary::-webkit-details-marker {
+        display: none;
+    }
+    .faq-question {
+        font-family: "Shippori Mincho", serif;
+        font-weight: 600;
+        padding: 20px 30px;
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--text-color);
+        font-size: 1.05rem;
+        line-height: 1.6;
+        transition: background-color 0.2s;
+    }
+    .faq-question:hover {
+        background-color: rgba(184, 150, 46, 0.03);
+    }
+    .faq-q-text { display: flex; align-items: flex-start; gap: 10px; }
+    .faq-q-text::before { content: "Q."; font-size: 1.2rem; line-height: 1.2; color: var(--accent-color); }
+
+    .faq-icon {
+        color: var(--accent-color);
+        font-weight: 300;
+        font-size: 1.8rem;
+        line-height: 1;
+        margin-left: 15px;
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+    }
+    details[open] .faq-icon {
+        transform: rotate(45deg);
+    }
+    .faq-answer {
+        padding: 0 30px 30px;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 2.0;
+        border-top: 1px solid #f3f3f3;
+        padding-top: 20px;
     }
 
     /* --- Form Area --- */
@@ -379,72 +535,58 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     /* --- Mobile Adjustments & Typography Fixes --- */
-    @media (max-width: 600px) {
-        /* 1. Global Typography & Spacing Tightening */
+    @media (max-width: 768px) {
+        /* PC Nav Hide */
+        .pc-nav { display: none; }
+        
+        /* Typography & Layout */
         body { 
-            line-height: 1.7; /* Reduce from 2.0 to improve density */
-            letter-spacing: 0.02em; /* Reduce from 0.05em to fit more chars */
+            line-height: 1.7; 
+            letter-spacing: 0.02em; 
         }
-        
         .container { 
-            padding: 0 16px; /* Slightly increase usable width (20px -> 16px) */
+            padding: 0 16px; 
         }
-        
         section { 
-            padding: 50px 0; /* Reduce vertical spacing (80px -> 50px) */
+            padding: 50px 0; 
         }
-
         .lp-hero {
-            padding: 90px 0 60px; /* Reduce hero padding */
+            padding: 90px 0 60px; 
         }
-
-        /* 2. Fix CoCOMPLETE Title Break & Hierarchy */
         .service-name-hero { 
-            /* Clamp adjusted: 8vw to ensure fit on narrow screens, reduced max size */
             font-size: clamp(2.2rem, 9vw, 3.0rem); 
-            letter-spacing: 0; /* Critical for keeping long English words together */
-            word-break: normal; /* Allow normal flow, but size ensures no break */
+            letter-spacing: 0; 
+            word-break: normal; 
             line-height: 1.2;
             margin-bottom: 15px;
         }
-        
         .lp-title { 
-            /* Clearly smaller than Hero */
             font-size: clamp(1.3rem, 5vw, 1.6rem); 
             line-height: 1.5;
             margin-bottom: 15px;
         }
-        
         .lp-subtitle {
             font-size: 0.95rem;
             line-height: 1.8;
             margin-bottom: 30px;
         }
-
         .section-head { margin-bottom: 40px; }
         .section-head h2 { 
-            /* 3rd Hierarchy Level */
             font-size: 1.5rem; 
             line-height: 1.4;
         }
-
-        /* 3. Inline Phrase & Word Break Reset (Fixing "Jagged" Layout) */
         .inline-phrase { 
-            display: inline; /* Allow natural wrapping within phrases */
+            display: inline; 
         }
-        
         .service-name-hero, .lp-title, .section-head h2, .pain-voice {
-            word-break: normal; /* Reset keep-all to prevent awkward gaps in JP text */
+            word-break: normal; 
             overflow-wrap: break-word; 
         }
-
-        /* 4. Card & Box Spacing Optimization */
         .pain-box, .menu-card, .benefit-card, .faq-item, .form-wrapper {
-            padding: 20px; /* Reduce from 30-45px to gain width */
+            padding: 20px; 
         }
-        
         .benefit-card {
-            padding-top: 35px; /* Adjust for tag position */
+            padding-top: 35px; 
             margin-top: 40px;
         }
         .benefit-tag {
@@ -452,30 +594,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             font-size: 0.75rem;
             padding: 5px 15px;
         }
-
         .menu-header { 
             flex-direction: column; 
             text-align: center; 
             gap: 10px; 
             padding: 15px 20px;
-            font-size: 1.15rem; /* Smaller card header */
+            font-size: 1.15rem; 
         }
         .menu-body { padding: 20px; }
         .menu-header .price-box { text-align: center; }
-        .menu-header .monitor-price { font-size: 0.95rem; } /* スマホ時のみ文字サイズを少し縮小 */
+        .menu-header .monitor-price { font-size: 0.95rem; }
         
         .option-box {
             padding: 20px;
             margin-top: 30px;
         }
         
-        /* Font Size Hierarchy inside Cards */
         .pain-title { font-size: 1.05rem; }
         .option-title { font-size: 1.1rem; }
         .benefit-title-text { font-size: 1.15rem; }
         .faq-q { font-size: 1.0rem; }
 
-        /* Form Adjustments */
         .datetime-row { 
             flex-direction: column; 
             align-items: stretch; 
@@ -485,13 +624,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             border-radius: 4px; 
         }
         
-        .sp-br { display: inline; } /* Optional: Keep existing behavior or set to none if prefer flow */
+        .sp-br { display: inline; }
         
-        /* Mobile Header Adjustments */
-        .header-links a:first-child { display: none; }
-        .header-cta { font-size: 0.8rem; padding: 6px 12px; }
-        
-        .comparison-table th, .comparison-table td { padding: 8px; font-size: 0.8rem; }
+        /* Mobile Header */
+        /* .header-links { display: none; } REMOVED TO SHOW CONTACT BUTTON */
+        .header-links { display: block; }
+        .header-cta { font-size: 0.8rem; padding: 6px 16px; }
         
         /* Modal tweaks */
         .modal-content { padding: 25px; margin: 10% auto; width: 85%; }
@@ -500,15 +638,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </style>
 
 </head>
-<body>
+<body id="top">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSJK8WXM"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header>
     <div class="nav-flex">
-        <div class="logo"><a href="index.html">CoSTAR</a></div>
+        <div class="logo"><a href="#top">CoSTAR</a></div>
+        <nav class="pc-nav">
+            <a href="#top" class="pc-nav-link" data-target="top">Top</a>
+            <a href="#concept" class="pc-nav-link" data-target="concept">Concept</a>
+            <a href="#course" class="pc-nav-link" data-target="course">Course</a>
+            <a href="#faq" class="pc-nav-link" data-target="faq">FAQ</a>
+            <a href="#apply" class="pc-nav-link" data-target="apply">Contact</a>
+        </nav>
         <div class="header-links">
-            <a href="index.html" style="font-size:0.9rem; color:#666;">← Topに戻る</a>
             <a href="#apply" class="header-cta">Contact</a>
         </div>
     </div>
@@ -517,19 +661,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="lp-hero">
     <canvas id="hero-canvas"></canvas>
     <div class="container">
-        <span class="lp-tag">追加3名様限定でモニター募集中</span>
-        <h1 class="service-name-hero">CoCOMPLETE</h1>
-        <h2 class="lp-title mincho">
+        <span class="lp-tag fade-up">追加3名様限定でモニター募集中</span>
+        <h1 class="service-name-hero fade-up">CoCOMPLETE</h1>
+        <h2 class="lp-title mincho fade-up">
             <span class="inline-phrase">独りで、</span><span class="inline-phrase">やらない。</span>
         </h2>
-        <p class="lp-subtitle">
+        <p class="lp-subtitle fade-up">
             <span class="inline-phrase">ずっと先送りにしてきた</span><span class="inline-phrase">「未完了」を、</span><br class="sp-br">
             <span class="inline-phrase">今日、</span><span class="inline-phrase">共に</span><span class="inline-phrase">終わらせる。</span>
         </p>
-        </div>
+    </div>
 </div>
 
-<section class="white-section">
+<div class="floating-cta" id="floating-cta">
+    <div class="page-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'});">
+        ↑
+    </div>
+</div>
+
+<section class="white-section" id="pain">
     <div class="container">
         <div class="section-head">
             <h2 class="mincho">
@@ -537,56 +687,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </h2>
         </div>
         
-        <div class="pain-box">
+        <div class="pain-box fade-up">
             <div class="pain-title">未完のホームページ</div>
             <div class="pain-voice">「自分のHPを持ちたい」「プロフィールを更新しなきゃ」と思いながら、数ヶ月が過ぎた。</div>
             <div class="pain-voice">HP作成ツールを使えば形にはなる。でも、そこに出てくるのは「綺麗だけど、私じゃない」モノたち。正解を求めれば求めるほど、自分の体温が消えていくジレンマ。</div>
             <div class="pain-voice">誰にも相談できず、画面の前でフリーズしているその時間は、あなたが前に進む力を少しずつ削り取っています。</div>
         </div>
 
-        <div class="pain-box">
+        <div class="pain-box fade-up">
             <div class="pain-title">思考の未完了：バックグラウンド処理の過負荷</div>
             <div class="pain-voice">溜まったメール、整理されていないデスクトップ、着手できない企画書。</div>
             <div class="pain-voice">物理的な散らかりやタスクの滞留は、単なる「怠慢」ではありません。それは「決断の先送り」という脳のメモリリークです。</div>
             <div class="pain-voice">「いつかやらなきゃ」という微細なノイズが、あなたのクリエイティビティや意思決定のスピードを鈍らせています。</div>
         </div>
         
-        <p style="text-align: center; font-weight: bold; margin-top: 50px;">
+        <p class="fade-up" style="text-align: center; font-weight: bold; margin-top: 50px;">
             あなたができないのは、意思が弱いからではありません。<br>
             「独りで抱え込んでいる」からです。
         </p>
     </div>
 </section>
 
-<section class="gray-section">
+<section class="gray-section" id="concept">
     <div class="container">
         <div class="section-head">
             <h2 class="mincho">CoCOMPLETEの関わり</h2>
         </div>
         <div class="solution-text">
-            <p>
+            <p class="fade-up">
                 CoCOMPLETEは、プロコーチによる「心理的安全性」と、ITシステムコンサルタントによる「技術的解決」を融合させた、独自の完了支援プログラムです。
             </p>
-            <p>
-                私はあなたの作業をただ監視するだけではありません。<span class="highlight">あなたが「完了」させるその瞬間を、誰よりも信じ、最後まで見届ける「証人」</span>となります。
+            <p class="fade-up">
+                私はあなたの作業をただ監視するだけではありません。<span class="scroll-marker">あなたが「完了」させるその瞬間を、誰よりも信じ、最後まで見届ける「証人」</span>となります。
             </p>
-            <p>
+            <p class="fade-up">
                 技術的な壁（IT）と、心理的な壁（恥や恐れ）。<br>
-                <span class="highlight">この双方を取り除くことで、半年間止まっていた時計の針を、わずか数時間で動かします。</span>
+                <span class="scroll-marker">この双方を取り除くことで、半年間止まっていた時計の針を、わずか数時間で動かします。</span>
             </p>
         </div>
-        
-        </div>
+    </div>
 </section>
 
-<section class="white-section">
+<section class="white-section" id="course">
     <div class="container">
         <div class="section-head">
             <h2 class="mincho">選べる2つのコース</h2>
             <p>現在、モニター様を限定募集中です</p>
         </div>
 
-        <div class="menu-card">
+        <div class="menu-card fade-up">
             <div class="menu-header">
                 <span>Aコース：Webサイト作成伴走</span>
                 <div class="price-box">
@@ -625,7 +774,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
 
-        <div class="menu-card">
+        <div class="menu-card fade-up">
             <div class="menu-header">
                 <span>Bコース：オーダーメイド完了セッション</span>
                 <div class="price-box">
@@ -644,7 +793,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
 
-        <div class="benefit-card">
+        <div class="benefit-card fade-up">
             <span class="benefit-tag">Community Benefit</span>
             <span class="benefit-title-text">参加者限定グループ「Co-STAR SHIP」へのご招待</span>
             <p style="font-size:0.95rem; line-height:1.8;">
@@ -655,35 +804,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </p>
         </div>
         
-        </div>
+    </div>
 </section>
 
-<section class="gray-section">
+<section class="gray-section" id="faq">
     <div class="container">
         <div class="section-head">
             <h2 class="mincho">FAQ</h2>
             <p>よくあるご質問</p>
         </div>
         
-        <div class="faq-item">
-            <div class="faq-q">コーチは具体的に何をしてくれるのですか？</div>
-            <div class="faq-a">あなたの「伴走者」かつ「証人」となります。作業中に手が止まれば問いかけを行い、技術的な不明点（特にAコース）があれば、ITのプロとして即座に選択肢を提示します。独りでは挫折してしまうポイントを、対話と技術の両面からサポートし、完了まで導きます。</div>
-        </div>
+        <details class="faq-item fade-up">
+            <summary class="faq-question">
+                <span class="faq-q-text">コーチは具体的に何をしてくれるのですか？</span>
+                <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">あなたの「伴走者」かつ「証人」となります。作業中に手が止まれば問いかけを行い、技術的な不明点（特にAコース）があれば、ITのプロとして即座に選択肢を提示します。独りでは挫折してしまうポイントを、対話と技術の両面からサポートし、完了まで導きます。</div>
+        </details>
 
-        <div class="faq-item">
-            <div class="faq-q">散らかった状況や、整理できていない頭の中を見せるのが恥ずかしいです。</div>
-            <div class="faq-a">その「恥」の感情こそが、完了を妨げている最大の要因です。コーチには守秘義務があり、決してあなたを評価・批判しません。信頼できる第三者に「ありのまま」を開示した瞬間、心理的なブロックが外れ、驚くほど手が進むようになります。安心してお委ねください。</div>
-        </div>
+        <details class="faq-item fade-up">
+            <summary class="faq-question">
+                <span class="faq-q-text">散らかった状況や、整理できていない頭の中を見せるのが恥ずかしいです。</span>
+                <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">その「恥」の感情こそが、完了を妨げている最大の要因です。コーチには守秘義務があり、決してあなたを評価・批判しません。信頼できる第三者に「ありのまま」を開示した瞬間、心理的なブロックが外れ、驚くほど手が進むようになります。安心してお委ねください。</div>
+        </details>
 
-        <div class="faq-item">
-            <div class="faq-q">ITスキルに自信がないですが、Webサイトは作れますか？</div>
-            <div class="faq-a">はい、作れます。CoCOMPLETEの強みは、コーチがシステムエンジニアとしてのバックグラウンドを持っていることです。難しい操作や設定は画面共有などを通じて丁寧にナビゲートしますので、あなたは「どんな表現をしたいか」という感性の部分に集中していただけます。</div>
-        </div>
+        <details class="faq-item fade-up">
+            <summary class="faq-question">
+                <span class="faq-q-text">ITスキルに自信がないですが、Webサイトは作れますか？</span>
+                <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">はい、作れます。CoCOMPLETEの強みは、コーチがシステムエンジニアとしてのバックグラウンドを持っていることです。難しい操作や設定は画面共有などを通じて丁寧にナビゲートしますので、あなたは「どんな表現をしたいか」という感性の部分に集中していただけます。</div>
+        </details>
 
-        <div class="faq-item">
-            <div class="faq-q">申し込み後の流れを教えてください。</div>
-            <div class="faq-a">まずは無料相談（30分）にて、現状の課題とゴールのすり合わせを行います。相性や内容に納得いただいた上で、本セッションの日程を確定します。</div>
-        </div>
+        <details class="faq-item fade-up">
+            <summary class="faq-question">
+                <span class="faq-q-text">申し込み後の流れを教えてください。</span>
+                <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">まずは無料相談（30分）にて、現状の課題とゴールのすり合わせを行います。相性や内容に納得いただいた上で、本セッションの日程を確定します。</div>
+        </details>
     </div>
 </section>
 
@@ -703,7 +864,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             実際にお役に立てそうか、相性をご確認いただいてから本申込となります。
         </p>
 
-        <div class="form-wrapper">
+        <div class="form-wrapper fade-up">
             <h3 style="text-align:center; margin-bottom:30px;">CoCOMPLETE モニター申込 無料相談</h3>
             
             <div style="background:#fff4f4; padding:20px; border-radius:4px; margin-bottom:30px; border:1px solid var(--urgent-color); font-size:0.9rem;">
@@ -814,7 +975,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span style="opacity:0.5;">|</span>
         <a href="privacy.html" style="margin:0 10px;">プライバシーポリシー</a>
     </div>
-    <p>&copy; 2025 CoSTAR. All Rights Reserved.</p>
+    <p>&copy; 2026 CoSTAR. All Rights Reserved.</p>
 </footer>
 
 <div id="modal-contact" class="modal">
@@ -832,65 +993,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script>
-    // Hero Animation (Rising Gold Light)
-    (function() {
-    const canvas = document.getElementById('hero-canvas');
-    if(!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let w, h, time = 0;
-
-    function resize() { 
-        w = canvas.width = canvas.parentElement.offsetWidth; 
-        h = canvas.height = canvas.parentElement.offsetHeight; 
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    function drawDiamond(x, y, size, alpha) {
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.beginPath();
-        ctx.moveTo(0, -size);      // 上
-        ctx.lineTo(size * 0.7, 0); // 右
-        ctx.lineTo(0, size);       // 下
-        ctx.lineTo(-size * 0.7, 0);// 左
-        ctx.closePath();
-        ctx.strokeStyle = `rgba(184, 150, 46, ${alpha})`;
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        ctx.restore();
-    }
-
-    function anim() {
-        ctx.clearRect(0, 0, w, h);
-        time += 0.01;
-
-        const centerX = w / 2;
-        const centerY = h / 2;
-
-        for (let i = 0; i < 5; i++) {
-            // 時間差で大きさと透明度が変わる多重ダイヤモンド
-            const size = 150 + Math.sin(time + i * 0.5) * 50;
-            const alpha = 0.3 - (i * 0.05);
-            const rotation = time * 0.2 * (i % 2 === 0 ? 1 : -1);
-            
-            ctx.save();
-            ctx.translate(centerX, centerY);
-            ctx.rotate(rotation);
-            drawDiamond(0, 0, size, alpha);
-            ctx.restore();
-        }
-        requestAnimationFrame(anim);
-    }
-    anim();
-})();
-
-    // Modal Control
-    function openModal(t) { document.getElementById('modal-'+t).style.display='block'; document.body.style.overflow='hidden'; }
-    function closeModal(t) { document.getElementById('modal-'+t).style.display='none'; document.body.style.overflow='auto'; }
-
-    // Form Logic
     document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. Animation Observers (FadeUp & Markers) ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -50px 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        document.querySelectorAll('.scroll-marker').forEach(el => observer.observe(el));
+
+        // --- 2. Nav Active State & Floating CTA Logic ---
+        const sections = document.querySelectorAll('section[id], body[id], div[id]');
+        const navLinks = document.querySelectorAll('.pc-nav-link');
+        const floatingCta = document.getElementById('floating-cta');
+        const heroSection = document.querySelector('.lp-hero');
+
+        // ScrollSpy (Nav Highlight)
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.dataset.target === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-50% 0px -50% 0px' });
+
+        sections.forEach(section => navObserver.observe(section));
+
+        // Floating CTA Visibility
+        if(heroSection && floatingCta) {
+            const ctaObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        floatingCta.classList.add('visible');
+                    } else {
+                        floatingCta.classList.remove('visible');
+                    }
+                });
+            }, { rootMargin: '-100px 0px 0px 0px' });
+            ctaObserver.observe(heroSection);
+        }
+
+        // --- 3. Form Logic (Preserved) ---
         const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
         document.querySelectorAll('input[type="date"]').forEach(el => el.setAttribute('min', tomorrow.toISOString().split('T')[0]));
 
@@ -903,15 +1062,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
         });
 
-        // Validation Logic (Simulated)
+        // Validation Logic (Preserved)
         const form = document.getElementById('cocomplete-lp-form');
         if(form) {
             form.addEventListener('submit', (e) => {
-                // 必須項目の簡易チェックなどはブラウザのrequired属性で対応
-                // 第1〜3希望の入力チェックロジックがあればここに追加
+                // Validation here
             });
         }
     });
+
+    // --- 4. Hero Animation (Rising Gold Light) Preserved ---
+    (function() {
+        const canvas = document.getElementById('hero-canvas');
+        if(!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let w, h, time = 0;
+
+        function resize() { 
+            w = canvas.width = canvas.parentElement.offsetWidth; 
+            h = canvas.height = canvas.parentElement.offsetHeight; 
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        function drawDiamond(x, y, size, alpha) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.beginPath();
+            ctx.moveTo(0, -size);      
+            ctx.lineTo(size * 0.7, 0); 
+            ctx.lineTo(0, size);       
+            ctx.lineTo(-size * 0.7, 0);
+            ctx.closePath();
+            ctx.strokeStyle = `rgba(184, 150, 46, ${alpha})`;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        function anim() {
+            ctx.clearRect(0, 0, w, h);
+            time += 0.01;
+            const centerX = w / 2;
+            const centerY = h / 2;
+            for (let i = 0; i < 5; i++) {
+                const size = 150 + Math.sin(time + i * 0.5) * 50;
+                const alpha = 0.3 - (i * 0.05);
+                const rotation = time * 0.2 * (i % 2 === 0 ? 1 : -1);
+                ctx.save();
+                ctx.translate(centerX, centerY);
+                ctx.rotate(rotation);
+                drawDiamond(0, 0, size, alpha);
+                ctx.restore();
+            }
+            requestAnimationFrame(anim);
+        }
+        anim();
+    })();
+
+    // Modal Control
+    function openModal(t) { document.getElementById('modal-'+t).style.display='block'; document.body.style.overflow='hidden'; }
+    function closeModal(t) { document.getElementById('modal-'+t).style.display='none'; document.body.style.overflow='auto'; }
 </script>
 
 </body>
