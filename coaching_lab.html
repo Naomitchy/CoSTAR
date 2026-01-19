@@ -34,6 +34,7 @@
             --text-color: #333333; 
             --text-muted: #666666;
             --accent-color: #B8962E;
+            --accent-color-light: rgba(184, 150, 46, 0.1);
             --urgent-color: #d9534f;
             --secondary-bg: #FFFFFF; 
             --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -57,7 +58,6 @@
         }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
-        a:hover { opacity: 0.7; }
         
         .container {
             max-width: 1000px; 
@@ -67,15 +67,17 @@
             z-index: 2;
         }
 
+        /* --- Header & Nav (Enhanced) --- */
         header {
             padding: 15px 0;
             position: fixed;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
         }
         .nav-flex {
             display: flex;
@@ -94,17 +96,35 @@
         }
         .pc-nav {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             margin-left: auto;
             margin-right: 40px;
         }
         .pc-nav-link {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
             font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
         }
-        .pc-nav-link:hover { color: var(--accent-color); }
+        .pc-nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        .pc-nav-link:hover::after,
+        .pc-nav-link.active::after {
+            width: 100%;
+        }
+        .pc-nav-link:hover, .pc-nav-link.active {
+            color: var(--accent-color);
+        }
 
         .nav-btn {
             font-size: 0.8rem;
@@ -116,8 +136,76 @@
             cursor: pointer;
             background: transparent;
             white-space: nowrap;
+            transition: all 0.3s ease;
         }
-        .nav-btn:hover { background-color: var(--text-color); color: #fff; }
+        .nav-btn:hover { background-color: var(--text-color); color: #fff; transform: translateY(-2px); }
+
+        /* --- Floating CTA (New) --- */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+        }
+        .floating-cta.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        .page-top-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .page-top-btn:hover {
+            transform: translateY(-5px);
+            background: var(--accent-color);
+            color: #fff;
+        }
+        .sp-fixed-entry {
+            display: none; /* Mobile only */
+        }
+
+        /* --- Animations (New) --- */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-marker {
+            background: linear-gradient(transparent 70%, rgba(184, 150, 46, 0) 70%);
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            transition: background-size 1.2s ease-out;
+            font-weight: bold;
+            padding: 0 2px;
+        }
+        .scroll-marker.visible {
+            background: linear-gradient(transparent 65%, rgba(184, 150, 46, 0.25) 65%);
+            background-size: 100% 100%;
+        }
 
         /* --- Hero Section --- */
         .hero {
@@ -184,7 +272,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        section { padding: 80px 0; }
+        section { padding: 80px 0; scroll-margin-top: 80px; } /* For smooth scroll anchor */
         .section-title {
             text-align: center; font-size: 1.8rem; margin-bottom: 50px; color: var(--text-color);
             letter-spacing: 0.15em; position: relative; font-family: "Shippori Mincho", serif; font-weight: 600;
@@ -194,13 +282,22 @@
             background-color: var(--accent-color); margin: 20px auto 0;
         }
 
-        /* --- Message Section (Updated: Paper Texture) --- */
+        /* --- Message Section (Improved) --- */
         .message-section { 
-            /* Paper Texture Style */
-            background-color: #FDFBF7; /* 温かみのあるオフホワイト */
+            background-color: #FDFBF7;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
             background-repeat: repeat;
+            position: relative;
         }
+        /* Subtle Depth effect */
+        .message-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 200px;
+            background: linear-gradient(to bottom, #fff, transparent);
+            pointer-events: none;
+        }
+
         .message-box { 
             max-width: 800px; 
             margin: 0 auto; 
@@ -209,18 +306,43 @@
             text-align: center; 
         }
         .message-box p { margin-bottom: 2em; }
-        .message-highlight {
-            font-weight: bold;
-            background: linear-gradient(transparent 70%, rgba(184, 150, 46, 0.2) 70%);
+        
+        /* --- Pain & Logic Section (Card Interactions) --- */
+        .pain-section { background-color: var(--bg-color); }
+        .pain-grid, .logic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; }
+        
+        .pain-item, .logic-item { 
+            text-align: left; padding: 25px 20px; 
+            border-radius: 8px;
+            border: 1px solid transparent;
+            background: transparent;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        /* Card Hover Effect */
+        .pain-item:hover, .logic-item:hover {
+            background: #fff;
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-10px);
+            border-color: rgba(184, 150, 46, 0.2);
         }
 
-        /* --- Pain Section --- */
-        .pain-section { background-color: var(--bg-color); }
-        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; }
-        .pain-item { text-align: left; padding: 20px; }
-        .pain-number { font-family: "Shippori Mincho", serif; color: var(--accent-color); font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; display: block; border-bottom: 1px solid var(--accent-color); width: 2em; }
-        .pain-item h3 { font-size: 1.3rem; margin-bottom: 20px; color: var(--text-color); font-family: "Shippori Mincho", serif; font-weight: 600;}
-        .pain-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
+        .pain-number, .logic-number { 
+            font-family: "Shippori Mincho", serif; color: var(--accent-color); 
+            font-size: 1.5rem; font-weight: bold; margin-bottom: 15px; 
+            display: block; border-bottom: 1px solid var(--accent-color); 
+            width: 2em; 
+            transition: width 0.3s ease;
+        }
+        .pain-item:hover .pain-number, .logic-item:hover .logic-number {
+            width: 3em;
+        }
+
+        .pain-item h3, .logic-item h3 { 
+            font-size: 1.3rem; margin-bottom: 20px; color: var(--text-color); 
+            font-family: "Shippori Mincho", serif; font-weight: 600;
+        }
+        .pain-item p, .logic-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
 
         /* --- Benefit Section (Awakening) --- */
         .ba-section { 
@@ -240,33 +362,20 @@
         }
 
         .resonance-svg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            max-width: 1200px;
-            z-index: 1;
-            pointer-events: none;
+            position: absolute; width: 100%; height: 100%; max-width: 1200px;
+            z-index: 1; pointer-events: none;
         }
         .resonance-core {
-            fill: var(--accent-color);
-            filter: blur(30px);
-            opacity: 0.35;
+            fill: var(--accent-color); filter: blur(30px); opacity: 0.35;
             animation: pulse-core 4s infinite ease-in-out;
         }
         .resonance-orbit {
-            fill: none;
-            stroke: var(--accent-color);
-            stroke-width: 0.4;
-            stroke-dasharray: 4, 4;
-            opacity: 0.15;
+            fill: none; stroke: var(--accent-color); stroke-width: 0.4;
+            stroke-dasharray: 4, 4; opacity: 0.15;
         }
         .resonance-ring {
-            fill: none;
-            stroke: var(--accent-color);
-            stroke-width: 0.6;
-            opacity: 0;
-            transform-origin: center;
-            animation: expand-ring 8s infinite linear;
+            fill: none; stroke: var(--accent-color); stroke-width: 0.6; opacity: 0;
+            transform-origin: center; animation: expand-ring 8s infinite linear;
         }
         .resonance-ring:nth-child(3) { animation-delay: 2.6s; }
         .resonance-ring:nth-child(4) { animation-delay: 5.3s; }
@@ -299,70 +408,65 @@
         }
 
         .resonance-orbit-wrap {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            max-width: 1100px;
-            z-index: 2;
+            position: relative; width: 100%; height: 100%; max-width: 1100px; z-index: 2;
         }
         .orbit-item {
-            position: absolute;
-            max-width: 340px;
-            text-align: center;
-            transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: absolute; max-width: 340px; text-align: center;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            border-radius: 8px;
         }
         
-        .orbit-item:hover { transform: scale(1.03); }
-        .orbit-1:hover { transform: translateX(-50%) scale(1.03); }
+        .orbit-item:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 15px 30px rgba(184, 150, 46, 0.15);
+            z-index: 10;
+        }
+        .orbit-1:hover { transform: translateX(-50%) scale(1.05); }
 
         .orbit-1 { top: 0%; left: 50%; transform: translateX(-50%); }
         .orbit-2 { bottom: 0%; left: 0%; } 
         .orbit-3 { bottom: 0%; right: 0%; } 
 
         .orbit-icon {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 20px;
-            background: #fff;
-            border: 1px solid rgba(184, 150, 46, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 50px; height: 50px; margin: 0 auto 20px;
+            background: #fff; border: 1px solid rgba(184, 150, 46, 0.3);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
             box-shadow: 0 10px 20px rgba(184, 150, 46, 0.1);
+            transition: all 0.3s ease;
         }
-        .orbit-icon svg { width: 20px; height: 20px; fill: var(--accent-color); }
+        .orbit-item:hover .orbit-icon {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        .orbit-icon svg { width: 20px; height: 20px; fill: var(--accent-color); transition: fill 0.3s ease; }
+        .orbit-item:hover .orbit-icon svg { fill: #fff; }
 
         .orbit-item h4 {
-            font-family: "Shippori Mincho", serif;
-            font-size: 1.25rem;
-            color: var(--accent-color);
-            margin: 0 0 15px 0;
-            font-weight: 700;
-            letter-spacing: 0.05em;
+            font-family: "Shippori Mincho", serif; font-size: 1.25rem;
+            color: var(--accent-color); margin: 0 0 15px 0; font-weight: 700; letter-spacing: 0.05em;
         }
         .orbit-item p {
-            font-size: 0.9rem;
-            line-height: 1.9;
-            color: var(--text-color);
-            margin: 0;
-            text-align: justify;
+            font-size: 0.9rem; line-height: 1.9; color: var(--text-color);
+            margin: 0; text-align: justify;
         }
 
         /* --- Solution/Logic Section --- */
         .logic-section { background-color: var(--bg-color); padding-bottom: 80px; }
-        .logic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; }
-        .logic-item { text-align: left; padding: 20px; }
-        .logic-number { font-family: "Shippori Mincho", serif; color: var(--accent-color); font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; display: block; border-bottom: 1px solid var(--accent-color); width: 2em; }
-        .logic-item h3 { font-size: 1.3rem; margin-bottom: 20px; color: var(--text-color); font-family: "Shippori Mincho", serif; font-weight: 600;}
-        .logic-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
 
         /* --- Package Section --- */
         .package-section { background-color: #FFFFFF; }
         .package-container { 
             max-width: 900px; margin: 0 auto; background: #fff; border: 1px solid var(--accent-color); border-radius: 4px; overflow: hidden;
             box-shadow: var(--card-shadow);
+            transition: all 0.4s ease;
         }
+        .package-container:hover {
+            box-shadow: var(--card-shadow-hover);
+        }
+
         .package-header { background: var(--accent-color); color: #fff; padding: 15px; text-align: center; font-weight: bold; font-size: 1.1rem; }
         .package-body { padding: 40px; }
         
@@ -401,6 +505,11 @@
             border-radius: 4px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
         }
         .faq-item summary {
             list-style: none; /* Hide default triangle */
@@ -461,6 +570,12 @@
             width: 100%; padding: 15px; border: 1px solid #e5e7eb; 
             background: #f9fafb; color: var(--text-color); border-radius: 4px; 
             box-sizing: border-box; font-family: inherit; font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background: #fff;
         }
         
         .datetime-row { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; }
@@ -537,30 +652,40 @@
             .resonance-orbit-wrap { display: flex; flex-direction: column; gap: 80px; align-items: center; max-width: 100%; }
             .orbit-item { position: static; transform: none !important; max-width: 600px; }
             .resonance-svg { opacity: 0.2; }
+            
+            /* Enable Floating CTA on tablet/mobile */
+            .sp-fixed-entry {
+                display: block;
+                padding: 12px 20px;
+                background: var(--accent-color);
+                color: #fff;
+                border-radius: 30px;
+                box-shadow: 0 4px 15px rgba(184, 150, 46, 0.4);
+                font-weight: bold;
+                letter-spacing: 0.05em;
+                font-size: 0.9rem;
+            }
         }
         @media (max-width: 768px) {
             .sp-only { display: block; }
-            .pc-only { display: none !important; } /* Hide PC elements on SP */
+            .pc-only { display: none !important; } 
             .pc-nav { display: none; } 
             
-            /* Background fixes for mobile */
-            
             .hero-content h1 { 
-                /* Fix: Hero Title 1 line on mobile with whitespace preservation */
-                font-size: 8.5vw; /* Adjusted from 10.5vw to ensure padding space */
+                font-size: 8.5vw;
                 line-height: 1.4; 
                 margin-bottom: 25px; 
-                white-space: nowrap; /* Prevent wrap */
-                letter-spacing: 0; /* Tighten slightly for mobile fits */
+                white-space: nowrap; 
+                letter-spacing: 0;
             }
             
             .hero-content .sub-title {
-                font-size: 4.5vw; /* Ensure subtitle fits on one line */
+                font-size: 4.5vw; 
                 white-space: nowrap;
             }
 
             .hero-content .tagline { 
-                font-size: 3.6vw; /* Adjusted to ensure 3 lines with padding */
+                font-size: 3.6vw; 
                 line-height: 2.0; 
             }
             
@@ -590,7 +715,6 @@
             
             .price-value-large { font-size: 2.2rem; }
             
-            /* FAQ Mobile */
             .faq-question { padding: 15px 20px; font-size: 1rem; }
             .faq-answer { padding: 0 20px 20px; }
 
@@ -600,7 +724,6 @@
             .mentor-profile-text p { font-size: 0.9rem; line-height: 1.9; }
             .mentor-profile-meta { text-align: left; }
 
-            /* DateTime fix for mobile */
             .datetime-row {
                 flex-direction: column;
                 align-items: stretch;
@@ -627,7 +750,10 @@
         <div class="nav-flex">
             <div class="logo"><a href="index.html">CoSTAR</a></div>
             <nav class="pc-nav" aria-label="メインナビゲーション">
-                <a href="index.html" class="pc-nav-link">← Topに戻る</a>
+                <a href="#message" class="pc-nav-link" data-target="message">Message</a>
+                <a href="#logic" class="pc-nav-link" data-target="logic">Method</a>
+                <a href="#package" class="pc-nav-link" data-target="package">Program</a>
+                <a href="#faq" class="pc-nav-link" data-target="faq">FAQ</a>
             </nav>
             <div class="nav-actions">
                 <a href="#contact" class="nav-btn">Contact</a>
@@ -656,7 +782,13 @@
         </div>
     </div>
 
-    <section class="pain-section">
+    <div class="floating-cta" id="floating-cta">
+        <div class="page-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'});">
+            ↑
+        </div>
+    </div>
+
+    <section class="pain-section" id="pain">
         <div class="container">
             <h2 class="section-title">
                 こんな「葛藤」を、<br class="sp-only">
@@ -687,81 +819,81 @@
             <h2 class="section-title">Message</h2>
             
             <div class="message-box pc-only">
-                <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 3em;">
+                <p class="fade-up" style="font-weight: bold; font-size: 1.2rem; margin-bottom: 3em;">
                     ここは、あなたのコーチングを<br class="sp-only">「採点」する場ではありません。
                 </p>
-                <p>
+                <p class="fade-up">
                     もしあなたが、「自分の悪いところを指摘して、正しく直してほしい」と願うなら、<br class="pc-only">
                     私のセッションは期待外れに終わるでしょう。<br>
                     なぜなら、私はあなたの欠点を探す「審査員」ではないからです。
                 </p>
-                <p>
-                    私は、あなたの<span class="message-highlight">「究極のクライアント」</span>として、あなたの前に立ちます。
+                <p class="fade-up">
+                    私は、あなたの<span class="scroll-marker">「究極のクライアント」</span>として、あなたの前に立ちます。
                 </p>
-                <p>
+                <p class="fade-up">
                     あなたが「変に思われるかも」と飲み込んできた違和感。<br>
                     「自分勝手かもしれない」と抑えてきた熱量。<br>
                     私という「鏡」は、それらを一切逃しません。
                 </p>
-                <p>
+                <p class="fade-up">
                     それらは決して、人を傷つける「凶器」ではありません。<br>
-                    そこには、「本気で相手に関わりたい」という純粋な<span class="message-highlight">「願い」</span>が隠されているからです。
+                    そこには、「本気で相手に関わりたい」という純粋な<span class="scroll-marker">「願い」</span>が隠されているからです。
                 </p>
 
-                <p>
+                <p class="fade-up">
                     究極的には、コーチングには「正解」なんてないのかもしれません。<br>
                     それは世間一般の正解はもとより、クライアントの中にさえ、まだ無いかもしれない。<br>
                     でも、二人で関わり合いながら<strong>「正解にしていく」</strong>。<br>
                     コーチングとは、そんなプロセスそのものだと私は信じています。
                 </p>
-                <p>
+                <p class="fade-up">
                     だからこそ、この「The Coaching Lab」は、正しい型にはめるための矯正施設ではなく、<br>
                     あなたがあなた自身の魅力に気づき、それを使いこなすための<br class="pc-only">
-                    <span class="message-highlight">「あなただけのオリジナルな実験場（ラボ）」</span>です。
+                    <span class="scroll-marker">「あなただけのオリジナルな実験場（ラボ）」</span>です。
                 </p>
-                <p>
+                <p class="fade-up">
                     私が全力のクライアントとして、あなたの関わりに心が震えたか、何を受け取ったか。<br>
                     そのフィードバックを、一点の曇りもない鏡となってお返しします。
                 </p>
-                <p>
+                <p class="fade-up">
                     「あいつは変わった」と笑われることを恐れず、<br>
 					コーチとしての自分を100%生きる許可を、ここで共に。
                 </p>
             </div>
 
             <div class="message-box sp-only">
-                <p>
+                <p class="fade-up">
                     もしあなたが、「自分の悪いところを指摘して、正しく直してほしい」と願うなら、私のセッションは期待外れに終わるでしょう。なぜなら、私はあなたの欠点を探す「審査員」ではないからです。
                 </p>
-                <p>
-                    私は、あなたの<span class="message-highlight">「究極のクライアント」</span>として、あなたの前に立ちます。
+                <p class="fade-up">
+                    私は、あなたの<span class="scroll-marker">「究極のクライアント」</span>として、あなたの前に立ちます。
                 </p>
-                <p>					
+                <p class="fade-up">					
 					あなたが「変に思われるかも」と飲み込んできた違和感。「自分勝手かもしれない」と抑えてきた熱量。私という「鏡」は、それらを一切逃しません。
                 </p>
-                <p>
-                    それらは決して、人を傷つける「凶器」ではありません。そこには、「本気で相手に関わりたい」 という純粋な<span class="message-highlight">「願い」</span>が隠されているからです。
+                <p class="fade-up">
+                    それらは決して、人を傷つける「凶器」ではありません。そこには、「本気で相手に関わりたい」 という純粋な<span class="scroll-marker">「願い」</span>が隠されているからです。
                 </p>
-                <p>
+                <p class="fade-up">
                     究極的には、コーチングには「正解」なんてないのかもしれません。それは世間一般の正解はもとより、クライアントの中にさえ、まだ無いかもしれない。
 	            </p>
-                <p>				
+                <p class="fade-up">				
 					でも、二人で関わり合いながら<strong>「正解にしていく」</strong>。コーチングとは、そんなプロセスそのものだと私は信じています。
                 </p>
-                <p>
-                    だからこそ、この「The Coaching Lab」は、型にはめるための矯正施設ではなく、あなたがあなた自身の魅力に気づきそれを使いこなすための<span class="message-highlight">「あなただけのオリジナルな実験場（ラボ）」</span>です。
+                <p class="fade-up">
+                    だからこそ、この「The Coaching Lab」は、型にはめるための矯正施設ではなく、あなたがあなた自身の魅力に気づきそれを使いこなすための<span class="scroll-marker">「あなただけのオリジナルな実験場（ラボ）」</span>です。
                 </p>
-                <p>
+                <p class="fade-up">
                     私が全力のクライアントとして、あなたの関わりに心が震えたか、何を受け取ったか。そのフィードバックを、一点の曇りもない鏡となってお返しします。
                 </p>
-                <p>
+                <p class="fade-up">
                     「あいつは変わった」と笑われることを恐れず、コーチとしての自分を100%生きる許可を、ここで共に。
                 </p>
             </div>
         </div>
     </section>
 
-    <section class="logic-section">
+    <section class="logic-section" id="logic">
         <div class="container">
             <h2 class="section-title">
                 あなたのリミッターを<br>
@@ -833,7 +965,7 @@
         </div>
     </section>
 
-    <section class="mentor-profile-section">
+    <section class="mentor-profile-section" id="profile">
       <div class="container">
         <h2 class="section-title">Who am I?</h2>
 
@@ -841,58 +973,58 @@
           <div class="mentor-profile-text">
             
             <div class="pc-only">
-                <p>
+                <p class="fade-up">
                     私は、業界の重鎮と呼ばれるようなベテランコーチではありません。<br>
                     彼らに比べれば、コーチとしての経験値が少ないのは間違いありません。
                 </p>
-                <p>
+                <p class="fade-up">
                     けれど、私には誰にも負けない武器があります。<br>
-                    それは、あなたのコーチングを全身全霊で受け止める<span class="message-highlight">「クライアント力」</span>です。
+                    それは、あなたのコーチングを全身全霊で受け止める<span class="scroll-marker">「クライアント力」</span>です。
                 </p>
-                <p>		
+                <p class="fade-up">		
                     小手先のテクニックではなく、私が「全力」であなたに関わり、<br>
-                    <span class="message-highlight">魂が震えたかどうかをフィードバックする。</span><br>
+                    <span class="scroll-marker">魂が震えたかどうかをフィードバックする。</span><br>
                     その熱量こそが、コーチが隠し持っていたリソースを解放する一番の武器だと自負しています。
                 </p>
-                <p>
+                <p class="fade-up">
                     誤解しないでほしいのは、私は「型」を否定しているわけではありません。<br>
                     型は、あなたを縛る鎖ではなく、あなたの個性を最大化するための<strong>「増幅装置」</strong>です。<br>
-                    問題なのは、型を守るために、一番大切な<span class="message-highlight">「あなた自身」を押し殺してしまうこと。</span>
+                    問題なのは、型を守るために、一番大切な<span class="scroll-marker">「あなた自身」を押し殺してしまうこと。</span>
                 </p>
-                <p>
+                <p class="fade-up">
                     私の願いは、本気で<strong>「全人類を怪物化する」</strong>こと。<br>
                     ありのままの自分で生きることを許可し、自分の力を出し惜しみしない。<br>
                     そんな愛すべき「怪物」たちがあふれ、互いを大切にし合える世界は、<br>
                     とんでもなくエキサイティングで、「生まれてきてよかった」と思えるはずです。
                 </p>
-                <p>
+                <p class="fade-up">
                     私ひとりでは世界を変えられません。<br>
-                    だからこそ、<span class="message-highlight">「人に本気で関わりたい」あなたのようなコーチ</span>が必要です。<br>
+                    だからこそ、<span class="scroll-marker">「人に本気で関わりたい」あなたのようなコーチ</span>が必要です。<br>
                     あなたの隠された「願い」を解き放ち、共に世界を熱狂させましょう。
                 </p>
             </div>
 
             <div class="sp-only">
-                <p>
+                <p class="fade-up">
                     私は、業界の重鎮と呼ばれるようなベテランコーチではありません。彼らに比べれば、コーチとしての経験値が少ないのは間違いありません。
                 </p>
-                <p>
-                    けれど、私には誰にも負けない武器があります。それは、あなたのコーチングを全身全霊で受け止める<span class="message-highlight">「クライアント力」</span>です。
+                <p class="fade-up">
+                    けれど、私には誰にも負けない武器があります。それは、あなたのコーチングを全身全霊で受け止める<span class="scroll-marker">「クライアント力」</span>です。
                 </p>
-                <p>					
-					小手先のテクニックではなく、私が「全力」であなたに関わり、<span class="message-highlight">魂が震えたかどうかをフィードバックする。</span>その熱量こそが、コーチが隠し持っていたリソースを解放する一番の武器だと自負しています。
+                <p class="fade-up">					
+					小手先のテクニックではなく、私が「全力」であなたに関わり、<span class="scroll-marker">魂が震えたかどうかをフィードバックする。</span>その熱量こそが、コーチが隠し持っていたリソースを解放する一番の武器だと自負しています。
                 </p>
-                <p>
+                <p class="fade-up">
                     誤解しないでほしいのは、私は「型」を否定しているわけではありません。型は、あなたを縛る鎖ではなく、あなたの個性を最大化するための<strong>「増幅装置」</strong>です。
 			    </p>
-                <p>	
-					問題なのは、型を守るために、一番大切な<span class="message-highlight">「あなた自身」を押し殺してしまうこと。</span>
+                <p class="fade-up">	
+					問題なのは、型を守るために、一番大切な<span class="scroll-marker">「あなた自身」を押し殺してしまうこと。</span>
                 </p>
-                <p>
+                <p class="fade-up">
                     私の願いは、本気で<strong>「全人類を怪物化する」</strong>こと。ありのままの自分で生きることを許可し、自分の力を出し惜しみしない。そんな愛すべき「怪物」たちがあふれ、互いを大切にし合える世界は、とんでもなくエキサイティングで、「生まれてきてよかった」と思えるはずです。
                 </p>
-                <p>
-                    私ひとりでは世界を変えられません。だからこそ、<span class="message-highlight">「人に本気で関わりたい」あなたのようなコーチ</span>が必要です。あなたの隠された「願い」を解き放ち、共に世界を熱狂させましょう。
+                <p class="fade-up">
+                    私ひとりでは世界を変えられません。だからこそ、<span class="scroll-marker">「人に本気で関わりたい」あなたのようなコーチ</span>が必要です。あなたの隠された「願い」を解き放ち、共に世界を熱狂させましょう。
                 </p>
             </div>
 
@@ -912,7 +1044,7 @@
       </div>
     </section>
 
-    <section class="package-section">
+    <section class="package-section" id="package">
         <div class="container">
             <h2 class="section-title">Program Contents</h2>
             
@@ -970,7 +1102,7 @@
                     
                     <div class="package-footer">
                         <div class="footer-notes">
-                            ※コーチング学習者・実践者（資格の有無、コーチングスクールの流派は不問）
+                            ※コーチング学習者・実践者
                         </div>
                         <div class="footer-price">
                             <span class="price-original-small">通常価格 60,000円相当</span>
@@ -986,7 +1118,7 @@
         </div>
     </section>
 
-    <section class="faq-section">
+    <section class="faq-section" id="faq">
         <div class="container">
             <h2 class="section-title">FAQ</h2>
             <div class="faq-container">
@@ -1153,7 +1285,67 @@
                 window.addEventListener('resize', resize); setup(); animate();
             }
 
-            // Form Logic
+            // --- Scroll Animations (Observer) ---
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -100px 0px', // Slightly before bottom
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Once visible, stay visible
+                    }
+                });
+            }, observerOptions);
+
+            // Fade Up Elements
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+            // Marker Highlight Elements
+            document.querySelectorAll('.scroll-marker').forEach(el => observer.observe(el));
+
+
+            // --- Navigation Active State & Floating CTA Logic ---
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.pc-nav-link');
+            const floatingCta = document.getElementById('floating-cta');
+            const heroSection = document.querySelector('.hero');
+
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Highlight Nav
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-50% 0px -50% 0px' }); // Center of viewport
+
+            sections.forEach(section => navObserver.observe(section));
+
+            // Floating CTA Visibility
+            const ctaObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        // Hero out of view -> Show CTA
+                        floatingCta.classList.add('visible');
+                    } else {
+                        // Hero in view -> Hide CTA
+                        floatingCta.classList.remove('visible');
+                    }
+                });
+            }, { rootMargin: '-100px 0px 0px 0px' });
+
+            if(heroSection && floatingCta) ctaObserver.observe(heroSection);
+
+
+            // --- Existing Form Logic ---
             const applicationForm = document.getElementById('application-form');
             const typeSelect = document.getElementById('form-type-select');
             const dateTimeFields = document.getElementById('datetime-fields');
