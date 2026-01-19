@@ -385,6 +385,70 @@
         .price-value-large { font-size: 2.8rem; line-height: 1; }
         .price-unit { font-size: 1.2rem; margin-left: 2px; }
 
+        /* --- FAQ Section --- */
+        .faq-section {
+            background-color: #FDFBF7;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #fff;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .faq-item summary {
+            list-style: none; /* Hide default triangle */
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-question {
+            font-family: "Shippori Mincho", serif;
+            font-weight: 600;
+            padding: 20px 30px;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-color);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            transition: background-color 0.2s;
+        }
+        .faq-question:hover {
+            background-color: rgba(184, 150, 46, 0.03);
+        }
+        .faq-icon {
+            color: var(--accent-color);
+            font-weight: 300;
+            font-size: 1.8rem;
+            line-height: 1;
+            margin-left: 15px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        details[open] .faq-icon {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            padding: 0 30px 30px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 2.0;
+            border-top: 1px solid #f3f3f3;
+            padding-top: 20px;
+        }
+        .faq-answer p {
+            margin: 0;
+        }
+
         /* --- Contact/Form Section --- */
         .contact-section { background-color: var(--bg-color); }
         .form-container { 
@@ -525,6 +589,11 @@
             .day-content p { font-size: 0.9rem; line-height: 1.8; }
             
             .price-value-large { font-size: 2.2rem; }
+            
+            /* FAQ Mobile */
+            .faq-question { padding: 15px 20px; font-size: 1rem; }
+            .faq-answer { padding: 0 20px 20px; }
+
             .form-container { padding: 30px 20px; }
 
             .mentor-profile-text { text-align: left; }
@@ -695,7 +764,8 @@
     <section class="logic-section">
         <div class="container">
             <h2 class="section-title">
-                あなたのリミッターを<br class="sp-only">外す3つのアプローチ
+                あなたのリミッターを<br>
+				外す3つのアプローチ
             </h2>
             <div class="logic-grid">
                 <div class="logic-item">
@@ -912,6 +982,53 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">FAQ</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        コーチングを学び始めたばかりですが、参加しても大丈夫でしょうか？
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>基本的なコーチングの会話（傾聴や質問の流れなど）が一通りできる方であれば、資格の有無や経験年数、コーチングの流派は問いません。このラボは「基礎スキルを教える場」ではなく、「あなたの個性を解放する場」ですので、そこさえクリアしていれば、現在の熟練度は気にせず飛び込んできてください。</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        ICF認定資格更新のための「メンターコーチング」としてカウントできますか？
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>本プログラムは、ICFのコア・コンピテンシーに基づく指導を行うものではないため、更新用の単位としてはカウントされません。「正しい型」を学ぶのではなく、型を超えた「あなただけのスタイル」を確立するための実践的なトレーニングの場と捉えてください。</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        「狂気のリテイク」とは、具体的にどのようなことをするのですか？
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>セッションの途中で私がストップをかけ、「今の関わり、もっとこうしてみませんか？」と提案したり、逆にあなたから「もう一度やり直させてください」と止めることも可能です。本番のセッションでは許されない「巻き戻し」を何度も行うことで、頭ではなく身体に感覚を染み込ませていきます。</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        セッションはオンラインで行われますか？
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>はい、原則セッションはZoomを使用したオンライン形式で行います。なお、ご希望に応じて対面での対応も検討します。</p>
+                    </div>
+                </details>
             </div>
         </div>
     </section>
