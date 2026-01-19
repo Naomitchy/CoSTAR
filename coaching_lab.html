@@ -8,17 +8,17 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-NSJK8WXM');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentor Coaching | CoSTAR</title>
+    <title>The Coaching Lab | CoSTAR</title>
 
-    <meta property="og:url" content="https://costar-works.com/mentor.html">
+    <meta property="og:url" content="https://costar-works.com/coaching_lab.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Mentor Coaching ｜『凶器を放て』 Retake Sessions">
-    <meta property="og:description" content="あなたの「凶器」を、隠された「願い」に。 星野 直道 | 米国CTI認定プロコーチ(CPCC)">
+    <meta property="og:title" content="The Coaching Lab ｜ Coaching for Coaches">
+    <meta property="og:description" content="飲み込んだ「願い」が、クライアントを震わせる武器になる。プロコーチのための、コーチ「覚醒」プログラム。星野 直道">
     <meta property="og:site_name" content="CoSTAR">
     <meta property="og:image" content="https://costar-works.com/IMG_6140.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mentor Coaching ｜『凶器を放て』 Retake Sessions">
-    <meta name="twitter:description" content="あなたの「凶器」を、隠された「願い」に。 星野 直道 | 米国CTI認定プロコーチ(CPCC)">
+    <meta name="twitter:title" content="The Coaching Lab ｜ Coaching for Coaches">
+    <meta name="twitter:description" content="飲み込んだ「願い」が、クライアントを震わせる武器になる。プロコーチのための、コーチ「覚醒」プログラム。星野 直道">
     <meta name="twitter:image" content="https://costar-works.com/IMG_6140.jpg">
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22><path fill=%22%23B8962E%22 d=%22M256 0L334.24 177.76L512 256L334.24 334.24L256 512L177.76 334.24L0 256L177.76 177.76L256 0Z%22/></svg>">
@@ -119,6 +119,7 @@
         }
         .nav-btn:hover { background-color: var(--text-color); color: #fff; }
 
+        /* --- Hero Section --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -151,10 +152,9 @@
             text-shadow: 2px 2px 0px #fff, 0 0 20px rgba(255,255,255,0.8);
         }
         .hero-content .tagline {
-            font-size: 1.2rem; color: var(--text-muted); font-weight: 500; letter-spacing: 0.1em;
+            font-size: 1.2rem; color: var(--text-muted); font-weight: 500; letter-spacing: 0.1em; line-height: 1.8;
         }
 
-        /* --- Hero Button --- */
         .hero-btn {
             display: inline-block;
             margin-top: 50px;
@@ -171,7 +171,6 @@
             transition: all 0.4s ease;
             position: relative;
         }
-
         .hero-btn:hover {
             background-color: var(--accent-color);
             color: #FFFFFF;
@@ -195,16 +194,13 @@
             background-color: var(--accent-color); margin: 20px auto 0;
         }
 
-        /* --- Messageセクション：PC設定 --- */
+        /* --- Message Section (Updated: Paper Texture) --- */
         .message-section { 
-            background-color: #FFFFFF;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('monster.jpg');
-            background-size: cover;
-            background-position: center top;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            /* Paper Texture Style */
+            background-color: #FDFBF7; /* 温かみのあるオフホワイト */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+            background-repeat: repeat;
         }
-
         .message-box { 
             max-width: 800px; 
             margin: 0 auto; 
@@ -213,7 +209,12 @@
             text-align: center; 
         }
         .message-box p { margin-bottom: 2em; }
+        .message-highlight {
+            font-weight: bold;
+            background: linear-gradient(transparent 70%, rgba(184, 150, 46, 0.2) 70%);
+        }
 
+        /* --- Pain Section --- */
         .pain-section { background-color: var(--bg-color); }
         .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; }
         .pain-item { text-align: left; padding: 20px; }
@@ -221,7 +222,7 @@
         .pain-item h3 { font-size: 1.3rem; margin-bottom: 20px; color: var(--text-color); font-family: "Shippori Mincho", serif; font-weight: 600;}
         .pain-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
 
-        /* --- 覚醒の到達点 セクション --- */
+        /* --- Benefit Section (Awakening) --- */
         .ba-section { 
             background-color: #FFFFFF; 
             padding: 40px 0 60px;
@@ -348,32 +349,16 @@
             text-align: justify;
         }
 
-        @media (max-width: 1024px) {
-            .ba-huge-label { font-size: 8rem; }
-            .resonance-container { min-height: auto; padding: 40px 0; }
-            .resonance-orbit-wrap { display: flex; flex-direction: column; gap: 80px; align-items: center; max-width: 100%; }
-            .orbit-item { position: static; transform: none !important; max-width: 600px; }
-            .resonance-svg { opacity: 0.2; }
-        }
-        @media (max-width: 768px) {
-            .ba-huge-label { display: none; }
-            
-            /* Hero Button Mobile Adjustment */
-            .hero-btn {
-                margin-top: 40px;
-                padding: 12px 35px;
-                font-size: 0.95rem;
-            }
-        }
-
-        .logic-section { background-color: #fff; padding-bottom: 80px; }
+        /* --- Solution/Logic Section --- */
+        .logic-section { background-color: var(--bg-color); padding-bottom: 80px; }
         .logic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; }
         .logic-item { text-align: left; padding: 20px; }
         .logic-number { font-family: "Shippori Mincho", serif; color: var(--accent-color); font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; display: block; border-bottom: 1px solid var(--accent-color); width: 2em; }
         .logic-item h3 { font-size: 1.3rem; margin-bottom: 20px; color: var(--text-color); font-family: "Shippori Mincho", serif; font-weight: 600;}
         .logic-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
 
-        .package-section { background-color: var(--bg-color); }
+        /* --- Package Section --- */
+        .package-section { background-color: #FFFFFF; }
         .package-container { 
             max-width: 900px; margin: 0 auto; background: #fff; border: 1px solid var(--accent-color); border-radius: 4px; overflow: hidden;
             box-shadow: var(--card-shadow);
@@ -400,16 +385,17 @@
         .price-value-large { font-size: 2.8rem; line-height: 1; }
         .price-unit { font-size: 1.2rem; margin-left: 2px; }
 
-        .contact-section { background-color: #FFFFFF; }
+        /* --- Contact/Form Section --- */
+        .contact-section { background-color: var(--bg-color); }
         .form-container { 
-            max-width: 700px; margin: 0 auto; background: var(--bg-color); 
+            max-width: 700px; margin: 0 auto; background: #FFFFFF; 
             padding: 50px; border-radius: 4px; box-shadow: var(--card-shadow);
         }
         .form-group { margin-bottom: 25px; text-align: left; }
         .form-label { display: block; margin-bottom: 10px; font-weight: bold; font-size: 0.95rem; color: var(--text-color); }
         .form-input, .form-textarea, .form-select { 
             width: 100%; padding: 15px; border: 1px solid #e5e7eb; 
-            background: #fff; color: var(--text-color); border-radius: 4px; 
+            background: #f9fafb; color: var(--text-color); border-radius: 4px; 
             box-sizing: border-box; font-family: inherit; font-size: 1rem;
         }
         
@@ -479,33 +465,47 @@
 
         /* --- Mobile Optimization --- */
         .sp-only { display: none; }
+        .pc-only { display: block; } /* PC default */
 
+        @media (max-width: 1024px) {
+            .ba-huge-label { font-size: 8rem; }
+            .resonance-container { min-height: auto; padding: 40px 0; }
+            .resonance-orbit-wrap { display: flex; flex-direction: column; gap: 80px; align-items: center; max-width: 100%; }
+            .orbit-item { position: static; transform: none !important; max-width: 600px; }
+            .resonance-svg { opacity: 0.2; }
+        }
         @media (max-width: 768px) {
             .sp-only { display: block; }
+            .pc-only { display: none !important; } /* Hide PC elements on SP */
             .pc-nav { display: none; } 
             
-            /* --- 背景調整：Option 追従設定 (巨大化防止含む) --- */
-            .message-section {
-                /* 背景を画面全体に固定 */
-                background-attachment: fixed !important;
-                /* 目の巨大化を防ぐため、画像の縦幅を画面の高さ（100vh）に合わせる */
-                background-size: auto 100vh !important;
-                background-position: center center !important;
-                /* ここで白の濃さを 0.85 (85%) に変更しました */
-                background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('monster.jpg') !important;
-                background-repeat: no-repeat !important;
-            }
-            .message-section::before {
-                display: none !important;
-            }
-            /* ------------------------------------------- */
+            /* Background fixes for mobile */
             
-            .hero-content h1 { font-size: 2.2rem; line-height: 1.3; margin-bottom: 20px; }
-            .hero-content .tagline { font-size: 1.0rem; line-height: 1.8; }
+            .hero-content h1 { 
+                /* Fix: Hero Title 1 line on mobile with whitespace preservation */
+                font-size: 8.5vw; /* Adjusted from 10.5vw to ensure padding space */
+                line-height: 1.4; 
+                margin-bottom: 25px; 
+                white-space: nowrap; /* Prevent wrap */
+                letter-spacing: 0; /* Tighten slightly for mobile fits */
+            }
             
-            .section-title { font-size: 1.45rem; line-height: 1.5; margin-bottom: 40px; }
+            .hero-content .sub-title {
+                font-size: 4.5vw; /* Ensure subtitle fits on one line */
+                white-space: nowrap;
+            }
+
+            .hero-content .tagline { 
+                font-size: 3.6vw; /* Adjusted to ensure 3 lines with padding */
+                line-height: 2.0; 
+            }
+            
+            .hero-btn { margin-top: 40px; padding: 12px 35px; font-size: 0.95rem; }
+            
+            .section-title { font-size: 1.2rem; line-height: 1.5; margin-bottom: 40px; }
             
             .message-box { text-align: left; } 
+            .message-box p { font-size: 0.95rem; line-height: 2.0; }
 
             .package-body { padding: 30px 15px; }
             
@@ -527,18 +527,11 @@
             .price-value-large { font-size: 2.2rem; }
             .form-container { padding: 30px 20px; }
 
-            .mentor-profile-text {
-                text-align: left;
-            }
-            .mentor-profile-text p {
-                font-size: 0.9rem;
-                line-height: 1.9;
-            }
-            .mentor-profile-meta {
-                text-align: left;
-            }
+            .mentor-profile-text { text-align: left; }
+            .mentor-profile-text p { font-size: 0.9rem; line-height: 1.9; }
+            .mentor-profile-meta { text-align: left; }
 
-            /* --- CoCOMPLETE風 日時入力修正 (SPのみ) --- */
+            /* DateTime fix for mobile */
             .datetime-row {
                 flex-direction: column;
                 align-items: stretch;
@@ -548,7 +541,6 @@
                 border-radius: 8px;
                 border: 1px solid #eee;
             }
-            /* インラインのflex:1を打ち消し、幅100%にする */
             .datetime-row input[type="date"] {
                 flex: none !important;
                 width: 100%;
@@ -577,70 +569,149 @@
     <div class="hero">
         <canvas id="resonance-canvas"></canvas>
         <div class="container hero-content">
-            <span class="sub-title">Mentor Coaching</span>
-            <h1>
-                『凶器を放て』<br>
-				Retake Sessions
-            </h1>
-            <p class="tagline">
-                あなたの「凶器」を、<br class="sp-only">
-                隠された「願い」に。
+            <span class="sub-title">Coaching for Coaches</span>
+            <h1>The Coaching Lab</h1>
+            
+            <p class="tagline pc-only">
+                飲み込んだ「願い」が、クライアントを震わせる武器になる。<br>
+                プロコーチのための、コーチ「覚醒」プログラム。
             </p>
-            <a href="#message" class="hero-btn">旅を始める</a>
+
+            <p class="tagline sp-only">
+                飲み込んだ「願い」が、クライアント<br>
+                を震わせる武器になる。プロコーチのための、<br>
+                コーチ「覚醒」プログラム
+            </p>
+
+            <a href="#message" class="hero-btn">実験を始める</a>
         </div>
     </div>
+
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="section-title">
+                こんな「葛藤」を、<br class="sp-only">
+                感じていませんか？
+            </h2>
+            <div class="pain-grid">
+                <div class="pain-item">
+                    <span class="pain-number">01</span>
+                    <h3>自分の衝動から守る「型」</h3>
+                    <p>「自分の衝動は、関係性を壊す」と思いこむあまり、「型」を守り、沈黙を待ち、きれいな質問を投げる。……でも、そこに「あなた」はいますか？ 減点されることに怯える一方で、誰よりもあなた自身が退屈していませんか。</p>
+                </div>
+                <div class="pain-item">
+                    <span class="pain-number">02</span>
+                    <h3>不完全燃焼のセッション</h3>
+                    <p>ふと浮かんだ直感や、湧き上がる違和感。「こんなことを言ったら傷つけるかも」「コーチらしくないかも」と飲み込み続け、セッションが終わる頃には、不完全燃焼の疲労感だけが残っている。でも、コーチングを諦められない。</p>
+                </div>
+                <div class="pain-item">
+                    <span class="pain-number">03</span>
+                    <h3>成功パターンの「呪縛」</h3>
+                    <p>そつなくこなせる。クライアントから感謝もされる。けれど、魂が震えるような「化学反応」が起きない。自分の得意なパターンにはめ込むセッションから、抜けられない。でも、積み重ねた成功体験を捨てることまではしたくはない。</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="message-section" id="message">
         <div class="container">
             <h2 class="section-title">Message</h2>
-            <div class="message-box">
-                <p>
-                    「凶器」とは、あなたが「人を傷つけるかも」「変に思われるかも」<br>
-                    という恐れから、心の奥底に飲み込んできたものです。
-				</p>	
-				<p>	
-					例えば、偏見にまみれた直感、冷徹なまでの批判。<br>
-					または、遊びが過ぎる遊び心、過度なお節介、深過ぎる愛情など。
+            
+            <div class="message-box pc-only">
+                <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 3em;">
+                    ここは、あなたのコーチングを<br class="sp-only">「採点」する場ではありません。
                 </p>
                 <p>
-                    これらは「正解」という安全地帯の中では、決して表に出ることはありません。<br>
-					しかし、その凶器の裏には、「本気で相手に関わりたい」という「願い」が隠されています。<br>
-					でも、その願いが拒絶されることへの「恐怖」が混在している。<br>
+                    もしあなたが、「自分の悪いところを指摘して、正しく直してほしい」と願うなら、<br class="pc-only">
+                    私のセッションは期待外れに終わるでしょう。<br>
+                    なぜなら、私はあなたの欠点を探す「審査員」ではないからです。
                 </p>
                 <p>
-                    私は、あなたの凶器を捨てるようには言いません。<br>
-					「恐怖」というフィルターを外し、それを「願いのある武器」として、<br>
-					意図的に振るうことを目指します。
+                    私は、あなたの<span class="message-highlight">「究極のクライアント」</span>として、あなたの前に立ちます。
                 </p>
                 <p>
-					あなたが「あなた」を生きるほど、それは磁力となり、<br>
-					出会うべくして出会うクライアントを引き寄せ始めます。
+                    あなたが「変に思われるかも」と飲み込んできた違和感。<br>
+                    「自分勝手かもしれない」と抑えてきた熱量。<br>
+                    私という「鏡」は、それらを一切逃しません。
+                </p>
+                <p>
+                    それらは決して、人を傷つける「凶器」ではありません。<br>
+                    そこには、「本気で相手に関わりたい」という純粋な<span class="message-highlight">「願い」</span>が隠されているからです。
+                </p>
+
+                <p>
+                    究極的には、コーチングには「正解」なんてないのかもしれません。<br>
+                    それは世間一般の正解はもとより、クライアントの中にさえ、まだ無いかもしれない。<br>
+                    でも、二人で関わり合いながら<strong>「正解にしていく」</strong>。<br>
+                    コーチングとは、そんなプロセスそのものだと私は信じています。
+                </p>
+                <p>
+                    だからこそ、この「The Coaching Lab」は、正しい型にはめるための矯正施設ではなく、<br>
+                    あなたがあなた自身の魅力に気づき、それを使いこなすための<br class="pc-only">
+                    <span class="message-highlight">「あなただけのオリジナルな実験場（ラボ）」</span>です。
+                </p>
+                <p>
+                    私が全力のクライアントとして、あなたの関わりに心が震えたか、何を受け取ったか。<br>
+                    そのフィードバックを、一点の曇りもない鏡となってお返しします。
+                </p>
+                <p>
+                    「あいつは変わった」と笑われることを恐れず、<br>
+					コーチとしての自分を100%生きる許可を、ここで共に。
+                </p>
+            </div>
+
+            <div class="message-box sp-only">
+                <p>
+                    もしあなたが、「自分の悪いところを指摘して、正しく直してほしい」と願うなら、私のセッションは期待外れに終わるでしょう。なぜなら、私はあなたの欠点を探す「審査員」ではないからです。
+                </p>
+                <p>
+                    私は、あなたの<span class="message-highlight">「究極のクライアント」</span>として、あなたの前に立ちます。
+                </p>
+                <p>					
+					あなたが「変に思われるかも」と飲み込んできた違和感。「自分勝手かもしれない」と抑えてきた熱量。私という「鏡」は、それらを一切逃しません。
+                </p>
+                <p>
+                    それらは決して、人を傷つける「凶器」ではありません。そこには、「本気で相手に関わりたい」 という純粋な<span class="message-highlight">「願い」</span>が隠されているからです。
+                </p>
+                <p>
+                    究極的には、コーチングには「正解」なんてないのかもしれません。それは世間一般の正解はもとより、クライアントの中にさえ、まだ無いかもしれない。
+	            </p>
+                <p>				
+					でも、二人で関わり合いながら<strong>「正解にしていく」</strong>。コーチングとは、そんなプロセスそのものだと私は信じています。
+                </p>
+                <p>
+                    だからこそ、この「The Coaching Lab」は、型にはめるための矯正施設ではなく、あなたがあなた自身の魅力に気づきそれを使いこなすための<span class="message-highlight">「あなただけのオリジナルな実験場（ラボ）」</span>です。
+                </p>
+                <p>
+                    私が全力のクライアントとして、あなたの関わりに心が震えたか、何を受け取ったか。そのフィードバックを、一点の曇りもない鏡となってお返しします。
+                </p>
+                <p>
+                    「あいつは変わった」と笑われることを恐れず、コーチとしての自分を100%生きる許可を、ここで共に。
                 </p>
             </div>
         </div>
     </section>
 
-    <section class="pain-section">
+    <section class="logic-section">
         <div class="container">
             <h2 class="section-title">
-                こんな「窮屈さ」を<br class="sp-only">
-				感じていませんか？
+                あなたのリミッターを<br class="sp-only">外す3つのアプローチ
             </h2>
-            <div class="pain-grid">
-                <div class="pain-item">
-                    <span class="pain-number">01</span>
-                    <h3>「正解」という名の監獄</h3>
-                    <p>失敗や拒絶を恐れるあまり、「正解」の中に隠れていませんか？相手を想うからこそ飲み込んだその凶器。安全な場所に留まることに、エネルギーを使い果たしてはいませんか？</p>
+            <div class="logic-grid">
+                <div class="logic-item">
+                    <span class="logic-number">01</span>
+                    <h3>究極の「クライアント」</h3>
+                    <p>私はコーチであると同時に、あなたのコーチングを受ける「一人の生身の人間」として存在します。技術的な正しさではなく、「今、その言葉に私の魂は動いたか？」「今の遠慮は、二人の間に壁を作った」など、あなたの在り方が相手にどう響いているかを、手加減なしにフィードバックします。</p>
                 </div>
-                <div class="pain-item">
-                    <span class="pain-number">02</span>
-                    <h3>核心なきアイデンティティ</h3>
-                    <p>自分の強みを自覚できず、だれにコーチングを届けたいのか曖昧なまま。なぜ自分がコーチングをしているのか確信が持てない。このまま続けていいのか、不安がある。</p>
+                <div class="logic-item">
+                    <span class="logic-number">02</span>
+                    <h3>「願い」の発掘</h3>
+                    <p>あなたが無意識に「出してはいけない」と禁じているものの正体を、共に突き止めます。それは過去の傷かもしれないし、強すぎる愛情かもしれない。その奥にある「本当はどう関わりたかったのか？」という源泉を掘り当て、あなたが「飲み込んだもの」を武器へと書き換えます。</p>
                 </div>
-                <div class="pain-item">
-                    <span class="pain-number">03</span>
-                    <h3>価値への不信と集客の壁</h3>
-                    <p>自信を持った価格設定や集客が出来ず、活動をすることが怖い。自分の価値を信じ切れないからこそ、適切な対価を求めることができず、焦燥感の中にいる。</p>
+                <div class="logic-item">
+                    <span class="logic-number">03</span>
+                    <h3>狂気の「リテイク」</h3>
+                    <p>「今の関わり、もう一度やってみよう。もっと自分を乗せて」。本番では許されない「やり直し」も、このラボでは何度でも可能です。頭で理解するのではなく、体が「自分全開で関わっても大丈夫なんだ」と覚えるまで、安全安心の枠組みの中で、何度も何度もトライ＆エラーを繰り返します。</p>
                 </div>
             </div>
         </div>
@@ -649,8 +720,7 @@
     <section class="ba-section">
         <div class="container">
             <h2 class="section-title">
-                凶器を「願い」に<br class="sp-only">変えた先に待つ、<br>
-				3つの変化。
+                「願い」を解き放った<br class="sp-only">先に待つもの
             </h2>
             
             <div class="resonance-container">
@@ -669,50 +739,25 @@
                         <div class="orbit-icon">
                             <svg viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
                         </div>
-                        <h4>存在が磁力となる</h4>
-                        <p>「自分」であることを深く受け入れ、その純度を高めるほど、存在は強力な磁力を持ち始める。自信を持って価値を提示し、それに共鳴する人が自然と集まる「惹きつける循環」を作ります。</p>
+                        <h4>存在が「磁力」になる</h4>
+                        <p>無理に背伸びをして集客する必要がなくなります。あなたが本音で生き、本音で関わる姿そのものが強力な磁力となり、「あなただから頼みたい」というクライアントを引き寄せ始めます。</p>
                     </div>
 
                     <div class="orbit-item orbit-2">
                         <div class="orbit-icon">
                             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
                         </div>
-                        <h4>魂を震わせる変容</h4>
-                        <p>あなたの内側に眠る「生命の衝動」が放つ熱量は、クライアントの魂を揺さぶる。整った技術をなぞるのではなく、あなたそのものが放つ「願い」を響かせることで、本質的な信頼を築きます。</p>
+                        <h4>迷いが「確信」に変わる</h4>
+                        <p>「これで合っているだろうか」という不安が消えます。自分の内側にある願いと繋がってセッションをするため、どんな予期せぬ展開になっても、堂々と、そして楽しんで波乗りができるようになります。</p>
                     </div>
 
                     <div class="orbit-item orbit-3">
                         <div class="orbit-icon">
                             <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
                         </div>
-                        <h4>確信が生む「選ばれる価値」</h4>
-                        <p>スキルを存在が上回り、サービスが「分かち合う価値」へ進化する。「買ってもらう」のではない。「買わないともったいない」と思わせるほどの圧倒的な自己一致が、自信に満ちたコーチ活動の土台となります。</p>
+                        <h4>セッションが「人生の栞」に</h4>
+                        <p>教科書通りのセッションは記憶に残りません。あなたが全力で関わった時間は、クライアントの人生に深く刻まれる「栞（しおり）」となり、生涯忘れられない景色を共有する体験になります。</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="logic-section">
-        <div class="container">
-            <h2 class="section-title">
-                なぜ、「リテイク」が<br class="sp-only">変化をもたらすのか
-            </h2>
-            <div class="logic-grid">
-                <div class="logic-item">
-                    <span class="logic-number">01</span>
-                    <h3>「願い」の発掘</h3>
-                    <p>普段あなたが隠している「凶器」こそが、クライアントの人生を変える「武器（願い）」です。私は、あなたに好奇心を向け、滝のような直感と認知であなたの「願い」を炙り出します。それが、私のリーダーシップです。</p>
-                </div>
-                <div class="logic-item">
-                    <span class="logic-number">02</span>
-                    <h3>即時変容</h3>
-                    <p>リテイク前提の場では、失敗はリソースに変わります。失敗が許容される安心感の中で、内側に留めている武器を解き放つ。人は気づいた瞬間にやり直すことで、脳内の神経回路を即座に書き換えることができます。	</p>
-                </div>
-                <div class="logic-item">
-                    <span class="logic-number">03</span>
-                    <h3>自己一致</h3>
-                    <p>本音と技術が一致したとき、言葉は単なる「スキル」から、クライアントの魂を揺さぶる「圧倒的な愛」へと変わる。私は、あなたがその「凶器」を放つまで、安心と信頼の枠組みを守りながら、狂気の沙汰であなたと関わります。</p>
                 </div>
             </div>
         </div>
@@ -724,38 +769,69 @@
 
         <div class="mentor-profile-wrapper">
           <div class="mentor-profile-text">
-            <p>
-              私がコーチにコーチしたいと思い始めたのは、コーチングを学びはじめた頃からでした。
-            </p>
-            <p>
-              それは、コーチという存在が、「なんとか自分を変えたい」<br>
-              「人に本気でかかわりたい」と、誰よりも強く願っている人たちだと、知っているからです。
-            </p>
-            <p>
-              私は、本気で「全人類を怪物化したい」と思っています。<br>
-              ここでいう「怪物」とは、ありのままの自分で生きることを100%許可し、<br>
-			  自分の力を意図的に出し、そして出し惜しみをしない存在のことです。
-            </p>
-            <p>
-              自分を大切にすることは、相手を大切にすることにつながる。<br>
-              そんな「怪物」たちがあふれている世界は、とんでもなくエキサイティングで、<br>
-              「生まれてきて本当によかった」と思える世界だと信じています。
-            </p>
-            <p>
-              でも、もちろん、私ひとりでは全人類を怪物化することはできません。
-            </p>
-            <p>
-              だからこそ、私はコーチに向き合いたい。私を通じて、多くの「怪物コーチ」が生まれていくこと。<br>
-			  そして、私も含めた誰しもが隠しがちな「凶器」を「願い」に変えること。<br>
-              それが、私がメンターコーチングを提供する理由です。
-            </p>
+            
+            <div class="pc-only">
+                <p>
+                    私は、業界の重鎮と呼ばれるようなベテランコーチではありません。<br>
+                    彼らに比べれば、コーチとしての経験値が少ないのは間違いありません。
+                </p>
+                <p>
+                    けれど、私には誰にも負けない武器があります。<br>
+                    それは、あなたのコーチングを全身全霊で受け止める<span class="message-highlight">「クライアント力」</span>です。
+                </p>
+                <p>		
+                    小手先のテクニックではなく、私が「全力」であなたに関わり、<br>
+                    <span class="message-highlight">魂が震えたかどうかをフィードバックする。</span><br>
+                    その熱量こそが、コーチが隠し持っていたリソースを解放する一番の武器だと自負しています。
+                </p>
+                <p>
+                    誤解しないでほしいのは、私は「型」を否定しているわけではありません。<br>
+                    型は、あなたを縛る鎖ではなく、あなたの個性を最大化するための<strong>「増幅装置」</strong>です。<br>
+                    問題なのは、型を守るために、一番大切な<span class="message-highlight">「あなた自身」を押し殺してしまうこと。</span>
+                </p>
+                <p>
+                    私の願いは、本気で<strong>「全人類を怪物化する」</strong>こと。<br>
+                    ありのままの自分で生きることを許可し、自分の力を出し惜しみしない。<br>
+                    そんな「怪物」たちがあふれ、互いを大切にし合える世界は、<br>
+                    とんでもなくエキサイティングで、「生まれてきてよかった」と思えるはずです。
+                </p>
+                <p>
+                    私ひとりでは世界を変えられません。<br>
+                    だからこそ、<span class="message-highlight">「人に本気で関わりたい」あなたのようなコーチ</span>が必要です。<br>
+                    あなたの隠された「願い」を解き放ち、共に世界を熱狂させましょう。
+                </p>
+            </div>
+
+            <div class="sp-only">
+                <p>
+                    私は、業界の重鎮と呼ばれるようなベテランコーチではありません。彼らに比べれば、コーチとしての経験値が少ないのは間違いありません。
+                </p>
+                <p>
+                    けれど、私には誰にも負けない武器があります。それは、あなたのコーチングを全身全霊で受け止める<span class="message-highlight">「クライアント力」</span>です。
+                </p>
+                <p>					
+					小手先のテクニックではなく、私が「全力」であなたに関わり、<span class="message-highlight">魂が震えたかどうかをフィードバックする。</span>その熱量こそが、コーチが隠し持っていたリソースを解放する一番の武器だと自負しています。
+                </p>
+                <p>
+                    誤解しないでほしいのは、私は「型」を否定しているわけではありません。型は、あなたを縛る鎖ではなく、あなたの個性を最大化するための<strong>「増幅装置」</strong>です。
+			    </p>
+                <p>	
+					問題なのは、型を守るために、一番大切な<span class="message-highlight">「あなた自身」を押し殺してしまうこと。</span>
+                </p>
+                <p>
+                    私の願いは、本気で<strong>「全人類を怪物化する」</strong>こと。ありのままの自分で生きることを許可し、自分の力を出し惜しみしない。そんな「怪物」たちがあふれ、互いを大切にし合える世界は、とんでもなくエキサイティングで、「生まれてきてよかった」と思えるはずです。
+                </p>
+                <p>
+                    私ひとりでは世界を変えられません。だからこそ、<span class="message-highlight">「人に本気で関わりたい」あなたのようなコーチ</span>が必要です。あなたの隠された「願い」を解き放ち、共に世界を熱狂させましょう。
+                </p>
+            </div>
 
             <div class="mentor-profile-meta">
               <p class="mentor-profile-name">
                 星野 直道 <span>| Naomichi Hoshino</span>
               </p>
               <p class="mentor-profile-title">
-                米国CTI認定プロコーチ（CPCC）
+                米国CTI認定プロコーチ（CPCC） / 国際コーチング連盟認定（ACC）
               </p>
               <a href="index.html#profile" class="mentor-profile-link">
                 → 詳しいプロフィールはこちら
@@ -784,51 +860,39 @@
                         <span style="position: absolute; left: 0; color: var(--accent-color);">✔</span>
                         価格と価値に対して、揺れにくい確信が持てる
                     </li>
-                    <li style="padding-left: 1.5em; position: relative; color: var(--text-muted); font-weight: 500;">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">✔</span>
-                        「この人に届けたい」という理想のクライアント像が立ち上がる
-                    </li>
                 </ul>
             </div>
-            <div style="max-width: 900px; margin: 0 auto 40px; padding: 25px; background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; box-sizing: border-box;">
-                <h3 style="margin-top: 0; font-size: 1.1rem; color: var(--text-color); font-family: 'Shippori Mincho', serif; font-weight: 700;">プランの考え方</h3>
-                <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 0;">
-                    基本は、変化を実感しやすい「3回セット」をお勧めしています。<br>
-					試験前の「1回だけのリテイク」など、状況に応じた調整も可能です。<br><br>
-                    <span style="font-size: 0.9rem; color: var(--text-color);">
-                    ※3回を通じて見出した「願い」を土台に、ご自身のビジネスや生き方そのものをアップデートしていきたい方には、<br>
-					終了後に<strong>「継続パートナーシップ（継続コーチング）」</strong>への移行もご案内しています。
-                    </span>
-                </p>
-            </div>
+            
             <div class="package-container">
                 <div class="package-header">
-                    Mentor Coaching Package (全3回)
+                    The Coaching Lab (全3回)
                 </div>
                 <div class="package-body">
                     <div class="day-row">
                         <div class="day-badge">Day 1</div>
                         <div class="day-content">
                             <h4>Source Discovery (90分)</h4>
-                            <p>あなたのコーチングと旅路を聴き、あなたの「凶器」の裏にある「願い」を見つけます。<br>
-							   「今、何を飲み込んだ？」。わたしは、あなたの「凶器」を逃しません。
-							</p>
+                            <p>あなたのコーチングの源泉にある「願い」を発掘します。<br>
+                               「なぜ、そこへ行けないのか？」。あなたのリソースを抑圧している「蓋」を見つけ、武器に変えます。
+                            </p>
                         </div>
                     </div>
                     <div class="day-row">
                         <div class="day-badge">Day 2</div>
                         <div class="day-content">
                             <h4>The Retake (90分)</h4>
-                            <p>「願いとして振るう」感覚が掴めるまで、10回でも20回でもやり直す。<br>
-							   その「狂気の沙汰」が、あなたのリミッターを外します。
-							</p>
+                            <p>Day1で見つけた「願い」を武器に、安全な環境で「狂気のリテイク」を行います。<br>
+                               頭ではなく身体が「自分全開で関わっていい」と覚えるまで、何度でもやり直します。
+                            </p>
                         </div>
                     </div>
                     <div class="day-row">
                         <div class="day-badge">Day 3</div>
                         <div class="day-content">
                             <h4>Integration (60分)</h4>
-                            <p>あなたが出会うべきクライアントに出会うためのアクションとお守りをギフトします。</p>
+                            <p>掴んだ感覚を、日常のセッションやビジネスでどう再現するか。<br>
+                               あなただけの「勝ちパターン」として言語化し、実装へ落とし込みます。
+                            </p>
                         </div>
                     </div>
                     
@@ -836,7 +900,7 @@
                     
                     <div class="package-footer">
                         <div class="footer-notes">
-                            ※コーチング学習者・実践者 限定
+                            ※コーチング学習者・実践者（資格の有無、コーチングスクールの流派は不問）
                         </div>
                         <div class="footer-price">
                             <span class="price-original-small">通常価格 60,000円相当</span>
@@ -855,6 +919,14 @@
     <section class="contact-section" id="contact">
         <div class="container">
             <h2 class="section-title">申込み・問合わせ</h2>
+            <div style="text-align: center; margin-bottom: 40px; color: var(--text-muted); line-height: 1.8;">
+                <p>
+                    その「違和感」が、進化の合図です。<br>
+                    怖いまま、飛び込んで来てください。<br>
+                    私が全力で受け止め、あなたの「願い」に火を灯します。
+                </p>
+            </div>
+
             <div class="form-container">
                 <form action="https://ssgform.com/s/Bk9Kz43AMlPY" method="post" id="application-form">
                     <div class="form-group">
@@ -865,7 +937,7 @@
                         <select name="種別" id="form-type-select" class="form-select" required>
                             <option value="" disabled selected>選択してください</option>
                             <option value="無料相談">オンライン無料相談 (30分 / 無料)</option>
-                            <option value="本申込">メンターコーチング本申込</option>
+                            <option value="本申込">The Coaching Lab 本申込</option>
                             <option value="その他">その他 お問合せ</option>
                         </select>
                     </div>
@@ -938,7 +1010,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 CoSTAR. All Rights Reserved.</p>
+        <p>&copy; 2026 CoSTAR. All Rights Reserved.</p>
         <p style="margin-top: 0.5em;">
             <a href="tokusho.html" style="text-decoration: underline;">特定商取引法に基づく表記</a> / 
             <a href="privacy.html" style="text-decoration: underline;">プライバシーポリシー</a> / 
@@ -947,7 +1019,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Hero Background Animation (Moved inside DOMContentLoaded with null check)
+            // Hero Background Animation
             const canvas = document.getElementById('resonance-canvas');
             if (canvas) {
                 const ctx = canvas.getContext('2d');
@@ -1002,20 +1074,13 @@
             if (applicationForm) {
                 applicationForm.addEventListener('submit', function(e) {
                     const val = typeSelect.value;
-
-                    // 所要時間の定義 (分)
-                    const minDurations = {
-                        '無料相談': 30,
-                        '本申込': 90
-                    };
+                    const minDurations = { '無料相談': 30, '本申込': 90 };
                     const requiredMin = minDurations[val] || 0;
-
                     const timeToMin = (t) => {
                         if(!t) return 0;
                         const [h, m] = t.split(':').map(Number);
                         return h * 60 + m;
                     };
-
                     const selectedSlots = [];
                     let hasError = false;
                     let errorMsg = "";
@@ -1026,64 +1091,38 @@
                             const start = this.querySelector(`[name="第${i}希望_開始"]`).value;
                             const end = this.querySelector(`[name="第${i}希望_終了"]`).value;
 
-                            // 第1希望必須チェック
                             if (i === 1 && (!date || !start || !end)) {
-                                hasError = true;
-                                errorMsg = "第1希望の日時は必須です。";
-                                break;
+                                hasError = true; errorMsg = "第1希望の日時は必須です。"; break;
                             }
 
-                            // 行の入力完了チェック
                             if (date || start || end) {
                                 if (!date || !start || !end) {
-                                    hasError = true;
-                                    errorMsg = `第${i}希望の日時をすべて入力してください。`;
-                                    break;
+                                    hasError = true; errorMsg = `第${i}希望の日時をすべて入力してください。`; break;
                                 }
-
                                 const startMin = timeToMin(start);
                                 const endMin = timeToMin(end);
-
-                                // 時間逆転チェック
                                 if (endMin <= startMin) {
-                                    hasError = true;
-                                    errorMsg = `第${i}希望の終了時間は、開始時間より後に設定してください。`;
-                                    break;
+                                    hasError = true; errorMsg = `第${i}希望の終了時間は、開始時間より後に設定してください。`; break;
                                 }
-
-                                // 所要時間チェック
                                 const duration = endMin - startMin;
                                 if (requiredMin > 0 && duration < requiredMin) {
-                                    hasError = true;
-                                    errorMsg = `選択された種別の必要時間は ${requiredMin}分以上です（第${i}希望は${duration}分になっています）。`;
-                                    break;
+                                    hasError = true; errorMsg = `選択された種別の必要時間は ${requiredMin}分以上です（第${i}希望は${duration}分になっています）。`; break;
                                 }
-
-                                // 重複チェック
                                 const slotKey = `${date}_${start}_${end}`;
                                 if (selectedSlots.includes(slotKey)) {
-                                    hasError = true;
-                                    errorMsg = "同じ日時が複数選択されています。別の日時を指定してください。";
-                                    break;
+                                    hasError = true; errorMsg = "同じ日時が複数選択されています。別の日時を指定してください。"; break;
                                 }
                                 selectedSlots.push(slotKey);
                             }
                         }
                     }
                     
-                    if (hasError) {
-                        alert(errorMsg);
-                        e.preventDefault();
-                        return;
-                    }
+                    if (hasError) { alert(errorMsg); e.preventDefault(); return; }
                     
-                    // 送信中表示
                     const btn = this.querySelector('button[type="submit"]');
                     if (btn) {
                         setTimeout(() => {
-                            btn.disabled = true;
-                            btn.textContent = '送信中...';
-                            btn.style.opacity = '0.7';
+                            btn.disabled = true; btn.textContent = '送信中...'; btn.style.opacity = '0.7';
                         }, 10);
                     }
                 });
