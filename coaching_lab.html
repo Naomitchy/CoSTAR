@@ -126,6 +126,13 @@
             color: var(--accent-color);
         }
 
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
         .nav-btn {
             font-size: 0.8rem;
             padding: 8px 18px;
@@ -344,114 +351,29 @@
         }
         .pain-item p, .logic-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
 
-        /* --- Benefit Section (Awakening) --- */
-        .ba-section { 
-            background-color: #FFFFFF; 
-            padding: 40px 0 60px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .resonance-container {
-            position: relative;
-            width: 100%;
-            min-height: 580px; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .resonance-svg {
-            position: absolute; width: 100%; height: 100%; max-width: 1200px;
-            z-index: 1; pointer-events: none;
-        }
-        .resonance-core {
-            fill: var(--accent-color); filter: blur(30px); opacity: 0.35;
-            animation: pulse-core 4s infinite ease-in-out;
-        }
-        .resonance-orbit {
-            fill: none; stroke: var(--accent-color); stroke-width: 0.4;
-            stroke-dasharray: 4, 4; opacity: 0.15;
-        }
-        .resonance-ring {
-            fill: none; stroke: var(--accent-color); stroke-width: 0.6; opacity: 0;
-            transform-origin: center; animation: expand-ring 8s infinite linear;
-        }
+        /* --- Benefit Section (Awakening) - Updated to match index.html --- */
+        .ba-section { background-color: #FFFFFF; padding: 100px 0; overflow: hidden; position: relative; }
+        .resonance-container { position: relative; width: 100%; min-height: 580px; display: flex; align-items: center; justify-content: center; }
+        .resonance-svg { position: absolute; width: 100%; height: 100%; max-width: 1200px; z-index: 1; pointer-events: none; }
+        .resonance-core { fill: var(--accent-color); filter: blur(30px); opacity: 0.35; animation: pulse-core 4s infinite ease-in-out; }
+        .resonance-orbit { fill: none; stroke: var(--accent-color); stroke-width: 0.4; stroke-dasharray: 4, 4; opacity: 0.15; }
+        .resonance-ring { fill: none; stroke: var(--accent-color); stroke-width: 0.6; opacity: 0; transform-origin: center; animation: expand-ring 8s infinite linear; }
         .resonance-ring:nth-child(3) { animation-delay: 2.6s; }
         .resonance-ring:nth-child(4) { animation-delay: 5.3s; }
-
-        @keyframes pulse-core {
-            0%, 100% { transform: scale(1); opacity: 0.25; }
-            50% { transform: scale(1.4); opacity: 0.5; }
-        }
-        @keyframes expand-ring {
-            0% { transform: scale(0.1); opacity: 0; }
-            15% { opacity: 0.35; }
-            100% { transform: scale(2.5); opacity: 0; }
-        }
-
-        .ba-huge-label {
-            position: absolute;
-            font-family: "Shippori Mincho", serif;
-            font-size: 12rem;
-            font-weight: 700;
-            line-height: 1;
-            color: rgba(184, 150, 46, 0.04);
-            z-index: 0;
-            pointer-events: none;
-            user-select: none;
-            letter-spacing: 0.1em;
-            text-align: center;
-            width: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .resonance-orbit-wrap {
-            position: relative; width: 100%; height: 100%; max-width: 1100px; z-index: 2;
-        }
-        .orbit-item {
-            position: absolute; max-width: 340px; text-align: center;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(5px);
-            padding: 20px;
-            border-radius: 8px;
-        }
-        
-        .orbit-item:hover { 
-            transform: scale(1.05); 
-            box-shadow: 0 15px 30px rgba(184, 150, 46, 0.15);
-            z-index: 10;
-        }
-        .orbit-1:hover { transform: translateX(-50%) scale(1.05); }
-
+        @keyframes pulse-core { 0%, 100% { transform: scale(1); opacity: 0.25; } 50% { transform: scale(1.4); opacity: 0.5; } }
+        @keyframes expand-ring { 0% { transform: scale(0.1); opacity: 0; } 15% { opacity: 0.35; } 100% { transform: scale(2.5); opacity: 0; } }
+        .ba-huge-label { position: absolute; font-family: "Shippori Mincho", serif; font-size: 10rem; font-weight: 700; line-height: 1; color: rgba(184, 150, 46, 0.04); z-index: 0; pointer-events: none; user-select: none; letter-spacing: 0.1em; text-align: center; width: 100%; top: 50%; transform: translateY(-50%); }
+        .resonance-orbit-wrap { position: relative; width: 100%; height: 100%; max-width: 1100px; z-index: 2; }
+        .orbit-item { position: absolute; max-width: 340px; text-align: center; transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        /* 固定ポジション用ホバー調整 */
+        .orbit-item:hover { transform: scale(1.03); }
         .orbit-1 { top: 0%; left: 50%; transform: translateX(-50%); }
+        .orbit-1:hover { transform: translateX(-50%) scale(1.03); }
         .orbit-2 { bottom: 0%; left: 0%; } 
         .orbit-3 { bottom: 0%; right: 0%; } 
+        .orbit-item h4 { font-family: "Shippori Mincho", serif; font-size: 1.25rem; color: var(--accent-color); margin: 0 0 15px 0; font-weight: 700; letter-spacing: 0.05em; }
+        .orbit-item p { font-size: 0.9rem; line-height: 1.9; color: var(--text-color); margin: 0; text-align: justify; }
 
-        .orbit-icon {
-            width: 50px; height: 50px; margin: 0 auto 20px;
-            background: #fff; border: 1px solid rgba(184, 150, 46, 0.3);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 20px rgba(184, 150, 46, 0.1);
-            transition: all 0.3s ease;
-        }
-        .orbit-item:hover .orbit-icon {
-            background-color: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-        .orbit-icon svg { width: 20px; height: 20px; fill: var(--accent-color); transition: fill 0.3s ease; }
-        .orbit-item:hover .orbit-icon svg { fill: #fff; }
-
-        .orbit-item h4 {
-            font-family: "Shippori Mincho", serif; font-size: 1.25rem;
-            color: var(--accent-color); margin: 0 0 15px 0; font-weight: 700; letter-spacing: 0.05em;
-        }
-        .orbit-item p {
-            font-size: 0.9rem; line-height: 1.9; color: var(--text-color);
-            margin: 0; text-align: justify;
-        }
 
         /* --- Solution/Logic Section --- */
         .logic-section { background-color: var(--bg-color); padding-bottom: 80px; }
@@ -646,13 +568,113 @@
         .sp-only { display: none; }
         .pc-only { display: block; } /* PC default */
 
-        @media (max-width: 1024px) {
-            .ba-huge-label { font-size: 8rem; }
+        /* --- ハンバーガーメニュー用スタイル (Added) --- */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+        .hamburger span {
+            display: block;
+            height: 1px;
+            width: 100%;
+            background-color: var(--text-color);
+            transition: 0.3s;
+        }
+
+        /* SP Menu Overlay */
+        .sp-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 1050;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 80px; 
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+        }
+        .sp-menu-overlay.active { display: flex; opacity: 1; }
+        
+        .sp-nav { 
+            display: flex; 
+            flex-direction: column; 
+            width: 100%;
+            max-width: 500px;
+            padding: 0 40px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        
+        .sp-nav-link { 
+            display: flex;
+            align-items: baseline; 
+            gap: 15px;
+            text-decoration: none;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06); 
+            text-align: left;
+            position: relative;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .sp-nav-link .en {
+            font-family: "Shippori Mincho", serif;
+            font-size: 1.3rem;
+            color: var(--text-color);
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+        }
+
+        .sp-nav-link .ja {
+            font-family: "Noto Sans JP", sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            font-weight: 400;
+            margin-top: 0; 
+        }
+
+        /* Animation Delays */
+        .sp-menu-overlay.active .sp-nav-link { opacity: 1; transform: translateY(0); }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(1) { transition-delay: 0.05s; }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(2) { transition-delay: 0.08s; }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(3) { transition-delay: 0.11s; }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(4) { transition-delay: 0.14s; }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(5) { transition-delay: 0.17s; }
+
+        .sp-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-weight: 300;
+            z-index: 1060;
+        }
+
+        @media (max-width: 900px) {
             .resonance-container { min-height: auto; padding: 40px 0; }
-            .resonance-orbit-wrap { display: flex; flex-direction: column; gap: 80px; align-items: center; max-width: 100%; }
+            .ba-huge-label { display: none; }
+            .resonance-orbit-wrap { display: flex; flex-direction: column; gap: 80px; align-items: center; }
             .orbit-item { position: static; transform: none !important; max-width: 600px; }
-            .resonance-svg { opacity: 0.2; }
-            
+            .orbit-item h4 { font-size: 1.05rem !important; white-space: nowrap; letter-spacing: -0.02em; }
+        }
+
+        @media (max-width: 1024px) {
             /* Enable Floating CTA on tablet/mobile */
             .sp-fixed-entry {
                 display: block;
@@ -667,9 +689,15 @@
             }
         }
         @media (max-width: 768px) {
+            .hamburger { display: flex; } /* Added */
             .sp-only { display: block; }
             .pc-only { display: none !important; } 
             .pc-nav { display: none; } 
+            
+            /* --- Layout Fixes for Mobile Header Overflow --- */
+            .nav-flex { padding: 0 15px; } /* Reduce container padding */
+            .nav-actions { gap: 10px; } /* Reduce spacing */
+            .nav-btn { padding: 6px 12px; font-size: 0.75rem; } /* Compact button */
             
             .hero-content h1 { 
                 font-size: 8.5vw;
@@ -746,20 +774,53 @@
     </style>
 </head>
 <body>
+<body id="top">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSJK8WXM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header role="banner">
         <div class="nav-flex">
             <div class="logo"><a href="index.html">CoSTAR</a></div>
             <nav class="pc-nav" aria-label="メインナビゲーション">
-                <a href="#message" class="pc-nav-link" data-target="message">Message</a>
-                <a href="#logic" class="pc-nav-link" data-target="logic">Method</a>
-                <a href="#package" class="pc-nav-link" data-target="package">Program</a>
+			    <a href="index.html" class="pc-nav-link" data-target="Home">HOME</a>
+                <a href="#message" class="pc-nav-link" data-target="message">CONCEPT</a>
+                <a href="#package" class="pc-nav-link" data-target="package">PROGRAM</a>
                 <a href="#faq" class="pc-nav-link" data-target="faq">FAQ</a>
             </nav>
             <div class="nav-actions">
                 <a href="#contact" class="nav-btn">Contact</a>
+                <div class="hamburger" id="hamburger-btn">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
         </div>
     </header>
+
+    <div class="sp-menu-overlay" id="sp-menu">
+        <div class="sp-menu-close" id="sp-menu-close">&times;</div>
+        <nav class="sp-nav">
+            <a href="index.html" class="sp-nav-link">
+                <span class="en">HOME</span>
+                <span class="ja">ホームに戻る</span>
+            </a>
+            <a href="#message" class="sp-nav-link">
+                <span class="en">CONCEPT</span>
+                <span class="ja">想い・哲学</span>
+            </a>
+            <a href="#package" class="sp-nav-link">
+                <span class="en">PROGRAM</span>
+                <span class="ja">プログラム内容</span>
+            </a>
+            <a href="#faq" class="sp-nav-link">
+                <span class="en">FAQ</span>
+                <span class="ja">よくある質問</span>
+            </a>
+            <a href="#contact" class="sp-nav-link">
+                <span class="en">CONTACT</span>
+                <span class="ja">お問い合わせ</span>
+            </a>
+        </nav>
+    </div>
 
     <div class="hero">
         <canvas id="resonance-canvas"></canvas>
@@ -773,12 +834,12 @@
             </p>
 
             <p class="tagline sp-only">
-                飲み込んだ「願い」が、クライアント<br>
-                を震わせる武器になる。コーチのための、<br>
+                飲み込んだ「願い」が、クライアントを<br>
+                震わせる武器になる。コーチのための、<br>
                 コーチ「覚醒」プログラム
             </p>
 
-            <a href="#message" class="hero-btn">実験を始める</a>
+            <a href="#pain" class="hero-btn">実験を始める</a>
         </div>
     </div>
 
@@ -798,17 +859,17 @@
                 <div class="pain-item">
                     <span class="pain-number">01</span>
                     <h3>自分の衝動から守る「型」</h3>
-                    <p>「自分の衝動は、関係性を壊す」と思いこむあまり、「型」を守り、沈黙を待ち、きれいな質問を投げる。……でも、そこに「あなた」はいますか？ 減点されることに怯える一方で、誰よりもあなた自身が退屈していませんか。</p>
+                    <p>「自分の衝動は、関係性を壊す」と思いこむあまり、「型」を守り、沈黙を待ち、きれいな質問を投げる。誰かに「正しい」と言ってもらいたいという欲求……でも、そこに「あなた」はいますか？ 減点されることに怯える一方で、誰よりもあなた自身が退屈していませんか。</p>
                 </div>
                 <div class="pain-item">
                     <span class="pain-number">02</span>
-                    <h3>不完全燃焼のセッション</h3>
-                    <p>ふと浮かんだ直感や、湧き上がる違和感。「こんなことを言ったら傷つけるかも」「コーチらしくないかも」と飲み込み続け、セッションが終わる頃には、不完全燃焼の疲労感だけが残っている。でも、コーチングを諦められない。</p>
+                    <h3>コーチで在ること「不安」</h3>
+                    <p>ふと浮かんだ直感や、湧き上がる違和感。「こんなことを言ったら傷つけるかも」「コーチらしくないかも」と飲み込み続け、セッションが終わる頃には、「このままコーチングを続けていいのか…」と思い悩む。……でも一方で、コーチを諦めらきれない自分がいる。</p>
                 </div>
                 <div class="pain-item">
                     <span class="pain-number">03</span>
                     <h3>成功パターンの「呪縛」</h3>
-                    <p>そつなくこなせる。クライアントから感謝もされる。けれど、魂が震えるような「化学反応」が起きない。自分の得意なパターンにはめ込むセッションから、抜けられない。でも、積み重ねた成功体験を捨てることまではしたくはない。</p>
+                    <p>「感謝される」で満足できなくなっている。成功パターンにはめ込み、予測不能な事態を避けるために、無意識に自分がコントロールできる領域へと誘導していないか。かつて恐れながらも踏み込んでいたあの領域へ、もう一度行くのが怖くなっているのではないか。</p>
                 </div>
             </div>
         </div>
@@ -922,7 +983,8 @@
     <section class="ba-section">
         <div class="container">
             <h2 class="section-title">
-                「願い」を解き放った<br class="sp-only">先に待つもの
+                「願い」を解き放った<br class="sp-only">
+                先に待つもの
             </h2>
             
             <div class="resonance-container">
@@ -938,25 +1000,16 @@
 
                 <div class="resonance-orbit-wrap">
                     <div class="orbit-item orbit-1">
-                        <div class="orbit-icon">
-                            <svg viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
-                        </div>
                         <h4>存在が「磁力」になる</h4>
                         <p>無理に背伸びをして集客する必要がなくなります。あなたが本音で生き、本音で関わる姿そのものが強力な磁力となり、「あなただから頼みたい」というクライアントを引き寄せ始めます。</p>
                     </div>
 
                     <div class="orbit-item orbit-2">
-                        <div class="orbit-icon">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                        </div>
                         <h4>迷いが「確信」に変わる</h4>
                         <p>「これで合っているだろうか」という不安が消えます。自分の内側にある願いと繋がってセッションをするため、どんな予期せぬ展開になっても、堂々と、そして楽しんで波乗りができるようになります。</p>
                     </div>
 
 					<div class="orbit-item orbit-3">
-					<div class="orbit-icon">
-						<svg viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1.9-2 2-2z"/></svg>
-					</div>
                         <h4>セッションが「人生の栞」に</h4>
                         <p>教科書通りのセッションは記憶に残りません。あなたが全力で関わった時間は、クライアントの人生に深く刻まれる「栞（しおり）」となり、生涯忘れられない景色を共有する体験になります。</p>
                     </div>
@@ -1436,6 +1489,32 @@
                     }
                 });
             }
+
+            // --- MENU TOGGLE LOGIC (Added) ---
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const spMenu = document.getElementById('sp-menu');
+            const spMenuClose = document.getElementById('sp-menu-close');
+            const spNavLinks = document.querySelectorAll('.sp-nav-link');
+
+            function openSpMenu() { 
+                if(spMenu) {
+                    spMenu.style.display = 'flex'; 
+                    setTimeout(() => spMenu.classList.add('active'), 10); 
+                    document.body.style.overflow = 'hidden'; 
+                }
+            }
+
+            function closeSpMenu() { 
+                if(spMenu) {
+                    spMenu.classList.remove('active'); 
+                    setTimeout(() => spMenu.style.display = 'none', 300); 
+                    document.body.style.overflow = 'auto'; 
+                }
+            }
+
+            if(hamburgerBtn) hamburgerBtn.addEventListener('click', openSpMenu);
+            if(spMenuClose) spMenuClose.addEventListener('click', closeSpMenu);
+            spNavLinks.forEach(l => l.addEventListener('click', closeSpMenu));
         });
     </script>
 </body>
