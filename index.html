@@ -94,7 +94,7 @@
 
         .pc-nav {
             display: flex;
-            gap: 30px;
+            gap: 25px; /* Update: 項目増加に伴い間隔を微調整 (30px -> 25px) */
             margin-left: auto;
             margin-right: 40px;
         }
@@ -175,11 +175,13 @@
             background: rgba(255, 255, 255, 0.98);
             z-index: 1050;
             flex-direction: column;
-            justify-content: flex-start; /* 左上基点 */
-            padding-top: 120px; /* 上部に余白 */
+            justify-content: flex-start; /* 上寄せ */
+            /* 修正1: メニュー開始位置を上げて、画面上部を有効活用 */
+            padding-top: 80px; 
             align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease;
+            overflow-y: auto; /* 万が一はみ出てもスクロール可能に */
         }
         .sp-menu-overlay.active { display: flex; opacity: 1; }
         
@@ -190,26 +192,33 @@
             max-width: 500px;
             padding: 0 40px;
             box-sizing: border-box;
+            /* 追加: 画面縦幅が狭い機種用に、メニュー全体の高さを調整 */
+            margin-bottom: 20px;
         }
         
         .sp-nav-link { 
             display: block;
             text-decoration: none;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.06); /* 極細ライン */
+            /* 修正2: 上下の余白をギュッと詰める (20px -> 10px) */
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06); 
             text-align: left;
             position: relative;
             opacity: 0;
             transform: translateY(15px);
             transition: opacity 0.4s ease, transform 0.4s ease;
+            /* 追加: タップしやすいように高さを確保しつつレイアウト調整 */
+            display: flex;
+            align-items: baseline; 
+            gap: 15px;
         }
 
         .sp-nav-link .en {
             font-family: "Shippori Mincho", serif;
-            font-size: 1.8rem;
+            /* 修正3: 文字サイズを少し抑えて一画面に収める (1.8rem -> 1.3rem) */
+            font-size: 1.3rem;
             color: var(--text-color);
             letter-spacing: 0.05em;
-            display: block;
             line-height: 1.2;
         }
 
@@ -218,18 +227,20 @@
             font-size: 0.75rem;
             color: var(--text-muted);
             letter-spacing: 0.05em;
-            display: block;
-            margin-top: 5px;
             font-weight: 400;
+            /* 修正4: 改行させずに英語の横に並べるか、下げる場合もマージンを最小に */
+            margin-top: 0; 
         }
 
-        /* アニメーション遅延設定 */
+        /* アニメーション遅延設定（項目数に合わせて調整済み） */
         .sp-menu-overlay.active .sp-nav-link { opacity: 1; transform: translateY(0); }
         .sp-menu-overlay.active .sp-nav-link:nth-child(1) { transition-delay: 0.05s; }
-        .sp-menu-overlay.active .sp-nav-link:nth-child(2) { transition-delay: 0.1s; }
-        .sp-menu-overlay.active .sp-nav-link:nth-child(3) { transition-delay: 0.15s; }
-        .sp-menu-overlay.active .sp-nav-link:nth-child(4) { transition-delay: 0.2s; }
-        .sp-menu-overlay.active .sp-nav-link:nth-child(5) { transition-delay: 0.25s; }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(2) { transition-delay: 0.08s; }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(3) { transition-delay: 0.11s; }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(4) { transition-delay: 0.14s; }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(5) { transition-delay: 0.17s; }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(6) { transition-delay: 0.20s; }
+        .sp-menu-overlay.active .sp-nav-link:nth-child(7) { transition-delay: 0.23s; }
 
         .sp-menu-close {
             position: absolute;
@@ -239,6 +250,7 @@
             cursor: pointer;
             color: var(--text-muted);
             font-weight: 300;
+            z-index: 1060;
         }
 
         /* --- ボタン共通 --- */
@@ -783,9 +795,10 @@
         <div class="nav-flex">
             <div class="logo"><a href="index.html">CoSTAR</a></div>
             <nav class="pc-nav">
+                <a href="#hero" class="pc-nav-link">TOP</a>
+                <a href="#message" class="pc-nav-link">CONCEPT</a>
                 <a href="#services" class="pc-nav-link">SERVICES</a>
                 <a href="#profile" class="pc-nav-link">PROFILE</a>
-                <a href="#logbook" class="pc-nav-link">LOGBOOK</a>
                 <a href="#faq" class="pc-nav-link">FAQ</a>
             </nav>
             <div class="nav-actions">
@@ -800,6 +813,14 @@
     <div class="sp-menu-overlay" id="sp-menu">
         <div class="sp-menu-close" id="sp-menu-close">&times;</div>
         <nav class="sp-nav">
+            <a href="#hero" class="sp-nav-link">
+                <span class="en">TOP</span>
+                <span class="ja">トップ</span>
+            </a>
+            <a href="#message" class="sp-nav-link">
+                <span class="en">CONCEPT</span>
+                <span class="ja">想い・哲学</span>
+            </a>
             <a href="#services" class="sp-nav-link">
                 <span class="en">SERVICES</span>
                 <span class="ja">提供サービス</span>
