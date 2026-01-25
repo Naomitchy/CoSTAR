@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NSJK8WXM');</script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoSTAR | 「あいつは変わった」と、笑われる側へ行こう。</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoSTAR | 星野 直道 公式WEBSITE</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22><path fill=%22%23B8962E%22 d=%22M256 0L334.24 177.76L512 256L334.24 334.24L256 512L177.76 334.24L0 256L177.76 177.76L256 0Z%22/></svg>">
     
-    <meta property="og:title" content="CoSTAR | 「あいつは変わった」と、笑われる側へ行こう。">
+    <meta property="og:title" content="CoSTAR | 星野 直道 公式WEBSITE">
     <meta property="og:description" content="星野 直道 | 米国CTI認定プロコーチ(CPCC)">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://costar-works.com/">
-    <meta property="og:image" content="https://costar-works.com/ogp.jpg">
+    <meta property="og:image" content="https://costar-works.com/IMG_6140.jpg">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1241,9 +1235,6 @@
             /* ヘッダーContactボタン非表示 */
             .nav-actions .nav-btn { display: none; }
             .hamburger { display: flex; }
-            .hero-content h1 { font-size: 1.35rem; line-height: 1.8; font-weight: 700; margin-bottom: 30px; }
-            .hero-content h1 span { display: inline-block !important; white-space: nowrap; }
-            .hero-content p.sp-only-text { font-size: 0.85rem; line-height: 2.0; margin-bottom: 40px; color: var(--text-muted); }
             .sp-only-text { display: block; }
             .pc-only-text { display: none; }
             .sp-only { display: block; }
@@ -1255,6 +1246,40 @@
             .service-grid .service-card:nth-child(2) { order: 1; }
             .service-grid .service-card:nth-child(1) { order: 2; }
             .service-grid .service-card:nth-child(3) { order: 3; }
+
+            /* --- 新しいヒーローエリア用（スマホ調整） --- */
+
+            /* 枠からはみ出さないように調整 */
+            .hero-content {
+                width: 100%;
+                padding: 0 10px; /* 左右の余白 */
+                box-sizing: border-box;
+            }
+
+            /* 左側の縦線とテキストの距離を調整 */
+            .hero-content > div {
+                padding-left: 15px !important;
+                max-width: 100%;
+            }
+
+            /* メインタイトル (LEADERSHIP COACHING) のサイズ調整 */
+            /* 11vw という単位を使うことで、画面幅に合わせて文字が自動縮小します */
+            .hero-content h1 {
+                font-size: 11vw !important; 
+                line-height: 1.2 !important;
+                margin-bottom: 20px !important;
+            }
+
+            /* OFFICIAL WEBSITE 等の補足テキスト調整 */
+            .hero-content p {
+                font-size: 0.8rem !important;
+            }
+
+            /* ボタンのマージン調整 */
+            .hero-content .btn {
+                width: 100%;
+                max-width: 300px;
+            }
             
             /* Investment (SP: 縦積み) */
             .plans-container { grid-template-columns: 1fr; gap: 40px; }
@@ -1557,28 +1582,28 @@
         </nav>
     </div>
 
-    <div class="hero" id="hero">
-        <canvas id="hero-canvas"></canvas>
-        <div class="container hero-content">
-            <h1>
-                <span style="display:inline-block;">「あいつは変わった」と、</span><br>
-                <span style="display:inline-block;">笑われる側へ行こう。</span>
+<div class="hero" id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="container hero-content" style="display: flex; justify-content: center;">
+        
+        <div style="text-align: left; padding-left: 25px; border-left: 2px solid var(--accent-color);">
+            
+            <p style="font-family: 'Noto Sans JP', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; color: #999; margin-bottom: 15px;">
+                OFFICIAL WEBSITE
+            </p>
+            
+            <h1 style="font-family: 'Shippori Mincho', serif; font-size: 3rem; line-height: 1.1; margin-bottom: 25px; color: var(--text-color); font-weight: 500;">
+                LEADERSHIP<br>COACHING
             </h1>
             
-            <p class="pc-only-text">
-                空気を読んで、正解を選んで、 誰かの期待に応え続ける人生。<br>
-                それで得た成功に、あなたの魂は震えていますか？<br>     
-            </p>
-            
-            <p class="sp-only-text">
-                <span>空気を読んで、正解を選んで、</span><br>
-                <span>誰かの期待に応え続ける人生。</span><br>
-                <span>それで得た成功に、あなたの</span><br>
-                <span>魂は震えていますか？</span>
-            </p>
-            <a href="#message" class="btn">物語を始める</a>
+            <div style="font-family: 'Shippori Mincho', serif; color: var(--text-color);">
+                <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 5px;">CoSTAR代表 星野直道</p>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">米国CTI認定プロフェッショナルコーチ</p>
+            </div>
+
         </div>
     </div>
+</div>
     
     <div class="floating-cta" id="floating-cta">
         <button class="btn btn-primary" onclick="openModal('application', '体験セッション')" style="border-radius: 50px; font-weight:bold;">
