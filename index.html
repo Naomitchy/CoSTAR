@@ -9,7 +9,7 @@
     })(window,document,'script','dataLayer','GTM-NSJK8WXM');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoSTAR | 「あいつは変わった」と、笑われる側へ行こう。</title>
-	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22><path fill=%22%23B8962E%22 d=%22M256 0L334.24 177.76L512 256L334.24 334.24L256 512L177.76 334.24L0 256L177.76 177.76L256 0Z%22/></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22><path fill=%22%23B8962E%22 d=%22M256 0L334.24 177.76L512 256L334.24 334.24L256 512L177.76 334.24L0 256L177.76 177.76L256 0Z%22/></svg>">
     
     <meta property="og:title" content="CoSTAR | 「あいつは変わった」と、笑われる側へ行こう。">
     <meta property="og:description" content="星野 直道 | 米国CTI認定プロコーチ(CPCC)">
@@ -34,6 +34,11 @@
             --secondary-bg: #FFFFFF; 
             --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             --card-shadow-hover: 0 20px 40px rgba(184, 150, 46, 0.15);
+            
+            /* Voice Section Colors (Refined) */
+            --voice-bg: #EAEAE6; 
+            --voice-card-bg: #FFFFFF;
+
             color-scheme: light;
         }
 
@@ -49,7 +54,7 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, h4, .logo, .quote-large, .hero-content p, .plan-name-main {
+        h1, h2, h3, h4, .logo, .quote-large, .hero-content p, .plan-name, .voice-section-title, .vc-title {
             font-family: "Shippori Mincho", serif;
         }
 
@@ -94,7 +99,7 @@
 
         .pc-nav {
             display: flex;
-            gap: 25px; /* Update: 項目増加に伴い間隔を微調整 (30px -> 25px) */
+            gap: 25px;
             margin-left: auto;
             margin-right: 40px;
         }
@@ -107,7 +112,6 @@
             position: relative;
             padding-bottom: 5px;
         }
-        /* Update: ナビゲーションのアクティブアニメーション */
         .pc-nav-link::after {
             content: '';
             position: absolute;
@@ -124,7 +128,7 @@
         }
         .pc-nav-link:hover, .pc-nav-link.active {
             color: var(--accent-color);
-            opacity: 1; /* hover時のopacity低下を上書き */
+            opacity: 1;
         }
 
         .nav-actions {
@@ -164,7 +168,7 @@
             transition: 0.3s;
         }
 
-        /* --- SP Menu (Editorial Style) --- */
+        /* --- SP Menu --- */
         .sp-menu-overlay {
             display: none;
             position: fixed;
@@ -175,13 +179,12 @@
             background: rgba(255, 255, 255, 0.98);
             z-index: 1050;
             flex-direction: column;
-            justify-content: flex-start; /* 上寄せ */
-            /* 修正1: メニュー開始位置を上げて、画面上部を有効活用 */
+            justify-content: flex-start;
             padding-top: 80px; 
             align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease;
-            overflow-y: auto; /* 万が一はみ出てもスクロール可能に */
+            overflow-y: auto;
         }
         .sp-menu-overlay.active { display: flex; opacity: 1; }
         
@@ -192,14 +195,12 @@
             max-width: 500px;
             padding: 0 40px;
             box-sizing: border-box;
-            /* 追加: 画面縦幅が狭い機種用に、メニュー全体の高さを調整 */
             margin-bottom: 20px;
         }
         
         .sp-nav-link { 
             display: block;
             text-decoration: none;
-            /* 修正2: 上下の余白をギュッと詰める (20px -> 10px) */
             padding: 10px 0;
             border-bottom: 1px solid rgba(0,0,0,0.06); 
             text-align: left;
@@ -207,7 +208,6 @@
             opacity: 0;
             transform: translateY(15px);
             transition: opacity 0.4s ease, transform 0.4s ease;
-            /* 追加: タップしやすいように高さを確保しつつレイアウト調整 */
             display: flex;
             align-items: baseline; 
             gap: 15px;
@@ -215,7 +215,6 @@
 
         .sp-nav-link .en {
             font-family: "Shippori Mincho", serif;
-            /* 修正3: 文字サイズを少し抑えて一画面に収める (1.8rem -> 1.3rem) */
             font-size: 1.3rem;
             color: var(--text-color);
             letter-spacing: 0.05em;
@@ -228,11 +227,9 @@
             color: var(--text-muted);
             letter-spacing: 0.05em;
             font-weight: 400;
-            /* 修正4: 改行させずに英語の横に並べるか、下げる場合もマージンを最小に */
             margin-top: 0; 
         }
 
-        /* アニメーション遅延設定（項目数に合わせて調整済み） */
         .sp-menu-overlay.active .sp-nav-link { opacity: 1; transform: translateY(0); }
         .sp-menu-overlay.active .sp-nav-link:nth-child(1) { transition-delay: 0.05s; }
         .sp-menu-overlay.active .sp-nav-link:nth-child(2) { transition-delay: 0.08s; }
@@ -327,7 +324,7 @@
             background-color: var(--accent-color); margin: 20px auto 0; opacity: 1;
         }
 
-        /* --- Message (背景画像適用) --- */
+        /* --- Message --- */
         .message-section { 
             background-color: #FFFFFF; 
             position: relative; 
@@ -346,7 +343,7 @@
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
-            opacity: 0.08; /* 薄く設定 */
+            opacity: 0.08;
             z-index: 0;
             pointer-events: none;
         }
@@ -380,7 +377,6 @@
             background-color: var(--secondary-bg); padding: 35px; border-radius: 4px;
             border: none; box-shadow: var(--card-shadow);
             position: relative; display: flex; flex-direction: column; height: 100%; box-sizing: border-box;
-            /* Update: カードアニメーションの高度化 */
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         .service-card:hover { 
@@ -398,19 +394,16 @@
             background: #f3f4f6; color: #666;
             border-radius: 20px; margin-bottom: 20px; align-self: flex-start; 
         }
-        .cs-badge { position: absolute; top: 20px; right: 20px; background-color: #eee; color: #999; font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; }
         .service-footer { margin-top: 25px; text-align: center; }
 
-        /* --- 新規セクション用スタイル (Pain / Benefit / Logic) --- */
+        /* --- Logic & Pain --- */
         .logic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; }
         .logic-item { 
             text-align: left; padding: 20px; 
-            /* Update: Logicアイテムのアニメーション高度化 */
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            border-radius: 8px; /* ホバー時の見た目のために追加 */
+            border-radius: 8px;
             background: transparent;
         }
-        /* Update: ホバーエフェクト追加 */
         .logic-item:hover {
             background: #fff;
             box-shadow: 0 20px 40px rgba(184, 150, 46, 0.15);
@@ -421,6 +414,582 @@
         .logic-item h3 { font-size: 1.3rem; margin-bottom: 20px; color: var(--text-color); font-family: "Shippori Mincho", serif; font-weight: 600;}
         .logic-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
 
+        /* --- Leadership Program (Integrated Section) --- */
+        #leadership-program {
+            background-color: #FFFFFF;
+            padding: 100px 0;
+            position: relative;
+        }
+
+        /* Process Canvas Area */
+        .process-canvas-wrapper {
+            position: relative;
+            padding: 80px 0;
+            margin: 0;
+            overflow: hidden;
+            background: radial-gradient(circle at center, rgba(255,255,255,1) 0%, rgba(245,245,245,0.5) 100%);
+        }
+        #process-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        .process-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 8px;
+            padding: 35px;
+            position: relative;
+            transition: transform 0.3s;
+            border-top: 3px solid var(--accent-color);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+        }
+        .process-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(184, 150, 46, 0.1);
+            background: #fff;
+        }
+        .phase-label {
+            font-family: "Shippori Mincho", serif;
+            font-size: 3rem;
+            color: var(--accent-color);
+            opacity: 0.15;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        .process-card h3 {
+            font-family: "Shippori Mincho", serif;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            position: relative;
+            z-index: 2;
+        }
+        .sub-h3 {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: "Noto Sans JP", sans-serif;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+        .process-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        .tool-box {
+            border-top: 1px dashed #ddd;
+            padding-top: 15px;
+            font-size: 0.85rem;
+        }
+        .tool-label {
+            display: block;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 4px 10px;
+            border-radius: 4px;
+            color: #666;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+        }
+
+        /* --- Accordion Styles (New Process) --- */
+        .accordion-container {
+            border-top: 1px solid rgba(0,0,0,0.05);
+            background: rgba(255,255,255,0.5); /* 透過背景 */
+            backdrop-filter: blur(8px);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            overflow: hidden;
+        }
+        .acc-item {
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: background 0.3s;
+        }
+        .acc-item:hover {
+            background: rgba(255,255,255,0.9);
+        }
+        .acc-btn {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 25px 30px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.3s;
+            outline: none;
+        }
+        .acc-btn:hover .acc-title {
+            color: var(--accent-color);
+        }
+        .acc-step {
+            font-family: "Noto Sans JP", sans-serif;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-right: 25px;
+            letter-spacing: 0.1em;
+            flex-shrink: 0;
+            opacity: 0.8;
+        }
+        .acc-title {
+            font-family: "Shippori Mincho", serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-color);
+            line-height: 1.3;
+            transition: color 0.3s;
+        }
+        .acc-sub {
+            font-family: "Noto Sans JP", sans-serif;
+            font-size: 0.75rem;
+            font-weight: normal;
+            color: var(--text-muted);
+            margin-top: 5px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .acc-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            margin-left: 15px;
+            line-height: 1;
+            font-weight: 300;
+        }
+        .acc-btn.active .acc-icon {
+            transform: rotate(45deg);
+        }
+        .acc-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: rgba(255,255,255,0.4);
+        }
+        .acc-inner {
+            padding: 10px 30px 50px 30px;
+        }
+        @media (min-width: 600px) {
+            /* PCではStep番号の分だけインデントして読みやすく */
+            .acc-inner { padding-left: 105px; padding-right: 50px; } 
+        }
+
+        .acc-h4 {
+            font-family: "Shippori Mincho", serif;
+            font-size: 1.15rem;
+            color: var(--text-color);
+            margin: 0 0 25px 0;
+            line-height: 1.8;
+            position: relative;
+            padding-left: 15px;
+        }
+        .acc-h4::before {
+            content: ""; position: absolute; left: 0; top: 6px; width: 3px; height: 1.2em;
+            background: var(--accent-color); opacity: 0.6;
+        }
+        .acc-inner p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        /* Step 1: Comparison Table (Code-based Diagram) */
+        .comparison-box {
+            margin-top: 25px;
+            border: 1px solid rgba(0,0,0,0.05);
+            background: #fff;
+            border-radius: 6px;
+            overflow: hidden;
+            font-size: 0.85rem;
+        }
+        .comp-row {
+            display: flex;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .comp-row:last-child { border-bottom: none; }
+        .comp-label {
+            width: 30%;
+            background: #f9fafb;
+            padding: 12px 15px;
+            font-weight: bold;
+            color: #666;
+            display: flex;
+            align-items: center;
+        }
+        .comp-content {
+            width: 70%;
+            padding: 12px 15px;
+            color: var(--text-color);
+        }
+        .comp-highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Step 4: 3つの関わり方リスト (Enhanced with Icons) */
+        .method-list {
+            margin-top: 35px;
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        .method-item {
+            background: #fff;
+            padding: 25px 20px;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: transform 0.3s;
+            text-align: center;
+            border-top: 3px solid transparent;
+        }
+        .method-item:nth-child(1) { border-top-color: #88a3b5; } /* Process: Water/Flow */
+        .method-item:nth-child(2) { border-top-color: var(--accent-color); } /* Fulfillment: Gold/Star */
+        .method-item:nth-child(3) { border-top-color: #9cb588; } /* Balance: Nature/Ground */
+
+        .method-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+        .method-icon {
+            display: block;
+            width: 40px; height: 40px;
+            margin: 0 auto 15px;
+            color: var(--accent-color);
+            opacity: 0.8;
+        }
+        .method-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            color: #666;
+            background: #f3f4f6;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .method-item strong {
+            display: block;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            font-family: "Shippori Mincho", serif;
+            font-size: 1rem;
+        }
+        .method-item p {
+            margin-bottom: 0;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        /* Step 5: Cycle Diagram Animation (Code-based Diagram) */
+        .cycle-container {
+            position: relative;
+            width: 200px; height: 200px;
+            margin: 30px auto;
+        }
+        .cycle-ring {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            border: 2px dashed var(--accent-color);
+            opacity: 0.3;
+            animation: spin 20s linear infinite;
+        }
+        .cycle-item {
+            position: absolute;
+            width: 70px; height: 70px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: bold;
+            color: var(--text-color);
+            border: 1px solid #eee;
+        }
+        .cycle-item span { display: block; font-size: 0.6rem; color: #999; font-weight: normal; }
+        
+        /* Positioning items in a triangle */
+        .c-item-1 { top: -10px; left: 50%; transform: translateX(-50%); } /* Coaching */
+        .c-item-2 { bottom: 20px; right: -10px; } /* Action */
+        .c-item-3 { bottom: 20px; left: -10px; } /* Learning */
+        
+        .cycle-arrow {
+            position: absolute;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+        .c-arrow-1 { top: 30%; right: 15%; transform: rotate(60deg); }
+        .c-arrow-2 { bottom: 10%; left: 50%; transform: translateX(-50%) rotate(180deg); }
+        .c-arrow-3 { top: 30%; left: 15%; transform: rotate(-60deg); }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* --- Client's Voice (Refined) --- */
+        .voice-section {
+            /* カードが浮き立つよう、少し濃いグレージュに変更 */
+            background-color: #EAEAE6; 
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .voice-section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 60px;
+            color: var(--text-color);
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+        .voice-section-title::after {
+            content: ""; display: block; width: 40px; height: 2px;
+            background-color: var(--accent-color); margin: 20px auto 0;
+        }
+
+        .voice-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 50px; /* 矢印スペース */
+        }
+
+        /* スクロール領域 */
+.voice-track {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto; 
+    padding: 20px 10px 40px;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+    scroll-behavior: auto;
+    align-items: flex-start; /* ★修正: stretchから変更して、個別に開くようにしました */
+}
+        .voice-track::-webkit-scrollbar { display: none; }
+
+        /* カードデザイン */
+        .voice-card {
+            flex: 0 0 340px; /* 幅固定 */
+            background: #FFFFFF;
+            border-radius: 8px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .voice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(184, 150, 46, 0.15);
+        }
+
+        /* カードヘッダー */
+        .vc-header {
+            padding: 30px 30px 20px;
+        }
+
+        .vc-attr {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* キャッチコピー */
+        .vc-title {
+            font-family: "Shippori Mincho", serif;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--text-color);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        /* Beforeセクション（常時表示エリア） */
+        .vc-before-box {
+            background-color: #F9F9F9; /* 課題部分だけ背景を変えて強調 */
+            padding: 20px 30px;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .vc-label {
+            display: block;
+            font-size: 0.7rem;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            font-family: "Noto Sans JP", sans-serif;
+        }
+        .vc-label.accent { color: var(--accent-color); }
+
+        .vc-content {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* 詳細エリア（デフォルト非表示・アニメーション用） */
+        .vc-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            opacity: 0;
+        }
+        .vc-details.open {
+            max-height: 1000px; /* 十分な高さ */
+            opacity: 1;
+        }
+
+        .vc-detail-content {
+            padding: 25px 30px 30px;
+        }
+
+        .vc-row { margin-bottom: 20px; }
+        .vc-row:last-child { margin-bottom: 0; }
+
+        .vc-content.highlight {
+            color: var(--text-color);
+            background: linear-gradient(transparent 70%, rgba(184, 150, 46, 0.2) 70%);
+            font-weight: bold;
+        }
+		
+		/* --- Beforeのテキストを3行で省略（通常時） --- */
+.vc-before-box .vc-content {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; 
+    overflow: hidden;
+}
+
+/* ★追加: 展開時にはBeforeテキストの制限を解除し、全て表示する */
+.voice-card.open .vc-before-box .vc-content {
+    -webkit-line-clamp: unset;
+    display: block;
+    overflow: visible;
+}
+
+        /* 続きを読むボタン */
+.vc-toggle-btn {
+    width: 100%;
+    background: #fff;
+    border: none;
+    border-top: 1px dashed #eee;
+    padding: 15px;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: auto; /* ★追加: これでボタンが常に底辺に移動します */
+}
+        .vc-toggle-btn:hover { background-color: #fafafa; }
+        .vc-toggle-btn::after {
+            content: "▼"; font-size: 0.7em; transition: transform 0.3s;
+        }
+        .vc-toggle-btn.open::after { transform: rotate(180deg); }
+        .vc-toggle-btn span { pointer-events: none; }
+
+        /* 矢印ナビゲーション */
+        .vc-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            color: var(--text-color);
+            font-size: 1.2rem;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 10;
+            transition: 0.3s opacity, 0.3s transform;
+            opacity: 1;
+        }
+        .vc-nav-btn:hover { background: var(--accent-color); color: #fff; }
+        .vc-nav-btn.hidden { opacity: 0; pointer-events: none; } /* 非表示クラス */
+        .vc-prev { left: -10px; }
+        .vc-next { right: -10px; }
+
+        /* スマホ用スワイプガイド */
+        .swipe-hint { display: none; }
+
+        @media (max-width: 900px) {
+            .voice-wrapper { padding: 0 20px; }
+            .voice-track { gap: 15px; padding-bottom: 40px; }
+            .voice-card { flex: 0 0 85vw; } /* 見切れ（Peeking）対応 */
+            .vc-nav-btn { display: none; } /* スマホは矢印非表示 */
+            
+            .swipe-hint {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                position: absolute;
+                bottom: 10px;
+                right: 30px;
+                color: var(--text-muted);
+                font-size: 0.8rem;
+                font-weight: bold;
+                opacity: 0.8;
+                animation: fadeOutHint 3s 5s forwards; /* 5秒後に消える */
+                pointer-events: none;
+            }
+            .hand-icon { font-size: 1.2rem; animation: swipeAnim 1.5s infinite; }
+            @keyframes swipeAnim {
+                0% { transform: translateX(0); opacity: 1; }
+                50% { transform: translateX(-15px); opacity: 0.7; }
+                100% { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes fadeOutHint { to { opacity: 0; visibility: hidden; } }
+        }
+
+        /* Awakening SVG */
         .ba-section { background-color: #FFFFFF; padding: 100px 0; overflow: hidden; position: relative; }
         .resonance-container { position: relative; width: 100%; min-height: 580px; display: flex; align-items: center; justify-content: center; }
         .resonance-svg { position: absolute; width: 100%; height: 100%; max-width: 1200px; z-index: 1; pointer-events: none; }
@@ -434,7 +1003,6 @@
         .ba-huge-label { position: absolute; font-family: "Shippori Mincho", serif; font-size: 10rem; font-weight: 700; line-height: 1; color: rgba(184, 150, 46, 0.04); z-index: 0; pointer-events: none; user-select: none; letter-spacing: 0.1em; text-align: center; width: 100%; top: 50%; transform: translateY(-50%); }
         .resonance-orbit-wrap { position: relative; width: 100%; height: 100%; max-width: 1100px; z-index: 2; }
         .orbit-item { position: absolute; max-width: 340px; text-align: center; transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        /* 固定ポジション用ホバー調整 */
         .orbit-item:hover { transform: scale(1.03); }
         .orbit-1 { top: 0%; left: 50%; transform: translateX(-50%); }
         .orbit-1:hover { transform: translateX(-50%) scale(1.03); }
@@ -443,25 +1011,116 @@
         .orbit-item h4 { font-family: "Shippori Mincho", serif; font-size: 1.25rem; color: var(--accent-color); margin: 0 0 15px 0; font-weight: 700; letter-spacing: 0.05em; }
         .orbit-item p { font-size: 0.9rem; line-height: 1.9; color: var(--text-color); margin: 0; text-align: justify; }
 
-        /* --- Value of Coaching Section (CONCEPT) --- */
-        .concept-section { background-color: var(--bg-color); }
-        .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start; }
-        .concept-text h3 { font-size: 1.4rem; line-height: 1.6; color: var(--text-color); margin-bottom: 25px; border-left: 3px solid var(--accent-color); padding-left: 20px; font-weight: 600; }
-        .concept-text p { margin-bottom: 1.5em; color: var(--text-muted); font-size: 1rem; }
+        /* Value SVG */
         .value-svg-container { text-align: center; margin-top: 60px; margin-bottom: 30px; position: relative; display: flex; justify-content: center; }
         .value-svg { max-width: 100%; height: auto; filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.05)); }
 
-        /* --- Partnership (Pricing) --- */
-        .partnership-box {
-            background-color: #fff; max-width: 900px; margin: 0 auto;
-            border: 1px solid #e5e7eb; border-top: 4px solid var(--accent-color);
-            border-radius: 4px; padding: 60px 40px; box-shadow: var(--card-shadow); text-align: center;
+        /* Plan Cards CSS */
+        .plans-area { padding: 80px 0 40px; }
+        .plans-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* PC: Always 3 columns */
+            gap: 25px;
+            margin-top: 50px;
+            align-items: stretch;
         }
-        .partnership-title { font-family: "Shippori Mincho", serif; font-size: 1.8rem; color: var(--text-color); margin-bottom: 30px; }
+        .plan-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(184, 150, 46, 0.15);
+            border-color: var(--accent-color);
+        }
+        .plan-card.recommended {
+            border: 2px solid var(--accent-color);
+            background: linear-gradient(to bottom, #fff, #fffefa);
+            z-index: 2;
+            transform: scale(1.03);
+        }
+        .plan-card.recommended:hover { transform: scale(1.03) translateY(-5px); }
+
+        .plan-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+        }
+        .plan-name {
+            font-family: "Shippori Mincho", serif;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+        .plan-sub {
+            font-size: 0.8rem;
+            font-family: "Noto Sans JP", sans-serif;
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+        .plan-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 20px 0;
+            font-family: "Noto Sans JP", sans-serif;
+        }
+        .unit { font-size: 0.9rem; color: #999; font-weight: normal; }
+        .plan-concept {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            height: 3em;
+        }
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            border-top: 1px dashed #eee;
+            padding-top: 20px;
+            flex-grow: 1;
+            font-size: 0.9rem;
+        }
+        .plan-features li {
+            margin-bottom: 12px;
+            padding-left: 1.5em;
+            text-indent: -1.5em;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        .plan-features li::before {
+            content: "✔";
+            color: var(--accent-color);
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        .plan-card.alumni { background: #f9fafb; border-color: #eee; }
+        .plan-card.alumni .plan-name, .plan-card.alumni .plan-price { color: #666; }
+
+        /* Campaign */
         .campaign-box {
             background: linear-gradient(135deg, #FFFEF9 0%, #FFF8E5 100%);
             border: 1px solid #E5D5A0; border-radius: 8px; padding: 30px;
-            margin: 40px auto 50px; position: relative; max-width: 750px;
+            margin: 60px auto 50px; position: relative; max-width: 750px;
             box-shadow: 0 5px 20px rgba(184, 150, 46, 0.1);
         }
         .campaign-tag {
@@ -477,11 +1136,7 @@
             text-align: left; font-size: 0.9rem; color: #555; display: inline-block; width: 100%; box-sizing: border-box;
         }
         .campaign-terms ul { margin: 0; padding-left: 20px; }
-        .campaign-terms li { margin-bottom: 5px; }
         .campaign-alert { font-weight: bold; color: var(--accent-color); }
-        .plan-detail { list-style: none; padding: 0; margin: 0; text-align: left; display: inline-block; font-size: 0.9rem; color: var(--text-color); }
-        .plan-detail li { margin-bottom: 8px; padding-left: 1.2em; text-indent: -1.2em;}
-        .plan-detail li::before { content: "✔"; color: var(--accent-color); margin-right: 5px; }
         .corporate-area { text-align: center; margin-top: 40px; font-size: 0.95rem; color: var(--text-muted); }
 
         /* --- Profile --- */
@@ -497,6 +1152,10 @@
             pointer-events: none;
         }
         .profile-text { flex: 1; min-width: 300px; max-width: 600px; }
+        .profile-badge {
+            display: inline-block; background: var(--accent-color); color: #fff; padding: 4px 12px;
+            font-size: 0.75rem; border-radius: 4px; margin-bottom: 10px; font-weight: 600; letter-spacing: 0.05em;
+        }
         .profile-text h3 { font-size: 1.7rem; font-weight: 600; margin-bottom: 10px; color: var(--text-color); }
 
         /* --- Logbook --- */
@@ -509,282 +1168,357 @@
         .logbook-item:hover .logbook-title { color: var(--accent-color); text-decoration: underline; }
         .logbook-footer { text-align: center; margin-top: 50px; }
 
-        /* --- FAQ Section (Added) --- */
+        /* --- FAQ --- */
         .faq-section {
             background-color: #FDFBF7;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
             background-repeat: repeat;
         }
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item {
-            background: #fff;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.05);
-            /* Update: FAQアイテムのアニメーション高度化 */
+            background: #fff; margin-bottom: 20px; border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05);
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-        .faq-item summary {
-            list-style: none; /* Hide default triangle */
-        }
-        .faq-item summary::-webkit-details-marker {
-            display: none;
-        }
+        .faq-item:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.08); transform: translateY(-2px); }
+        .faq-item summary { list-style: none; }
+        .faq-item summary::-webkit-details-marker { display: none; }
         .faq-question {
-            font-family: "Shippori Mincho", serif;
-            font-weight: 600;
-            padding: 20px 30px;
-            cursor: pointer;
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--text-color);
-            font-size: 1.05rem;
-            line-height: 1.6;
+            font-family: "Shippori Mincho", serif; font-weight: 600; padding: 20px 30px;
+            cursor: pointer; position: relative; display: flex; justify-content: space-between;
+            align-items: center; color: var(--text-color); font-size: 1.05rem; line-height: 1.6;
             transition: background-color 0.2s;
         }
-        .faq-question:hover {
-            background-color: rgba(184, 150, 46, 0.03);
-        }
-        /* Update: FAQホバーエフェクト強化 */
-        .faq-item:hover {
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
-        }
-        
-        .faq-icon {
-            color: var(--accent-color);
-            font-weight: 300;
-            font-size: 1.8rem;
-            line-height: 1;
-            margin-left: 15px;
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-        }
-        details[open] .faq-icon {
-            transform: rotate(45deg);
-        }
-        .faq-answer {
-            padding: 0 30px 30px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 2.0;
-            border-top: 1px solid #f3f3f3;
-            padding-top: 20px;
-        }
-        .faq-answer p {
-            margin: 0;
-        }
+        .faq-question:hover { background-color: rgba(184, 150, 46, 0.03); }
+        .faq-icon { color: var(--accent-color); font-weight: 300; font-size: 1.8rem; line-height: 1; margin-left: 15px; transition: transform 0.3s ease; flex-shrink: 0; }
+        details[open] .faq-icon { transform: rotate(45deg); }
+        .faq-answer { padding: 0 30px 30px; color: var(--text-muted); font-size: 0.95rem; line-height: 2.0; border-top: 1px solid #f3f3f3; padding-top: 20px; }
 
         /* --- Footer & Legal --- */
         footer { text-align: center; padding: 80px 0; background-color: #FFFFFF; font-size: 0.9rem; color: #9ca3af; border-top: 1px solid #f3f4f6; }
-        .legal-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; font-size: 0.9rem; }
-        .legal-table th, .legal-table td { border: 1px solid #e5e7eb; padding: 15px; text-align: left; color: var(--text-color); }
-        .legal-table th { background-color: #f9fafb; color: var(--text-color); width: 30%; font-weight: bold; }
-        .legal-text { font-size: 0.9rem; line-height: 1.8; color: var(--text-color); margin-bottom: 20px; text-align: left; }
-        .legal-text h3 { font-size: 1.1rem; color: var(--text-color); margin-top: 30px; margin-bottom: 10px; border-bottom: 1px solid #e5e7eb; padding-bottom: 5px; }
-
+        
         /* --- Modals --- */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(255,255,255,0.6); backdrop-filter: blur(5px); }
-        .modal-content { background-color: #fff; margin: 5% auto; padding: 40px; border: none; width: 90%; max-width: 700px; border-radius: 8px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.15); animation: slideIn 0.4s ease; color: var(--text-color); }
+        .modal-content { background-color: #fff; margin: 5% auto; padding: 40px; border: none; width: 90%; max-width: 600px; border-radius: 8px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.15); animation: slideIn 0.4s ease; color: var(--text-color); }
         @keyframes slideIn { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
         .close-btn { position: absolute; top: 15px; right: 20px; color: #ccc; font-size: 35px; font-weight: bold; cursor: pointer; transition: 0.3s; line-height: 1; z-index: 10; }
         .form-group { margin-bottom: 25px; text-align: left; }
         .form-label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--text-color); font-size: 0.95rem; }
         .form-input, .form-textarea, .form-select { width: 100%; padding: 12px; border: 1px solid #e5e7eb; background-color: #f9fafb; color: var(--text-color); border-radius: 4px; font-size: 1rem; box-sizing: border-box; font-family: inherit; transition: 0.3s; }
-        
-        /* 日付・時間入力のレイアウト調整（Update） */
-        .datetime-row { display: flex; gap: 15px; align-items: center; margin-bottom: 15px; }
-        .datetime-row .form-input { flex: 0 0 35%; width: auto; } /* 日付は幅を抑える */
-        .time-range { flex: 1; display: flex; align-items: center; gap: 10px; } /* 時間エリアは残りを埋める */
-        .time-range select { flex: 1; width: 100%; } /* 時間選択肢も均等に広げる */
+        .form-textarea { height: 120px; resize: vertical; }
 
         .sp-only-text { display: none; }
         .pc-only-text { display: block; }
         .sp-only { display: none; }
         
-        /* Update: 追加アニメーション用クラス */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
         .scroll-marker {
             background: linear-gradient(transparent 70%, rgba(184, 150, 46, 0) 70%);
-            background-size: 0% 100%;
-            background-repeat: no-repeat;
-            transition: background-size 1.2s ease-out;
-            font-weight: bold;
-            padding: 0 2px;
+            background-size: 0% 100%; background-repeat: no-repeat;
+            transition: background-size 1.2s ease-out; font-weight: bold; padding: 0 2px;
         }
-        .scroll-marker.visible {
-            background: linear-gradient(transparent 65%, rgba(184, 150, 46, 0.25) 65%);
-            background-size: 100% 100%;
-        }
+        .scroll-marker.visible { background: linear-gradient(transparent 65%, rgba(184, 150, 46, 0.25) 65%); background-size: 100% 100%; }
 
-        /* Update: Floating CTA Button */
+        /* Floating CTA Button */
         .floating-cta {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 999;
-            opacity: 0;
-            transform: translateY(20px);
-            pointer-events: none;
+            position: fixed; bottom: 30px; right: 20px; z-index: 999;
+            opacity: 0; transform: translateY(20px); pointer-events: none;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            align-items: flex-end;
         }
-        .floating-cta.visible {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: all;
-        }
-        .page-top-btn {
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.9);
-            border: 1px solid #eee;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-color);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .page-top-btn:hover {
-            transform: translateY(-5px);
-            background: var(--accent-color);
-            color: #fff;
+        .floating-cta.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+        .floating-cta .btn {
+            background-color: var(--accent-color); color: #fff;
+            box-shadow: 0 5px 20px rgba(184, 150, 46, 0.4);
+            padding: 12px 25px; font-size: 0.9rem; min-width: auto;
         }
 
         @media (max-width: 900px) {
             .container { padding: 0 25px; }
-            /* ▼▼▼ スマホ用に追加: パララックスを解除して表示崩れを防ぐ ▼▼▼ */
-            .message-section::before {
-                background-attachment: scroll;
-            }
-            /* ▲▲▲ 追加ここまで ▲▲▲ */
-
-            .container { padding: 0 25px; }
+            .message-section::before { background-attachment: scroll; }
             section { padding: 60px 0; }
             .pc-nav { display: none; }
+            /* ヘッダーContactボタン非表示 */
+            .nav-actions .nav-btn { display: none; }
             .hamburger { display: flex; }
-
-            /* ヒーローエリアのスマホ調整 */
-            .hero-content h1 { 
-                font-size: 1.35rem; 
-                line-height: 1.8; 
-                font-weight: 700; 
-                margin-bottom: 30px; 
-            }
-            .hero-content h1 span { 
-                display: inline-block !important; 
-                white-space: nowrap; 
-            }
-            .hero-content p.sp-only-text {
-                font-size: clamp(0.65rem, 3.2vw, 0.8rem); /* 3行を維持するための自動調整 */
-                line-height: 2.0;
-                margin-bottom: 40px;
-                color: var(--text-muted);
-            }
-            .hero-content p.sp-only-text span {
-                display: inline-block;
-                white-space: nowrap; /* 意図しない改行（泣き別れ）を防止 */
-            }
-
+            .hero-content h1 { font-size: 1.35rem; line-height: 1.8; font-weight: 700; margin-bottom: 30px; }
+            .hero-content h1 span { display: inline-block !important; white-space: nowrap; }
+            .hero-content p.sp-only-text { font-size: 0.85rem; line-height: 2.0; margin-bottom: 40px; color: var(--text-muted); }
             .sp-only-text { display: block; }
             .pc-only-text { display: none; }
-            .sp-only { display: block; } /* 特定箇所での強制改行用 */
+            .sp-only { display: block; }
             .quote-large { font-size: 0.9rem; }
-
-            /* タイトル文字サイズの調整 */
             .section-title { font-size: 1.2rem; line-height: 1.4; }
-            .partnership-title { font-size: 1.3rem !important; line-height: 1.5; text-align: left; }
-
-            /* メッセージ欄の泣き別れ・バランス調整 */
-            .story-text { font-size: 0.95rem; line-height: 2.0; }
-            .sp-only-text p { margin-bottom: 2em; text-align: left; }
-            .sp-only-text p span {
-                white-space: normal !important;
-                display: inline !important;
-            }
-            /* 画面幅に合わせて流動的にするため、SP版の全brを一旦リセット */
-            .sp-only-text br {
-                display: none;
-            }
-            /* イントロ部分や特定の強調箇所のみ、改行を有効化してバランスを整える */
-            .sp-only-text .message-intro br,
-            .sp-only-text p .highlight + br,
-            .sp-only-text .quote-large br {
-                display: block;
-            }
-
-            /* パートナーシップセクション全体のモバイル調整 */
-            .partnership-box { padding: 40px 20px !important; text-align: left; }
-            .partnership-box p { text-align: left; }
-
-            /* モニターオファーのバランス調整 */
-            .campaign-box { padding: 40px 20px 25px !important; margin: 40px 0 50px; text-align: left; }
-            .campaign-header { font-size: 1.1rem !important; line-height: 1.5; text-align: left; }
-            .campaign-desc { font-size: 0.85rem; text-align: left; }
-            .campaign-terms { font-size: 0.8rem; }
-
-            /* STEPエリアのバランス調整 */
-            .step-item { flex-direction: column; align-items: flex-start !important; text-align: left; gap: 12px !important; margin-bottom: 35px !important; }
-            .step-item div:first-child { margin-bottom: 5px; }
-            .step-item strong { display: block; margin-bottom: 5px; }
-
-            /* AWAKENINGセクションのモバイル文字調整 */
-            .orbit-item h4 { font-size: 1.05rem !important; white-space: nowrap; letter-spacing: -0.02em; }
-
-            /* Logbookセクションのモバイル文字調整 */
-            .logbook-item { gap: 15px !important; }
-            .logbook-date { flex: 0 0 85px !important; font-size: 0.75rem !important; }
-
-            .resonance-container { min-height: auto; padding: 40px 0; }
+            
+            .service-grid { display: flex; flex-direction: column; gap: 40px; }
+            /* Services並び替え（Mobile最適化） */
+            .service-grid .service-card:nth-child(2) { order: 1; }
+            .service-grid .service-card:nth-child(1) { order: 2; }
+            .service-grid .service-card:nth-child(3) { order: 3; }
+            
+            /* Investment (SP: 縦積み) */
+            .plans-container { grid-template-columns: 1fr; gap: 40px; }
+            .plan-card.recommended { order: -1; transform: none !important; }
+            .plan-card.alumni { order: 1; }
+            
+            .profile-flex { flex-direction: column; }
+            .faq-question { padding: 15px 20px; font-size: 1rem; }
+            .faq-answer { padding: 0 20px 20px; }
             .ba-huge-label { display: none; }
             .resonance-orbit-wrap { display: flex; flex-direction: column; gap: 80px; align-items: center; }
             .orbit-item { position: static; transform: none !important; max-width: 600px; }
+            
+            /* Process Canvas Mobile Adjustment */
+            .phase-label { font-size: 2rem; }
 
-            /* サービスの並び替え設定 */
-            .service-grid { 
-                display: flex; 
-                flex-direction: column;
-                gap: 40px;
+            /* Client's Voice Mobile Layout (Updated) */
+            .voice-wrapper { padding: 0 20px; }
+            .voice-track { gap: 15px; padding-bottom: 40px; }
+            .voice-card { flex: 0 0 85vw; } /* 見切れ（Peeking）対応 */
+            .vc-nav-btn { display: none; } /* スマホは矢印非表示 */
+            
+            .swipe-hint {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                position: absolute;
+                bottom: 10px;
+                right: 30px;
+                color: var(--text-muted);
+                font-size: 0.8rem;
+                font-weight: bold;
+                opacity: 0.8;
+                animation: fadeOutHint 3s 5s forwards; /* 5秒後に消える */
+                pointer-events: none;
             }
-            /* Coaching for Leadership Development を1番目に */
-            .service-grid .service-card:nth-child(2) { order: 1; }
-            /* CoCOMPLETE を2番目に */
-            .service-grid .service-card:nth-child(1) { order: 2; }
-            /* The Coaching Lab を3番目に */
-            .service-grid .service-card:nth-child(3) { order: 3; }
+            .hand-icon { font-size: 1.2rem; animation: swipeAnim 1.5s infinite; }
+            @keyframes swipeAnim {
+                0% { transform: translateX(0); opacity: 1; }
+                50% { transform: translateX(-15px); opacity: 0.7; }
+                100% { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes fadeOutHint { to { opacity: 0; visibility: hidden; } }
 
-            .plans-wrapper { flex-direction: column; }
-            .profile-flex { flex-direction: column; }
-            .datetime-row { flex-direction: column; }
-            
-            /* モバイル時の日時調整 */
-            .datetime-row .form-input { flex: none; width: 100%; }
-            
-            /* FAQ Mobile */
-            .faq-question { padding: 15px 20px; font-size: 1rem; }
-            .faq-answer { padding: 0 20px 20px; }
+            /* --- 以下、修正指示への対応 --- */
+
+            /* 1. Messageセクション冒頭文の調整 */
+            .sp-only-text .message-intro {
+                font-size: 1.1rem;
+            }
+
+            /* 2. Serviceカード「The Coaching Lab」のタイトル修正 */
+            /* 3枚目のカード (The Coaching Lab) */
+            .service-grid .service-card:nth-child(3) h3 {
+                font-size: 1.3rem;
+            }
+
+            /* 3. Leadership Program 導入文の左揃え */
+            /* インラインスタイルを上書きするために !important を使用 */
+            #leadership-program > .container > p {
+                text-align: left !important;
+            }
+
+            /* 4. Step 4: 「3つの関わり方（PROCESS）」の修正 */
+            .method-list {
+                grid-template-columns: 1fr;
+            }
+
+            /* 5. Step 5: 「実験と学習」サイクル図の修正 */
+            .cycle-container {
+                transform: scale(0.85);
+                /* 中央配置を維持 */
+                margin-left: auto;
+                margin-right: auto;
+                transform-origin: center;
+                margin-bottom: 20px;
+            }
+
+            /* 6. Logbook（日々の記録）のレイアウト変更 */
+            .logbook-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            .logbook-date {
+                flex: 0 0 auto;
+            }
         }
+		/* --- Step List Styles (New) --- */
+        .step-list-container {
+            text-align: left;
+            background: #f9fafb;
+            padding: 30px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+        .step-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            border-bottom: 1px dashed #e5e7eb; /* ステップごとの区切り線 */
+            padding-bottom: 25px;
+        }
+        .step-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        /* STEPバッジのデザイン */
+        .step-badge {
+            background: var(--text-muted);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            white-space: nowrap;
+            min-width: 60px;
+            text-align: center;
+            margin-top: 2px; /* テキストの1行目と高さを合わせる */
+        }
+        /* STEP 2（体験セッション）用の強調カラー */
+        .step-badge.highlight {
+            background: var(--accent-color);
+        }
+        
+        .step-content strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            line-height: 1.4;
+        }
+        .step-content span {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.7;
+            display: block;
+        }
+
+        /* --- スマホ表示用レイアウト (縦積み) --- */
+        @media (max-width: 900px) {
+            .step-list-container {
+                padding: 20px;
+            }
+            .step-item {
+                flex-direction: column; /* ここで縦並びに変更 */
+                gap: 10px;
+            }
+            .step-badge {
+                align-self: flex-start; /* 左寄せ */
+                font-size: 0.75rem;
+            }
+        }
+		
+		/* =========================================
+   ここから追加：Client's Voice 縦積み＆もっと見る設定
+   ========================================= */
+
+/* 横スクロールをやめて、縦並びにする */
+.voice-track {
+    display: flex;
+    flex-direction: column; /* 縦並び */
+    overflow-x: visible;    /* スクロールなし */
+    gap: 30px;              /* カード間の余白 */
+    padding-bottom: 0;
+    align-items: center;    /* 中央揃え */
+}
+
+/* カードを横長にする（PC時） */
+.voice-card {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    opacity: 1;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* 不要なパーツ（矢印・スワイプガイド）を強制的に消す */
+.vc-nav-btn, .swipe-hint {
+    display: none !important;
+}
+
+/* 「もっと見る」ボタンで制御するための非表示クラス */
+.voice-card.is-hidden {
+    display: none !important;
+}
+
+/* ふわっと表示させるアニメーション */
+.voice-card.fade-in {
+    animation: fadeInCard 0.8s ease forwards;
+}
+@keyframes fadeInCard {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- PC表示時（幅600px以上）のデザイン調整 --- */
+@media (min-width: 600px) {
+    .voice-card {
+        display: grid;
+        grid-template-columns: 280px 1fr; /* 左:タイトル 右:本文 */
+        align-items: stretch;
+    }
+    .vc-header {
+        padding: 30px;
+        border-right: 1px solid #eee;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .vc-before-box {
+        background: transparent;
+        border: none;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    /* ボタンと詳細エリアを横幅いっぱいに */
+    .vc-toggle-btn, .vc-details {
+        grid-column: 1 / -1;
+    }
+}
+
+/* --- スマホ表示時のリセット --- */
+@media (max-width: 900px) {
+    .voice-card {
+        display: flex; /* 元に戻す */
+    }
+    .vc-header {
+        border-right: none;
+    }
+}
+
+/* --- Logic Canvas Styles --- */
+.logic-canvas-wrap {
+    margin-top: 30px;
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+.logic-canvas-wrap canvas {
+    width: 100%;
+    height: 150px; /* 図解の高さ */
+    display: block;
+    background: #fff;
+    cursor: default;
+}
+.canvas-caption {
+    font-size: 0.75rem !important;
+    color: #999 !important;
+    margin-bottom: 0 !important;
+    margin-top: 8px;
+    font-weight: normal;
+}
     </style>
 </head>
 <body>
@@ -796,8 +1530,8 @@
             <div class="logo"><a href="index.html">CoSTAR</a></div>
             <nav class="pc-nav">
                 <a href="#hero" class="pc-nav-link">TOP</a>
-                <a href="#message" class="pc-nav-link">CONCEPT</a>
                 <a href="#services" class="pc-nav-link">SERVICES</a>
+                <a href="#leadership-program" class="pc-nav-link">PROGRAM</a>
                 <a href="#profile" class="pc-nav-link">PROFILE</a>
                 <a href="#faq" class="pc-nav-link">FAQ</a>
             </nav>
@@ -813,34 +1547,13 @@
     <div class="sp-menu-overlay" id="sp-menu">
         <div class="sp-menu-close" id="sp-menu-close">&times;</div>
         <nav class="sp-nav">
-            <a href="#hero" class="sp-nav-link">
-                <span class="en">TOP</span>
-                <span class="ja">トップ</span>
-            </a>
-            <a href="#message" class="sp-nav-link">
-                <span class="en">CONCEPT</span>
-                <span class="ja">想い・哲学</span>
-            </a>
-            <a href="#services" class="sp-nav-link">
-                <span class="en">SERVICES</span>
-                <span class="ja">提供サービス</span>
-            </a>
-            <a href="#profile" class="sp-nav-link">
-                <span class="en">PROFILE</span>
-                <span class="ja">プロフィール</span>
-            </a>
-            <a href="#logbook" class="sp-nav-link">
-                <span class="en">LOGBOOK</span>
-                <span class="ja">日々の記録</span>
-            </a>
-            <a href="#faq" class="sp-nav-link">
-                <span class="en">FAQ</span>
-                <span class="ja">よくある質問</span>
-            </a>
-            <a href="#contact" class="sp-nav-link">
-                <span class="en">CONTACT</span>
-                <span class="ja">お問い合わせ</span>
-            </a>
+            <a href="#hero" class="sp-nav-link"><span class="en">TOP</span><span class="ja">トップ</span></a>
+            <a href="#services" class="sp-nav-link"><span class="en">SERVICES</span><span class="ja">提供サービス</span></a>
+            <a href="#leadership-program" class="sp-nav-link"><span class="en">PROGRAM</span><span class="ja">プログラム詳細</span></a>
+            <a href="#profile" class="sp-nav-link"><span class="en">PROFILE</span><span class="ja">プロフィール</span></a>
+            <a href="#logbook" class="sp-nav-link"><span class="en">LOGBOOK</span><span class="ja">日々の記録</span></a>
+            <a href="#faq" class="sp-nav-link"><span class="en">FAQ</span><span class="ja">よくある質問</span></a>
+            <a href="#contact" class="sp-nav-link"><span class="en">CONTACT</span><span class="ja">お問い合わせ</span></a>
         </nav>
     </div>
 
@@ -856,20 +1569,21 @@
                 空気を読んで、正解を選んで、 誰かの期待に応え続ける人生。<br>
                 それで得た成功に、あなたの魂は震えていますか？<br>     
             </p>
-			
-			<p class="sp-only-text">
-                <span>空気を読んで、正解を選んで、 誰かの期待に</span><br>
-                <span>応え続ける人生。それで得た成功に、</span><br>
-                <span>あなたの魂は震えていますか？</span>
+            
+            <p class="sp-only-text">
+                <span>空気を読んで、正解を選んで、</span><br>
+                <span>誰かの期待に応え続ける人生。</span><br>
+                <span>それで得た成功に、あなたの</span><br>
+                <span>魂は震えていますか？</span>
             </p>
             <a href="#message" class="btn">物語を始める</a>
         </div>
     </div>
     
     <div class="floating-cta" id="floating-cta">
-        <div class="page-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'});">
-            ↑
-        </div>
+        <button class="btn btn-primary" onclick="openModal('application', '体験セッション')" style="border-radius: 50px; font-weight:bold;">
+            無料体験セッション申込
+        </button>
     </div>
 
     <div class="message-section" id="message">
@@ -935,53 +1649,22 @@
                 <div class="sp-only-text">
                     <p class="message-intro fade-up">
                         常識のレールを外れるのではない。<br>
-                        「<span class="scroll-marker">本来の自分</span>」という軌道に戻るだけです。
+                        「<span class="scroll-marker">本来の自分</span>」という軌道に<br>
+                        戻るだけです。
                     </p>
-
-                    <p class="fade-up">
-                        周りの期待に応えてきた。社会のルールも守ってきた。十分な報酬も得られた。
-                    </p>
-
-                    <p class="fade-up">
-                        でも、いつの間にか、気軽に「今日、ご飯食べに行かない？」なんて、言えなくなっていた。<br>
-                        私は誰からも愛されていないのではないか。
-                    </p>
-
-                    <p class="fade-up">
-                        心の奥底で知っている。本当の自分は不真面目で、自分勝手。相手の為と見せかけて、保身や損得勘定で動くズルい自分。そんな人間が愛されるわけがない。
-                    </p>
-
-                    <p class="fade-up">
-                        言いたいことを飲み込み、空気を読み、建前の中で生きる日々は、もう苦しい。
-                    </p>
-
+                    <p class="fade-up">周りの期待に応えてきた。社会のルールも守ってきた。十分な報酬も得られた。</p>
+                    <p class="fade-up">でも、いつの間にか、気軽に「今日、ご飯食べに行かない？」なんて、言えなくなっていた。私は誰からも愛されていないのではないか。</p>
+                    <p class="fade-up">心の奥底で知っている。本当の自分は不真面目で、自分勝手。相手の為と見せかけて、保身や損得勘定で動くズルい自分。そんな人間が愛されるわけがない。</p>
+                    <p class="fade-up">言いたいことを飲み込み、空気を読み、建前の中で生きる日々は、もう苦しい。</p>
                     <p style="margin: 50px 0; border-left: 2px solid var(--accent-color); padding-left: 15px;" class="fade-up">
                         <span class="highlight" style="font-weight: bold;">「残りの人生、このまま偽りの中で生き続けるの？」</span><br>
                         <span class="highlight" style="font-weight: bold;">「自分の力は、こんなものではない…」</span>
                     </p>
-
-                    <p class="fade-up">
-                        私はこの問いの答えを探す旅の中で、コーチングと出会いました。<br>
-                        このプロセスは、私が「<span class="scroll-marker">価値のない自分</span>」だと否定し、隠してきた部分こそが、実は人生を動かす最もパワフルなリソースであることを教えてくれました。
-                    </p>
-
-                    <p class="fade-up">
-                        矛盾も、葛藤も、情けない感情も、すべて携えて進めばいい。はじめて自分に生きることを許可した瞬間、世界は色を変えました。
-                    </p>
-
-                    <p class="fade-up">
-                        もしあなたが、他人の評価ではなく「本当に大切にしたい自分」を生きることに飢えているなら。自分の「<span class="scroll-marker">底知れぬ可能性</span>」を飼い慣らしていることに後悔しているなら。
-                    </p>
-
-                    <p class="fade-up">
-                        ぜひ、私に会いに来てください。私は、私の「全力」をもって、あなたが「<span class="scroll-marker">全力で生きること</span>」を実現します。<br>
-						たとえ、あなたが自分の力を信じられない時であっても、私はあなたの「底知れぬ可能性」を信じ抜きます。
-                    </p>
-
-                    <p class="fade-up">
-                        「あいつは変わった。」と笑わせておけばいい。<br>
-                        大丈夫。あなたが全力で生きれば生きるほど、相手と繋がれることを、私は知っています。その先に待つ「あなた」を、共に見に行きましょう。
-                    </p>
+                    <p class="fade-up">私はこの問いの答えを探す旅の中で、コーチングと出会いました。このプロセスは、私が「<span class="scroll-marker">価値のない自分</span>」だと否定し、隠してきた部分こそが、実は人生を動かす最もパワフルなリソースであることを教えてくれました。</p>
+                    <p class="fade-up">矛盾も、葛藤も、情けない感情も、すべて携えて進めばいい。はじめて自分に生きることを許可した瞬間、世界は色を変えました。</p>
+                    <p class="fade-up">もしあなたが、他人の評価ではなく「本当に大切にしたい自分」を生きることに飢えているなら。自分の「<span class="scroll-marker">底知れぬ可能性</span>」を飼い慣らしていることに後悔しているなら。</p>
+                    <p class="fade-up">ぜひ、私に会いに来てください。私は、私の「全力」をもって、あなたが「<span class="scroll-marker">全力で生きること</span>」を実現します。たとえ、あなたが自分の力を信じられない時であっても、私はあなたの「底知れぬ可能性」を信じ抜きます。</p>
+                    <p class="fade-up">「あいつは変わった。」と笑わせておけばいい。<br>大丈夫。あなたが全力で生きれば生きるほど、相手と繋がれることを、私は知っています。その先に待つ「あなた」を、共に見に行きましょう。</p>
                 </div>
 				
                 <span class="quote-large">
@@ -1045,59 +1728,111 @@
         </div>
     </section>
 
-    <section class="logic-section" id="value" style="background-color: var(--bg-color);">
+<section class="logic-section" id="value" style="background-color: var(--bg-color);">
         <div class="container">
-            <h2 class="section-title">「全力で生きる」ための<br>3つのアプローチ</h2>
-            <div class="logic-grid">
-                <div class="logic-item">
-                    <span class="logic-number">Point 01</span>
-                    <h3>世界基準の対話手法<br>「Co-Active®」への敬意</h3>
-                    <p>私は、世界で最も厳しいトレーニングの一つとされるCTIのCo-Active®コーチングを基盤としています。これは、「人は生まれながらにして創造力と才知にあふれ、欠けるところのない存在」として深く尊重する手法です。単なるスキル提供ではなく、あなたとの間に結ぶ強固な「協働関係」こそが、あなたの「底知れぬ可能性」をこじ開ける土台となります。</p>
+            <h2 class="section-title">人が「本質的」に変わる理由</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 60px; color: var(--text-muted); line-height: 1.8;">
+                なぜ、本を読んでも、コンサルタントのアドバイスを受けても、人生が変わらないのか。<br>
+                そこには、人間の「脳と心の仕組み」に基づいた明確な理由があります。
+            </p>
+            
+            <div class="logic-grid" style="margin-bottom: 90px;">
+                <div class="logic-item" style="display:flex; flex-direction:column;">
+                    <span class="logic-number">Logic 01</span>
+                    <h3>「正論」では、人は動かない<br>
+                        <span style="font-size: 0.65em; font-weight: normal; font-family: sans-serif; color: #999; display:block; margin-top:5px;">[ 心理的リアクタンス（抵抗）理論 ]</span>
+                    </h3>
+                    <p style="flex-grow:1;">人間には生まれつき「自分で決めたい」という欲求があります。どんなに正しいアドバイスも、他人から言われた瞬間に脳は「自由が奪われた」と感じて無意識に反発（リアクタンス）します。</p>
+                    <div class="logic-canvas-wrap">
+                        <canvas id="canvas-logic-1"></canvas>
+                        <p class="canvas-caption">外からの刺激は、無意識の壁に弾かれる</p>
+                    </div>
                 </div>
-                <div class="logic-item">
-                    <span class="logic-number">Point 02</span>
-                    <h3>私の「全力」を、<br>あなたの変化の踏み台に</h3>
-                    <p>私は今でも、コーチングの前は怖くて逃げ出したくなります。関係を壊したくない、いいコーチだと思われたい、という「保身」や「欲」が頭をよぎる。しかし、あなたの人生は、私の保身や欲より遥かに重く、尊い。だから私は、覚悟をもって、あなたに「全力」で関わります。私が震えながらも一歩を踏み込むその姿を、あなたが限界を突破するための「踏み台」にしてください。</p>
+
+                <div class="logic-item" style="display:flex; flex-direction:column;">
+                    <span class="logic-number">Logic 02</span>
+                    <h3>「社会的な正解」が、熱を奪う<br>
+                        <span style="font-size: 0.65em; font-weight: normal; font-family: sans-serif; color: #999; display:block; margin-top:5px;">[ 社会的望ましさ / ペルソナ ]</span>
+                    </h3>
+                    <p style="flex-grow:1;">社会に適応するために、私たちは「外向けの顔（ペルソナ）」を被ります。しかし、この仮面が分厚くなると、内側の本音（自己）との乖離が起き、エネルギーが枯渇して動けなくなります。</p>
+                    <div class="logic-canvas-wrap">
+                        <canvas id="canvas-logic-2"></canvas>
+                        <p class="canvas-caption">分厚い仮面が、内なる熱を閉じ込める</p>
+                    </div>
                 </div>
-                <div class="logic-item">
-                    <span class="logic-number">Point 03</span>
-                    <h3>人生を「2度」変える、<br>確かな軌道修正</h3>
-                    <p>一過性の興奮を呼ぶ「180度の変化」よりも、着実に未来を変える「2度の変化」を重視します。人間は、今まで慣れ親しんだ過去の自分が、必ず「揺れ戻し」をします。セッションで得た気づきを、日々の具体的な行動へと接続し、地道な角度修正を繰り返していく。この戦略的な積み重ねが、あなたの人生を想像もしていなかった「深く、大きな変化」へと導きます。</p>
+
+                <div class="logic-item" style="display:flex; flex-direction:column;">
+                    <span class="logic-number">Logic 03</span>
+                    <h3>「自分の言葉」だけが、現実を変える<br>
+                        <span style="font-size: 0.65em; font-weight: normal; font-family: sans-serif; color: #999; display:block; margin-top:5px;">[ 自己決定理論 / 一貫性の原理 ]</span>
+                    </h3>
+                    <p style="flex-grow:1;">人は「他人から言われた言葉」には責任を持ちませんが、「自分で選んだ言葉（自律的動機）」に対しては、行動を一致させようとする強力な心理が働きます。これが推進力の源泉です。</p>
+                    <div class="logic-canvas-wrap">
+                        <canvas id="canvas-logic-3"></canvas>
+                        <p class="canvas-caption">内側から湧く言葉が、行動を生む</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="value-svg-container">
-                <svg class="value-svg" width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="goldGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.6" />
-                            <stop offset="50%" style="stop-color:#B8962E;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#8A7020;stop-opacity:1" />
-                        </linearGradient>
-                        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                            <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    <g transform="translate(100, 300)" opacity="0.1" stroke="#333" stroke-width="0.5" fill="none">
-                        <circle r="80" />
-                        <line x1="0" y1="-90" x2="0" y2="90" />
-                        <line x1="-90" y1="0" x2="90" y2="0" />
-                    </g>
-                    <path d="M100,300 L750,300" stroke="#999" stroke-width="1" stroke-dasharray="5,5" fill="none" opacity="0.5" />
-                    <text x="680" y="320" fill="#999" font-size="12" text-anchor="end">成行きの未来</text>
-                    <path d="M100,300 C 250,300 300,290 350,250 S 450,270 550,150 S 700,80 750,50" stroke="url(#goldGradient)" stroke-width="3" fill="none" filter="url(#glow)" stroke-dasharray="1000">
-                    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite" />
-                    </path>
-                    <g transform="translate(160, 285)">
-                        <text fill="#B8962E" font-size="13" font-weight="bold">2° Shift</text>
-                    </g>
-                    <text x="740" y="30" text-anchor="end" fill="#333" font-size="18" font-weight="bold">The Masterpiece</text>
-                    <text x="760" y="180" fill="#B8962E" font-size="11" writing-mode="tb">想像を超える変化</text>
-                </svg>
+            <div style="border-top: 1px dashed #d1d5db; padding-top: 70px;">
+                <h3 style="text-align: center; font-family: 'Shippori Mincho', serif; font-size: 1.6rem; margin-bottom: 50px; color: var(--text-color);">
+                    Method & Stance<br>
+                    <span style="font-size: 0.9rem; font-family: sans-serif; color: var(--text-muted); font-weight: normal; letter-spacing: 0.1em; margin-top: 10px; display: block;">理論を支える、技術と覚悟</span>
+                </h3>
+
+                <div class="logic-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <div class="logic-item" style="background: linear-gradient(135deg, #fff 0%, #fffeFA 100%); border: 1px solid rgba(184, 150, 46, 0.2); box-shadow: 0 10px 30px rgba(184, 150, 46, 0.05);">
+                        <span class="logic-number" style="border-bottom:none; color:var(--text-color); font-size:1rem; opacity:0.6;">Method</span>
+                        <h3 style="margin-top:5px; color: var(--accent-color); font-size: 1.25rem;">世界基準の対話手法<br>「Co-Active®」への敬意</h3>
+                        <p>私は、世界で最も厳しいトレーニングの一つとされるCTIのCo-Active®コーチングを基盤としています。「人は生まれながらにして創造力と才知にあふれ、欠けるところのない存在」として深く尊重する手法です。単なるスキル提供ではなく、あなたとの間に結ぶ強固な「協働関係」こそが、あなたの「底知れぬ可能性」をこじ開ける土台となります。</p>
+                    </div>
+
+                    <div class="logic-item" style="background: linear-gradient(135deg, #fff 0%, #fffeFA 100%); border: 1px solid rgba(184, 150, 46, 0.2); box-shadow: 0 10px 30px rgba(184, 150, 46, 0.05);">
+                        <span class="logic-number" style="border-bottom:none; color:var(--text-color); font-size:1rem; opacity:0.6;">Passion</span>
+                        <h3 style="margin-top:5px; color: var(--accent-color); font-size: 1.25rem;">私の「全力」を、<br>あなたの変化の踏み台に</h3>
+                        <p>私は今でも、コーチングの前は怖くて逃げ出したくなります。関係を壊したくない、いいコーチだと思われたいという「保身」が頭をよぎるからです。しかし、あなたの人生はそれより遥かに尊い。だから私は覚悟をもって「全力」で関わります。私が震えながら一歩を踏み込む姿を、あなたが限界を突破する「踏み台」にしてください。</p>
+                    </div>
+
+                    <div class="logic-item" style="background: linear-gradient(135deg, #fff 0%, #fffeFA 100%); border: 1px solid rgba(184, 150, 46, 0.2); box-shadow: 0 10px 30px rgba(184, 150, 46, 0.05);">
+                        <span class="logic-number" style="border-bottom:none; color:var(--text-color); font-size:1rem; opacity:0.6;">Strategy</span>
+                        <h3 style="margin-top:5px; color: var(--accent-color); font-size: 1.25rem;">人生を「2度」変える、<br>確かな軌道修正</h3>
+                        <p>一過性の興奮を呼ぶ「180度の変化」よりも、着実に未来を変える「2度の変化」を重視します。人間は、慣れ親しんだ過去の自分が必ず「揺れ戻し」をします。セッションでの気づきを具体的な行動へ接続し、地道な角度修正を繰り返す。この戦略的な積み重ねが、想像もしなかった「大きな変化」へと導きます。</p>
+                    </div>
+                </div>
+
+                <div class="value-svg-container" style="text-align: center; margin-top: 60px; margin-bottom: 30px; position: relative; display: flex; justify-content: center;">
+                    <svg class="value-svg" width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;">
+                        <defs>
+                            <linearGradient id="goldGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.6" />
+                                <stop offset="50%" style="stop-color:#B8962E;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#8A7020;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <g transform="translate(100, 300)" opacity="0.1" stroke="#333" stroke-width="0.5" fill="none">
+                            <circle r="80" />
+                            <line x1="0" y1="-90" x2="0" y2="90" />
+                            <line x1="-90" y1="0" x2="90" y2="0" />
+                        </g>
+                        <path d="M100,300 L750,300" stroke="#999" stroke-width="1" stroke-dasharray="5,5" fill="none" opacity="0.5" />
+                        <text x="680" y="320" fill="#999" font-size="12" text-anchor="end">External Advice (他人の言葉)</text>
+                        <path d="M100,300 C 250,300 300,290 350,250 S 450,270 550,150 S 700,80 750,50" stroke="url(#goldGradient)" stroke-width="3" fill="none" filter="url(#glow)" stroke-dasharray="1000">
+                        <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite" />
+                        </path>
+                        <g transform="translate(160, 285)">
+                            <text fill="#B8962E" font-size="13" font-weight="bold">2° Shift</text>
+                        </g>
+                        <text x="740" y="30" text-anchor="end" fill="#333" font-size="18" font-weight="bold">The Masterpiece</text>
+                        <text x="760" y="180" fill="#B8962E" font-size="11" writing-mode="tb">想像を超える変化</text>
+                    </svg>
+                </div>
             </div>
         </div>
     </section>
@@ -1136,7 +1871,7 @@
                     <p>コーチングは手法に過ぎません。本質的には、あなたのリーダーシップ（底知れぬ可能性）を最大化し、「このままで終わりたくない」という衝動を、現実の変化へと接続していくプロセスです。</p>
                 </div>
                 <div class="service-footer">
-                    <a href="#partnership" class="btn btn-outline" style="width:100%; padding:12px; display:inline-block; box-sizing:border-box;">詳細を見る</a>
+                    <a href="#leadership-program" class="btn btn-outline" style="width:100%; padding:12px; display:inline-block; box-sizing:border-box;">詳細を見る</a>
                 </div>
             </div>
             
@@ -1166,122 +1901,539 @@
         </div>
     </section>
 
-    <section class="container" id="partnership">
-        <h2 class="section-title">Partnership & Investment</h2>
-        
-        <div class="partnership-box">
-            <h3 class="partnership-title">Leadership Coaching Program</h3>
-            
-            <div class="partnership-desc">
-                <p style="font-size:0.95rem; line-height:1.8;">
-                    どこかで、「このままでは終われない」という思いが消えない。<br>
-                    当パートナーシップは、その思いから目を逸らさずに、あなたの生き方と<br>
-					リーダーシップを再設計していくためのプログラムです。
-                </p>
-            </div>
-
-            <div style="margin: 40px 0; padding: 30px; background: #f9fafb; border-radius: 8px; text-align: left;">
-                <h4 style="font-family: 'Shippori Mincho', serif; margin-bottom: 20px; color: var(--text-color); border-bottom: 1px solid #ddd; padding-bottom: 10px;">プログラム構成の目安</h4>
-                
-                <div style="margin-bottom: 25px;">
-                    <p style="font-size: 0.95rem; font-weight: bold; margin-bottom: 10px;">期間の目安：</p>
-                    <ul class="plan-detail" style="display: block; margin-bottom: 10px;">
-                        <li>推奨期間：6ヶ月以上</li>
-						<li>最低期間：3ヶ月</li>
-                    </ul>
-                </div>
-
-                <div style="margin-bottom: 25px;">
-                    <p style="font-size: 0.95rem; font-weight: bold; margin-bottom: 10px;">標準的なペース：</p>
-                    <ul class="plan-detail" style="display: block;">
-                        <li style="margin-bottom: 15px;">
-                            <strong>導入セッション：</strong> 120分 × 1回<br>
-                            <span style="font-size: 0.85rem; color: #666;">（物語の背景を深く掘り下げ、同盟を組みます）</span>
-                        </li>
-                        <li>
-                            <strong>継続セッション：</strong> 50分 × 月2回<br>
-                            <span style="font-size: 0.85rem; color: #666;">（2週間に一度のペースで軌道を修正し、歩みを止めません）</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div style="border-top: 1px dashed #ddd; padding-top: 20px;">
-                    <p style="font-size: 0.95rem; font-weight: bold; margin-bottom: 10px;">パートナーシップ費用の目安：</p>
-                    <p style="font-size: 0.95rem; color: var(--text-color); margin: 0; line-height: 1.8;">
-                        月額換算：約2万円 〜 3.5万円（税込）
-                    </p>
-                    <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">
-                        ※実際の期間や回数は、体験セッション（適合性確認）での対話を通じて、あなたに最適な形をご提案します。
-                    </p>
-                </div>
-            </div>
-
-            <div class="campaign-box">
-                <span class="campaign-tag">残り3名限定 Monitor Offer</span>
-                <h4 class="campaign-header">【特別枠】CoSTAR First Narrative Project 募集中</h4>
-                <div class="campaign-desc">
-                    事業立ち上げに伴い、変化のプロセスを共に言語化・記録していただける方を募集しています。
-                </div>
-                <div class="campaign-terms">
-                    <ul>
-                        <li><span class="campaign-alert">特典：</span>こちらのプロジェクトにご協力いただける場合は、<span style="font-weight:bold; color:#d9534f;">モニター特別価格</span> にてご案内が可能です。</li>
-                        <li><span class="campaign-alert">詳細：</span>具体的な内容や費用は、体験セッション時にお伝えします。</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="margin-top: 50px; padding: 40px 20px; border: 1px solid #eee; border-radius: 8px; background: #fff;">
-                <h4 style="font-family: 'Shippori Mincho', serif; margin-bottom: 20px; color: var(--text-color); font-size: 1.4rem;">まずは、入り口でお会いしましょう。</h4>
-                <p style="font-size: 0.85rem; color: #666; margin-top: 0; margin-bottom: 20px;">
-                    ※多くの方は、Step 2 の <strong>体験セッション</strong> からお会いしています。<br>
-                    無料相談は「まず軽く話してみたい」方向けの任意ステップです。
-                </p>
-                
-                <div style="text-align: left; background: #f9fafb; padding: 25px; border-radius: 6px; margin-bottom: 30px; font-size: 0.95rem;">
-                    <div class="step-item" style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 20px;">
-                        <div style="background: var(--text-muted); color: #fff; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;">Step 1</div>
-                        <div>
-                            <strong>オンライン無料相談（任意：15〜30分）</strong><br>
-                            <span style="font-size: 0.85rem; color: #666;">まずは「話してみる」ことから。相性の確認や疑問の解消にお使いください。</span>
-                        </div>
-                    </div>
-                    <div class="step-item" style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 20px;">
-                        <div style="background: var(--accent-color); color: #fff; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;">Step 2</div>
-                        <div>
-                            <strong>体験セッション（必須：60分 / 5,000円）</strong><br>
-                            <span style="font-size: 0.85rem; color: #666;">
-                                あなたの現在地と、<br class="sp-only">「本当はどう生きたいのか」という奥底の衝動を丁寧に言語化していきます。<br>
-                                コーチングの手法そのものよりも、<br class="sp-only">「この人となら、怖いところまで踏み込めそうか」を確かめる時間です。
-                            </span>
-                        </div>
-                    </div>
-                    <div class="step-item" style="display: flex; gap: 15px; align-items: flex-start;">
-                        <div style="background: var(--text-muted); color: #fff; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;">Step 3</div>
-                        <div>
-                            <strong>本契約・物語の開始</strong><br>
-                            <span style="font-size: 0.85rem; color: #666;">双方が合意した場合のみ、本格的な伴走をスタートします。</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="btn-group">
-                    <button class="btn btn-primary" onclick="openModal('application', '体験セッション')">体験申込</button>
-                    <button class="btn btn-outline" onclick="openModal('application', '無料相談')">無料相談</button>
-                </div>
-            </div>
-
-            <p style="font-size:0.9rem; color:#d9534f; font-weight:bold; margin-top: 40px;">
-                ※本契約は、必ず「体験セッション」を経て、双方が合意した場合のみ締結されます。
+    <section id="leadership-program">
+        <div class="container" style="text-align: center; margin-bottom: 60px;">
+            <h2 class="section-title">Leadership Coaching Program</h2>
+            <p style="max-width: 700px; margin: 0 auto; color: var(--text-muted);">
+                どこかで、「このままでは終われない」という思いが消えない。<br>
+                本プログラムは、その思いから目を逸らさずに、あなたの生き方と<br class="pc-only-text">
+                リーダーシップを再設計していくためのプログラムです。
             </p>
-
         </div>
 
-        <div class="corporate-area">
-            <p>
-                法人契約、またはエグゼクティブ・リーダーシップ開発をご希望の方は、<br class="sp-only">
-                <span style="color: var(--accent-color); cursor: pointer; text-decoration: underline;" onclick="openModal('application', 'その他')">問合せフォーム</span>
-                よりご相談ください。
-            </p>
+        <div class="process-canvas-wrapper">
+            <canvas id="process-canvas"></canvas>
+            <div class="container" style="position: relative; z-index: 2; max-width: 800px;">
+                <h3 style="text-align: center; font-family: 'Shippori Mincho', serif; margin-bottom: 50px; font-size: 2rem; color: var(--text-color);">The Process</h3>
+                
+                <div class="accordion-container">
+                    <div class="acc-item">
+                        <button class="acc-btn" onclick="toggleAccordion(this)">
+                            <span class="acc-step">Step 01</span>
+                            <span class="acc-title">協働関係の構築<span class="acc-sub">Design the Alliance</span></span>
+                            <span class="acc-icon">+</span>
+                        </button>
+                        <div class="acc-content">
+                            <div class="acc-inner">
+                                <h4 class="acc-h4">本質的な変化を呼び起こす、対等な関係を。</h4>
+								<p>極端に聞こえるかもしれませんが、強固な「協働関係（アライアンス）」さえあれば、人は本質的な変化に辿り着けると私は信じています。逆にこの土台がなければ、どんな高度なスキルを使っても機能しません。これは日々の仕事やパートナーシップでも同様ではないでしょうか。</p>
+								<p>だからこそ、私はこの関係性を何よりも大切にします。旅の始まりだけでなく、進んでいく過程でも常に「今の関係性は機能しているか？」を共に確認します。もし違和感があれば、遠慮なく伝えてください。関係性を結び直すことや、時には他の信頼できるコーチを紹介するなど、あなたの変化のために最善を尽くします。</p>
+                                <p>コーチングは、コーチが一方的にアドバイスをする場ではありません。あなたの人生の専門家は、あなた自身です。コーチは鏡となり、壁打ち相手となり、時に共犯者となります。</p>
+                                <p>日常の会話（上司や友人）と、コーチングの対話は、前提となる「関わり方」が大きく異なります。</p>
+                                
+                                <div class="comparison-box">
+                                    <div class="comp-row">
+                                        <div class="comp-label">一般的な会話</div>
+                                        <div class="comp-content">
+                                            ・正解やアドバイスを求める<br>
+                                            ・建前や社会的な「正しさ」が優先される
+                                        </div>
+                                    </div>
+                                    <div class="comp-row">
+                                        <div class="comp-label" style="background: #fdfbf7; color: var(--accent-color);">コーチング</div>
+                                        <div class="comp-content">
+                                            ・自分の中にある<span class="comp-highlight">「納得解」</span>を探求する<br>
+                                            ・どんなに不格好でも<span class="comp-highlight">「本音」</span>が歓迎される
+                                        </div>
+                                    </div>
+                                </div>
+                                <p style="text-align:center; font-size:0.85rem; color:#999; margin-top:10px;">この強固な協働関係（アライアンス）こそが、変化の土台となります。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item">
+                        <button class="acc-btn" onclick="toggleAccordion(this)">
+                            <span class="acc-step">Step 02</span>
+                            <span class="acc-title">コーチングの受け方を学ぶ<span class="acc-sub">Mindset & Embodiment</span></span>
+                            <span class="acc-icon">+</span>
+                        </button>
+                        <div class="acc-content">
+                            <div class="acc-inner">
+                                <h4 class="acc-h4">日常の延長線上にはない、「非日常」の作法を学ぶ。</h4>
+                                <p>普段の会話と同じ感覚でいると、コーチングの効果は半減してしまいます。なぜなら、日常の会話は「頭（思考）」で行われますが、本質的な変化は、頭ではわかっていないけれど体が反応していること、つまり「身体感覚」や「感情」の中に隠れているからです。</p>
+                                <p>このセッションでは、論理的な言葉だけでなく、比喩（メタファー）を使ったり、体の奥にある微細な声に耳を傾けたりと、普段とは全く違う脳の使い方をします。</p>
+                                <p>科学的にも、人間は思考よりも先に体が反応することがわかっています。「頭ではなく、体に聞く」。この効果的な受け方を最初に学び、随時実践していくことで、あなたの内側から想定外の答えが引き出されるようになります。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item">
+                        <button class="acc-btn" onclick="toggleAccordion(this)">
+                            <span class="acc-step">Step 03</span>
+                            <span class="acc-title">あなたを知る<span class="acc-sub">Discovery Session</span></span>
+                            <span class="acc-icon">+</span>
+                        </button>
+                        <div class="acc-content">
+                            <div class="acc-inner">
+                                <h4 class="acc-h4">人生の「地図」を描く、導入セッション。</h4>
+                                <p>本格的な旅に出る前に、長めの時間（90分〜120分）をとって実施する導入セッションです。<br>専用のワークシートを用いながら、これまでの人生で形成された価値観、繰り返してしまう思考パターン、そして心の奥底で渇望している「願い」の輪郭を浮き彫りにします。</p>
+                                <p>ここで掘り起こしたリソースが、今後の旅路の「地図」となります。もちろん、最初から100%の正解である必要はありません。ここで作った地図を「たたき台」として、次回以降のセッションで磨きをかけ、実際の行動指針として常に懐に携えながら進んでいきます。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item">
+                        <button class="acc-btn" onclick="toggleAccordion(this)">
+                            <span class="acc-step">Step 04</span>
+                            <span class="acc-title">3つの関わり方<span class="acc-sub">The 3 Approaches</span></span>
+                            <span class="acc-icon">+</span>
+                        </button>
+                        <div class="acc-content">
+                            <div class="acc-inner">
+                                <h4 class="acc-h4">コーチングの旅を「車の運転」に例えると。</h4>
+                                <p>Co-Active®モデルに則り、今抱えている悩みを題材にして、本当の自分に繋がる旅をします。コーチは、状況に応じて以下の3つの視点（関わり方）を使い分け、あなたが全力を出せる状態へと導きます。</p>
+                                <div class="method-list">
+                                    <div class="method-item">
+                                        <svg class="method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
+                                            <path d="M16 14v6"></path>
+                                            <path d="M8 14v6"></path>
+                                            <path d="M12 16v6"></path>
+                                        </svg>
+                                        <span class="method-tag">今を味わう</span>
+                                        <strong>PROCESS</strong>
+                                        <p>感情の豪雨で前が見えない時。コーチは助手席で、ワイパーを動かすのではなく、あなたと共にその雨を味わい尽くします。「今」に留まり、味わい切ることで、人間は冷静になり、本当の自分を取り戻します。</p>
+                                    </div>
+
+                                    <div class="method-item">
+                                        <svg class="method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polygon points="12 2 15 8.5 22 9.5 17 14 18.5 21 12 17.5 5.5 21 7 14 2 9.5 9 8.5 12 2"></polygon>
+                                        </svg>
+                                        <span class="method-tag">目的地を知る</span>
+                                        <strong>FULFILMENT</strong>
+                                        <p>アクセルの踏み方がわからない時。目標達成のような小さな話ではなく、「あなたが生まれてきた理由」を探求します。最高の目的地（自分）を見つけてしまったら、もう誰にも止められない状態になります。</p>
+                                    </div>
+
+                                    <div class="method-item">
+                                        <svg class="method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                            <path d="M2 12h20"></path>
+                                        </svg>
+                                        <span class="method-tag">ハンドルを握る</span>
+                                        <strong>BALANCE</strong>
+                                        <p>一本道しか見えず、行き詰まった時。コーチと共に視点を増やし、「選ばされている」のではなく「自ら選ぶ」状態へ。ハンドルを自由に切れるダイナミックさと自由さを取り戻します。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item">
+                        <button class="acc-btn" onclick="toggleAccordion(this)">
+                            <span class="acc-step">Step 05</span>
+                            <span class="acc-title">実験と学習<span class="acc-sub">Action & Learning</span></span>
+                            <span class="acc-icon">+</span>
+                        </button>
+                        <div class="acc-content">
+                            <div class="acc-inner">
+                                <h4 class="acc-h4">本質的な変化は、セッションの「外」で起こる。</h4>
+                                <p>コーチングの時間（セッション）は、人生のほんの一部に過ぎません。セッションで得た気づきを、実際の仕事や生活の中で「実験」してみる。</p>
+                                <p>うまくいけば自信になり、失敗すればそれがまた学習の材料になります。この「行動と学習のサイクル」を回し続けることこそが、あなたのOS（あり方）を書き換えていきます。</p>
+                                
+                                <div class="cycle-container">
+                                    <div class="cycle-ring"></div>
+                                    <div class="cycle-item c-item-1">
+                                        COACHING<span>気づく</span>
+                                    </div>
+                                    <div class="cycle-item c-item-2">
+                                        ACTION<span>やってみる</span>
+                                    </div>
+                                    <div class="cycle-item c-item-3">
+                                        LEARNING<span>振り返る</span>
+                                    </div>
+                                    
+                                    <div class="cycle-arrow c-arrow-1">→</div>
+                                    <div class="cycle-arrow c-arrow-2">→</div>
+                                    <div class="cycle-arrow c-arrow-3">→</div>
+                                </div>
+                                
+                                <p style="text-align:center; font-size:0.85rem; color:#999; margin-top:-10px;">このサイクルが自走し始めた時、<br>あなたは「自分自身のコーチ」を手に入れます。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="voice-section">
+        <div class="container">
+            <h3 class="voice-section-title">Client's Voice</h3>
+            
+<div class="voice-wrapper">
+                <div class="voice-track" id="voice-scroll">
+                    
+                    <div class="voice-card">
+                        <div class="vc-header">
+                            <span class="vc-attr">30代 IT / プロジェクトマネージャー</span>
+                        </div>
+                        <div class="vc-before-box">
+                            <span class="vc-label">コーチングを受ける前の状態は？</span>
+                            <div class="vc-content">
+                                プロジェクトの遅れや人間関係のトラブルに対し、常に正解を出さなければと必死でした。論理武装して感情を押し殺し、メンバーを管理しようとすればするほど、チームの心が離れていく悪循環に陥っていました。
+                            </div>
+                        </div>
+                        <button class="vc-toggle-btn" onclick="toggleVoice(this)"><span>Read More</span></button>
+                        <div class="vc-details">
+                            <div class="vc-detail-content">
+                                <div class="vc-row">
+                                    <span class="vc-label accent">私（星野直道）を一言で言うと？</span>
+                                    <div class="vc-content">
+                                        「元プロテニスプレーヤーの松岡修造さんのような熱さかと思えば、仏様のように話を聞いてくれる。」振れ幅があって、たまに「同じ人なのかな？」と混乱することもあります。その時々の私に必要な「全力」で関わってくれます。
+                                    </div>
+                                </div>
+                                <div class="vc-row">
+                                    <span class="vc-label accent">コーチングを受けた後の変化は？</span>
+                                    <div class="vc-content highlight">
+                                        「管理」を手放し、「対話」を始めました。論理で解決できない感情のもつれを、星野さんとのセッションで紐解くうちに、現場でもメンバーの感情を大切にできるようになりました。結果、チームの結束力が劇的に高まりました。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="voice-card">
+                        <div class="vc-header">
+                            <span class="vc-attr">50代 経営者</span>
+                        </div>
+                        <div class="vc-before-box">
+                            <span class="vc-label">コーチングを受ける前の状態は？</span>
+                            <div class="vc-content">
+                                「社長だから」と一人で背負い込み、孤独感に苛まれながらも、弱音を吐く場所などどこにもない。頭で考えすぎて、自分でも本当の感情がわからなくなっていました。
+                            </div>
+                        </div>
+                        <button class="vc-toggle-btn" onclick="toggleVoice(this)"><span>Read More</span></button>
+                        <div class="vc-details">
+                            <div class="vc-detail-content">
+                                <div class="vc-row">
+                                    <span class="vc-label accent">私（星野直道）を一言で言うと？</span>
+                                    <div class="vc-content">
+                                        「『この人は何を言っても驚かないだろう』という、謎の安心感がある人。」人には絶対に言えない自慢話や、汚い悪口も、彼になら言えてしまう。すべてを受け止め、面白がってくれる器の大きさに救われています。
+                                    </div>
+                                </div>
+                                <div class="vc-row">
+                                    <span class="vc-label accent">コーチングを受けた後の変化は？</span>
+                                    <div class="vc-content highlight">
+                                        「正しさ」ではなく「人間臭さ」を出せるようになりました。完璧な経営者であることをやめ、社員に弱みを見せ始めた途端、組織が自律的に動き出したのには驚きました。孤独は消えませんが、その孤独すらも味わえる胆力がつきました。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="voice-card">
+                        <div class="vc-header">
+                            <span class="vc-attr">40代 人事職 / マネージャー</span>
+                        </div>
+                        <div class="vc-before-box">
+                            <span class="vc-label">コーチングを受ける前の状態は？</span>
+                            <div class="vc-content">
+                                部下に対して自信を持って振る舞えず、どこか「舐められている」と感じていました。表面上は物分かりの良い上司を演じていましたが、腹の底では言うことを聞かない部下や、それを御せない自分自身に対して強烈な悔しさを抱えていました。
+                            </div>
+                        </div>
+                        <button class="vc-toggle-btn" onclick="toggleVoice(this)"><span>Read More</span></button>
+                        <div class="vc-details">
+                            <div class="vc-detail-content">
+                                <div class="vc-row">
+                                    <span class="vc-label accent">私（星野直道）を一言で言うと？</span>
+                                    <div class="vc-content">
+                                        「とにかく話しやすい。そして、私が自分を小さく見積もると、本気で怒って泣いてくれる人。」私がダメだと思っている部分にこそ価値があると言ってくれる。こんなに真剣に自分に関わってくれる人がいる、それだけで力が湧きます。
+                                    </div>
+                                </div>
+                                <div class="vc-row">
+                                    <span class="vc-label accent">コーチングを受けた後の変化は？</span>
+                                    <div class="vc-content highlight">
+                                        「自信がない自分」も、「実は傲慢な自分」も、すべて自分だと認められました。不思議なもので、自分の弱さも受容できて、「助けて」と言えるようになると、逆に部下に対して逃げずに踏み込んだ発言ができるようになりました。今では、弱さを見せられることこそが、本当の強さだと感じています。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="voice-card">
+                        <div class="vc-header">
+                            <span class="vc-attr">30代 企画職</span>
+                        </div>
+                        <div class="vc-before-box">
+                            <span class="vc-label">コーチングを受ける前の状態は？</span>
+                            <div class="vc-content">
+                                上司に「お前はここまでだ」とレッテルを貼られている気がして、出世の道が閉ざされたように感じていました。「諦めるのは悔しい、でも認められていない中で頑張るのも馬鹿らしい」。そんな葛藤でアクセルとブレーキを同時に踏み、身動きが取れなくなっていました。
+                            </div>
+                        </div>
+                        <button class="vc-toggle-btn" onclick="toggleVoice(this)"><span>Read More</span></button>
+                        <div class="vc-details">
+                            <div class="vc-detail-content">
+                                <div class="vc-row">
+                                    <span class="vc-label accent">私（星野直道）を一言で言うと？</span>
+                                    <div class="vc-content">
+                                        「どこまでも真っ直ぐで、日常にいたら『面倒くさい』部類の人かもしれません（笑）」でも、彼が自身の「人生の目的」を語ってくれた時、理屈抜きで体が震えて涙が出ました。「こんなに覚悟を持って生きてる人がいる」。自分もこう生きたいと、突き動かされました。
+                                    </div>
+                                </div>
+                                <div class="vc-row">
+                                    <span class="vc-label accent">コーチングを受けた後の変化は？</span>
+                                    <div class="vc-content highlight">
+                                        評価の軸を「会社」から「自分の人生」に取り戻しました。腐っていたエネルギーを「自分が本当にやりたい企画」に注ぎ込んだ結果、社内での評価などどうでもよくなり、皮肉にもそれが周囲を巻き込む熱量に変わりました。今は、自分の人生のハンドルを自分で握っている感覚があります。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="voice-card">
+                        <div class="vc-header">
+                            <span class="vc-attr">30代 フリーランス / コーチ</span>
+                        </div>
+                        <div class="vc-before-box">
+                            <span class="vc-label">コーチングを受ける前の状態は？</span>
+                            <div class="vc-content">
+                                プロのコーチとして「ちゃんとしなければ」というプレッシャーがありました。クライアントの前で良いコーチを演じようとするあまり、自分の個性や本来のパワフルさを封印し、型にはまったセッションしかできずにいました。
+                            </div>
+                        </div>
+                        <button class="vc-toggle-btn" onclick="toggleVoice(this)"><span>Read More</span></button>
+                        <div class="vc-details">
+                            <div class="vc-detail-content">
+                                <div class="vc-row">
+                                    <span class="vc-label accent">私（星野直道）を一言で言うと？</span>
+                                    <div class="vc-content">
+                                        「慣れ合いではない、真の『ファン』でいてくれる人。」私も星野さんのファンだし、彼も私のファンだと言ってくれる。私の夢を絶対に笑わないし、プロとして対等に、本気で応援してくれる同志です。
+                                    </div>
+                                </div>
+                                <div class="vc-row">
+                                    <span class="vc-label accent">コーチングを受けた後の変化は？</span>
+                                    <div class="vc-content highlight">
+                                        「私という人間そのもの」が、クライアントへの最大のリソースだと気づけました。カッコつけずに泥臭く関わる。その覚悟が決まったことで、クライアントとの関係性が深まり、契約の継続率も上がりました。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="voice-card">
+                        <div class="vc-header">
+                            <span class="vc-attr">50代 営業職 / マネージャー</span>
+                        </div>
+                        <div class="vc-before-box">
+                            <span class="vc-label">コーチングを受ける前の状態は？</span>
+                            <div class="vc-content">
+                                長年の経験で仕事は回せるものの、心のどこかで「このままでいいのか」という虚無感がありました。定年までのカウントダウンをするような守りの姿勢に入り、部下の挑戦に対しても保守的なアドバイスしかできずにいました。
+                            </div>
+                        </div>
+                        <button class="vc-toggle-btn" onclick="toggleVoice(this)"><span>Read More</span></button>
+                        <div class="vc-details">
+                            <div class="vc-detail-content">
+                                <div class="vc-row">
+                                    <span class="vc-label accent">私（星野直道）を一言で言うと？</span>
+                                    <div class="vc-content">
+                                        「一緒に崖の上に立ち、飛び込む勇気をくれる人。」セッションでは崖の上に立たされるような怖い問いもあります。でも、彼は突き落とすのではなく、一緒に震えながらそこに立ち、一緒に飛び込んでくれる。不思議な安心感があります。
+                                    </div>
+                                </div>
+                                <div class="vc-row">
+                                    <span class="vc-label accent">コーチングを受けた後の変化は？</span>
+                                    <div class="vc-content highlight">
+                                        「守り」から「攻め」へ、人生のフェーズが切り替わりました。リスクを取って新しいプロジェクトに手を挙げた時、20代の頃のような高揚感を思い出しました。その背中を見せることが、部下への一番の教育になっています。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="voice-card">
+                        <div class="vc-header">
+                            <span class="vc-attr">40代 研究職</span>
+                        </div>
+                        <div class="vc-before-box">
+                            <span class="vc-label">コーチングを受ける前の状態は？</span>
+                            <div class="vc-content">
+                                研究成果を出さなければという焦りと、組織の論理に翻弄される日々。自分の知的好奇心よりも「成果が出るかどうか」で物事を選択するようになり、研究がつまらなくなりかけていました。思考ばかりが空回りしていました。
+                            </div>
+                        </div>
+                        <button class="vc-toggle-btn" onclick="toggleVoice(this)"><span>Read More</span></button>
+                        <div class="vc-details">
+                            <div class="vc-detail-content">
+                                <div class="vc-row">
+                                    <span class="vc-label accent">私（星野直道）を一言で言うと？</span>
+                                    <div class="vc-content">
+                                        「突拍子もなく、予測不能なアイデアを投げてくる人。」そのアイデアを全て採用するわけではありませんが、「そんな考え方ある？」という角度からボールが飛んでくるので、ガチガチに固まった思考の枠を強制的に外されます。
+                                    </div>
+                                </div>
+                                <div class="vc-row">
+                                    <span class="vc-label accent">コーチングを受けた後の変化は？</span>
+                                    <div class="vc-content highlight">
+                                        思考の枠が外れ、「そもそも何のために研究しているのか？」という原点に立ち返れました。論理を超えた直感や情熱を信じることで、行き詰まっていた研究にブレイクスルーが生まれました。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="voice-card">
+                        <div class="vc-header">
+                            <span class="vc-attr">40代 休職中</span>
+                        </div>
+                        <div class="vc-before-box">
+                            <span class="vc-label">コーチングを受ける前の状態は？</span>
+                            <div class="vc-content">
+                                仕事のストレスで体調を崩し、休職。「働けない自分には価値がない」と自分を責め続け、社会から置いていかれる恐怖で夜も眠れませんでした。知人から星野さんを紹介いただいたものの、Facebookの投稿内容に過激なものもあって、「本当に怖い人だったらどうしよう」と申込を躊躇していました。
+                            </div>
+                        </div>
+                        <button class="vc-toggle-btn" onclick="toggleVoice(this)"><span>Read More</span></button>
+                        <div class="vc-details">
+                            <div class="vc-detail-content">
+                                <div class="vc-row">
+                                    <span class="vc-label accent">私（星野直道）を一言で言うと？</span>
+                                    <div class="vc-content">
+                                        「第一印象は『なんか怖そう』。でも、誰よりもオープンで人間くさい人。」自己紹介であまりにご自身のことをオープンに話してくれたので、私も誰にも言えなかった本音を話せました。怖いのではなく、真剣さが圧倒的なのだと今は分かります。
+                                    </div>
+                                </div>
+                                <div class="vc-row">
+                                    <span class="vc-label accent">コーチングを受けた後の変化は？</span>
+                                    <div class="vc-content highlight">
+                                        「休むこと」を「悪」ではなく「必要なプロセス」として許せるようになりました。焦りが消えたことで、本当にやりたかったことが見えてきました。今は、他人の評価ではなく自分の意志で、新しい一歩を踏み出そうとしています。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="view-more-area" style="text-align: center; margin-top: 50px;">
+                    <button id="load-more-btn" class="btn btn-outline" style="min-width: 200px;">
+                        もっと見る
+                    </button>
+                </div>
+
+            </div>
+
+        <div class="plans-area">
+            <div class="container">
+                <h3 style="text-align: center; font-family: 'Shippori Mincho', serif; margin-bottom: 20px;">Investment</h3>
+                <div class="plans-container">
+                    <div class="plan-card">
+                        <h4 class="plan-name">Basic Support<br><span class="plan-sub">標準サイクル</span></h4>
+                        <div class="plan-price">33,000<span class="unit">円(税込)/月</span></div>
+                        <p class="plan-concept">思考の癖を書き換え、<br>新しい物語を定着させる標準プラン。</p>
+                        <ul class="plan-features">
+                            <li>セッション：<strong>月2回</strong> (45分)</li>
+                            <li>チャットサポート付</li>
+                            <li>推奨期間：6ヶ月〜</li>
+                        </ul>
+                    </div>
+    
+                    <div class="plan-card recommended">
+                        <div class="plan-badge">RECOMMENDED</div>
+                        <h4 class="plan-name">Deep Support<br><span class="plan-sub">変革・加速</span></h4>
+                        <div class="plan-price">55,000<span class="unit">円(税込)/月</span></div>
+                        <p class="plan-concept">人生の転換期に。<br>変革の速度を最大化する伴走。</p>
+                        <ul class="plan-features">
+                            <li>セッション：<strong>月2回 (60分)</strong></li>
+							<li style="color:var(--accent-color); font-weight:bold;">緊急セッション付（月1回）<br><span style="font-size:0.8em; color:#666; font-weight:normal;">(リクエストから24時間以内に実施)</span></li>
+                            <li>無制限チャットサポート</li>
+                            <li>推奨期間：6ヶ月〜</li>
+                        </ul>
+                    </div>
+    
+                    <div class="plan-card alumni">
+                        <h4 class="plan-name">Maintenance<br><span class="plan-sub">継続・修了生</span></h4>
+                        <div class="plan-price">16,500<span class="unit">円(税込)/月</span></div>
+                        <p class="plan-concept">整った軌道を維持する、<br>定期的なチューニング。</p>
+                        <ul class="plan-features">
+                            <li>セッション：<strong>月1回</strong> (45分)</li>
+                            <li>期間の縛りなし</li>
+                            <li style="color:#d9534f; font-weight:bold;">※6ヶ月修了者限定</li>
+                        </ul>
+                    </div>
+                </div>
+      
+                <div style="margin-top: 50px; padding: 40px 20px; border: 1px solid #eee; border-radius: 8px; background: #fff; text-align: center;">
+                    <h4 style="font-family: 'Shippori Mincho', serif; margin-bottom: 20px; color: var(--text-color); font-size: 1.4rem;">まずは、入り口でお会いしましょう。</h4>
+                    
+<div class="step-list-container">
+                        <div class="step-item">
+                            <div class="step-badge highlight">Step 1</div>
+                            <div class="step-content">
+                                <strong>体験セッション（必須：60分）<span style="color:#d9534f;">無料</span></strong>
+                                <span>
+                                    あなたの現在地と、「本当はどう生きたいのか」という奥底の衝動を丁寧に言語化していきます。<br>
+                                    コーチングの手法そのものよりも、「この人となら、怖いところまで踏み込めそうか」という相性を確かめる時間です。<br>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="step-item">
+                            <div class="step-badge">Step 2</div>
+                            <div class="step-content">
+                                <strong>本契約・物語の開始</strong>
+                                <span>体験セッションを経て、双方が合意した場合のみ、本格的な伴走をスタートします。無理な引き止めは一切行いません。</span>
+                            </div>
+                        </div>
+
+                        <div class="step-item">
+                            <div class="step-badge">Step 3</div>
+                            <div class="step-content">
+                                <strong>導入セッション 1回(90分〜120分)</strong>
+                                <span>
+                                    旅の羅針盤をつくる、最も重要な時間です。<br>
+                                    これまでの人生の棚卸しと、奥底にある価値観の発掘を行い、あなたとコーチとの間に強固な協働関係（アライアンス）を結びます。
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="step-item">
+                            <div class="step-badge">Step 4</div>
+                            <div class="step-content">
+                                <strong>通常セッション 月2回(45分～60分/回)</strong>
+                                <span>
+                                    「行動」と「学習」のサイクルを回す本番です。<br>
+                                    日常という実験場で起きたことを持ち寄り、思考の癖（OS）を書き換えながら、理想の在り方を現実へと定着させていきます。
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="step-item">
+                            <div class="step-badge">Step 5</div>
+                            <div class="step-content">
+                                <strong>完了セッションまたは継続セッションへ</strong>
+                                <span>
+                                    自走するための、卒業の儀式。<br>
+                                    期間中に起きた変化と手に入れた武器（リソース）を再確認し、コーチなしでも道を切り拓いていける確かな自信と共に、次のステージへ送り出します。<br>
+									継続セッションの場合は頻度を決めて、次のステージへと向かいます。<br><br>
+									
+									※その後の継続セッションは、個人差がありますが、６か月から１年以上の方が多くいらっしゃいます。
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="openModal('application', '体験セッション')">無料体験セッション申込</button>
+                    </div>
+
+                    <p style="font-size:0.9rem; color:#d9534f; font-weight:bold; margin-top: 40px;">
+                        ※本契約は、必ず「体験セッション」を経て、双方が合意した場合のみ締結されます。
+                    </p>
+                </div>
+
+                <div class="corporate-area">
+                    <p>
+                        法人契約、またはエグゼクティブ・リーダーシップ開発をご希望の方は、<br class="sp-only">
+                        <span style="color: var(--accent-color); cursor: pointer; text-decoration: underline;" onclick="openModal('application', 'その他')">問合せフォーム</span>
+                        よりご相談ください。
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1292,9 +2444,9 @@
                 <img src="./IMG_6140.jpg" alt="星野 直道" style="width:100%; height:100%; object-fit: cover;">
             </div>
             <div class="profile-text">
-                <p style="color: var(--accent-color); font-weight: bold; margin-bottom: 5px; letter-spacing: 0.1em;">CoSTAR 代表</p>
+                <p style="color: var(--accent-color); font-weight: bold; margin-bottom: 5px; margin-top:10px; letter-spacing: 0.1em;">CoSTAR 代表</p>
                 <h3>星野 直道 / Hoshino Naomichi</h3>
-                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px;">米国CTI認定 CPCC / 国際コーチング連盟 ICF認定 ACC</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px;">国際コーチング連盟 ICF認定 ACC</p>
                 <p>1982年生まれ。大手IT企業、石油元売（出光興産）のIT部門にてPM、組織リーダー、生成AI組織立ち上げを歴任。自身のリーダーシップへの葛藤からコーチングと出会う。</p>
                 <p>私自身、「価値がない」と否定し隠してきた部分こそが、人生を動かす最もパワフルなリソースであることを体感しました。</p>
                 <p>私は、あなたが目を背けてしまいそうな「底知れぬ可能性」に、共に光を当て続けます。私の「全力」の在り方を踏み台にして、リミッターを外してください。</p>
@@ -1340,7 +2492,7 @@
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>人やテーマによりますが、本質的な意識変容と行動の定着には時間がかかるため、多くのクライアント様は3ヶ月〜6ヶ月以上の継続的なパートナーシップを結ばれています。（まずは体験セッションで相性と感覚をお確かめください）</p>
+                        <p>人やテーマによりますが、本質的な意識変容と行動の定着には時間がかかるため、多くのクライアント様は6ヶ月以上の継続的なパートナーシップを結ばれています。（まずは体験セッションで相性と感覚をお確かめください）</p>
                     </div>
                 </details>
 
@@ -1365,8 +2517,7 @@
              <span style="font-size: 0.8rem; margin-top: 10px; display: block;">※無理な勧誘や引き止めは一切行いません。まずは相性を確かめに来てください。</span>
             </p>
             <div class="btn-group">
-                <button class="btn btn-primary" onclick="openModal('application', '体験セッション')">体験申込</button>
-                <button class="btn btn-outline" onclick="openModal('application', '無料相談')">無料相談</button>
+                <button class="btn btn-primary" onclick="openModal('application', '体験セッション')">無料体験セッション申込</button>
             </div>
             <br><br>
             <div style="font-size: 0.8rem; display:flex; gap:20px; justify-content:center; flex-wrap:wrap; color: #999;">
@@ -1384,26 +2535,92 @@
             <div class="form-group"><label class="form-label">種別 <span style="color:#d9534f">*</span></label>
                 <select name="種別" class="form-select" required id="form-type-select">
                     <option value="" disabled>選択してください</option>
-                    <option value="体験セッション" selected>体験セッション (60分 / 5,000円)</option>
-                    <option value="無料相談">オンライン無料相談 (15-30分 / 無料)</option>
+                    <option value="体験セッション" selected>体験セッション (初回無料)</option>
                     <option value="その他">その他 お問い合わせ</option>
                 </select>
             </div>
             <div id="inquiry-notice" style="background:#f9fafb; padding:20px; border-radius:4px; margin-bottom:30px; font-size:0.85rem; line-height:1.7; border:1px solid #e5e7eb; display:none;"><h3 id="notice-title" style="color:var(--accent-color); font-size:1rem; margin-top:0; margin-bottom:10px;">案内事項</h3><div id="notice-content"></div></div>
             <div class="form-group"><label class="form-label">メールアドレス <span style="color:#d9534f">*</span></label><input type="email" name="email" class="form-input" required placeholder="example@email.com"></div>
             <div class="form-group"><label class="form-label">お名前 <span style="color:#d9534f">*</span></label><input type="text" name="名前" class="form-input" required placeholder="例：山田 花子"></div>
-            <div id="datetime-fields" style="display:none;"><div class="form-group"><label class="form-label">希望日時（第3希望まで） <span style="color:#d9534f">*</span></label>
-                <div style="margin-bottom:15px;"><div class="datetime-row"><input type="date" name="第1希望_日付" class="form-input"><div class="time-range"><select name="第1希望_開始" class="form-select time-select"></select><span>〜</span><select name="第1希望_終了" class="form-select time-select"></select></div></div></div>
-                <div style="margin-bottom:15px;"><div class="datetime-row"><input type="date" name="第2希望_日付" class="form-input"><div class="time-range"><select name="第2希望_開始" class="form-select time-select"></select><span>〜</span><select name="第2希望_終了" class="form-select time-select"></select></div></div></div>
-                <div style="margin-bottom:15px;"><div class="datetime-row"><input type="date" name="第3希望_日付" class="form-input"><div class="time-range"><select name="第3希望_開始" class="form-select time-select"></select><span>〜</span><select name="第3希望_終了" class="form-select time-select"></select></div></div></div>
-            </div></div>
-            <div class="form-group"><label class="form-label" id="comment-label">コメント</label><textarea name="コメント" class="form-textarea"></textarea></div>
+            
+            <div class="form-group">
+                <label class="form-label" id="comment-label">希望日時・メッセージ</label>
+                <textarea name="コメント" class="form-textarea" placeholder="・平日夜、土日希望など&#13;&#10;・現在のお悩みや、聞いてみたいことなど自由にご記入ください"></textarea>
+                <p style="font-size:0.8rem; color:#666; margin-top:5px;">※具体的な日時は、フォーム送信後にメールにて調整させていただきます。</p>
+            </div>
+
             <div style="margin: 30px 0; text-align: center;"><label style="cursor: pointer;"><input type="checkbox" required style="transform: scale(1.5);"> <span><a href="privacy.html" target="_blank" style="text-decoration: underline; color: inherit;">プライバシーポリシー</a>に同意します</span></label></div>
             <div style="text-align:center;"><button type="submit" class="btn btn-primary">同意して送信する</button></div>
         </form>
     </div></div>
 	
     <script>
+        // GLOBAL FUNCTION FOR VOICE ACCORDION
+        function toggleVoice(btn) {
+            const details = btn.nextElementSibling;
+            const span = btn.querySelector('span');
+            const card = btn.closest('.voice-card'); // ★追加: 親のカード要素を取得
+            
+            if (details.style.maxHeight && details.style.maxHeight !== '0px') {
+                // 閉じる
+                details.style.maxHeight = '0px';
+                details.classList.remove('open');
+                btn.classList.remove('open');
+                if(card) card.classList.remove('open'); // ★追加: クラス削除
+                span.textContent = 'Read More';
+            } else {
+                // 開く（中身の高さに合わせて展開）
+                details.style.maxHeight = details.scrollHeight + "px";
+                details.classList.add('open');
+                btn.classList.add('open');
+                if(card) card.classList.add('open'); // ★追加: クラス追加
+                span.textContent = 'Close';
+            }
+        }
+
+// =========================================
+        // ここから差し替え：VOICE "もっと見る" ボタン制御
+        // =========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.voice-card');
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            const initialVisibleCount = 3; // ★最初に表示しておく枚数
+
+            // 1. 初期化処理：4枚目以降を隠す
+            if(cards.length > 0) {
+                cards.forEach((card, index) => {
+                    if (index >= initialVisibleCount) {
+                        card.classList.add('is-hidden');
+                    }
+                });
+                
+                // もしカード総数が3枚以下なら、ボタンは最初から消しておく
+                if(cards.length <= initialVisibleCount && loadMoreBtn) {
+                    loadMoreBtn.style.display = 'none';
+                }
+            }
+
+            // 2. ボタンクリック時の処理
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', () => {
+                    // 隠れているカードをすべて取得
+                    const hiddenCards = document.querySelectorAll('.voice-card.is-hidden');
+                    
+                    // 隠れているカードがあれば表示する
+                    hiddenCards.forEach((card, index) => {
+                        // 少し時間差で表示させるとリッチに見えます
+                        setTimeout(() => {
+                            card.classList.remove('is-hidden');
+                            card.classList.add('fade-in'); // ふわっと表示
+                        }, index * 100); 
+                    });
+
+                    // 全て表示し終わったので、ボタン自体を消す
+                    loadMoreBtn.style.display = 'none';
+                });
+            }
+        });
+
         // NOTE RSS
         async function fetchNoteRSS() {
             const rssUrl = 'https://note.com/gifted_holly763/rss';
@@ -1453,74 +2670,56 @@
 
         // FORM LOGIC
         document.addEventListener('DOMContentLoaded', () => {
-            const dateInputs = document.querySelectorAll('input[type="date"]');
-            const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1); 
-            dateInputs.forEach(i => i.setAttribute('min', tomorrow.toISOString().split('T')[0]));
-            const timeSelects = document.querySelectorAll('.time-select');
-            timeSelects.forEach(select => {
-                const d = document.createElement('option'); d.value = ""; d.text = "--:--"; d.selected = d.disabled = true; select.appendChild(d);
-                for (let h = 7; h <= 22; h++) {
-                    const hStr = h.toString().padStart(2, '0');
-                    const o1 = document.createElement('option'); o1.value = o1.text = `${hStr}:00`; select.appendChild(o1);
-                    if (h < 22) { const o2 = document.createElement('option'); o2.value = o2.text = `${hStr}:30`; select.appendChild(o2); }
-                }
-            });
-
             const typeSelect = document.getElementById('form-type-select');
             const notice = document.getElementById('inquiry-notice');
             const nTitle = document.getElementById('notice-title');
             const nContent = document.getElementById('notice-content');
-            const dtFields = document.getElementById('datetime-fields');
             
-            typeSelect.addEventListener('change', function() {
-                const v = this.value; notice.style.display = 'block';
-                dtFields.style.display = (v === '無料相談' || v === '体験セッション') ? 'block' : 'none';
-                
-                if (v === '無料相談') { 
-                    nTitle.innerText = "オンライン無料相談"; 
-                    nContent.innerHTML = "コーチとの相性確認のための場です。"; 
-                }
-                else if (v === '体験セッション') { 
+            // 案内文の表示関数
+            function updateNotice() {
+                const v = typeSelect.value;
+                if (v === '体験セッション') { 
+                    notice.style.display = 'block';
                     nTitle.innerText = "体験セッションについて"; 
                     nContent.innerHTML = `
                       <p style="margin-top:0; margin-bottom:10px;">
-                        頭ではなく「体でコーチングを理解」いただくための60分のセッションです。
+                        頭ではなく「体でコーチングを理解」いただくための60分のセッションです。<br>
+                        <span style="font-weight:bold; color:#d9534f;">通常5,000円のところ、初回無料で実施いたします。</span>
                       </p>
                       <ul style="padding-left:20px; margin:0; font-size:0.85rem; color:#555;">
                         <li>現在の役割・状況、これまでの歩みをざっくばらんにお話しいただきます。</li>
-                        <li>本契約に至った場合、通常セッションから全額を充当（割引）します。</li>
-                        <li>本契約を前提としない、1回完結の対話としてご利用いただいて構いません。</li>
+                        <li>本契約を前提としない、1回完結の対話（壁打ち）としてもご活用いただけます。</li>
+                        <li>無理な勧誘は一切行いません。「相性」を確かめる場として安心してお使いください。</li>
                       </ul>
                     `; 
+                } 
+                else if (v === 'その他') {
+                     notice.style.display = 'block';
+                     nTitle.innerText = "お問い合わせ"; 
+                     nContent.innerHTML = "法人契約や、その他のご質問はこちらからお送りください。";
                 }
                 else { notice.style.display = 'none'; }
-            });
+            }
+
+            // イベントリスナー設定
+            if(typeSelect) {
+                typeSelect.addEventListener('change', updateNotice);
+                // 初期実行
+                updateNotice();
+            }
 
             const applicationForm = document.getElementById('application-form');
-            applicationForm.addEventListener('submit', function(e) {
-                const val = typeSelect.value;
-                const minDurations = { '無料相談': 30, '体験セッション': 60 };
-                const requiredMin = minDurations[val] || 0;
-                const timeToMin = (t) => { if(!t) return 0; const [h, m] = t.split(':').map(Number); return h * 60 + m; };
-                if (val === '無料相談' || val === '体験セッション') {
-                    for (let i = 1; i <= 3; i++) {
-                        const d = this.querySelector(`[name="第${i}希望_日付"]`).value;
-                        const s = this.querySelector(`[name="第${i}希望_開始"]`).value;
-                        const f = this.querySelector(`[name="第${i}希望_終了"]`).value;
-                        if (i === 1 && (!d || !s || !f)) { alert("第1希望は必須です。"); e.preventDefault(); return; }
-                        if (d && s && f) {
-                            if (timeToMin(f) <= timeToMin(s)) { alert(`第${i}希望の時間が不正です。`); e.preventDefault(); return; }
-                            if (requiredMin > 0 && (timeToMin(f) - timeToMin(s)) < requiredMin) { alert(`必要時間は${requiredMin}分以上です。`); e.preventDefault(); return; }
-                        }
-                    }
-                }
-                const btn = this.querySelector('button[type="submit"]');
-                if (btn) { setTimeout(() => { btn.disabled = true; btn.textContent = '送信中...'; }, 10); }
-            });
+            if(applicationForm) {
+                applicationForm.addEventListener('submit', function(e) {
+                    const btn = this.querySelector('button[type="submit"]');
+                    if (btn) { setTimeout(() => { btn.disabled = true; btn.textContent = '送信中...'; }, 10); }
+                });
+            }
         });
 
         // ANIMATIONS
         (function() {
+            // Star Canvas (Message) & Hero Canvas
             const canvasList = [document.getElementById('hero-canvas'), document.getElementById('star-canvas')];
             class Star {
                 constructor(w, h) { this.w = w; this.h = h; this.reset(); }
@@ -1534,9 +2733,61 @@
                 function animate() { ctx.clearRect(0, 0, w, h); s.forEach(st => { st.update(); st.draw(ctx); }); requestAnimationFrame(animate); }
                 window.addEventListener('resize', resize); resize(); animate(); 
             });
+
+            // Process Canvas (Ambient Orbs)
+            const pCanvas = document.getElementById('process-canvas');
+            if(pCanvas) {
+                const pCtx = pCanvas.getContext('2d');
+                let pw, ph;
+                class Orb {
+                    constructor(x, y, r, color, speed) {
+                        this.originX = x; this.originY = y;
+                        this.x = x; this.y = y;
+                        this.r = r; this.color = color;
+                        this.speed = speed;
+                        this.angle = Math.random() * Math.PI * 2;
+                    }
+                    update() {
+                        this.angle += this.speed;
+                        this.x = this.originX + Math.cos(this.angle) * 30;
+                        this.y = this.originY + Math.sin(this.angle) * 30;
+                    }
+                    draw(ctx) {
+                        ctx.beginPath();
+                        const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r);
+                        // Color Logic: accent (#B8962E), white, gray
+                        g.addColorStop(0, this.color);
+                        g.addColorStop(1, 'rgba(255,255,255,0)');
+                        ctx.fillStyle = g;
+                        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+                
+                let orbs = [];
+                function initProcessCanvas() {
+                    pw = pCanvas.parentElement.offsetWidth;
+                    ph = pCanvas.parentElement.offsetHeight;
+                    pCanvas.width = pw; pCanvas.height = ph;
+                    orbs = [
+                        new Orb(pw * 0.2, ph * 0.3, 150, 'rgba(184, 150, 46, 0.15)', 0.005), // Unlearning (Gold)
+                        new Orb(pw * 0.8, ph * 0.7, 180, 'rgba(200, 200, 200, 0.2)', 0.003), // Integration (Gray)
+                        new Orb(pw * 0.5, ph * 0.5, 120, 'rgba(255, 255, 255, 0.3)', 0.007)  // Awakening (White)
+                    ];
+                }
+                function animateProcess() {
+                    pCtx.clearRect(0, 0, pw, ph);
+                    pCtx.globalCompositeOperation = 'screen'; // Blend for fusion effect
+                    orbs.forEach(o => { o.update(); o.draw(pCtx); });
+                    pCtx.globalCompositeOperation = 'source-over';
+                    requestAnimationFrame(animateProcess);
+                }
+                window.addEventListener('resize', initProcessCanvas);
+                initProcessCanvas();
+                animateProcess();
+            }
         })();
 
-        // Update: 新規追加アニメーションロジック (Observer API)
         document.addEventListener('DOMContentLoaded', () => {
             const observerOptions = {
                 root: null,
@@ -1553,11 +2804,10 @@
                 });
             }, observerOptions);
 
-            // Fade Up & Marker Animations
             document.querySelectorAll('.fade-up, .scroll-marker').forEach(el => observer.observe(el));
 
             // Navigation Highlighting
-            const sections = document.querySelectorAll('section[id], div[id="logbook"]'); // Logbook is section id
+            const sections = document.querySelectorAll('section[id], div[id="logbook"]');
             const navLinks = document.querySelectorAll('.pc-nav-link');
             
             const navObserver = new IntersectionObserver((entries) => {
@@ -1565,7 +2815,11 @@
                     if (entry.isIntersecting) {
                         navLinks.forEach(link => {
                             link.classList.remove('active');
-                            if (link.getAttribute('href') === '#' + entry.target.id) {
+                            const href = link.getAttribute('href');
+                            // Map old links to new section if needed
+                            let targetId = entry.target.id;
+                            if(targetId === 'leadership-program' && href === '#process') link.classList.add('active'); 
+                            if (href === '#' + targetId) {
                                 link.classList.add('active');
                             }
                         });
@@ -1591,6 +2845,163 @@
             
             if(heroSection && floatingCta) ctaObserver.observe(heroSection);
         });
+
+        // Accordion Control
+        function toggleAccordion(btn) {
+            btn.classList.toggle('active');
+            var content = btn.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+		
+		/* --- Logic Canvas Animation --- */
+(function(){
+    // Canvas初期化用関数
+    function setupCanvas(id, drawFn) {
+        const canvas = document.getElementById(id);
+        if(!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let w, h;
+        
+        function resize() {
+            w = canvas.parentElement.offsetWidth;
+            h = 150; // CSSと合わせる
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = w * dpr;
+            canvas.height = h * dpr;
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            ctx.scale(dpr, dpr);
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        let frame = 0;
+        function loop() {
+            ctx.clearRect(0, 0, w, h);
+            drawFn(ctx, w, h, frame);
+            frame++;
+            requestAnimationFrame(loop);
+        }
+        loop();
+    }
+
+    const colorAccent = '#B8962E';
+    const colorGray = '#ddd';
+
+    // Logic 1: リアクタンス (粒子がバリアで弾かれる)
+    // 心理的抵抗を視覚化
+    const particles1 = [];
+    for(let i=0; i<6; i++) particles1.push({delay: i*60});
+    
+    setupCanvas('canvas-logic-1', (ctx, w, h, f) => {
+        const cx = w/2, cy = h/2;
+        const r = 30; 
+
+        // 自分（Core）
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2);
+        ctx.fillStyle = '#fff'; ctx.strokeStyle = colorAccent; ctx.lineWidth=2;
+        ctx.fill(); ctx.stroke();
+        ctx.fillStyle = colorAccent; ctx.font = 'bold 10px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+        ctx.fillText("SELF", cx, cy);
+
+        // バリア（Resistance）
+        ctx.beginPath(); ctx.arc(cx, cy, r+10, 0, Math.PI*2);
+        ctx.strokeStyle = `rgba(184, 150, 46, ${0.3 + Math.sin(f*0.05)*0.2})`;
+        ctx.setLineDash([5, 5]); ctx.stroke(); ctx.setLineDash([]);
+
+        // 外からのアドバイス（粒子）
+        particles1.forEach(p => {
+            const age = (f + p.delay) % 200;
+            if(age < 120) {
+                const angle = (p.delay * 137.5) * Math.PI / 180; 
+                const dist = 120 - age; // 近づく
+                
+                let drawX, drawY, op;
+                // バリアに当たって弾かれる計算
+                if(dist > r + 15) {
+                    drawX = cx + Math.cos(angle) * dist;
+                    drawY = cy + Math.sin(angle) * dist;
+                    op = Math.min(1, age/20);
+                } else {
+                    const bounce = (r+15 - dist);
+                    drawX = cx + Math.cos(angle) * (r + 15 + bounce*2); // 弾き返される
+                    drawY = cy + Math.sin(angle) * (r + 15 + bounce*2);
+                    op = 1 - bounce/20;
+                }
+                
+                if(op > 0) {
+                    ctx.beginPath(); ctx.arc(drawX, drawY, 4, 0, Math.PI*2);
+                    ctx.fillStyle = `rgba(100, 100, 100, ${op})`; ctx.fill();
+                }
+            }
+        });
+    });
+
+    // Logic 2: ペルソナ (殻の中で窮屈な本音)
+    setupCanvas('canvas-logic-2', (ctx, w, h, f) => {
+        const cx = w/2, cy = h/2;
+        const rOuter = 40;
+
+        // ペルソナ（硬い殻）
+        ctx.beginPath(); ctx.arc(cx, cy, rOuter, 0, Math.PI*2);
+        ctx.strokeStyle = colorGray; ctx.lineWidth = 4; ctx.stroke();
+        
+        // 本音（揺れる核）
+        const wobbleX = Math.sin(f*0.1) * 3;
+        const wobbleY = Math.cos(f*0.13) * 3;
+        
+        ctx.beginPath(); ctx.arc(cx + wobbleX, cy + wobbleY, 20, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(184, 150, 46, ${0.4 + Math.sin(f*0.05)*0.2})`; 
+        ctx.fill();
+        
+        // Label
+        ctx.fillStyle = '#999'; ctx.font = '10px sans-serif'; ctx.textAlign='center';
+        ctx.fillText("Persona", cx, cy - rOuter - 10);
+    });
+
+    // Logic 3: 自己決定 (内側から湧き出るエネルギー)
+    const particles3 = [];
+    for(let i=0; i<15; i++) particles3.push({
+        angle: Math.random() * Math.PI * 2,
+        speed: 0.5 + Math.random(),
+        dist: Math.random() * 20,
+        size: Math.random() * 3 + 1
+    });
+
+    setupCanvas('canvas-logic-3', (ctx, w, h, f) => {
+        const cx = w/2, cy = h/2;
+        
+        // Core (Strong)
+        const pulse = 1 + Math.sin(f*0.1) * 0.1;
+        ctx.beginPath(); ctx.arc(cx, cy, 15 * pulse, 0, Math.PI*2);
+        ctx.fillStyle = colorAccent; ctx.fill();
+
+        // 放出されるエネルギー
+        particles3.forEach(p => {
+            p.dist += p.speed;
+            if(p.dist > 60) { p.dist = 10; p.angle = Math.random()*Math.PI*2; }
+            
+            const px = cx + Math.cos(p.angle) * p.dist;
+            const py = cy + Math.sin(p.angle) * p.dist;
+            const op = 1 - (p.dist / 60);
+            
+            ctx.beginPath(); ctx.arc(px, py, p.size, 0, Math.PI*2);
+            ctx.fillStyle = `rgba(184, 150, 46, ${op})`; ctx.fill();
+        });
+
+        // 広がる波紋
+        const ringR = (f % 100) * 0.8;
+        const ringOp = 1 - (ringR / 80);
+        if(ringOp > 0) {
+            ctx.beginPath(); ctx.arc(cx, cy, ringR, 0, Math.PI*2);
+            ctx.strokeStyle = `rgba(184, 150, 46, ${ringOp})`; ctx.lineWidth = 1; ctx.stroke();
+        }
+    });
+})();
     </script>
 </body>
 </html>
