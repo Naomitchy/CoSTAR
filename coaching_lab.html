@@ -1158,7 +1158,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             ※コーチング学習者・実践者
                         </div>
                         <div class="footer-price">
-                            <span class="price-original-small">通常価格 60,000円相当</span>
+                            <span class="price-original-small">通常価格 49,500円相当</span>
                             <div class="price-campaign-box">
                                 <span class="price-label-red">応援価格 (税込)</span>
                                 <span class="price-value-large">35,000</span>
@@ -1218,7 +1218,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
      	 
-    <section class="contact-section" id="contact">
+<section class="contact-section" id="contact">
         <div class="container">
             <h2 class="section-title">申込み・問合わせ</h2>
             <div style="text-align: center; margin-bottom: 40px; color: var(--text-muted); line-height: 1.8;">
@@ -1231,11 +1231,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <div class="form-container">
                 <form action="https://ssgform.com/s/Bk9Kz43AMlPY" method="post" id="application-form">
+                    <input type="hidden" name="_redirectTo" value="https://costar-works.com/thanks.html">
+
                     <div class="form-group">
-                        <label class="form-label">種別</label>
-                        <p style="font-size:0.8rem; color:#6b7280; margin: 4px 0 10px;">
-                            無料相談は30分Zoom、本申込は日程調整後にご案内メールをお送りします。
-                        </p>
+                        <label class="form-label">種別 <span style="color:#d9534f">*</span></label>
                         <select name="種別" id="form-type-select" class="form-select" required>
                             <option value="" disabled selected>選択してください</option>
                             <option value="無料相談">オンライン無料相談 (30分 / 無料)</option>
@@ -1244,54 +1243,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </select>
                     </div>
 
+                    <div id="inquiry-notice" style="background:#f9fafb; padding:20px; border-radius:4px; margin-bottom:30px; font-size:0.85rem; line-height:1.7; border:1px solid #e5e7eb; display:none;">
+                        <h3 id="notice-title" style="color:var(--accent-color); font-size:1rem; margin-top:0; margin-bottom:10px;">案内事項</h3>
+                        <div id="notice-content"></div>
+                    </div>
+
                     <div class="form-group">
-                        <label class="form-label">メールアドレス</label>
+                        <label class="form-label">メールアドレス <span style="color:#d9534f">*</span></label>
                         <input type="email" name="email" class="form-input" required placeholder="example@email.com">
                     </div>
+                    
                     <div class="form-group">
-                        <label class="form-label">お名前</label>
+                        <label class="form-label">お名前 <span style="color:#d9534f">*</span></label>
                         <input type="text" name="お名前" class="form-input" required placeholder="例：山田 花子">
                     </div>
 
-                    <div id="datetime-fields" style="display:none;">
-                        <div class="form-group">
-                            <label class="form-label">希望日時（第3希望まで） <span style="color:#d9534f">*</span></label>
-                            <div style="margin-bottom: 15px;">
-                                <div class="datetime-row">
-                                    <input type="date" name="第1希望_日付" class="form-input" style="flex:1;">
-                                    <div class="time-range">
-                                        <select name="第1希望_開始" class="form-select time-select"></select>
-                                        <span>〜</span>
-                                        <select name="第1希望_終了" class="form-select time-select"></select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="margin-bottom: 15px;">
-                                <div class="datetime-row">
-                                    <input type="date" name="第2希望_日付" class="form-input" style="flex:1;">
-                                    <div class="time-range">
-                                        <select name="第2希望_開始" class="form-select time-select"></select>
-                                        <span>〜</span>
-                                        <select name="第2希望_終了" class="form-select time-select"></select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="margin-bottom: 15px;">
-                                <div class="datetime-row">
-                                    <input type="date" name="第3希望_日付" class="form-input" style="flex:1;">
-                                    <div class="time-range">
-                                        <select name="第3希望_開始" class="form-select time-select"></select>
-                                        <span>〜</span>
-                                        <select name="第3希望_終了" class="form-select time-select"></select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="form-group">
-                        <label class="form-label">メッセージ（任意）</label>
-                        <textarea name="内容" class="form-textarea" rows="5"></textarea>
+                        <label class="form-label">希望日時・メッセージ</label>
+                        <textarea name="内容" class="form-textarea" rows="6" placeholder="・平日夜、土日希望など&#13;&#10;・現在のお悩みや、聞いてみたいことなど自由にご記入ください"></textarea>
+                        <p style="font-size:0.8rem; color:#666; margin-top:5px;">※具体的な日時は、フォーム送信後にメールにて調整させていただきます。</p>
                     </div>
 
                     <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
@@ -1398,93 +1368,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             if(heroSection && floatingCta) ctaObserver.observe(heroSection);
 
 
-            // --- Existing Form Logic ---
+// --- Form Logic (Updated to match index.html spec) ---
             const applicationForm = document.getElementById('application-form');
             const typeSelect = document.getElementById('form-type-select');
-            const dateTimeFields = document.getElementById('datetime-fields');
-            const timeSelects = document.querySelectorAll('.time-select');
-            
-            // 選択肢生成
-            timeSelects.forEach(select => {
-                const def = document.createElement('option'); def.value = ""; def.text = "--:--"; def.selected = def.disabled = true; select.appendChild(def);
-                for (let h = 7; h <= 22; h++) {
-                    const hStr = h.toString().padStart(2, '0');
-                    const o1 = document.createElement('option'); o1.value = o1.text = `${hStr}:00`; select.appendChild(o1);
-                    if (h < 22) { const o2 = document.createElement('option'); o2.value = o2.text = `${hStr}:30`; select.appendChild(o2); }
-                }
-            });
+            const notice = document.getElementById('inquiry-notice');
+            const nTitle = document.getElementById('notice-title');
+            const nContent = document.getElementById('notice-content');
 
-            // 種別変更時の表示制御
-            if (typeSelect) {
-                typeSelect.addEventListener('change', function() {
-                    const isRequired = (this.value === '無料相談' || this.value === '本申込');
-                    if (dateTimeFields) dateTimeFields.style.display = isRequired ? 'block' : 'none';
-                    
-                    const date1 = document.querySelector('input[name="第1希望_日付"]');
-                    const start1 = document.querySelector('select[name="第1希望_開始"]');
-                    const end1 = document.querySelector('select[name="第1希望_終了"]');
-                    
-                    if (date1 && start1 && end1) {
-                        date1.required = isRequired;
-                        start1.required = isRequired;
-                        end1.required = isRequired;
-                    }
-                });
+            // 案内文の表示関数
+            function updateNotice() {
+                const v = typeSelect.value;
+                if (v === '無料相談') {
+                    notice.style.display = 'block';
+                    nTitle.innerText = "無料相談について";
+                    nContent.innerHTML = `
+                      <p style="margin-top:0; margin-bottom:10px;">
+                        The Coaching Labに関する疑問や、ご自身の課題感がプログラムに合っているかなどを確認するための30分の相談会です。<br>
+                        <span style="font-weight:bold; color:#d9534f;">無理な勧誘は一切行いませんので、安心してお申込みください。</span>
+                      </p>
+                      <ul style="padding-left:20px; margin:0; font-size:0.85rem; color:#555;">
+                         <li>Zoomを使用したオンライン形式で行います。</li>
+                         <li>「まだ受けるか迷っている」という段階でも大歓迎です。</li>
+                      </ul>
+                    `;
+                } else if (v === '本申込') {
+                    notice.style.display = 'block';
+                    nTitle.innerText = "本申込について";
+                    nContent.innerHTML = `
+                      <p style="margin-top:0; margin-bottom:10px;">
+                        The Coaching Lab（全3回）への正式なお申し込みとして承ります。
+                      </p>
+                      <ul style="padding-left:20px; margin:0; font-size:0.85rem; color:#555;">
+                         <li>送信後、改めて日程調整と決済方法のご案内メールをお送りします。</li>
+                         <li>原則、ご入金確認後のプログラム開始となります。</li>
+                      </ul>
+                    `;
+                } else if (v === 'その他') {
+                    notice.style.display = 'block';
+                    nTitle.innerText = "お問い合わせ";
+                    nContent.innerHTML = "法人契約や、その他のご質問はこちらからお送りください。";
+                } else {
+                    notice.style.display = 'none';
+                }
             }
 
-            // バリデーション
+            // イベントリスナー設定
+            if (typeSelect) {
+                typeSelect.addEventListener('change', updateNotice);
+                // 初期実行（ブラウザバック等で値が残っている場合用）
+                updateNotice();
+            }
+
+            // 送信ボタン制御
             if (applicationForm) {
                 applicationForm.addEventListener('submit', function(e) {
-                    const val = typeSelect.value;
-                    const minDurations = { '無料相談': 30, '本申込': 90 };
-                    const requiredMin = minDurations[val] || 0;
-                    const timeToMin = (t) => {
-                        if(!t) return 0;
-                        const [h, m] = t.split(':').map(Number);
-                        return h * 60 + m;
-                    };
-                    const selectedSlots = [];
-                    let hasError = false;
-                    let errorMsg = "";
-
-                    if (val === '無料相談' || val === '本申込') {
-                        for (let i = 1; i <= 3; i++) {
-                            const date = this.querySelector(`[name="第${i}希望_日付"]`).value;
-                            const start = this.querySelector(`[name="第${i}希望_開始"]`).value;
-                            const end = this.querySelector(`[name="第${i}希望_終了"]`).value;
-
-                            if (i === 1 && (!date || !start || !end)) {
-                                hasError = true; errorMsg = "第1希望の日時は必須です。"; break;
-                            }
-
-                            if (date || start || end) {
-                                if (!date || !start || !end) {
-                                    hasError = true; errorMsg = `第${i}希望の日時をすべて入力してください。`; break;
-                                }
-                                const startMin = timeToMin(start);
-                                const endMin = timeToMin(end);
-                                if (endMin <= startMin) {
-                                    hasError = true; errorMsg = `第${i}希望の終了時間は、開始時間より後に設定してください。`; break;
-                                }
-                                const duration = endMin - startMin;
-                                if (requiredMin > 0 && duration < requiredMin) {
-                                    hasError = true; errorMsg = `選択された種別の必要時間は ${requiredMin}分以上です（第${i}希望は${duration}分になっています）。`; break;
-                                }
-                                const slotKey = `${date}_${start}_${end}`;
-                                if (selectedSlots.includes(slotKey)) {
-                                    hasError = true; errorMsg = "同じ日時が複数選択されています。別の日時を指定してください。"; break;
-                                }
-                                selectedSlots.push(slotKey);
-                            }
-                        }
-                    }
-                    
-                    if (hasError) { alert(errorMsg); e.preventDefault(); return; }
-                    
                     const btn = this.querySelector('button[type="submit"]');
                     if (btn) {
                         setTimeout(() => {
-                            btn.disabled = true; btn.textContent = '送信中...'; btn.style.opacity = '0.7';
+                            btn.disabled = true;
+                            btn.textContent = '送信中...';
+                            btn.style.opacity = '0.7';
                         }, 10);
                     }
                 });
