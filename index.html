@@ -754,9 +754,8 @@
 
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* --- Client's Voice (Refined) --- */
+        /* --- Client's Voice (Refined & With Icons) --- */
         .voice-section {
-            /* カードが浮き立つよう、少し濃いグレージュに変更 */
             background-color: #EAEAE6; 
             padding: 100px 0;
             position: relative;
@@ -780,33 +779,33 @@
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
-            padding: 0 50px; /* 矢印スペース */
+            padding: 0 50px;
         }
 
-        /* スクロール領域 */
-.voice-track {
-    display: flex;
-    gap: 25px;
-    overflow-x: auto; 
-    padding: 20px 10px 40px;
-    scrollbar-width: none; 
-    -ms-overflow-style: none; 
-    scroll-behavior: auto;
-    align-items: flex-start; /* ★修正: stretchから変更して、個別に開くようにしました */
-}
+        .voice-track {
+            display: flex;
+            flex-direction: column; /* 縦並び */
+            overflow-x: visible;
+            gap: 30px;
+            padding-bottom: 0;
+            align-items: center;
+        }
         .voice-track::-webkit-scrollbar { display: none; }
 
-        /* カードデザイン */
         .voice-card {
-            flex: 0 0 340px; /* 幅固定 */
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
             background: #FFFFFF;
             border-radius: 8px; 
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: all 0.4s ease;
+            transition: all 0.5s ease, opacity 0.5s ease;
             overflow: hidden;
             position: relative;
             display: flex;
             flex-direction: column;
+            opacity: 1;
         }
 
         .voice-card:hover {
@@ -814,9 +813,35 @@
             box-shadow: 0 20px 40px rgba(184, 150, 46, 0.15);
         }
 
-        /* カードヘッダー */
+        /* --- VC Header with Icon --- */
         .vc-header {
             padding: 30px 30px 20px;
+            /* ★修正：アイコンとテキストを横並びにする */
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        /* ★追加：アバターアイコンのスタイル */
+        .vc-avatar {
+            width: 50px;
+            height: 50px;
+            background: #F3F4F6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #9ca3af;
+        }
+        .vc-avatar svg {
+            width: 30px;
+            height: 30px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .vc-attr {
@@ -824,8 +849,9 @@
             font-weight: bold;
             color: var(--text-muted);
             letter-spacing: 0.05em;
-            margin-bottom: 10px;
+            margin-bottom: 0; /* アイコン横なのでマージン削除 */
             display: block;
+            line-height: 1.6;
         }
 
         /* キャッチコピー */
@@ -1491,12 +1517,26 @@
         align-items: stretch;
     }
     .vc-header {
+        /* ★修正: Flex方向をカラムに戻して中央揃え */
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        
         padding: 30px;
         border-right: 1px solid #eee;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
+    /* ★追加: PC表示時はアイコンサイズを大きく */
+    .vc-avatar {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+    }
+    .vc-avatar svg {
+        width: 40px;
+        height: 40px;
+    }
+    
     .vc-before-box {
         background: transparent;
         border: none;
@@ -1518,6 +1558,19 @@
     }
     .vc-header {
         border-right: none;
+        /* ★追加: 横並びに戻す */
+        flex-direction: row;
+        text-align: left;
+        justify-content: flex-start;
+    }
+    .vc-avatar {
+        margin-bottom: 0;
+        width: 50px;
+        height: 50px;
+    }
+    .vc-avatar svg {
+        width: 26px;
+        height: 26px;
     }
 }
 
@@ -1702,7 +1755,7 @@
 
     <section class="logic-section" id="pain" style="background-color: var(--bg-color);">
         <div class="container">
-            <h2 class="section-title">あなたは、自分の人生を<br>全力で生きていますか？</h2>
+            <h2 class="section-title">こんな葛藤を、抱えていませんか？</h2>
             <div class="logic-grid">
                 <div class="logic-item">
                     <span class="logic-number">Pain 01</span>
@@ -1791,7 +1844,7 @@
                     <h3>「自分の言葉」だけが、現実を変える<br>
                         <span style="font-size: 0.65em; font-weight: normal; font-family: sans-serif; color: #999; display:block; margin-top:5px;">[ 自己決定理論 / 一貫性の原理 ]</span>
                     </h3>
-                    <p style="flex-grow:1;">人は「他人から言われた言葉」には責任を持ちませんが、「自分で選んだ言葉（自律的動機）」に対しては、行動を一致させようとする強力な心理が働きます。これが推進力の源泉です。</p>
+                    <p style="flex-grow:1;">人は「他人から言われた言葉」には責任を持ちませんが、「自分で選んだ言葉（自律的動機）」に対しては、行動を一致させようとする強力な心理が働きます。コーチングでは、私があなたの「鏡」になり、あなたを動かします。</p>
                     <div class="logic-canvas-wrap">
                         <canvas id="canvas-logic-3"></canvas>
                         <p class="canvas-caption">内側から湧く言葉が、行動を生む</p>
@@ -1950,10 +2003,10 @@
                         </button>
                         <div class="acc-content">
                             <div class="acc-inner">
-                                <h4 class="acc-h4">本質的な変化を呼び起こす、対等な関係を。</h4>
-								<p>極端に聞こえるかもしれませんが、強固な「協働関係（アライアンス）」さえあれば、人は本質的な変化に辿り着けると私は信じています。逆にこの土台がなければ、どんな高度なスキルを使っても機能しません。これは日々の仕事やパートナーシップでも同様ではないでしょうか。</p>
+                                <h4 class="acc-h4">本質的な変化を呼び起こす、協働関係を。</h4>
+								<p>極端に聞こえるかもしれませんが、強固な「協働関係」さえあれば、人は本質的な変化に辿り着けると私は信じています。逆にこの土台がなければ、どんな高度なスキルを使っても機能しません。これは日々の仕事やパートナーシップでも同様ではないでしょうか。</p>
 								<p>だからこそ、私はこの関係性を何よりも大切にします。旅の始まりだけでなく、進んでいく過程でも常に「今の関係性は機能しているか？」を共に確認します。もし違和感があれば、遠慮なく伝えてください。関係性を結び直すことや、時には他の信頼できるコーチを紹介するなど、あなたの変化のために最善を尽くします。</p>
-                                <p>コーチングは、コーチが一方的にアドバイスをする場ではありません。あなたの人生の専門家は、あなた自身です。コーチは鏡となり、壁打ち相手となり、時に共犯者となります。</p>
+                                <p>コーチングは、コーチが一方的にアドバイスをする場ではありません。あなたの人生の専門家は、あなた自身です。コーチは鏡となり、壁打ち相手となり、共に歩むパートナーとなります。</p>
                                 <p>日常の会話（上司や友人）と、コーチングの対話は、前提となる「関わり方」が大きく異なります。</p>
                                 
                                 <div class="comparison-box">
@@ -1972,7 +2025,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p style="text-align:center; font-size:0.85rem; color:#999; margin-top:10px;">この強固な協働関係（アライアンス）こそが、変化の土台となります。</p>
+                                <p style="text-align:center; font-size:0.85rem; color:#999; margin-top:10px;">この強固な「協働関係」こそが、変化の土台となります。</p>
                             </div>
                         </div>
                     </div>
@@ -1987,7 +2040,7 @@
                             <div class="acc-inner">
                                 <h4 class="acc-h4">日常の延長線上にはない、「非日常」の作法を学ぶ。</h4>
                                 <p>普段の会話と同じ感覚でいると、コーチングの効果は半減してしまいます。なぜなら、日常の会話は「頭（思考）」で行われますが、本質的な変化は、頭ではわかっていないけれど体が反応していること、つまり「身体感覚」や「感情」の中に隠れているからです。</p>
-                                <p>このセッションでは、論理的な言葉だけでなく、比喩（メタファー）を使ったり、体の奥にある微細な声に耳を傾けたりと、普段とは全く違う脳の使い方をします。</p>
+                                <p>コーチングの時間では、論理的な言葉だけでなく、比喩（メタファー）を使ったり、体の奥にある微細な声に耳を傾けたりと、普段とは全く違う脳の使い方をします。</p>
                                 <p>科学的にも、人間は思考よりも先に体が反応することがわかっています。「頭ではなく、体に聞く」。この効果的な受け方を最初に学び、随時実践していくことで、あなたの内側から想定外の答えが引き出されるようになります。</p>
                             </div>
                         </div>
@@ -2017,7 +2070,7 @@
                         <div class="acc-content">
                             <div class="acc-inner">
                                 <h4 class="acc-h4">コーチングの旅を「車の運転」に例えると。</h4>
-                                <p>Co-Active®モデルに則り、今抱えている悩みを題材にして、本当の自分に繋がる旅をします。コーチは、状況に応じて以下の3つの視点（関わり方）を使い分け、あなたが全力を出せる状態へと導きます。</p>
+                                <p>Co-Active®モデルに則り、今抱えている悩み（テーマ）を題材にして、本当の自分に繋がる旅をします。コーチは、状況に応じて以下の3つの視点（関わり方）を使い分け、あなたが全力を出せる状態へと導きます。</p>
                                 <div class="method-list">
                                     <div class="method-item">
                                         <svg class="method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -2103,6 +2156,14 @@
                     
                     <div class="voice-card">
                         <div class="vc-header">
+                            <div class="vc-avatar" style="background-color: #E6EEF5; color: #6B8B9E;">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                                </svg>
+                            </div>
                             <span class="vc-attr">30代 IT / プロジェクトマネージャー</span>
                         </div>
                         <div class="vc-before-box">
@@ -2132,6 +2193,12 @@
 
                     <div class="voice-card">
                         <div class="vc-header">
+                            <div class="vc-avatar" style="background-color: #F5E6E6; color: #9E6B6B;">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
                             <span class="vc-attr">50代 経営者</span>
                         </div>
                         <div class="vc-before-box">
@@ -2161,6 +2228,14 @@
 
                     <div class="voice-card">
                         <div class="vc-header">
+                            <div class="vc-avatar" style="background-color: #E6F5E8; color: #6B9E72;">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                                </svg>
+                            </div>
                             <span class="vc-attr">40代 人事職 / マネージャー</span>
                         </div>
                         <div class="vc-before-box">
@@ -2190,6 +2265,12 @@
 
                     <div class="voice-card">
                         <div class="vc-header">
+                            <div class="vc-avatar" style="background-color: #F5F1E6; color: #9E8B6B;">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
                             <span class="vc-attr">30代 企画職</span>
                         </div>
                         <div class="vc-before-box">
@@ -2204,7 +2285,7 @@
                                 <div class="vc-row">
                                     <span class="vc-label accent">私（星野直道）を一言で言うと？</span>
                                     <div class="vc-content">
-                                        「どこまでも真っ直ぐで、日常にいたら『面倒くさい』部類の人かもしれません（笑）」でも、彼が自身の「人生の目的」を語ってくれた時、理屈抜きで体が震えて涙が出ました。「こんなに覚悟を持って生きてる人がいる」。自分もこう生きたいと、突き動かされました。
+                                        「どこまでも真っ直ぐで、日常にいたら『面倒くさい』部類の人かもしれません」でも、彼が自身の「人生の目的」を語ってくれた時、理屈抜きで体が震えて涙が出ました。「こんなに覚悟を持って生きてる人がいる」。自分もこう生きたいと、突き動かされました。
                                     </div>
                                 </div>
                                 <div class="vc-row">
@@ -2219,6 +2300,14 @@
 
                     <div class="voice-card">
                         <div class="vc-header">
+                            <div class="vc-avatar" style="background-color: #F8E6F0; color: #9E6B8A;">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                                </svg>
+                            </div>
                             <span class="vc-attr">30代 フリーランス / コーチ</span>
                         </div>
                         <div class="vc-before-box">
@@ -2248,6 +2337,12 @@
 
                     <div class="voice-card">
                         <div class="vc-header">
+                            <div class="vc-avatar" style="background-color: #E6EFF5; color: #6B7C9E;">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
                             <span class="vc-attr">50代 営業職 / マネージャー</span>
                         </div>
                         <div class="vc-before-box">
@@ -2277,6 +2372,14 @@
 
                     <div class="voice-card">
                         <div class="vc-header">
+                            <div class="vc-avatar" style="background-color: #F1F5E6; color: #8C9E6B;">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                                </svg>
+                            </div>
                             <span class="vc-attr">40代 研究職</span>
                         </div>
                         <div class="vc-before-box">
@@ -2306,6 +2409,12 @@
 
                     <div class="voice-card">
                         <div class="vc-header">
+                            <div class="vc-avatar" style="background-color: #F5EBE6; color: #9E7A6B;">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
                             <span class="vc-attr">40代 休職中</span>
                         </div>
                         <div class="vc-before-box">
