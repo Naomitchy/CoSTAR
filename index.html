@@ -1253,6 +1253,10 @@
             padding: 12px 25px; font-size: 0.9rem; min-width: auto;
         }
 
+        /* --- Hero Line Break Logic --- */
+        .hero-sp-br { display: none; }
+        .hero-pc-br { display: inline; }
+
         @media (max-width: 900px) {
             .container { padding: 0 25px; }
             .message-section::before { background-attachment: scroll; }
@@ -1394,6 +1398,10 @@
             .logbook-date {
                 flex: 0 0 auto;
             }
+            
+            /* Hero Break Logic Mobile */
+            .hero-sp-br { display: inline; }
+            .hero-pc-br { display: none; }
         }
 		/* --- Step List Styles (New) --- */
         .step-list-container {
@@ -1608,9 +1616,9 @@
             <div class="logo"><a href="index.html">CoSTAR</a></div>
             <nav class="pc-nav">
                 <a href="#hero" class="pc-nav-link">TOP</a>
+				<a href="#profile" class="pc-nav-link">PROFILE</a>
                 <a href="#services" class="pc-nav-link">SERVICES</a>
                 <a href="#leadership-program" class="pc-nav-link">PROGRAM</a>
-                <a href="#profile" class="pc-nav-link">PROFILE</a>
                 <a href="#faq" class="pc-nav-link">FAQ</a>
             </nav>
             <div class="nav-actions">
@@ -1626,9 +1634,9 @@
         <div class="sp-menu-close" id="sp-menu-close">&times;</div>
         <nav class="sp-nav">
             <a href="#hero" class="sp-nav-link"><span class="en">TOP</span><span class="ja">トップ</span></a>
+			<a href="#profile" class="sp-nav-link"><span class="en">PROFILE</span><span class="ja">プロフィール</span></a>
             <a href="#services" class="sp-nav-link"><span class="en">SERVICES</span><span class="ja">提供サービス</span></a>
             <a href="#leadership-program" class="sp-nav-link"><span class="en">PROGRAM</span><span class="ja">プログラム詳細</span></a>
-            <a href="#profile" class="sp-nav-link"><span class="en">PROFILE</span><span class="ja">プロフィール</span></a>
             <a href="#logbook" class="sp-nav-link"><span class="en">LOGBOOK</span><span class="ja">日々の記録</span></a>
             <a href="#faq" class="sp-nav-link"><span class="en">FAQ</span><span class="ja">よくある質問</span></a>
             <a href="#contact" class="sp-nav-link"><span class="en">CONTACT</span><span class="ja">お問い合わせ</span></a>
@@ -1650,8 +1658,13 @@
             </h1>
             
             <div style="font-family: 'Shippori Mincho', serif; color: var(--text-color);">
-                <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 5px;">CoSTAR代表 星野直道</p>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">米国CTI認定プロフェッショナルコーチ</p>
+                <p style="font-size: 1.0rem; font-weight: 600; margin-bottom: 5px; line-height: 1.8;">
+                    空気を読んで、正解を選んで、誰かの期待に<br class="hero-sp-br">
+                    応え続ける人生。<br class="hero-pc-br">
+                    それで得た成功に、<br class="hero-sp-br">
+                    あなたの魂は震えていますか？
+                </p>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">CoSTAR代表 星野直道</p>
             </div>
 
         </div>
@@ -1744,6 +1757,23 @@
         </section>
     </div>
 
+    <section class="container" id="profile">
+        <h2 class="section-title">Profile</h2>
+        <div class="profile-flex">
+            <div class="profile-img">
+                <img src="./IMG_6140.jpg" alt="星野 直道" style="width:100%; height:100%; object-fit: cover;">
+            </div>
+            <div class="profile-text">
+                <p style="color: var(--accent-color); font-weight: bold; margin-bottom: 5px; margin-top:10px; letter-spacing: 0.1em;">CoSTAR 代表</p>
+                <h3>星野 直道 / Hoshino Naomichi</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px;">米国CTI認定 CPCC / 国際コーチング連盟 ICF認定 ACC</p>
+                <p>1982年生まれ。大手IT企業、石油元売（出光興産）のIT部門にてPM、組織リーダー、生成AI組織立ち上げを歴任。自身のリーダーシップへの葛藤からコーチングと出会う。</p>
+                <p>私自身、「価値がない」と否定し隠してきた部分こそが、人生を動かす最もパワフルなリソースであることを体感しました。</p>
+                <p>私は、あなたが目を背けてしまいそうな「底知れぬ可能性」に、共に光を当て続けます。私の「全力」の在り方を踏み台にして、リミッターを外してください。</p>
+            </div>
+        </div>
+    </section>
+
     <section class="logic-section" id="pain" style="background-color: var(--bg-color);">
         <div class="container">
             <h2 class="section-title">こんな葛藤を、<br class="pc-only">抱えていませんか？</h2>
@@ -1801,7 +1831,7 @@
         <div class="container">
             <h2 class="section-title">人が本質的に変わる理由</h2>
             <p style="text-align: center; max-width: 700px; margin: 0 auto 60px; color: var(--text-muted); line-height: 1.8;">
-                なぜ、本を読んでも、コンサルタントのアドバイスを受けても、人生が変わらないのか。<br>
+                なぜ、本を読んでも、周りからのアドバイスを受けても、人生が変わらないのか。<br>
                 そこには、人間の「脳と心の仕組み」に基づいた明確な理由があります。
             </p>
             
@@ -1832,7 +1862,7 @@
 
                 <div class="logic-item" style="display:flex; flex-direction:column;">
                     <span class="logic-number">Logic 03</span>
-                    <h3>「自分の言葉」が、変える<br>
+                    <h3>「自分の言葉」で変える<br>
                         <span style="font-size: 0.65em; font-weight: normal; font-family: sans-serif; color: #999; display:block; margin-top:5px;">[ 自己決定理論 / 一貫性の原理 ]</span>
                     </h3>
                     <p style="flex-grow:1;">人は「他人から言われた言葉」よりも、「自分で選んだ言葉（自律的動機）」に対して、行動を一致させようとする心理が働きます。コーチングでは、私があなたの「鏡」になり、あなたを動かします。</p>
@@ -2546,8 +2576,9 @@
                         <button class="btn btn-primary" onclick="openModal('application', '体験セッション')">無料体験セッション申込</button>
                     </div>
 
-                    <p style="font-size:0.9rem; color:#d9534f; font-weight:bold; margin-top: 40px;">
-                        ※本契約は、必ず「体験セッション」を経て、双方が合意した場合のみ締結されます。
+                    <p style="font-size: 0.8rem; margin-top: 10px; display: block;">
+                        ※無理な勧誘や引き止めは一切行いません。<br>
+						「違和感があれば断る」つもりで、気軽にお越しください。
                     </p>
                 </div>
 
@@ -2558,23 +2589,6 @@
                         よりご相談ください。
                     </p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container" id="profile">
-        <h2 class="section-title">Profile</h2>
-        <div class="profile-flex">
-            <div class="profile-img">
-                <img src="./IMG_6140.jpg" alt="星野 直道" style="width:100%; height:100%; object-fit: cover;">
-            </div>
-            <div class="profile-text">
-                <p style="color: var(--accent-color); font-weight: bold; margin-bottom: 5px; margin-top:10px; letter-spacing: 0.1em;">CoSTAR 代表</p>
-                <h3>星野 直道 / Hoshino Naomichi</h3>
-                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px;">国際コーチング連盟 ICF認定 ACC</p>
-                <p>1982年生まれ。大手IT企業、石油元売（出光興産）のIT部門にてPM、組織リーダー、生成AI組織立ち上げを歴任。自身のリーダーシップへの葛藤からコーチングと出会う。</p>
-                <p>私自身、「価値がない」と否定し隠してきた部分こそが、人生を動かす最もパワフルなリソースであることを体感しました。</p>
-                <p>私は、あなたが目を背けてしまいそうな「底知れぬ可能性」に、共に光を当て続けます。私の「全力」の在り方を踏み台にして、リミッターを外してください。</p>
             </div>
         </div>
     </section>
@@ -2809,7 +2823,7 @@
                     nContent.innerHTML = `
                       <p style="margin-top:0; margin-bottom:10px;">
                         頭ではなく「体でコーチングを理解」いただくための60分のセッションです。<br>
-                        <span style="font-weight:bold; color:#d9534f;">通常5,000円のところ、初回無料で実施いたします。</span>
+				      <span style="font-weight:bold; color:#d9534f;">通常11,000円のところ、初回無料で実施いたします。</span>
                       </p>
                       <ul style="padding-left:20px; margin:0; font-size:0.85rem; color:#555;">
                         <li>現在の役割・状況、これまでの歩みをざっくばらんにお話しいただきます。</li>
