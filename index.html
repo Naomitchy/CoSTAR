@@ -1605,6 +1605,84 @@
     margin-top: 8px;
     font-weight: normal;
 }
+
+/* --- Interview Style for Story Modal --- */
+.interview-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: left;
+}
+
+.interview-row {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 質問者 */
+.interview-q {
+    background: #f9f9f9;
+    padding: 15px 20px;
+    border-radius: 8px;
+    position: relative;
+    margin-right: 15%; /* 右側に余白 */
+    border-left: 4px solid #ddd;
+}
+.q-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #999;
+    margin-bottom: 5px;
+    display: block;
+}
+.interview-q p {
+    margin: 0;
+    font-weight: bold;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+/* 回答者（星野さん） */
+.interview-a {
+    display: flex;
+    gap: 20px;
+    margin-left: 20px; /* 少しインデント */
+    align-items: flex-start;
+}
+.a-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.a-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.a-text {
+    flex: 1;
+}
+.a-text p {
+    margin: 0 0 15px 0;
+    line-height: 1.8;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+.a-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+    .interview-q { margin-right: 0; }
+    .interview-a { margin-left: 0; gap: 15px; }
+    .a-icon { width: 40px; height: 40px; }
+}
     </style>
 </head>
 <body>
@@ -1768,8 +1846,12 @@
                 <h3>星野 直道 / Hoshino Naomichi</h3>
                 <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px;">米国CTI認定 CPCC / 国際コーチング連盟 ICF認定 ACC</p>
                 <p>1982年生まれ。大手IT企業、石油元売（出光興産）のIT部門にてPM、組織リーダー、生成AI組織立ち上げを歴任。自身のリーダーシップへの葛藤からコーチングと出会う。</p>
-                <p>私自身、「価値がない」と否定し隠してきた部分こそが、人生を動かす最もパワフルなリソースであることを体感しました。</p>
-                <p>私は、あなたが目を背けてしまいそうな「底知れぬ可能性」に、共に光を当て続けます。私の「全力」の在り方を踏み台にして、リミッターを外してください。</p>
+                <p>私自身、「価値がない」と否定し隠してきた部分こそが、人生を動かす最もパワフルなリソースであることを体感しました。私は、あなたが目を背けてしまいそうな「底知れぬ可能性」に、共に光を当て続けます。私の「全力」の在り方を踏み台にして、リミッターを外してください。</p>                
+                <div style="margin-top: 30px;">
+                    <button class="btn btn-outline" onclick="openModal('story')" style="padding: 10px 30px; font-size: 0.9rem;">
+                        私がコーチになった理由を読む
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -2692,8 +2774,169 @@
             <div style="text-align:center;"><button type="submit" class="btn btn-primary">同意して送信する</button></div>
         </form>
     </div></div>
-	
-    <script>
+    
+    <div id="modal-story" class="modal">
+<div class="modal-content" style="max-width: 800px;">
+        <span class="close-btn" onclick="closeModal('story')">&times;</span>
+        
+        <h2 class="section-title" style="font-size: 1.6rem; margin-bottom: 40px;">My Story<br><span style="font-size:0.9rem; font-family: sans-serif; font-weight:normal; letter-spacing:0.05em; color:#999;">私がコーチになった理由</span></h2>
+
+        <div class="interview-container">
+            <div class="interview-row">
+                <div class="interview-q">
+                    <span class="q-badge">Q1</span>
+                    <p>そもそも、なぜ「コーチ」になろうと思ったのですか？</p>
+                </div>
+                <div class="interview-a">
+                    <div class="a-icon"><img src="./IMG_6140.jpg" alt="星野"></div>
+                    <div class="a-text">
+                        <p><strong>正直に申し上げると、最初は、すごく現実的で「お金を稼ぎたかったから」なんです。</strong></p>
+                        <p>当時、離婚問題など私生活のゴタゴタもあって、「会社に頼らず、自分一人の力で生きていけるようになりたい」という危機感が強かったんです。それに、会社員として自分の実力以上の給料をもらっているような感覚がずっとあって、それがなんとなく気持ち悪かった。「会社の看板を外して、自分一人でどこまで通用するのか試したい」という思いが強かったんです。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interview-row">
+                <div class="interview-q">
+                    <span class="q-badge">Q</span>
+                    <p>稼ぐ手段は他にもある中で、なぜ「コーチ」だったのでしょうか？</p>
+                </div>
+                <div class="interview-a">
+                    <div class="a-icon"><img src="./IMG_6140.jpg" alt="星野"></div>
+                    <div class="a-text">
+                     <p>それは、私自身が過去にある人からの「コーチング的な関わり」に救われて、どん底から復活した経験があったからなんです。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interview-row">
+                <div class="interview-q">
+                    <span class="q-badge">Q2</span>
+                    <p>その「復活劇」について、具体的に教えていただけますか？</p>
+                </div>
+                <div class="interview-a">
+                    <div class="a-icon"><img src="./IMG_6140.jpg" alt="星野"></div>
+                    <div class="a-text">
+                        <p>社会人5年目で、初めてプロジェクトリーダーを任された時のことです。<br>
+                        当時の私は、経験もないのに変にプライドだけ高くて……。年上のベテランメンバーに対して、「なんで遅れてるんですか？」と上から目線で管理ばかりしていました。自分の自信の無さを隠すために、虚勢を張っていたんですね。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interview-row">
+                <div class="interview-q">
+                    <span class="q-badge">Q</span>
+                    <p>現場の空気は悪くなりそうですね……。</p>
+                </div>
+                <div class="interview-a">
+                    <div class="a-icon"><img src="./IMG_6140.jpg" alt="星野"></div>
+                    <div class="a-text">
+                        <p>最悪でした。そのうち完全に無視されるようになって。</p>
+                        <p>ある日、トイレに行くふりをして、会議室の外に逃げ出しました。そうしたら壁越しに、私の口癖を真似して嘲笑する陰口を聞いてしまったんです。そこで心がポキッと折れました。それからは出勤途中の駅で吐き気がして動けなくなって……。1ヶ月間、会社に行ってもほぼ仕事ができず。でも、最後は上司に「無理でした」とギブアップ宣言をしました。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interview-row">
+                <div class="interview-q">
+                    <span class="q-badge">Q</span>
+                    <p>そこまで追い詰められていたとは。そこからどうやって立ち直ったんですか？</p>
+                </div>
+                <div class="interview-a">
+                    <div class="a-icon"><img src="./IMG_6140.jpg" alt="星野"></div>
+                    <div class="a-text">
+                        <p>私の後任として来てくれた「Aさん」という方が、私の恩人なんです。</p>
+                        <p>Aさんは、元気のない私を毎日ランチに連れ出してくれましたが、決して「もっとこうしろ」とかアドバイスやお説教はしませんでした。ただ横にいて、私が元気になるのを待ってくれていた。<br>
+                        そして、私が少し落ち着いた頃に、たった一言だけこう聞いてくれたんです。</p>
+						<p style="margin: 20px 0; font-weight: bold; color: var(--text-color); border-left: 3px solid var(--accent-color); padding-left: 15px;">
+                        「いま、どう思っているの？」</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interview-row">
+                <div class="interview-q">
+                    <span class="q-badge">Q</span>
+                    <p>アドバイスではなく、問いかけだったんですね。</p>
+                </div>
+                <div class="interview-a">
+                    <div class="a-icon"><img src="./IMG_6140.jpg" alt="星野"></div>
+                    <div class="a-text">
+                        <p>はい。その時、私は涙を流しながら<strong>「悔しい。逃げたくない」</strong>と本音をぶちまけました。Aさんはそれを聞いて、ただ頷いてくれた。</p>
+                        <p>不思議なもので、誰かに「この人は大丈夫だ」と信じて待ってもらえると、人って勝手に覚悟が決まるんですよね。そこからは別人のように働き、死にものぐるいでプロジェクトを完遂させました。「相手の中に答えがある」と信じて、横にいて、待つ。 Aさんがしてくれたことこそが、まさに「コーチング」的な関わりだったんです。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interview-row">
+                <div class="interview-q">
+                    <span class="q-badge">Q3</span>
+                    <p>その原体験を経て、実際にコーチングを学んでみて、何か変化はありましたか？</p>
+                </div>
+                <div class="interview-a">
+                    <div class="a-icon"><img src="./IMG_6140.jpg" alt="星野"></div>
+                    <div class="a-text">
+                        <p>大きな気づきがありました。それは、<strong>「自分の大切なものを大切にできていない『真犯人は自分』だった」</strong>ということです。</p>
+                        <p>私はずっと、自分が何を大切にしているのか、気づかないようにしていました。大切だと思っているものを表に出してしまったら、「笑われるかもしれない」「程度の低いことだと評価されるかもしれない」と怯えて、心の奥底に閉じ込めていたんです。</p>
+                        <p>でも、ある時、私の物語を聞いてくれていたコーチが、不意にこう言ったんです。</p>
+                        <p style="margin: 20px 0; font-weight: bold; color: var(--text-color); border-left: 3px solid var(--accent-color); padding-left: 15px;">
+                            「直感だけど聞いてもいいかな。<br>
+                            君は本当は、人を愛したいし愛されたいと願っているんじゃないか？」
+                        </p>
+                        <p>ガーン！と心が殴られたような衝撃でした。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interview-row">
+                <div class="interview-q">
+                    <span class="q-badge">Q</span>
+                    <p>図星だったんですね。</p>
+                </div>
+                <div class="interview-a">
+                    <div class="a-icon"><img src="./IMG_6140.jpg" alt="星野"></div>
+                    <div class="a-text">
+                        <p>はい。「相手を愛おしく感じたい、大切にしたい」と願っていたのに、そんなことは出来ない。「私は誰からも愛されていないのに、愛することなんて出来るはずもない」と決めつけていたのは私自身だったんです。</p>
+                        <p>そこで初めて、自分が大切にしている価値観を認めることができました。一度見つけてしまったら、もう人からどう思われようと気にならなくなる。今は我慢できず溢れてしまっています。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interview-row">
+                <div class="interview-q">
+                    <span class="q-badge">Q4</span>
+                    <p>最後に。「あなたはどんなコーチですか？」と聞かれたら、どう答えますか？</p>
+                </div>
+                <div class="interview-a">
+                    <div class="a-icon"><img src="./IMG_6140.jpg" alt="星野"></div>
+                    <div class="a-text">
+                        <p>
+                        私は、他人が他人に思えない自分がいます。<br>
+                        あなたが自分のことを小さく見ている時、私は自分のことのように悲しくなります。<br>
+                        だからこそ、
+                        </p>
+                        <p style="font-size: 1.1rem; font-weight: bold; color: var(--accent-color); margin-top: 15px; line-height: 1.8;">
+                            クライアントの「大切なものをクライアント以上に大切にする」ために、<br>
+                            私の命・リソースを全て使うプロフェッショナルコーチです。
+                        </p>
+                        <p style="margin-top: 15px;">
+                            あなたが心の奥底に隠している「大切なもの」を、私と一緒に見つけに行きましょう。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px dashed #ddd;">
+            <p style="margin-bottom: 20px; font-weight: bold;">あなたの物語も、ここから始めませんか？</p>
+            <button class="btn btn-primary" onclick="closeModal('story'); openModal('application', '体験セッション');">
+                体験セッションに申し込む
+            </button>
+        </div>
+
+    </div>
+</div>
+<script>
         // GLOBAL FUNCTION FOR VOICE ACCORDION
         function toggleVoice(btn) {
             const details = btn.nextElementSibling;
