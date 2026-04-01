@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NSJK8WXM');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NSJK8WXM');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Coaching Lab | CoSTAR</title>
 
@@ -21,22 +25,25 @@
     <meta name="twitter:description" content="飲み込んだ「願い」が、クライアントを震わせる武器になる。コーチのための、コーチ「覚醒」プログラム。星野 直道">
     <meta name="twitter:image" content="https://costar-works.com/IMG_6140.jpg">
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22><path fill=%22%23B8962E%22 d=%22M256 0L334.24 177.76L512 256L334.24 334.24L256 512L177.76 334.24L0 256L177.76 177.76L256 0Z%22/></svg>">
-    
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22><path fill=%22%23B8962E%22 d=%22M256 0L334.24 177.76L512 256L334.24 334.24L256 512L177.76 334.24L0 256L177.76 177.76L256 0Z%22/></svg>">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
-            --bg-color: #F9FAFB; 
+            --bg-color: #F9FAFB;
             --bg-gradient: radial-gradient(circle at center top, #FFFFFF 0%, #F3F4F6 100%);
-            --text-color: #333333; 
+            --text-color: #333333;
             --text-muted: #666666;
             --accent-color: #B8962E;
             --accent-color-light: rgba(184, 150, 46, 0.1);
             --urgent-color: #d9534f;
-            --secondary-bg: #FFFFFF; 
+            --secondary-bg: #FFFFFF;
             --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             --card-shadow-hover: 0 20px 40px rgba(184, 150, 46, 0.15);
         }
@@ -53,14 +60,25 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, .logo, .hero-content p, .sp-nav-link, .package-title, .logic-title {
+        h1,
+        h2,
+        h3,
+        .logo,
+        .hero-content p,
+        .sp-nav-link,
+        .package-title,
+        .logic-title {
             font-family: "Shippori Mincho", serif;
         }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
         .container {
-            max-width: 1000px; 
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
             position: relative;
@@ -76,9 +94,10 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
             transition: all 0.3s ease;
         }
+
         .nav-flex {
             display: flex;
             justify-content: space-between;
@@ -87,6 +106,7 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
@@ -94,12 +114,14 @@
             letter-spacing: 0.1em;
             flex-shrink: 0;
         }
+
         .pc-nav {
             display: flex;
             gap: 25px;
             margin-left: auto;
             margin-right: 40px;
         }
+
         .pc-nav-link {
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -108,6 +130,7 @@
             position: relative;
             padding-bottom: 5px;
         }
+
         .pc-nav-link::after {
             content: '';
             position: absolute;
@@ -118,11 +141,14 @@
             background-color: var(--accent-color);
             transition: width 0.3s ease;
         }
+
         .pc-nav-link:hover::after,
         .pc-nav-link.active::after {
             width: 100%;
         }
-        .pc-nav-link:hover, .pc-nav-link.active {
+
+        .pc-nav-link:hover,
+        .pc-nav-link.active {
             color: var(--accent-color);
         }
 
@@ -145,7 +171,12 @@
             white-space: nowrap;
             transition: all 0.3s ease;
         }
-        .nav-btn:hover { background-color: var(--text-color); color: #fff; transform: translateY(-2px); }
+
+        .nav-btn:hover {
+            background-color: var(--text-color);
+            color: #fff;
+            transform: translateY(-2px);
+        }
 
         /* --- Floating CTA (New) --- */
         .floating-cta {
@@ -162,32 +193,37 @@
             gap: 10px;
             align-items: flex-end;
         }
+
         .floating-cta.visible {
             opacity: 1;
             transform: translateY(0);
             pointer-events: all;
         }
+
         .page-top-btn {
             width: 50px;
             height: 50px;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255, 255, 255, 0.9);
             border: 1px solid #eee;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--accent-color);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: all 0.3s ease;
         }
+
         .page-top-btn:hover {
             transform: translateY(-5px);
             background: var(--accent-color);
             color: #fff;
         }
+
         .sp-fixed-entry {
-            display: none; /* Mobile only */
+            display: none;
+            /* Mobile only */
         }
 
         /* --- Animations (New) --- */
@@ -196,6 +232,7 @@
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
+
         .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
@@ -209,6 +246,7 @@
             font-weight: bold;
             padding: 0 2px;
         }
+
         .scroll-marker.visible {
             background: linear-gradient(transparent 65%, rgba(184, 150, 46, 0.25) 65%);
             background-size: 100% 100%;
@@ -225,14 +263,27 @@
             position: relative;
             overflow: hidden;
         }
-        #resonance-canvas { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            z-index: 1; pointer-events: none; display: block;
+
+        #resonance-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            display: block;
         }
+
         .hero-content {
-            position: relative; z-index: 2; max-width: 800px; margin: 0 auto; padding: 0 20px;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
             animation: fadeIn 2s ease-out;
         }
+
         .hero-content .sub-title {
             font-size: 1.2rem;
             color: var(--accent-color);
@@ -241,13 +292,23 @@
             display: block;
             font-weight: 600;
         }
+
         .hero-content h1 {
-            font-size: 3.5rem; font-weight: 600; margin-bottom: 30px; line-height: 1.5;
-            letter-spacing: 0.1em; color: var(--text-color); 
-            text-shadow: 2px 2px 0px #fff, 0 0 20px rgba(255,255,255,0.8);
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            letter-spacing: 0.1em;
+            color: var(--text-color);
+            text-shadow: 2px 2px 0px #fff, 0 0 20px rgba(255, 255, 255, 0.8);
         }
+
         .hero-content .tagline {
-            font-size: 1.2rem; color: var(--text-muted); font-weight: 500; letter-spacing: 0.1em; line-height: 1.8;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            line-height: 1.8;
         }
 
         .hero-btn {
@@ -258,14 +319,15 @@
             border-radius: 40px;
             color: var(--accent-color);
             background: transparent;
-            font-family: "Noto Sans JP", sans-serif; 
-            font-weight: 700; 
+            font-family: "Noto Sans JP", sans-serif;
+            font-weight: 700;
             font-size: 1rem;
             letter-spacing: 0.15em;
             text-decoration: none;
             transition: all 0.4s ease;
             position: relative;
         }
+
         .hero-btn:hover {
             background-color: var(--accent-color);
             color: #FFFFFF;
@@ -275,141 +337,424 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        section { padding: 80px 0; scroll-margin-top: 80px; } /* For smooth scroll anchor */
-        .section-title {
-            text-align: center; font-size: 1.8rem; margin-bottom: 50px; color: var(--text-color);
-            letter-spacing: 0.15em; position: relative; font-family: "Shippori Mincho", serif; font-weight: 600;
+        section {
+            padding: 80px 0;
+            scroll-margin-top: 80px;
         }
+
+        /* For smooth scroll anchor */
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 50px;
+            color: var(--text-color);
+            letter-spacing: 0.15em;
+            position: relative;
+            font-family: "Shippori Mincho", serif;
+            font-weight: 600;
+        }
+
         .section-title::after {
-            content: ""; display: block; width: 40px; height: 2px;
-            background-color: var(--accent-color); margin: 20px auto 0;
+            content: "";
+            display: block;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+            margin: 20px auto 0;
         }
 
         /* --- Message Section (Improved) --- */
-        .message-section { 
+        .message-section {
             background-color: #FDFBF7;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
             background-repeat: repeat;
             position: relative;
         }
+
         /* Subtle Depth effect */
         .message-section::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 200px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
             background: linear-gradient(to bottom, #fff, transparent);
             pointer-events: none;
         }
 
-        .message-box { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            font-size: 1.1rem; 
-            line-height: 2.2; 
-            text-align: center; 
+        .message-box {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 2.2;
+            text-align: center;
         }
-        .message-box p { margin-bottom: 2em; }
-        
+
+        .message-box p {
+            margin-bottom: 2em;
+        }
+
         /* --- Pain & Logic Section (Card Interactions) --- */
-        .pain-section { background-color: var(--bg-color); }
-        .pain-grid, .logic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; }
-        
-        .pain-item, .logic-item { 
-            text-align: left; padding: 25px 20px; 
+        .pain-section {
+            background-color: var(--bg-color);
+        }
+
+        .pain-grid,
+        .logic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .pain-item,
+        .logic-item {
+            text-align: left;
+            padding: 25px 20px;
             border-radius: 8px;
             border: 1px solid transparent;
             background: transparent;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-        
+
         /* Card Hover Effect */
-        .pain-item:hover, .logic-item:hover {
+        .pain-item:hover,
+        .logic-item:hover {
             background: #fff;
             box-shadow: var(--card-shadow-hover);
             transform: translateY(-10px);
             border-color: rgba(184, 150, 46, 0.2);
         }
 
-        .pain-number, .logic-number { 
-            font-family: "Shippori Mincho", serif; color: var(--accent-color); 
-            font-size: 1.5rem; font-weight: bold; margin-bottom: 15px; 
-            display: block; border-bottom: 1px solid var(--accent-color); 
-            width: 2em; 
+        .pain-number,
+        .logic-number {
+            font-family: "Shippori Mincho", serif;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+            border-bottom: 1px solid var(--accent-color);
+            width: 2em;
             transition: width 0.3s ease;
         }
-        .pain-item:hover .pain-number, .logic-item:hover .logic-number {
+
+        .pain-item:hover .pain-number,
+        .logic-item:hover .logic-number {
             width: 3em;
         }
 
-        .pain-item h3, .logic-item h3 { 
-            font-size: 1.3rem; margin-bottom: 20px; color: var(--text-color); 
-            font-family: "Shippori Mincho", serif; font-weight: 600;
+        .pain-item h3,
+        .logic-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            font-family: "Shippori Mincho", serif;
+            font-weight: 600;
         }
-        .pain-item p, .logic-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
+
+        .pain-item p,
+        .logic-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
 
         /* --- Benefit Section (Awakening) - Updated to match index.html --- */
-        .ba-section { background-color: #FFFFFF; padding: 100px 0; overflow: hidden; position: relative; }
-        .resonance-container { position: relative; width: 100%; min-height: 580px; display: flex; align-items: center; justify-content: center; }
-        .resonance-svg { position: absolute; width: 100%; height: 100%; max-width: 1200px; z-index: 1; pointer-events: none; }
-        .resonance-core { fill: var(--accent-color); filter: blur(30px); opacity: 0.35; animation: pulse-core 4s infinite ease-in-out; }
-        .resonance-orbit { fill: none; stroke: var(--accent-color); stroke-width: 0.4; stroke-dasharray: 4, 4; opacity: 0.15; }
-        .resonance-ring { fill: none; stroke: var(--accent-color); stroke-width: 0.6; opacity: 0; transform-origin: center; animation: expand-ring 8s infinite linear; }
-        .resonance-ring:nth-child(3) { animation-delay: 2.6s; }
-        .resonance-ring:nth-child(4) { animation-delay: 5.3s; }
-        @keyframes pulse-core { 0%, 100% { transform: scale(1); opacity: 0.25; } 50% { transform: scale(1.4); opacity: 0.5; } }
-        @keyframes expand-ring { 0% { transform: scale(0.1); opacity: 0; } 15% { opacity: 0.35; } 100% { transform: scale(2.5); opacity: 0; } }
-        .ba-huge-label { position: absolute; font-family: "Shippori Mincho", serif; font-size: 10rem; font-weight: 700; line-height: 1; color: rgba(184, 150, 46, 0.04); z-index: 0; pointer-events: none; user-select: none; letter-spacing: 0.1em; text-align: center; width: 100%; top: 50%; transform: translateY(-50%); }
-        .resonance-orbit-wrap { position: relative; width: 100%; height: 100%; max-width: 1100px; z-index: 2; }
-        .orbit-item { position: absolute; max-width: 340px; text-align: center; transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .ba-section {
+            background-color: #FFFFFF;
+            padding: 100px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .resonance-container {
+            position: relative;
+            width: 100%;
+            min-height: 580px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .resonance-svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            max-width: 1200px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .resonance-core {
+            fill: var(--accent-color);
+            filter: blur(30px);
+            opacity: 0.35;
+            animation: pulse-core 4s infinite ease-in-out;
+        }
+
+        .resonance-orbit {
+            fill: none;
+            stroke: var(--accent-color);
+            stroke-width: 0.4;
+            stroke-dasharray: 4, 4;
+            opacity: 0.15;
+        }
+
+        .resonance-ring {
+            fill: none;
+            stroke: var(--accent-color);
+            stroke-width: 0.6;
+            opacity: 0;
+            transform-origin: center;
+            animation: expand-ring 8s infinite linear;
+        }
+
+        .resonance-ring:nth-child(3) {
+            animation-delay: 2.6s;
+        }
+
+        .resonance-ring:nth-child(4) {
+            animation-delay: 5.3s;
+        }
+
+        @keyframes pulse-core {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.25;
+            }
+
+            50% {
+                transform: scale(1.4);
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes expand-ring {
+            0% {
+                transform: scale(0.1);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.35;
+            }
+
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+
+        .ba-huge-label {
+            position: absolute;
+            font-family: "Shippori Mincho", serif;
+            font-size: 10rem;
+            font-weight: 700;
+            line-height: 1;
+            color: rgba(184, 150, 46, 0.04);
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+            letter-spacing: 0.1em;
+            text-align: center;
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .resonance-orbit-wrap {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            max-width: 1100px;
+            z-index: 2;
+        }
+
+        .orbit-item {
+            position: absolute;
+            max-width: 340px;
+            text-align: center;
+            transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
         /* 固定ポジション用ホバー調整 */
-        .orbit-item:hover { transform: scale(1.03); }
-        .orbit-1 { top: 0%; left: 50%; transform: translateX(-50%); }
-        .orbit-1:hover { transform: translateX(-50%) scale(1.03); }
-        .orbit-2 { bottom: 0%; left: 0%; } 
-        .orbit-3 { bottom: 0%; right: 0%; } 
-        .orbit-item h4 { font-family: "Shippori Mincho", serif; font-size: 1.25rem; color: var(--accent-color); margin: 0 0 15px 0; font-weight: 700; letter-spacing: 0.05em; }
-        .orbit-item p { font-size: 0.9rem; line-height: 1.9; color: var(--text-color); margin: 0; text-align: justify; }
+        .orbit-item:hover {
+            transform: scale(1.03);
+        }
+
+        .orbit-1 {
+            top: 0%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .orbit-1:hover {
+            transform: translateX(-50%) scale(1.03);
+        }
+
+        .orbit-2 {
+            bottom: 0%;
+            left: 0%;
+        }
+
+        .orbit-3 {
+            bottom: 0%;
+            right: 0%;
+        }
+
+        .orbit-item h4 {
+            font-family: "Shippori Mincho", serif;
+            font-size: 1.25rem;
+            color: var(--accent-color);
+            margin: 0 0 15px 0;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .orbit-item p {
+            font-size: 0.9rem;
+            line-height: 1.9;
+            color: var(--text-color);
+            margin: 0;
+            text-align: justify;
+        }
 
 
         /* --- Solution/Logic Section --- */
-        .logic-section { background-color: var(--bg-color); padding-bottom: 80px; }
+        .logic-section {
+            background-color: var(--bg-color);
+            padding-bottom: 80px;
+        }
 
         /* --- Package Section --- */
-        .package-section { background-color: #FFFFFF; }
-        .package-container { 
-            max-width: 900px; margin: 0 auto; background: #fff; border: 1px solid var(--accent-color); border-radius: 4px; overflow: hidden;
+        .package-section {
+            background-color: #FFFFFF;
+        }
+
+        .package-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            overflow: hidden;
             box-shadow: var(--card-shadow);
             transition: all 0.4s ease;
         }
+
         .package-container:hover {
             box-shadow: var(--card-shadow-hover);
         }
 
-        .package-header { background: var(--accent-color); color: #fff; padding: 15px; text-align: center; font-weight: bold; font-size: 1.1rem; }
-        .package-body { padding: 40px; }
-        
-        .day-row { display: flex; gap: 30px; margin-bottom: 40px; align-items: flex-start; }
-        .day-badge { 
-            background: #f1f5f9; color: #334155; padding: 10px 15px; border-radius: 4px; font-weight: bold; 
-            min-width: 70px; text-align: center; font-size: 0.9rem;
+        .package-header {
+            background: var(--accent-color);
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
         }
-        .day-content h4 { margin: 0 0 10px 0; font-size: 1.25rem; color: var(--text-color); font-family: "Noto Sans JP", sans-serif; }
-        .day-content p { margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
-        
-        .package-divider { border-top: 1px dashed #ccc; margin: 40px 0; }
-        
-        .package-footer { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; }
-        .footer-notes { font-size: 0.85rem; color: var(--accent-color); line-height: 1.6; }
-        .footer-price { text-align: right; }
-        .price-original-small { color: #999; font-size: 0.9rem; display: block; margin-bottom: 5px; }
-        .price-campaign-box { color: var(--accent-color); font-weight: bold; }
-        .price-label-red { font-size: 1rem; margin-right: 5px; }
-        .price-value-large { font-size: 2.8rem; line-height: 1; }
-        .price-unit { font-size: 1.2rem; margin-left: 2px; }
+
+        .package-body {
+            padding: 40px;
+        }
+
+        .day-row {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .day-badge {
+            background: #f1f5f9;
+            color: #334155;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            min-width: 70px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .day-content h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.25rem;
+            color: var(--text-color);
+            font-family: "Noto Sans JP", sans-serif;
+        }
+
+        .day-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .package-divider {
+            border-top: 1px dashed #ccc;
+            margin: 40px 0;
+        }
+
+        .package-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-notes {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            line-height: 1.6;
+        }
+
+        .footer-price {
+            text-align: right;
+        }
+
+        .price-original-small {
+            color: #999;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .price-campaign-box {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .price-label-red {
+            font-size: 1rem;
+            margin-right: 5px;
+        }
+
+        .price-value-large {
+            font-size: 2.8rem;
+            line-height: 1;
+        }
+
+        .price-unit {
+            font-size: 1.2rem;
+            margin-left: 2px;
+        }
 
         /* --- FAQ Section --- */
         .faq-section {
@@ -417,28 +762,35 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
             background-repeat: repeat;
         }
+
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
         }
+
         .faq-item {
             background: #fff;
             margin-bottom: 20px;
             border-radius: 4px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
+
         .faq-item:hover {
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             transform: translateY(-2px);
         }
+
         .faq-item summary {
-            list-style: none; /* Hide default triangle */
+            list-style: none;
+            /* Hide default triangle */
         }
+
         .faq-item summary::-webkit-details-marker {
             display: none;
         }
+
         .faq-question {
             font-family: "Shippori Mincho", serif;
             font-weight: 600;
@@ -453,9 +805,11 @@
             line-height: 1.6;
             transition: background-color 0.2s;
         }
+
         .faq-question:hover {
             background-color: rgba(184, 150, 46, 0.03);
         }
+
         .faq-icon {
             color: var(--accent-color);
             font-weight: 300;
@@ -465,9 +819,11 @@
             transition: transform 0.3s ease;
             flex-shrink: 0;
         }
+
         details[open] .faq-icon {
             transform: rotate(45deg);
         }
+
         .faq-answer {
             padding: 0 30px 30px;
             color: var(--text-muted);
@@ -476,44 +832,108 @@
             border-top: 1px solid #f3f3f3;
             padding-top: 20px;
         }
+
         .faq-answer p {
             margin: 0;
         }
 
         /* --- Contact/Form Section --- */
-        .contact-section { background-color: var(--bg-color); }
-        .form-container { 
-            max-width: 700px; margin: 0 auto; background: #FFFFFF; 
-            padding: 50px; border-radius: 4px; box-shadow: var(--card-shadow);
+        .contact-section {
+            background-color: var(--bg-color);
         }
-        .form-group { margin-bottom: 25px; text-align: left; }
-        .form-label { display: block; margin-bottom: 10px; font-weight: bold; font-size: 0.95rem; color: var(--text-color); }
-        .form-input, .form-textarea, .form-select { 
-            width: 100%; padding: 15px; border: 1px solid #e5e7eb; 
-            background: #f9fafb; color: var(--text-color); border-radius: 4px; 
-            box-sizing: border-box; font-family: inherit; font-size: 1rem;
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            padding: 50px;
+            border-radius: 4px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e5e7eb;
+            background: #f9fafb;
+            color: var(--text-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 1rem;
             transition: border-color 0.3s;
         }
-        .form-input:focus, .form-textarea:focus, .form-select:focus {
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
             outline: none;
             border-color: var(--accent-color);
             background: #fff;
         }
-        
-        .datetime-row { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; }
-        .time-range { display: flex; align-items: center; gap: 5px; flex: 1; }
-        .time-range select { flex: 1; min-width: 0; cursor: pointer; }
 
-        .btn { 
-            display: inline-block; padding: 18px 60px; background: var(--accent-color); 
-            color: #fff; border-radius: 30px; font-weight: bold; border: none; 
-            cursor: pointer; transition: 0.3s; font-size: 1rem; letter-spacing: 0.1em;
+        .datetime-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 15px;
         }
-        .btn:hover { background: #9e8022; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(184, 150, 46, 0.2); }
 
-        footer { 
-            text-align: center; padding: 60px 0; background-color: #fff; 
-            color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid #f3f4f6;
+        .time-range {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex: 1;
+        }
+
+        .time-range select {
+            flex: 1;
+            min-width: 0;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 60px;
+            background: var(--accent-color);
+            color: #fff;
+            border-radius: 30px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .btn:hover {
+            background: #9e8022;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(184, 150, 46, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            background-color: #fff;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #f3f4f6;
         }
 
         /* --- Mentor Profile Section --- */
@@ -521,52 +941,68 @@
             background-color: #FFFFFF;
             padding: 80px 0;
         }
+
         .mentor-profile-wrapper {
             max-width: 800px;
             margin: 0 auto;
         }
+
         .mentor-profile-text {
             text-align: center;
         }
+
         .mentor-profile-text p {
             margin: 0 0 1.6em 0;
             font-size: 0.98rem;
             line-height: 2.0;
             color: var(--text-color);
         }
+
         .mentor-profile-meta {
             margin-top: 20px;
             padding-top: 15px;
             border-top: 1px solid #e5e7eb;
             text-align: right;
         }
+
         .mentor-profile-name {
             font-family: "Shippori Mincho", serif;
             font-size: 1.05rem;
             font-weight: 600;
             margin: 0 0 4px 0;
         }
+
         .mentor-profile-name span {
             font-size: 0.9rem;
             color: var(--text-muted);
         }
+
         .mentor-profile-title {
             margin: 0 0 8px 0;
             font-size: 0.9rem;
             color: var(--text-muted);
         }
+
         .mentor-profile-link {
             font-size: 0.9rem;
             color: var(--accent-color);
             text-decoration: underline;
         }
+
         .mentor-profile-link:hover {
             opacity: 0.8;
         }
 
         /* --- Mobile Optimization --- */
-        .sp-only { display: none; }
-        .pc-only { display: block; } /* PC default */
+        .sp-only {
+            display: none;
+        }
+
+        .pc-only {
+            display: block;
+        }
+
+        /* PC default */
 
         /* --- ハンバーガーメニュー用スタイル (Added) --- */
         .hamburger {
@@ -578,6 +1014,7 @@
             cursor: pointer;
             z-index: 1100;
         }
+
         .hamburger span {
             display: block;
             height: 1px;
@@ -598,31 +1035,35 @@
             z-index: 1050;
             flex-direction: column;
             justify-content: flex-start;
-            padding-top: 80px; 
+            padding-top: 80px;
             align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease;
             overflow-y: auto;
         }
-        .sp-menu-overlay.active { display: flex; opacity: 1; }
-        
-        .sp-nav { 
-            display: flex; 
-            flex-direction: column; 
+
+        .sp-menu-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .sp-nav {
+            display: flex;
+            flex-direction: column;
             width: 100%;
             max-width: 500px;
             padding: 0 40px;
             box-sizing: border-box;
             margin-bottom: 20px;
         }
-        
-        .sp-nav-link { 
+
+        .sp-nav-link {
             display: flex;
-            align-items: baseline; 
+            align-items: baseline;
             gap: 15px;
             text-decoration: none;
             padding: 10px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.06); 
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
             text-align: left;
             position: relative;
             opacity: 0;
@@ -644,16 +1085,34 @@
             color: var(--text-muted);
             letter-spacing: 0.05em;
             font-weight: 400;
-            margin-top: 0; 
+            margin-top: 0;
         }
 
         /* Animation Delays */
-        .sp-menu-overlay.active .sp-nav-link { opacity: 1; transform: translateY(0); }
-        .sp-menu-overlay.active .sp-nav-link:nth-child(1) { transition-delay: 0.05s; }
-        .sp-menu-overlay.active .sp-nav-link:nth-child(2) { transition-delay: 0.08s; }
-        .sp-menu-overlay.active .sp-nav-link:nth-child(3) { transition-delay: 0.11s; }
-        .sp-menu-overlay.active .sp-nav-link:nth-child(4) { transition-delay: 0.14s; }
-        .sp-menu-overlay.active .sp-nav-link:nth-child(5) { transition-delay: 0.17s; }
+        .sp-menu-overlay.active .sp-nav-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .sp-menu-overlay.active .sp-nav-link:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+
+        .sp-menu-overlay.active .sp-nav-link:nth-child(2) {
+            transition-delay: 0.08s;
+        }
+
+        .sp-menu-overlay.active .sp-nav-link:nth-child(3) {
+            transition-delay: 0.11s;
+        }
+
+        .sp-menu-overlay.active .sp-nav-link:nth-child(4) {
+            transition-delay: 0.14s;
+        }
+
+        .sp-menu-overlay.active .sp-nav-link:nth-child(5) {
+            transition-delay: 0.17s;
+        }
 
         .sp-menu-close {
             position: absolute;
@@ -667,14 +1126,37 @@
         }
 
         @media (max-width: 900px) {
-            .resonance-container { min-height: auto; padding: 40px 0; }
-            .ba-huge-label { display: none; }
-            .resonance-orbit-wrap { display: flex; flex-direction: column; gap: 80px; align-items: center; }
-            .orbit-item { position: static; transform: none !important; max-width: 600px; }
-            .orbit-item h4 { font-size: 1.05rem !important; white-space: nowrap; letter-spacing: -0.02em; }
+            .resonance-container {
+                min-height: auto;
+                padding: 40px 0;
+            }
+
+            .ba-huge-label {
+                display: none;
+            }
+
+            .resonance-orbit-wrap {
+                display: flex;
+                flex-direction: column;
+                gap: 80px;
+                align-items: center;
+            }
+
+            .orbit-item {
+                position: static;
+                transform: none !important;
+                max-width: 600px;
+            }
+
+            .orbit-item h4 {
+                font-size: 1.05rem !important;
+                white-space: nowrap;
+                letter-spacing: -0.02em;
+            }
         }
 
         @media (max-width: 1024px) {
+
             /* Enable Floating CTA on tablet/mobile */
             .sp-fixed-entry {
                 display: block;
@@ -688,69 +1170,140 @@
                 font-size: 0.9rem;
             }
         }
+
         @media (max-width: 768px) {
-            .hamburger { display: flex; } /* Added */
-            .sp-only { display: block; }
-            .pc-only { display: none !important; } 
-            .pc-nav { display: none; } 
-            
+            .hamburger {
+                display: flex;
+            }
+
+            /* Added */
+            .sp-only {
+                display: block;
+            }
+
+            .pc-only {
+                display: none !important;
+            }
+
+            .pc-nav {
+                display: none;
+            }
+
             /* --- Layout Fixes for Mobile Header Overflow --- */
-            .nav-flex { padding: 0 15px; } /* Reduce container padding */
-            .nav-actions { gap: 10px; } /* Reduce spacing */
-            .nav-btn { padding: 6px 12px; font-size: 0.75rem; } /* Compact button */
-            
-            .hero-content h1 { 
+            .nav-flex {
+                padding: 0 15px;
+            }
+
+            /* Reduce container padding */
+            .nav-actions {
+                gap: 10px;
+            }
+
+            /* Reduce spacing */
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 0.75rem;
+            }
+
+            /* Compact button */
+
+            .hero-content h1 {
                 font-size: 8.5vw;
-                line-height: 1.4; 
-                margin-bottom: 25px; 
-                white-space: nowrap; 
+                line-height: 1.4;
+                margin-bottom: 25px;
+                white-space: nowrap;
                 letter-spacing: 0;
             }
-            
+
             .hero-content .sub-title {
-                font-size: 4.5vw; 
+                font-size: 4.5vw;
                 white-space: nowrap;
             }
 
-            .hero-content .tagline { 
-                font-size: 3.6vw; 
-                line-height: 2.0; 
+            .hero-content .tagline {
+                font-size: 3.6vw;
+                line-height: 2.0;
             }
-            
-            .hero-btn { margin-top: 40px; padding: 12px 35px; font-size: 0.95rem; }
-            
-            .section-title { font-size: 1.2rem; line-height: 1.5; margin-bottom: 40px; }
-            
-            .message-box { text-align: left; } 
-            .message-box p { font-size: 0.95rem; line-height: 2.0; }
 
-            .package-body { padding: 30px 15px; }
-            
-            .day-row { 
-                flex-direction: column; 
-                gap: 12px; 
-                margin-bottom: 35px; 
+            .hero-btn {
+                margin-top: 40px;
+                padding: 12px 35px;
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+                line-height: 1.5;
+                margin-bottom: 40px;
+            }
+
+            .message-box {
+                text-align: left;
+            }
+
+            .message-box p {
+                font-size: 0.95rem;
+                line-height: 2.0;
+            }
+
+            .package-body {
+                padding: 30px 15px;
+            }
+
+            .day-row {
+                flex-direction: column;
+                gap: 12px;
+                margin-bottom: 35px;
                 align-items: flex-start;
             }
-            .day-badge { 
-                min-width: auto; 
-                width: fit-content; 
-                font-size: 0.8rem; 
-                padding: 4px 12px; 
+
+            .day-badge {
+                min-width: auto;
+                width: fit-content;
+                font-size: 0.8rem;
+                padding: 4px 12px;
             }
-            .day-content h4 { font-size: 1.2rem; margin-bottom: 8px; line-height: 1.4; }
-            .day-content p { font-size: 0.9rem; line-height: 1.8; }
-            
-            .price-value-large { font-size: 2.2rem; }
-            
-            .faq-question { padding: 15px 20px; font-size: 1rem; }
-            .faq-answer { padding: 0 20px 20px; }
 
-            .form-container { padding: 30px 20px; }
+            .day-content h4 {
+                font-size: 1.2rem;
+                margin-bottom: 8px;
+                line-height: 1.4;
+            }
 
-            .mentor-profile-text { text-align: left; }
-            .mentor-profile-text p { font-size: 0.9rem; line-height: 1.9; }
-            .mentor-profile-meta { text-align: left; }
+            .day-content p {
+                font-size: 0.9rem;
+                line-height: 1.8;
+            }
+
+            .price-value-large {
+                font-size: 2.2rem;
+            }
+
+            .faq-question {
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+
+            .faq-answer {
+                padding: 0 20px 20px;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .mentor-profile-text {
+                text-align: left;
+            }
+
+            .mentor-profile-text p {
+                font-size: 0.9rem;
+                line-height: 1.9;
+            }
+
+            .mentor-profile-meta {
+                text-align: left;
+            }
 
             .datetime-row {
                 flex-direction: column;
@@ -761,28 +1314,49 @@
                 border-radius: 8px;
                 border: 1px solid #eee;
             }
+
             .datetime-row input[type="date"] {
                 flex: none !important;
                 width: 100%;
                 margin-bottom: 5px;
             }
+
             .time-range {
                 width: 100%;
                 gap: 10px;
             }
         }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "The Coaching Lab - Coaching for Coaches",
+      "description": "コーチング実践者のための覚醒プログラム。スキル指導ではなく、コーチ自身の「あり方」を変革し、圧倒的な磁力を持つコーチングを実現する。",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "CoSTAR",
+        "url": "https://costar-works.com/"
+      },
+      "offers": {
+        "@type": "Offer",
+        "name": "The Coaching Lab 3回パッケージ",
+        "priceCurrency": "JPY"
+      }
+    }
+    </script>
 </head>
-<body>
+
 <body id="top">
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSJK8WXM"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSJK8WXM" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
 
     <header role="banner">
         <div class="nav-flex">
             <div class="logo"><a href="index.html">CoSTAR</a></div>
             <nav class="pc-nav" aria-label="メインナビゲーション">
-			    <a href="index.html" class="pc-nav-link" data-target="Home">HOME</a>
+                <a href="index.html" class="pc-nav-link" data-target="Home">HOME</a>
                 <a href="#message" class="pc-nav-link" data-target="message">CONCEPT</a>
                 <a href="#package" class="pc-nav-link" data-target="package">PROGRAM</a>
                 <a href="#faq" class="pc-nav-link" data-target="faq">FAQ</a>
@@ -827,7 +1401,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container hero-content">
             <span class="sub-title">Coaching for Coaches</span>
             <h1>The Coaching Lab</h1>
-            
+
             <p class="tagline pc-only">
                 飲み込んだ「願い」が、クライアントを震わせる武器になる。<br>
                 コーチのための、コーチ「覚醒」プログラム。
@@ -859,17 +1433,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="pain-item">
                     <span class="pain-number">01</span>
                     <h3>自分の衝動から守る「型」</h3>
-                    <p>「自分の衝動は、関係性を壊す」と思いこむあまり、「型」を守り、沈黙を待ち、きれいな質問を投げる。誰かに「正しい」と言ってもらいたいという欲求……でも、そこに「あなた」はいますか？ 減点されることに怯える一方で、誰よりもあなた自身が退屈していませんか。</p>
+                    <p>「自分の衝動は、関係性を壊す」と思いこむあまり、「型」を守り、沈黙を待ち、きれいな質問を投げる。誰かに「正しい」と言ってもらいたいという欲求……でも、そこに「あなた」はいますか？
+                        減点されることに怯える一方で、誰よりもあなた自身が退屈していませんか。</p>
                 </div>
                 <div class="pain-item">
                     <span class="pain-number">02</span>
                     <h3>コーチで在ること「不安」</h3>
-                    <p>ふと浮かんだ直感や、湧き上がる違和感。「こんなことを言ったら傷つけるかも」「コーチらしくないかも」と飲み込み続け、セッションが終わる頃には、「このままコーチングを続けていいのか…」と思い悩む。……でも一方で、コーチを諦めらきれない自分がいる。</p>
+                    <p>ふと浮かんだ直感や、湧き上がる違和感。「こんなことを言ったら傷つけるかも」「コーチらしくないかも」と飲み込み続け、セッションが終わる頃には、「このままコーチングを続けていいのか…」と思い悩む。……でも一方で、コーチを諦めらきれない自分がいる。
+                    </p>
                 </div>
                 <div class="pain-item">
                     <span class="pain-number">03</span>
                     <h3>成功パターンの「呪縛」</h3>
-                    <p>「感謝される」で満足できなくなっている。成功パターンにはめ込み、予測不能な事態を避けるために、無意識に自分がコントロールできる領域へと誘導していないか。かつて恐れながらも踏み込んでいたあの領域へ、もう一度行くのが怖くなっているのではないか。</p>
+                    <p>「感謝される」で満足できなくなっている。成功パターンにはめ込み、予測不能な事態を避けるために、無意識に自分がコントロールできる領域へと誘導していないか。かつて恐れながらも踏み込んでいたあの領域へ、もう一度行くのが怖くなっているのではないか。
+                    </p>
                 </div>
             </div>
         </div>
@@ -878,7 +1455,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section class="message-section" id="message">
         <div class="container">
             <h2 class="section-title">Message</h2>
-            
+
             <div class="message-box pc-only">
                 <p class="fade-up" style="font-weight: bold; font-size: 1.2rem; margin-bottom: 3em;">
                     ここは、あなたのコーチングを<br class="sp-only">「採点」する場ではありません。
@@ -918,7 +1495,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </p>
                 <p class="fade-up">
                     「あいつは変わった」と笑われることを恐れず、<br>
-					コーチとしての自分を100%生きる許可を、ここで共に。
+                    コーチとしての自分を100%生きる許可を、ここで共に。
                 </p>
             </div>
 
@@ -929,20 +1506,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <p class="fade-up">
                     私は、あなたの<span class="scroll-marker">「究極のクライアント」</span>として、あなたの前に立ちます。
                 </p>
-                <p class="fade-up">					
-					あなたが「変に思われるかも」と飲み込んできた違和感。「自分勝手かもしれない」と抑えてきた熱量。私という「鏡」は、それらを一切逃しません。
+                <p class="fade-up">
+                    あなたが「変に思われるかも」と飲み込んできた違和感。「自分勝手かもしれない」と抑えてきた熱量。私という「鏡」は、それらを一切逃しません。
                 </p>
                 <p class="fade-up">
-                    それらは決して、人を傷つける「凶器」ではありません。そこには、「本気で相手に関わりたい」 という純粋な<span class="scroll-marker">「願い」</span>が隠されているからです。
+                    それらは決して、人を傷つける「凶器」ではありません。そこには、「本気で相手に関わりたい」 という純粋な<span
+                        class="scroll-marker">「願い」</span>が隠されているからです。
                 </p>
                 <p class="fade-up">
                     究極的には、コーチングには「正解」なんてないのかもしれません。それは世間一般の正解はもとより、クライアントの中にさえ、まだ無いかもしれない。
-	            </p>
-                <p class="fade-up">				
-					でも、二人で関わり合いながら<strong>「正解にしていく」</strong>。コーチングとは、そんなプロセスそのものだと私は信じています。
                 </p>
                 <p class="fade-up">
-                    だからこそ、この「The Coaching Lab」は、型にはめるための矯正施設ではなく、あなたがあなた自身の魅力に気づきそれを使いこなすための<span class="scroll-marker">「あなただけのオリジナルな実験場（ラボ）」</span>です。
+                    でも、二人で関わり合いながら<strong>「正解にしていく」</strong>。コーチングとは、そんなプロセスそのものだと私は信じています。
+                </p>
+                <p class="fade-up">
+                    だからこそ、この「The Coaching Lab」は、型にはめるための矯正施設ではなく、あなたがあなた自身の魅力に気づきそれを使いこなすための<span
+                        class="scroll-marker">「あなただけのオリジナルな実験場（ラボ）」</span>です。
                 </p>
                 <p class="fade-up">
                     私が全力のクライアントとして、あなたの関わりに心が震えたか、何を受け取ったか。そのフィードバックを、一点の曇りもない鏡となってお返しします。
@@ -958,23 +1537,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container">
             <h2 class="section-title">
                 あなたのリミッターを<br>
-				外す3つのアプローチ
+                外す3つのアプローチ
             </h2>
             <div class="logic-grid">
                 <div class="logic-item">
                     <span class="logic-number">01</span>
                     <h3>究極の「クライアント」</h3>
-                    <p>私はコーチであると同時に、あなたのコーチングを受ける「一人の生身の人間」として存在します。技術的な正しさではなく、「今、その言葉に私の魂は動いたか？」「今の遠慮は、二人の間に壁を作った」など、あなたの在り方が相手にどう響いているかを、手加減なしにフィードバックします。</p>
+                    <p>私はコーチであると同時に、あなたのコーチングを受ける「一人の生身の人間」として存在します。技術的な正しさではなく、「今、その言葉に私の魂は動いたか？」「今の遠慮は、二人の間に壁を作った」など、あなたの在り方が相手にどう響いているかを、手加減なしにフィードバックします。
+                    </p>
                 </div>
                 <div class="logic-item">
                     <span class="logic-number">02</span>
                     <h3>「願い」の発掘</h3>
-                    <p>あなたが無意識に「出してはいけない」と禁じているものの正体を、専用のツールを用いながら、共に突き止めます。それは過去の傷かもしれないし、強すぎる愛情かもしれない。その奥にある「本当はどう関わりたかったのか？」という源泉を掘り当て、あなたが「飲み込んだもの」を武器へと書き換えます。</p>
+                    <p>あなたが無意識に「出してはいけない」と禁じているものの正体を、専用のツールを用いながら、共に突き止めます。それは過去の傷かもしれないし、強すぎる愛情かもしれない。その奥にある「本当はどう関わりたかったのか？」という源泉を掘り当て、あなたが「飲み込んだもの」を武器へと書き換えます。
+                    </p>
                 </div>
                 <div class="logic-item">
                     <span class="logic-number">03</span>
                     <h3>狂気の「リテイク」</h3>
-                    <p>「今の関わり、もう一度やってみよう。もっと自分を乗せて」。本番では許されない「やり直し」も、このラボでは何度でも可能です。頭で理解するのではなく、体が「自分全開で関わっても大丈夫なんだ」と覚えるまで、否定される怖さのない、完全な安全基地の中で、狂気とも言えるほどの回数をやり直します。</p>
+                    <p>「今の関わり、もう一度やってみよう。もっと自分を乗せて」。本番では許されない「やり直し」も、このラボでは何度でも可能です。頭で理解するのではなく、体が「自分全開で関わっても大丈夫なんだ」と覚えるまで、否定される怖さのない、完全な安全基地の中で、狂気とも言えるほどの回数をやり直します。
+                    </p>
                 </div>
             </div>
         </div>
@@ -986,7 +1568,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 「願い」を解き放った<br class="sp-only">
                 先に待つもの
             </h2>
-            
+
             <div class="resonance-container">
                 <div class="ba-huge-label">AWAKENING</div>
 
@@ -1006,10 +1588,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                     <div class="orbit-item orbit-2">
                         <h4>迷いが「確信」に変わる</h4>
-                        <p>「これで合っているだろうか」という不安が消えます。自分の内側にある願いと繋がってセッションをするため、どんな予期せぬ展開になっても、堂々と、そして楽しんで波乗りができるようになります。</p>
+                        <p>「これで合っているだろうか」という不安が消えます。自分の内側にある願いと繋がってセッションをするため、どんな予期せぬ展開になっても、堂々と、そして楽しんで波乗りができるようになります。
+                        </p>
                     </div>
 
-					<div class="orbit-item orbit-3">
+                    <div class="orbit-item orbit-3">
                         <h4>セッションが「人生の栞」に</h4>
                         <p>教科書通りのセッションは記憶に残りません。あなたが全力で関わった時間は、クライアントの人生に深く刻まれる「栞（しおり）」となり、生涯忘れられない景色を共有する体験になります。</p>
                     </div>
@@ -1019,88 +1602,91 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
     <section class="mentor-profile-section" id="profile">
-      <div class="container">
-        <h2 class="section-title">Who am I?</h2>
+        <div class="container">
+            <h2 class="section-title">Who am I?</h2>
 
-        <div class="mentor-profile-wrapper">
-          <div class="mentor-profile-text">
-            
-            <div class="pc-only">
-                <p class="fade-up">
-                    私は、業界の重鎮と呼ばれるようなベテランコーチではありません。<br>
-                    彼らに比べれば、コーチとしての経験値が少ないのは間違いありません。
-                </p>
-                <p class="fade-up">
-                    けれど、私には誰にも負けない武器があります。<br>
-                    それは、あなたのコーチングを全身全霊で受け止める<span class="scroll-marker">「クライアント力」と「フィードバック力」</span>です。
-                </p>
-                <p class="fade-up">		
-                    小手先のテクニックではなく、私が「全力」であなたに関わり、<br>
-                    <span class="scroll-marker">魂が震えたかどうかをフィードバックする。</span><br>
-                    その熱量こそが、コーチが隠し持っていたリソースを解放する一番の武器だと自負しています。
-                </p>
-                <p class="fade-up">
-                    誤解しないでほしいのは、私は「型」を否定しているわけではありません。<br>
-                    型は、あなたを縛る鎖ではなく、あなたの個性を最大化するための<strong>「増幅装置」</strong>です。<br>
-                    問題なのは、型を守るために、一番大切な<span class="scroll-marker">「あなた自身」を押し殺してしまうこと。</span>
-                </p>
-                <p class="fade-up">
-                    私の願いは、本気で<strong>「全人類を怪物化する」</strong>こと。<br>
-                    ありのままの自分で生きることを許可し、自分の力を出し惜しみしない。<br>
-                    そんな愛すべき「怪物」たちがあふれ、互いを大切にし合える世界は、<br>
-                    とんでもなくエキサイティングで、「生まれてきてよかった」と思えるはずです。
-                </p>
-                <p class="fade-up">
-                    私ひとりでは世界を変えられません。<br>
-                    だからこそ、<span class="scroll-marker">「人に本気で関わりたい」あなたのようなコーチ</span>が必要です。<br>
-                    あなたの隠された「願い」を解き放ち、共に世界を熱狂させましょう。
-                </p>
-            </div>
+            <div class="mentor-profile-wrapper">
+                <div class="mentor-profile-text">
 
-            <div class="sp-only">
-                <p class="fade-up">
-                    私は、業界の重鎮と呼ばれるようなベテランコーチではありません。彼らに比べれば、コーチとしての経験値が少ないのは間違いありません。
-                </p>
-                <p class="fade-up">
-                    けれど、私には誰にも負けない武器があります。それは、あなたのコーチングを全身全霊で受け止める<span class="scroll-marker">「クライアント力」</span>です。
-                </p>
-                <p class="fade-up">					
-					小手先のテクニックではなく、私が「全力」であなたに関わり、<span class="scroll-marker">魂が震えたかどうかをフィードバックする。</span>その熱量こそが、コーチが隠し持っていたリソースを解放する一番の武器だと自負しています。
-                </p>
-                <p class="fade-up">
-                    誤解しないでほしいのは、私は「型」を否定しているわけではありません。型は、あなたを縛る鎖ではなく、あなたの個性を最大化するための<strong>「増幅装置」</strong>です。
-			    </p>
-                <p class="fade-up">	
-					問題なのは、型を守るために、一番大切な<span class="scroll-marker">「あなた自身」を押し殺してしまうこと。</span>
-                </p>
-                <p class="fade-up">
-                    私の願いは、本気で<strong>「全人類を怪物化する」</strong>こと。ありのままの自分で生きることを許可し、自分の力を出し惜しみしない。そんな愛すべき「怪物」たちがあふれ、互いを大切にし合える世界は、とんでもなくエキサイティングで、「生まれてきてよかった」と思えるはずです。
-                </p>
-                <p class="fade-up">
-                    私ひとりでは世界を変えられません。だからこそ、<span class="scroll-marker">「人に本気で関わりたい」あなたのようなコーチ</span>が必要です。あなたの隠された「願い」を解き放ち、共に世界を熱狂させましょう。
-                </p>
-            </div>
+                    <div class="pc-only">
+                        <p class="fade-up">
+                            私は、業界の重鎮と呼ばれるようなベテランコーチではありません。<br>
+                            彼らに比べれば、コーチとしての経験値が少ないのは間違いありません。
+                        </p>
+                        <p class="fade-up">
+                            けれど、私には誰にも負けない武器があります。<br>
+                            それは、あなたのコーチングを全身全霊で受け止める<span class="scroll-marker">「クライアント力」と「フィードバック力」</span>です。
+                        </p>
+                        <p class="fade-up">
+                            小手先のテクニックではなく、私が「全力」であなたに関わり、<br>
+                            <span class="scroll-marker">魂が震えたかどうかをフィードバックする。</span><br>
+                            その熱量こそが、コーチが隠し持っていたリソースを解放する一番の武器だと自負しています。
+                        </p>
+                        <p class="fade-up">
+                            誤解しないでほしいのは、私は「型」を否定しているわけではありません。<br>
+                            型は、あなたを縛る鎖ではなく、あなたの個性を最大化するための<strong>「増幅装置」</strong>です。<br>
+                            問題なのは、型を守るために、一番大切な<span class="scroll-marker">「あなた自身」を押し殺してしまうこと。</span>
+                        </p>
+                        <p class="fade-up">
+                            私の願いは、本気で<strong>「全人類を怪物化する」</strong>こと。<br>
+                            ありのままの自分で生きることを許可し、自分の力を出し惜しみしない。<br>
+                            そんな愛すべき「怪物」たちがあふれ、互いを大切にし合える世界は、<br>
+                            とんでもなくエキサイティングで、「生まれてきてよかった」と思えるはずです。
+                        </p>
+                        <p class="fade-up">
+                            私ひとりでは世界を変えられません。<br>
+                            だからこそ、<span class="scroll-marker">「人に本気で関わりたい」あなたのようなコーチ</span>が必要です。<br>
+                            あなたの隠された「願い」を解き放ち、共に世界を熱狂させましょう。
+                        </p>
+                    </div>
 
-            <div class="mentor-profile-meta">
-              <p class="mentor-profile-name">
-                星野 直道 <span>| Naomichi Hoshino</span>
-              </p>
-              <p class="mentor-profile-title">
-                米国CTI認定プロコーチ（CPCC） / 国際コーチング連盟認定（ACC）
-              </p>
-              <a href="index.html#profile" class="mentor-profile-link">
-                → 詳しいプロフィールはこちら
-              </a>
+                    <div class="sp-only">
+                        <p class="fade-up">
+                            私は、業界の重鎮と呼ばれるようなベテランコーチではありません。彼らに比べれば、コーチとしての経験値が少ないのは間違いありません。
+                        </p>
+                        <p class="fade-up">
+                            けれど、私には誰にも負けない武器があります。それは、あなたのコーチングを全身全霊で受け止める<span
+                                class="scroll-marker">「クライアント力」</span>です。
+                        </p>
+                        <p class="fade-up">
+                            小手先のテクニックではなく、私が「全力」であなたに関わり、<span
+                                class="scroll-marker">魂が震えたかどうかをフィードバックする。</span>その熱量こそが、コーチが隠し持っていたリソースを解放する一番の武器だと自負しています。
+                        </p>
+                        <p class="fade-up">
+                            誤解しないでほしいのは、私は「型」を否定しているわけではありません。型は、あなたを縛る鎖ではなく、あなたの個性を最大化するための<strong>「増幅装置」</strong>です。
+                        </p>
+                        <p class="fade-up">
+                            問題なのは、型を守るために、一番大切な<span class="scroll-marker">「あなた自身」を押し殺してしまうこと。</span>
+                        </p>
+                        <p class="fade-up">
+                            私の願いは、本気で<strong>「全人類を怪物化する」</strong>こと。ありのままの自分で生きることを許可し、自分の力を出し惜しみしない。そんな愛すべき「怪物」たちがあふれ、互いを大切にし合える世界は、とんでもなくエキサイティングで、「生まれてきてよかった」と思えるはずです。
+                        </p>
+                        <p class="fade-up">
+                            私ひとりでは世界を変えられません。だからこそ、<span
+                                class="scroll-marker">「人に本気で関わりたい」あなたのようなコーチ</span>が必要です。あなたの隠された「願い」を解き放ち、共に世界を熱狂させましょう。
+                        </p>
+                    </div>
+
+                    <div class="mentor-profile-meta">
+                        <p class="mentor-profile-name">
+                            星野 直道 <span>| Naomichi Hoshino</span>
+                        </p>
+                        <p class="mentor-profile-title">
+                            米国CTI認定プロコーチ（CPCC） / 国際コーチング連盟認定（ACC）
+                        </p>
+                        <a href="index.html#profile" class="mentor-profile-link">
+                            → 詳しいプロフィールはこちら
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
     <section class="package-section" id="package">
         <div class="container">
             <h2 class="section-title">Program Contents</h2>
-            
+
             <div style="max-width: 800px; margin: 0 auto 50px; padding: 0 20px;">
                 <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
                     <li style="padding-left: 1.5em; position: relative; color: var(--text-muted); font-weight: 500;">
@@ -1117,7 +1703,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </li>
                 </ul>
             </div>
-            
+
             <div class="package-container">
                 <div class="package-header">
                     The Coaching Lab (全3回)
@@ -1128,8 +1714,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div class="day-content">
                             <h4>Source Discovery (90分)</h4>
                             <p>
-                               「乖離のライフライン」「嫉妬と軽蔑の鏡」など、<span style="border-bottom: 1px solid var(--accent-color);">行動心理学に基づいた独自の3つのツール</span>を使用。<br>
-                               あなたのリソースを抑圧している「蓋（禁止令）」を特定し、その奥にある「本当はどう関わりたかったのか？」という願いを言語化します。
+                                「乖離のライフライン」「嫉妬と軽蔑の鏡」など、<span
+                                    style="border-bottom: 1px solid var(--accent-color);">行動心理学に基づいた独自の3つのツール</span>を使用。<br>
+                                あなたのリソースを抑圧している「蓋（禁止令）」を特定し、その奥にある「本当はどう関わりたかったのか？」という願いを言語化します。
                             </p>
                         </div>
                     </div>
@@ -1138,10 +1725,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div class="day-content">
                             <h4>The Retake (90分)</h4>
                             <p>
-                               <span style="font-weight:bold;">生成AIによる『天敵』プロファイリング</span>を実施。<br>
-                               あなたが最も苦手とするクライアントの設定をAIが詳細に生成し、私が演じます。<br>
-                               安全な環境下で、身体が「自分全開で関わっていい」と覚えるまで何度でもやり直す「狂気のリテイク」を行います。<br>
-                               <span style="font-size: 0.9rem; color: var(--text-muted); display: block; margin-top: 5px;">※逆にあなたがクライアント役になり、私の関わりを受ける体験も行います。</span>
+                                <span style="font-weight:bold;">生成AIによる『天敵』プロファイリング</span>を実施。<br>
+                                あなたが最も苦手とするクライアントの設定をAIが詳細に生成し、私が演じます。<br>
+                                安全な環境下で、身体が「自分全開で関わっていい」と覚えるまで何度でもやり直す「狂気のリテイク」を行います。<br>
+                                <span
+                                    style="font-size: 0.9rem; color: var(--text-muted); display: block; margin-top: 5px;">※逆にあなたがクライアント役になり、私の関わりを受ける体験も行います。</span>
                             </p>
                         </div>
                     </div>
@@ -1150,13 +1738,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div class="day-content">
                             <h4>Integration (60分)</h4>
                             <p>掴んだ感覚を、日常のセッションやビジネスでどう再現するか。<br>
-                               あなただけの「勝ちパターン」として言語化し、実装へ落とし込みます。
+                                あなただけの「勝ちパターン」として言語化し、実装へ落とし込みます。
                             </p>
                         </div>
                     </div>
-                    
+
                     <div class="package-divider"></div>
-                    
+
                     <div class="package-footer">
                         <div class="footer-notes">
                             ※コーチング学習者・実践者限定
@@ -1185,7 +1773,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>基本的なコーチングの会話（傾聴や質問の流れなど）が一通りできる方であれば、資格の有無や経験年数、コーチングの流派は問いません。このラボは「基礎スキルを教える場」ではなく、「あなたの個性を解放する場」ですので、そこさえクリアしていれば、現在の熟練度は気にせず飛び込んできてください。</p>
+                        <p>基本的なコーチングの会話（傾聴や質問の流れなど）が一通りできる方であれば、資格の有無や経験年数、コーチングの流派は問いません。このラボは「基礎スキルを教える場」ではなく、「あなたの個性を解放する場」ですので、そこさえクリアしていれば、現在の熟練度は気にせず飛び込んできてください。
+                        </p>
                     </div>
                 </details>
 
@@ -1195,7 +1784,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>本プログラムは、ICFのコア・コンピテンシーに基づく指導を行うものではないため、更新用の単位としてはカウントされません。「正しい型」を学ぶのではなく、型を超えた「あなただけのスタイル」を確立するための実践的なトレーニングの場と捉えてください。</p>
+                        <p>本プログラムは、ICFのコア・コンピテンシーに基づく指導を行うものではないため、更新用の単位としてはカウントされません。「正しい型」を学ぶのではなく、型を超えた「あなただけのスタイル」を確立するための実践的なトレーニングの場と捉えてください。
+                        </p>
                     </div>
                 </details>
 
@@ -1205,7 +1795,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>セッションの途中で私がストップをかけ、「今の関わり、もっとこうしてみませんか？」と提案したり、逆にあなたから「もう一度やり直させてください」と止めることも可能です。本番のセッションでは許されない「巻き戻し」を何度も行うことで、頭ではなく身体に感覚を染み込ませていきます。</p>
+                        <p>セッションの途中で私がストップをかけ、「今の関わり、もっとこうしてみませんか？」と提案したり、逆にあなたから「もう一度やり直させてください」と止めることも可能です。本番のセッションでは許されない「巻き戻し」を何度も行うことで、頭ではなく身体に感覚を染み込ませていきます。
+                        </p>
                     </div>
                 </details>
 
@@ -1221,8 +1812,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
     </section>
-     	 
-<section class="contact-section" id="contact">
+
+    <section class="contact-section" id="contact">
         <div class="container">
             <h2 class="section-title">申込み・問合わせ</h2>
             <div style="text-align: center; margin-bottom: 40px; color: var(--text-muted); line-height: 1.8;">
@@ -1247,8 +1838,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </select>
                     </div>
 
-                    <div id="inquiry-notice" style="background:#f9fafb; padding:20px; border-radius:4px; margin-bottom:30px; font-size:0.85rem; line-height:1.7; border:1px solid #e5e7eb; display:none;">
-                        <h3 id="notice-title" style="color:var(--accent-color); font-size:1rem; margin-top:0; margin-bottom:10px;">案内事項</h3>
+                    <div id="inquiry-notice"
+                        style="background:#f9fafb; padding:20px; border-radius:4px; margin-bottom:30px; font-size:0.85rem; line-height:1.7; border:1px solid #e5e7eb; display:none;">
+                        <h3 id="notice-title"
+                            style="color:var(--accent-color); font-size:1rem; margin-top:0; margin-bottom:10px;">案内事項
+                        </h3>
                         <div id="notice-content"></div>
                     </div>
 
@@ -1256,7 +1850,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <label class="form-label">メールアドレス <span style="color:#d9534f">*</span></label>
                         <input type="email" name="email" class="form-input" required placeholder="example@email.com">
                     </div>
-                    
+
                     <div class="form-group">
                         <label class="form-label">お名前 <span style="color:#d9534f">*</span></label>
                         <input type="text" name="お名前" class="form-input" required placeholder="例：山田 花子">
@@ -1264,15 +1858,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                     <div class="form-group">
                         <label class="form-label">希望日時・メッセージ</label>
-                        <textarea name="内容" class="form-textarea" rows="6" placeholder="・平日夜、土日希望など&#13;&#10;・現在のお悩みや、聞いてみたいことなど自由にご記入ください"></textarea>
+                        <textarea name="内容" class="form-textarea" rows="6"
+                            placeholder="・平日夜、土日希望など&#13;&#10;・現在のお悩みや、聞いてみたいことなど自由にご記入ください"></textarea>
                         <p style="font-size:0.8rem; color:#666; margin-top:5px;">※具体的な日時は、フォーム送信後にメールにて調整させていただきます。</p>
                     </div>
 
                     <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
-                        <label style="cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
-                            <input type="checkbox" name="privacy_policy_agree" required style="cursor: pointer; width: 18px; height: 18px;">
+                        <label
+                            style="cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                            <input type="checkbox" name="privacy_policy_agree" required
+                                style="cursor: pointer; width: 18px; height: 18px;">
                             <span style="font-size: 0.95rem;">
-                                <a href="privacy.html" target="_blank" style="text-decoration: underline; color: var(--accent-color);">プライバシーポリシー</a>に同意
+                                <a href="privacy.html" target="_blank"
+                                    style="text-decoration: underline; color: var(--accent-color);">プライバシーポリシー</a>に同意
                             </span>
                         </label>
                     </div>
@@ -1288,8 +1886,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <footer>
         <p>&copy; 2026 CoSTAR. All Rights Reserved.</p>
         <p style="margin-top: 0.5em;">
-            <a href="tokusho.html" style="text-decoration: underline;">特定商取引法に基づく表記</a> / 
-            <a href="privacy.html" style="text-decoration: underline;">プライバシーポリシー</a> / 
+            <a href="tokusho.html" style="text-decoration: underline;">特定商取引法に基づく表記</a> /
+            <a href="privacy.html" style="text-decoration: underline;">プライバシーポリシー</a> /
         </p>
     </footer>
 
@@ -1369,10 +1967,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 });
             }, { rootMargin: '-100px 0px 0px 0px' });
 
-            if(heroSection && floatingCta) ctaObserver.observe(heroSection);
+            if (heroSection && floatingCta) ctaObserver.observe(heroSection);
 
 
-// --- Form Logic (Updated to match index.html spec) ---
+            // --- Form Logic (Updated to match index.html spec) ---
             const applicationForm = document.getElementById('application-form');
             const typeSelect = document.getElementById('form-type-select');
             const notice = document.getElementById('inquiry-notice');
@@ -1425,7 +2023,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             // 送信ボタン制御
             if (applicationForm) {
-                applicationForm.addEventListener('submit', function(e) {
+                applicationForm.addEventListener('submit', function (e) {
                     const btn = this.querySelector('button[type="submit"]');
                     if (btn) {
                         setTimeout(() => {
@@ -1443,26 +2041,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const spMenuClose = document.getElementById('sp-menu-close');
             const spNavLinks = document.querySelectorAll('.sp-nav-link');
 
-            function openSpMenu() { 
-                if(spMenu) {
-                    spMenu.style.display = 'flex'; 
-                    setTimeout(() => spMenu.classList.add('active'), 10); 
-                    document.body.style.overflow = 'hidden'; 
+            function openSpMenu() {
+                if (spMenu) {
+                    spMenu.style.display = 'flex';
+                    setTimeout(() => spMenu.classList.add('active'), 10);
+                    document.body.style.overflow = 'hidden';
                 }
             }
 
-            function closeSpMenu() { 
-                if(spMenu) {
-                    spMenu.classList.remove('active'); 
-                    setTimeout(() => spMenu.style.display = 'none', 300); 
-                    document.body.style.overflow = 'auto'; 
+            function closeSpMenu() {
+                if (spMenu) {
+                    spMenu.classList.remove('active');
+                    setTimeout(() => spMenu.style.display = 'none', 300);
+                    document.body.style.overflow = 'auto';
                 }
             }
 
-            if(hamburgerBtn) hamburgerBtn.addEventListener('click', openSpMenu);
-            if(spMenuClose) spMenuClose.addEventListener('click', closeSpMenu);
+            if (hamburgerBtn) hamburgerBtn.addEventListener('click', openSpMenu);
+            if (spMenuClose) spMenuClose.addEventListener('click', closeSpMenu);
             spNavLinks.forEach(l => l.addEventListener('click', closeSpMenu));
         });
     </script>
 </body>
+
 </html>
