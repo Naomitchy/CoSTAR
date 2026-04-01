@@ -1,1250 +1,2136 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NSJK8WXM');</script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CoCOMPLETE | 独りで、やらない。</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23B8962E' d='M256 0L334.24 177.76L512 256L334.24 334.24L256 512L177.76 334.24L0 256L177.76 177.76L256 0Z'/></svg>">
+    <meta charset="UTF-8">
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NSJK8WXM');</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoCOMPLETE | 独りで、やらない。</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23B8962E' d='M256 0L334.24 177.76L512 256L334.24 334.24L256 512L177.76 334.24L0 256L177.76 177.76L256 0Z'/></svg>">
 
-<meta property="og:title" content="CoCOMPLETE | 独りで、やらない。">
-<meta property="og:description" content="ずっと先送りにしてきた「未完了」を、今日、共に終わらせる。">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://costar-works.com/cocomplete.html">
-<meta property="og:image" content="https://costar-works.com/IMG_6140.jpg">
+    <meta property="og:title" content="CoCOMPLETE | 独りで、やらない。">
+    <meta property="og:description" content="ずっと先送りにしてきた「未完了」を、今日、共に終わらせる。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://costar-works.com/cocomplete.html">
+    <meta property="og:image" content="https://costar-works.com/IMG_6140.jpg">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
-<style>
-    /* --- 共通設定 --- */
-    :root {
-        --bg-color: #F9FAFB; 
-        --text-color: #333333; 
-        --text-muted: #666666;
-        --accent-color: #B8962E; /* Gold: Main Action / Brand */
-        --urgent-color: #d9534f; /* Red: Alert / Limit / Emphasis */
-        --community-blue: #3E5C9A; /* Navy Blue for Community Benefit */
-        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        --card-shadow-hover: 0 20px 40px rgba(184, 150, 46, 0.15); /* Added for interaction */
-    }
-
-    body {
-        margin: 0;
-        font-family: "Noto Sans JP", sans-serif;
-        background: var(--bg-color);
-        color: var(--text-color);
-        line-height: 2.0;
-        letter-spacing: 0.05em;
-        word-wrap: break-word;
-        scroll-behavior: smooth;
-    }
-
-    h1, h2, h3, h4, .mincho, .logo { font-family: "Shippori Mincho", serif; }
-    a { text-decoration: none; color: inherit; transition: 0.3s; }
-    .container { max-width: 800px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
-
-    /* --- 文節改行コントロール --- */
-    .inline-phrase { display: inline-block; } 
-    .sp-br { display: none; }
-
-    /* --- Animations (From Coaching Lab) --- */
-    .fade-up {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .fade-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .scroll-marker {
-        background: linear-gradient(transparent 70%, rgba(184, 150, 46, 0) 70%);
-        background-size: 0% 100%;
-        background-repeat: no-repeat;
-        transition: background-size 1.2s ease-out;
-        font-weight: bold;
-        padding: 0 2px;
-    }
-    .scroll-marker.visible {
-        background: linear-gradient(transparent 65%, rgba(184, 150, 46, 0.25) 65%);
-        background-size: 100% 100%;
-    }
-
-    /* --- Header (Updated style) --- */
-    header {
-        padding: 15px 0;
-        position: fixed;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        z-index: 1000;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-        transition: all 0.3s ease;
-    }
-    .nav-flex { display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-    .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.1em; color: var(--text-color); }
-
-    /* PC Nav (New) */
-    .pc-nav {
-        display: flex;
-        gap: 25px;
-        margin-left: auto;
-        margin-right: 40px;
-    }
-    .pc-nav-link {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        letter-spacing: 0.05em;
-        font-weight: 500;
-        position: relative;
-        padding-bottom: 5px;
-        cursor: pointer;
-    }
-    .pc-nav-link::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: 0;
-        left: 0;
-        background-color: var(--accent-color);
-        transition: width 0.3s ease;
-    }
-    .pc-nav-link:hover::after,
-    .pc-nav-link.active::after {
-        width: 100%;
-    }
-    .pc-nav-link:hover, .pc-nav-link.active {
-        color: var(--accent-color);
-    }
-    
-    /* Header CTA Button Style */
-    .header-links {
-        display: flex;
-        align-items: center;
-        gap: 15px; /* ハンバーガーとの間隔 */
-    }
-    .header-cta {
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: #444;            
-        background: #fff;       
-        border: 1px solid #444; 
-        padding: 6px 24px;      
-        border-radius: 50px;    
-        display: inline-block;
-        letter-spacing: 0.05em;
-        transition: 0.3s;
-    }
-    .header-cta:hover { 
-        background: #444;       
-        color: #fff;
-        text-decoration: none;
-    }
-
-    /* --- Hamburger Menu Styles (Added) --- */
-    .hamburger {
-        display: none;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 24px;
-        height: 18px;
-        cursor: pointer;
-        z-index: 1100;
-    }
-    .hamburger span {
-        display: block;
-        height: 1px;
-        width: 100%;
-        background-color: var(--text-color);
-        transition: 0.3s;
-    }
-
-    /* SP Menu Overlay */
-    .sp-menu-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.98);
-        z-index: 1050;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding-top: 80px; 
-        align-items: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        overflow-y: auto;
-    }
-    .sp-menu-overlay.active { display: flex; opacity: 1; }
-
-    .sp-nav { 
-        display: flex; 
-        flex-direction: column; 
-        width: 100%;
-        max-width: 500px;
-        padding: 0 40px;
-        box-sizing: border-box;
-        margin-bottom: 20px;
-    }
-
-    .sp-nav-link { 
-        display: flex;
-        align-items: baseline; 
-        gap: 15px;
-        text-decoration: none;
-        padding: 15px 0;
-        border-bottom: 1px solid rgba(0,0,0,0.06); 
-        text-align: left;
-        position: relative;
-        opacity: 0;
-        transform: translateY(15px);
-        transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-
-    .sp-nav-link .en {
-        font-family: "Shippori Mincho", serif;
-        font-size: 1.3rem;
-        color: var(--text-color);
-        letter-spacing: 0.05em;
-        line-height: 1.2;
-    }
-
-    .sp-nav-link .ja {
-        font-family: "Noto Sans JP", sans-serif;
-        font-size: 0.75rem;
-        color: var(--text-muted);
-        letter-spacing: 0.05em;
-        font-weight: 400;
-        margin-top: 0; 
-    }
-
-    /* Animation Delays */
-    .sp-menu-overlay.active .sp-nav-link { opacity: 1; transform: translateY(0); }
-    .sp-menu-overlay.active .sp-nav-link:nth-child(1) { transition-delay: 0.05s; }
-    .sp-menu-overlay.active .sp-nav-link:nth-child(2) { transition-delay: 0.08s; }
-    .sp-menu-overlay.active .sp-nav-link:nth-child(3) { transition-delay: 0.11s; }
-    .sp-menu-overlay.active .sp-nav-link:nth-child(4) { transition-delay: 0.14s; }
-    .sp-menu-overlay.active .sp-nav-link:nth-child(5) { transition-delay: 0.17s; }
-
-    .sp-menu-close {
-        position: absolute;
-        top: 20px;
-        right: 25px;
-        font-size: 2.5rem;
-        cursor: pointer;
-        color: var(--text-muted);
-        font-weight: 300;
-        z-index: 1060;
-    }
-
-    /* --- Floating CTA (New) --- */
-    .floating-cta {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        z-index: 999;
-        opacity: 0;
-        transform: translateY(20px);
-        pointer-events: none;
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-end;
-    }
-    .floating-cta.visible {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: all;
-    }
-    .page-top-btn {
-        width: 50px;
-        height: 50px;
-        background: rgba(255,255,255,0.9);
-        border: 1px solid #eee;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--accent-color);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: bold;
-    }
-    .page-top-btn:hover {
-        transform: translateY(-5px);
-        background: var(--accent-color);
-        color: #fff;
-    }
-
-
-    /* --- Hero Section --- */
-    .lp-hero {
-        padding: 120px 0 100px;
-        text-align: center;
-        background: radial-gradient(circle at center, #FFFFFF 0%, #F3F4F6 100%);
-        position: relative;
-        overflow: hidden;
-    }
-    #hero-canvas { 
-        position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-        z-index: 1; pointer-events: none; display: block;
-    }
-    .lp-tag {
-        display: inline-block; background: var(--urgent-color); color: #fff;
-        padding: 8px 20px; border-radius: 30px; font-size: 0.9rem; font-weight: bold;
-        margin-bottom: 30px; position: relative; z-index: 2; line-height: 1.6;
-    }
-    .service-name-hero {
-        font-family: "Shippori Mincho", serif;
-        font-size: 3.5rem;
-        letter-spacing: 0.1em;
-        margin-bottom: 10px;
-        color: var(--text-color);
-        position: relative; z-index: 2;
-        font-weight: 700;
-        word-break: keep-all; 
-        overflow-wrap: break-word;
-    }
-    .lp-title {
-        font-size: 2.0rem; margin-bottom: 20px; line-height: 1.4; font-weight: 600; position: relative; z-index: 2;
-        word-break: keep-all; 
-        overflow-wrap: break-word;
-    }
-    .lp-subtitle {
-        font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; position: relative; z-index: 2;
-    }
-
-    /* --- Section Styles Unified --- */
-    section { padding: 80px 0; scroll-margin-top: 80px; }
-    .white-section { background: #fff; }
-    .gray-section { background: var(--bg-color); }
-    
-    .section-head { text-align: center; margin-bottom: 60px; }
-    .section-head h2 { 
-        font-size: 1.8rem; margin-bottom: 25px; margin-top: 0; 
-        position: relative; display: inline-block; line-height: 1.5;
-        word-break: keep-all; 
-    }
-    .section-head h2::after { content:""; display:block; width:40px; height:2px; background:var(--accent-color); margin: 20px auto 0; }
-
-    /* --- Pain (Dialogue) Updated --- */
-    .pain-box {
-        background: #fff; 
-        border-left: 6px solid var(--accent-color);
-        padding: 30px; margin-bottom: 30px; border-radius: 0 4px 4px 0;
-        box-shadow: var(--card-shadow);
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-    /* Hover Interaction */
-    .pain-box:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--card-shadow-hover);
-        background: #fdfdfd;
-    }
-
-    .pain-title { 
-        font-weight: bold; font-size: 1.1rem; margin-bottom: 20px; 
-        color: var(--text-color);
-    }
-    .pain-voice {
-        margin-bottom: 1.2em;
-        line-height: 1.8;
-        position: relative;
-        padding-left: 1.8em;
-    }
-    .pain-voice::before {
-        content: "□";
-        position: absolute;
-        left: 0;
-        color: var(--accent-color);
-        font-weight: bold;
-    }
-    .pain-voice:last-child { margin-bottom: 0; }
-
-    /* --- Solution --- */
-    .solution-text { font-size: 1.1rem; line-height: 2.2; text-align: justify; }
-    .highlight { background: linear-gradient(transparent 70%, rgba(184, 150, 46, 0.2) 70%); font-weight: bold; }
-
-    /* --- Menu Cards Updated --- */
-    .menu-card {
-        background: #fff; border-radius: 8px; overflow: hidden;
-        box-shadow: var(--card-shadow); margin-bottom: 40px;
-        border: 1px solid #eee;
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-    /* Hover Interaction */
-    .menu-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--card-shadow-hover);
-    }
-
-    .menu-header {
-        background: var(--text-color); color: #fff; padding: 15px 30px;
-        font-family: "Shippori Mincho", serif; font-size: 1.3rem;
-        display: flex; justify-content: space-between; align-items: center;
-    }
-    .menu-header .price-box { text-align: right; line-height: 1.2; }
-    .menu-header .original-price {
-        display: block; font-size: 0.7em; text-decoration: line-through; opacity: 0.8; font-weight: normal;
-    }
-    .menu-header .monitor-price { font-weight: bold; font-size: 1.1em; color: #fff; white-space: nowrap; }
-
-    .menu-body { padding: 30px; }
-    .menu-list { list-style: none; padding: 0; margin: 20px 0; }
-    .menu-list li {
-        position: relative; padding-left: 25px; margin-bottom: 15px; color: var(--text-muted);
-    }
-    .menu-list li::before {
-        content: "✔"; position: absolute; left: 0; color: var(--accent-color);
-    }
-    .menu-list strong { color: var(--text-color); }
-
-    /* --- Sample Card Styles --- */
-    .sample-card {
-        background: #fff;
-        border: 1px solid #eee;
-        border-radius: 8px;
-        padding: 20px;
-        margin: 25px 0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        position: relative;
-    }
-    .sample-badge {
-        position: absolute;
-        top: -12px;
-        left: 15px;
-        background: #666;
-        color: #fff;
-        font-size: 0.75rem;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-weight: bold;
-    }
-    .sample-img {
-        width: 100%;
-        height: auto;
-        border-radius: 4px;
-        border: 1px solid #f0f0f0;
-        margin-bottom: 15px;
-        display: block;
-    }
-    .sample-title {
-        font-weight: bold;
-        margin-bottom: 10px;
-        font-size: 1rem;
-        color: var(--text-color);
-    }
-    .sample-desc {
-        font-size: 0.9rem;
-        color: var(--text-muted);
-        margin-bottom: 15px;
-        line-height: 1.8;
-    }
-    .sample-link {
-        font-size: 0.9rem;
-        font-weight: bold;
-        color: var(--accent-color);
-        text-decoration: underline;
-    }
-    .sample-link:hover {
-        text-decoration: none;
-        opacity: 0.8;
-    }
-
-    /* --- Option Box Styles --- */
-    .option-box {
-        margin-top: 40px; padding: 30px; background: #FDFBF7; border-radius: 8px; 
-        border: 2px solid var(--accent-color); position: relative;
-    }
-    .option-tag {
-        position: absolute; top: -15px; left: 20px; background: var(--accent-color);
-        color: #fff; padding: 4px 15px; font-size: 0.8rem; font-weight: bold; border-radius: 20px;
-    }
-    .option-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; color: var(--text-color); display: block; }
-    .option-desc { font-size: 0.95rem; line-height: 1.8; color: var(--text-color); }
-
-    /* --- Benefit Box Updated --- */
-    .benefit-card {
-        background: #fff; 
-        border: 1px solid #e5e7eb; 
-        border-radius: 12px;
-        padding: 45px 35px 35px;
-        margin-top: 50px;
-        margin-bottom: 40px; 
-        position: relative;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-    /* Hover Interaction */
-    .benefit-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--card-shadow-hover);
-    }
-
-    .benefit-tag {
-        position: absolute;
-        top: -18px;
-        left: 30px;
-        background: var(--community-blue);
-        color: #fff;
-        padding: 6px 22px;
-        border-radius: 30px;
-        font-weight: bold;
-        font-size: 0.9rem;
-        letter-spacing: 0.05em;
-    }
-    .benefit-title-text { 
-        color: var(--community-blue); 
-        font-family: "Shippori Mincho", serif;
-        font-weight: 600; 
-        font-size: 1.3rem;
-        margin-bottom: 20px; 
-        display: block; 
-    }
-
-    /* --- Buttons & CTAs --- */
-    .btn-submit {
-        display: block;
-        width: 100%; max-width: 320px; margin: 0 auto;
-        padding: 18px 20px;
-        background: var(--accent-color); 
-        color: #fff;
-        border: none; border-radius: 50px; 
-        font-size: 1.1rem; font-weight: bold; letter-spacing: 0.05em;
-        cursor: pointer; transition: 0.3s;
-        box-shadow: 0 5px 15px rgba(184, 150, 46, 0.3); 
-        box-sizing: border-box;
-        text-align: center;
-    }
-    .btn-submit:hover { 
-        background: #a08226; 
-        transform: translateY(-2px); 
-        box-shadow: 0 8px 20px rgba(184, 150, 46, 0.4); 
-    }
-
-    /* --- FAQ Styles (Accordion) --- */
-    .faq-item {
-        background: #fff;
-        margin-bottom: 20px;
-        border-radius: 4px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        border: 1px solid rgba(0,0,0,0.05);
-        transition: all 0.3s ease;
-    }
-    .faq-item:hover {
-        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        transform: translateY(-2px);
-    }
-    .faq-item summary {
-        list-style: none; /* Hide default triangle */
-    }
-    .faq-item summary::-webkit-details-marker {
-        display: none;
-    }
-    .faq-question {
-        font-family: "Shippori Mincho", serif;
-        font-weight: 600;
-        padding: 20px 30px;
-        cursor: pointer;
-        position: relative;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: var(--text-color);
-        font-size: 1.05rem;
-        line-height: 1.6;
-        transition: background-color 0.2s;
-    }
-    .faq-question:hover {
-        background-color: rgba(184, 150, 46, 0.03);
-    }
-    .faq-q-text { display: flex; align-items: flex-start; gap: 10px; }
-    .faq-q-text::before { content: "Q."; font-size: 1.2rem; line-height: 1.2; color: var(--accent-color); }
-
-    .faq-icon {
-        color: var(--accent-color);
-        font-weight: 300;
-        font-size: 1.8rem;
-        line-height: 1;
-        margin-left: 15px;
-        transition: transform 0.3s ease;
-        flex-shrink: 0;
-    }
-    details[open] .faq-icon {
-        transform: rotate(45deg);
-    }
-    .faq-answer {
-        padding: 0 30px 30px;
-        color: var(--text-muted);
-        font-size: 0.95rem;
-        line-height: 2.0;
-        border-top: 1px solid #f3f3f3;
-        padding-top: 20px;
-    }
-
-    /* --- Form Area --- */
-    .form-wrapper {
-        background: #fff; padding: 40px; border-radius: 8px;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.1); border-top: 5px solid var(--accent-color);
-    }
-    .form-group { margin-bottom: 25px; }
-    .form-label { display: block; margin-bottom: 8px; font-weight: bold; }
-    .form-input, .form-textarea, .form-select {
-        width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px;
-        font-size: 1rem; box-sizing: border-box;
-        font-family: inherit;
-    }
-
-    .btn-outline {
-        display: inline-block;
-        padding: 12px 30px;
-        border: 1px solid var(--text-color); color: var(--text-color);
-        border-radius: 30px; font-weight: bold; background: transparent;
-        cursor: pointer; transition: 0.3s; text-align: center;
-    }
-    .btn-outline:hover { background: var(--text-color); color: #fff; }
-
-    .datetime-row { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; }
-    .time-range { display: flex; align-items: center; gap: 5px; flex: 1; }
-
-    /* --- Modal Styles --- */
-    .modal {
-        display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
-        overflow: auto; background-color: rgba(255,255,255,0.6); backdrop-filter: blur(5px);
-    }
-    .modal-content {
-        background-color: #fff; margin: 5% auto; padding: 40px; 
-        width: 90%; max-width: 700px; border-radius: 8px; position: relative;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-        animation: slideIn 0.4s ease;
-    }
-    @keyframes slideIn { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
-    .close-btn {
-        position: absolute; top: 15px; right: 20px;
-        color: #ccc; font-size: 35px; font-weight: bold; cursor: pointer;
-    }
-
-    /* --- Mobile Adjustments & Typography Fixes --- */
-    @media (max-width: 768px) {
-        /* PC Nav Hide */
-        .pc-nav { display: none; }
-        
-        /* Show Hamburger */
-        .hamburger { display: flex; }
-        
-        /* Typography & Layout */
-        body { 
-            line-height: 1.7; 
-            letter-spacing: 0.02em; 
+    <style>
+        /* --- 共通設定 --- */
+        :root {
+            --bg-color: #F9FAFB;
+            --text-color: #333333;
+            --text-muted: #666666;
+            --accent-color: #B8962E;
+            /* Gold: Main Action / Brand */
+            --urgent-color: #d9534f;
+            /* Red: Alert / Limit / Emphasis */
+            --community-blue: #3E5C9A;
+            /* Navy Blue for Community Benefit */
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --card-shadow-hover: 0 20px 40px rgba(184, 150, 46, 0.15);
+            /* Added for interaction */
         }
-        .container { 
-            padding: 0 16px; 
+
+        body {
+            margin: 0;
+            font-family: "Noto Sans JP", sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 2.0;
+            letter-spacing: 0.05em;
+            word-wrap: break-word;
+            scroll-behavior: smooth;
         }
-        section { 
-            padding: 50px 0; 
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .mincho,
+        .logo {
+            font-family: "Shippori Mincho", serif;
         }
-        .lp-hero {
-            padding: 90px 0 60px; 
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
         }
-        .service-name-hero { 
-            font-size: clamp(2.2rem, 9vw, 3.0rem); 
-            letter-spacing: 0; 
-            word-break: normal; 
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- 文節改行コントロール --- */
+        .inline-phrase {
+            display: inline-block;
+        }
+
+        .sp-br {
+            display: none;
+        }
+
+        /* --- Animations (From Coaching Lab) --- */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-marker {
+            background: linear-gradient(transparent 70%, rgba(184, 150, 46, 0) 70%);
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            transition: background-size 1.2s ease-out;
+            font-weight: bold;
+            padding: 0 2px;
+        }
+
+        .scroll-marker.visible {
+            background: linear-gradient(transparent 65%, rgba(184, 150, 46, 0.25) 65%);
+            background-size: 100% 100%;
+        }
+
+        /* --- Header (Updated style) --- */
+        header {
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--text-color);
+        }
+
+        /* PC Nav (New) */
+        .pc-nav {
+            display: flex;
+            gap: 25px;
+            margin-left: auto;
+            margin-right: 40px;
+        }
+
+        .pc-nav-link {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .pc-nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .pc-nav-link:hover::after,
+        .pc-nav-link.active::after {
+            width: 100%;
+        }
+
+        .pc-nav-link:hover,
+        .pc-nav-link.active {
+            color: var(--accent-color);
+        }
+
+        /* Header CTA Button Style */
+        .header-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            /* ハンバーガーとの間隔 */
+        }
+
+        .header-cta {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #444;
+            background: #fff;
+            border: 1px solid #444;
+            padding: 6px 24px;
+            border-radius: 50px;
+            display: inline-block;
+            letter-spacing: 0.05em;
+            transition: 0.3s;
+        }
+
+        .header-cta:hover {
+            background: #444;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* --- Hamburger Menu Styles (Added) --- */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 1px;
+            width: 100%;
+            background-color: var(--text-color);
+            transition: 0.3s;
+        }
+
+        /* SP Menu Overlay */
+        .sp-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 1050;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 80px;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .sp-menu-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .sp-nav {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 500px;
+            padding: 0 40px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        .sp-nav-link {
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+            text-decoration: none;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            text-align: left;
+            position: relative;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .sp-nav-link .en {
+            font-family: "Shippori Mincho", serif;
+            font-size: 1.3rem;
+            color: var(--text-color);
+            letter-spacing: 0.05em;
             line-height: 1.2;
-            margin-bottom: 15px;
         }
-        .lp-title { 
-            font-size: clamp(1.3rem, 5vw, 1.6rem); 
-            line-height: 1.5;
-            margin-bottom: 15px;
+
+        .sp-nav-link .ja {
+            font-family: "Noto Sans JP", sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            font-weight: 400;
+            margin-top: 0;
         }
+
+        /* Animation Delays */
+        .sp-menu-overlay.active .sp-nav-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .sp-menu-overlay.active .sp-nav-link:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+
+        .sp-menu-overlay.active .sp-nav-link:nth-child(2) {
+            transition-delay: 0.08s;
+        }
+
+        .sp-menu-overlay.active .sp-nav-link:nth-child(3) {
+            transition-delay: 0.11s;
+        }
+
+        .sp-menu-overlay.active .sp-nav-link:nth-child(4) {
+            transition-delay: 0.14s;
+        }
+
+        .sp-menu-overlay.active .sp-nav-link:nth-child(5) {
+            transition-delay: 0.17s;
+        }
+
+        .sp-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-weight: 300;
+            z-index: 1060;
+        }
+
+        /* --- Floating CTA (New) --- */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .floating-cta.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .page-top-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .page-top-btn:hover {
+            transform: translateY(-5px);
+            background: var(--accent-color);
+            color: #fff;
+        }
+
+
+        /* --- Hero Section --- */
+        .lp-hero {
+            padding: 120px 0 100px;
+            text-align: center;
+            background: radial-gradient(circle at center, #FFFFFF 0%, #F3F4F6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            display: block;
+        }
+
+        .lp-tag {
+            display: inline-block;
+            background: var(--urgent-color);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            line-height: 1.6;
+        }
+
+        .service-name-hero {
+            font-family: "Shippori Mincho", serif;
+            font-size: 3.5rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+            color: var(--text-color);
+            position: relative;
+            z-index: 2;
+            font-weight: 700;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        .lp-title {
+            font-size: 2.0rem;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
         .lp-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- Section Styles Unified --- */
+        section {
+            padding: 80px 0;
+            scroll-margin-top: 80px;
+        }
+
+        .white-section {
+            background: #fff;
+        }
+
+        .gray-section {
+            background: var(--bg-color);
+        }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-head h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            margin-top: 0;
+            position: relative;
+            display: inline-block;
+            line-height: 1.5;
+            word-break: keep-all;
+        }
+
+        .section-head h2::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+            margin: 20px auto 0;
+        }
+
+        /* --- Pain (Dialogue) Updated --- */
+        .pain-box {
+            background: #fff;
+            border-left: 6px solid var(--accent-color);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 0 4px 4px 0;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Hover Interaction */
+        .pain-box:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
+            background: #fdfdfd;
+        }
+
+        .pain-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .pain-voice {
+            margin-bottom: 1.2em;
+            line-height: 1.8;
+            position: relative;
+            padding-left: 1.8em;
+        }
+
+        .pain-voice::before {
+            content: "□";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .pain-voice:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- Solution --- */
+        .solution-text {
+            font-size: 1.1rem;
+            line-height: 2.2;
+            text-align: justify;
+        }
+
+        .highlight {
+            background: linear-gradient(transparent 70%, rgba(184, 150, 46, 0.2) 70%);
+            font-weight: bold;
+        }
+
+        /* --- Menu Cards Updated --- */
+        .menu-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 40px;
+            border: 1px solid #eee;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Hover Interaction */
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .menu-header {
+            background: var(--text-color);
+            color: #fff;
+            padding: 15px 30px;
+            font-family: "Shippori Mincho", serif;
+            font-size: 1.3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-header .price-box {
+            text-align: right;
+            line-height: 1.2;
+        }
+
+        .menu-header .original-price {
+            display: block;
+            font-size: 0.7em;
+            text-decoration: line-through;
+            opacity: 0.8;
+            font-weight: normal;
+        }
+
+        .menu-header .monitor-price {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .menu-body {
+            padding: 30px;
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .menu-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-muted);
+        }
+
+        .menu-list li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .menu-list strong {
+            color: var(--text-color);
+        }
+
+        /* --- Sample Card Styles --- */
+        .sample-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .sample-badge {
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background: #666;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .sample-img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid #f0f0f0;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .sample-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .sample-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .sample-link {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .sample-link:hover {
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        /* --- Option Box Styles --- */
+        .option-box {
+            margin-top: 40px;
+            padding: 30px;
+            background: #FDFBF7;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
+            position: relative;
+        }
+
+        .option-tag {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: var(--accent-color);
+            color: #fff;
+            padding: 4px 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 20px;
+        }
+
+        .option-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            display: block;
+        }
+
+        .option-desc {
             font-size: 0.95rem;
             line-height: 1.8;
-            margin-bottom: 30px;
+            color: var(--text-color);
         }
-        .section-head { margin-bottom: 40px; }
-        .section-head h2 { 
-            font-size: 1.5rem; 
-            line-height: 1.4;
-        }
-        .inline-phrase { 
-            display: inline; 
-        }
-        .service-name-hero, .lp-title, .section-head h2, .pain-voice {
-            word-break: normal; 
-            overflow-wrap: break-word; 
-        }
-        .pain-box, .menu-card, .benefit-card, .faq-item, .form-wrapper {
-            padding: 20px; 
-        }
+
+        /* --- Benefit Box Updated --- */
         .benefit-card {
-            padding-top: 35px; 
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 45px 35px 35px;
+            margin-top: 50px;
+            margin-bottom: 40px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Hover Interaction */
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .benefit-tag {
+            position: absolute;
+            top: -18px;
+            left: 30px;
+            background: var(--community-blue);
+            color: #fff;
+            padding: 6px 22px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        .benefit-title-text {
+            color: var(--community-blue);
+            font-family: "Shippori Mincho", serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* --- Buttons & CTAs --- */
+        .btn-submit {
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+            padding: 18px 20px;
+            background: var(--accent-color);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(184, 150, 46, 0.3);
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .btn-submit:hover {
+            background: #a08226;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(184, 150, 46, 0.4);
+        }
+
+        /* --- FAQ Styles (Accordion) --- */
+        .faq-item {
+            background: #fff;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .faq-item summary {
+            list-style: none;
+            /* Hide default triangle */
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-question {
+            font-family: "Shippori Mincho", serif;
+            font-weight: 600;
+            padding: 20px 30px;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-color);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            transition: background-color 0.2s;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(184, 150, 46, 0.03);
+        }
+
+        .faq-q-text {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .faq-q-text::before {
+            content: "Q.";
+            font-size: 1.2rem;
+            line-height: 1.2;
+            color: var(--accent-color);
+        }
+
+        .faq-icon {
+            color: var(--accent-color);
+            font-weight: 300;
+            font-size: 1.8rem;
+            line-height: 1;
+            margin-left: 15px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        details[open] .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 30px 30px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 2.0;
+            border-top: 1px solid #f3f3f3;
+            padding-top: 20px;
+        }
+
+        /* --- Form Area --- */
+        .form-wrapper {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid var(--accent-color);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            border-radius: 30px;
+            font-weight: bold;
+            background: transparent;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .btn-outline:hover {
+            background: var(--text-color);
+            color: #fff;
+        }
+
+        .datetime-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .time-range {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex: 1;
+        }
+
+        /* --- Modal Styles --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 40px;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #ccc;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* --- Voice Section Styles (Added) --- */
+        .voice-grid {
+            display: flex;
+            /* Changed from grid to flex */
+            flex-direction: column;
+            /* Vertical alignment */
+            gap: 30px;
             margin-top: 40px;
         }
-        .benefit-tag {
-            top: -14px;
+
+        .voice-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            /* 角丸用 */
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .voice-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .voice-header {
+            padding: 25px 30px;
+            background: #fff;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+
+        .voice-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--bg-color);
+            color: var(--accent-color);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        /* Simple SVG User Icon */
+        .voice-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .voice-name {
+            font-weight: bold;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        /* Good / More の分割エリア */
+        .voice-body {
+            padding: 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .voice-section {
+            padding: 20px 30px;
+        }
+
+        .voice-good {
+            background: #fff;
+        }
+
+        .voice-more {
+            background: #fafafa;
+            border-top: 1px dashed #ddd;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+
+        .voice-label {
+            display: block;
             font-size: 0.75rem;
-            padding: 5px 15px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            letter-spacing: 0.05em;
         }
-        .menu-header { 
-            flex-direction: column; 
-            text-align: center; 
-            gap: 10px; 
-            padding: 15px 20px;
-            font-size: 1.15rem; 
+
+        .label-good {
+            color: var(--accent-color);
         }
-        .menu-body { padding: 20px; }
-        .menu-header .price-box { text-align: center; }
-        .menu-header .monitor-price { font-size: 0.95rem; }
-        
-        .option-box {
+
+        .label-more {
+            color: var(--text-muted);
+        }
+
+        .voice-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        /* フィードバックへの回答（運営コメント） */
+        .voice-reply {
+            margin-top: 15px;
+            padding: 12px 15px;
+            background: #fffbf0;
+            /* 薄いゴールド背景 */
+            border-left: 3px solid var(--accent-color);
+            font-size: 0.85rem;
+            color: #555;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .reply-badge {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 0.75rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* --- Mobile Adjustments & Typography Fixes --- */
+        @media (max-width: 768px) {
+
+            /* PC Nav Hide */
+            .pc-nav {
+                display: none;
+            }
+
+            /* Show Hamburger */
+            .hamburger {
+                display: flex;
+            }
+
+            /* Typography & Layout */
+            body {
+                line-height: 1.7;
+                letter-spacing: 0.02em;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            .lp-hero {
+                padding: 90px 0 60px;
+            }
+
+            .service-name-hero {
+                font-size: clamp(2.2rem, 9vw, 3.0rem);
+                letter-spacing: 0;
+                word-break: normal;
+                line-height: 1.2;
+                margin-bottom: 15px;
+            }
+
+            .lp-title {
+                font-size: clamp(1.3rem, 5vw, 1.6rem);
+                line-height: 1.5;
+                margin-bottom: 15px;
+            }
+
+            .lp-subtitle {
+                font-size: 0.95rem;
+                line-height: 1.8;
+                margin-bottom: 30px;
+            }
+
+            .section-head {
+                margin-bottom: 40px;
+            }
+
+            .section-head h2 {
+                font-size: 1.5rem;
+                line-height: 1.4;
+            }
+
+            .inline-phrase {
+                display: inline;
+            }
+
+            .service-name-hero,
+            .lp-title,
+            .section-head h2,
+            .pain-voice {
+                word-break: normal;
+                overflow-wrap: break-word;
+            }
+
+            .pain-box,
+            .menu-card,
+            .benefit-card,
+            .faq-item,
+            .form-wrapper {
+                padding: 20px;
+            }
+
+            .benefit-card {
+                padding-top: 35px;
+                margin-top: 40px;
+            }
+
+            .benefit-tag {
+                top: -14px;
+                font-size: 0.75rem;
+                padding: 5px 15px;
+            }
+
+            .menu-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+                padding: 15px 20px;
+                font-size: 1.15rem;
+            }
+
+            .menu-body {
+                padding: 20px;
+            }
+
+            .menu-header .price-box {
+                text-align: center;
+            }
+
+            .menu-header .monitor-price {
+                font-size: 0.95rem;
+            }
+
+            .option-box {
+                padding: 20px;
+                margin-top: 30px;
+            }
+
+            .pain-title {
+                font-size: 1.05rem;
+            }
+
+            .option-title {
+                font-size: 1.1rem;
+            }
+
+            .benefit-title-text {
+                font-size: 1.15rem;
+            }
+
+            .faq-q {
+                font-size: 1.0rem;
+            }
+
+            .datetime-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 5px;
+                background: #f3f4f6;
+                padding: 10px;
+                border-radius: 4px;
+            }
+
+            .sp-br {
+                display: inline;
+            }
+
+            /* Mobile Header */
+            /* .header-links { display: none; } REMOVED TO SHOW CONTACT BUTTON */
+            .header-links {
+                display: flex;
+            }
+
+            .header-cta {
+                font-size: 0.8rem;
+                padding: 6px 16px;
+            }
+
+            /* Modal tweaks */
+            .modal-content {
+                padding: 25px;
+                margin: 10% auto;
+                width: 85%;
+            }
+
+            .close-btn {
+                right: 10px;
+                top: 10px;
+                font-size: 28px;
+            }
+        }
+
+        /* --- Plan Cards --- */
+        .plan-cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .plan-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
             padding: 20px;
-            margin-top: 30px;
+            background: #fff;
         }
-        
-        .pain-title { font-size: 1.05rem; }
-        .option-title { font-size: 1.1rem; }
-        .benefit-title-text { font-size: 1.15rem; }
-        .faq-q { font-size: 1.0rem; }
 
-        .datetime-row { 
-            flex-direction: column; 
-            align-items: stretch; 
-            gap: 5px; 
-            background: #f3f4f6; 
-            padding: 10px; 
-            border-radius: 4px; 
+        .plan-card--featured {
+            border: 2px solid var(--accent-color);
+            background: #fffbf0;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(184, 150, 46, 0.15);
         }
-        
-        .sp-br { display: inline; }
-        
-        /* Mobile Header */
-        /* .header-links { display: none; } REMOVED TO SHOW CONTACT BUTTON */
-        .header-links { display: flex; }
-        .header-cta { font-size: 0.8rem; padding: 6px 16px; }
-        
-        /* Modal tweaks */
-        .modal-content { padding: 25px; margin: 10% auto; width: 85%; }
-        .close-btn { right: 10px; top: 10px; font-size: 28px; }
+
+        .plan-card--alt {
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            position: relative;
+        }
+
+        .plan-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .plan-card-title {
+            margin: 0;
+            font-size: 1.0rem;
+            font-weight: bold;
+            color: var(--text-muted);
+        }
+
+        .plan-card--featured .plan-card-title {
+            font-size: 1.15rem;
+            color: var(--text-color);
+        }
+
+        .plan-card--alt .plan-card-title {
+            color: var(--community-blue);
+        }
+
+        .plan-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .plan-price--large {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-left: 5px;
+        }
+
+        .plan-price-tax {
+            font-size: 0.8rem;
+        }
+
+        .plan-price-original {
+            font-size: 0.8rem;
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .plan-card-body {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .plan-badge {
+            background: #eee;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+
+        .plan-badge--accent {
+            background: #fff;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .plan-badge--blue {
+            background: #fff;
+            border: 1px solid var(--community-blue);
+            color: var(--community-blue);
+            font-weight: bold;
+        }
+
+        .plan-popular-tag {
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background: var(--accent-color);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 2px 12px;
+            border-radius: 4px;
+        }
+
+        .plan-promo-tag {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: var(--urgent-color);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+
+        .plan-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 40px 0 25px;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+            padding: 0 10px;
+        }
+
+        .plan-note {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #888;
+            text-align: right;
+            line-height: 1.4;
+        }
+
+        .plan-discount-note {
+            font-size: 0.8rem;
+            color: var(--urgent-color);
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "CoCOMPLETE - 未完了を完了させるプログラム",
+      "description": "コーチングとITの力で、先送りにしてきたタスクやWebサイト作成を完了させる支援プログラム。モニター募集中。",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "CoSTAR",
+        "url": "https://costar-works.com/"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "CoCOMPLETE コース",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Aコース：Webサイト作成伴走",
+              "description": "AIを活用したWebサイト作成を、コーチと共に完了させるコース"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bコース：オーダーメイド完了セッション",
+              "description": "あらゆる未完了タスクを60分で終わらせるセッション"
+            }
+          }
+        ]
+      }
     }
-</style>
-
+    </script>
 </head>
+
 <body id="top">
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSJK8WXM"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSJK8WXM" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
 
-<header>
-    <div class="nav-flex">
-        <div class="logo"><a href="#top">CoSTAR</a></div>
-		<nav class="pc-nav">
-			<a href="index.html" class="pc-nav-link" data-target="HOME">HOME</a>
-            <a href="#concept" class="pc-nav-link" data-target="concept">CONCEPT</a>
-            <a href="#course" class="pc-nav-link" data-target="course">COURSE</a>
-            <a href="#faq" class="pc-nav-link" data-target="faq">FAQ</a>
-         </nav>
-         <div class="header-links">
-            <a href="#apply" class="header-cta">Contact</a>
-            <div class="hamburger" id="hamburger-btn">
-                <span></span><span></span><span></span>
+    <header>
+        <div class="nav-flex">
+            <div class="logo"><a href="#top">CoSTAR</a></div>
+            <nav class="pc-nav">
+                <a href="index.html" class="pc-nav-link" data-target="HOME">HOME</a>
+                <a href="#concept" class="pc-nav-link" data-target="concept">CONCEPT</a>
+                <a href="#course" class="pc-nav-link" data-target="course">COURSE</a>
+                <a href="#faq" class="pc-nav-link" data-target="faq">FAQ</a>
+            </nav>
+            <div class="header-links">
+                <a href="#apply" class="header-cta">Contact</a>
+                <div class="hamburger" id="hamburger-btn">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
         </div>
+    </header>
+
+    <div class="sp-menu-overlay" id="sp-menu">
+        <div class="sp-menu-close" id="sp-menu-close">&times;</div>
+        <nav class="sp-nav">
+            <a href="index.html" class="sp-nav-link">
+                <span class="en">HOME</span>
+                <span class="ja">ホームに戻る</span>
+            </a>
+            <a href="#concept" class="sp-nav-link">
+                <span class="en">CONCEPT</span>
+                <span class="ja">コンセプト</span>
+            </a>
+            <a href="#course" class="sp-nav-link">
+                <span class="en">COURSE</span>
+                <span class="ja">コース紹介</span>
+            </a>
+            <a href="#faq" class="sp-nav-link">
+                <span class="en">FAQ</span>
+                <span class="ja">よくある質問</span>
+            </a>
+            <a href="#apply" class="sp-nav-link">
+                <span class="en">CONTACT</span>
+                <span class="ja">お問合わせ</span>
+            </a>
+        </nav>
     </div>
-</header>
 
-<div class="sp-menu-overlay" id="sp-menu">
-    <div class="sp-menu-close" id="sp-menu-close">&times;</div>
-    <nav class="sp-nav">
-        <a href="index.html" class="sp-nav-link">
-            <span class="en">HOME</span>
-            <span class="ja">ホームに戻る</span>
-        </a>
-        <a href="#concept" class="sp-nav-link">
-            <span class="en">CONCEPT</span>
-            <span class="ja">コンセプト</span>
-        </a>
-        <a href="#course" class="sp-nav-link">
-            <span class="en">COURSE</span>
-            <span class="ja">コース紹介</span>
-        </a>
-        <a href="#faq" class="sp-nav-link">
-            <span class="en">FAQ</span>
-            <span class="ja">よくある質問</span>
-        </a>
-        <a href="#apply" class="sp-nav-link">
-            <span class="en">CONTACT</span>
-            <span class="ja">お問合わせ</span>
-        </a>
-    </nav>
-</div>
-
-<div class="lp-hero">
-    <canvas id="hero-canvas"></canvas>
-    <div class="container">
-        <span class="lp-tag fade-up">追加3名様限定でモニター募集中</span>
-        <h1 class="service-name-hero fade-up">CoCOMPLETE</h1>
-        <h2 class="lp-title mincho fade-up">
-            <span class="inline-phrase">独りで、</span><span class="inline-phrase">やらない。</span>
-        </h2>
-        <p class="lp-subtitle fade-up">
-            <span class="inline-phrase">ずっと先送りにしてきた</span><span class="inline-phrase">「未完了」を、</span><br class="sp-br">
-            <span class="inline-phrase">今日、</span><span class="inline-phrase">共に</span><span class="inline-phrase">終わらせる。</span>
-        </p>
-    </div>
-</div>
-
-<div class="floating-cta" id="floating-cta">
-    <div class="page-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'});">
-        ↑
-    </div>
-</div>
-
-<section class="white-section" id="pain">
-    <div class="container">
-        <div class="section-head">
-            <h2 class="mincho">
-                <span class="inline-phrase">こんな「未完了」を</span><span class="inline-phrase">抱えていませんか？</span>
+    <div class="lp-hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="container">
+            <span class="lp-tag fade-up">モニター募集中</span>
+            <h1 class="service-name-hero fade-up">CoCOMPLETE</h1>
+            <h2 class="lp-title mincho fade-up">
+                <span class="inline-phrase">独りで、</span><span class="inline-phrase">やらない。</span>
             </h2>
-        </div>
-        
-        <div class="pain-box fade-up">
-            <div class="pain-title">未完のホームページ</div>
-            <div class="pain-voice">「自分のHPを持ちたい」「プロフィールを更新しなきゃ」と思いながら、数ヶ月が過ぎた。</div>
-            <div class="pain-voice">HP作成ツールを使えば形にはなる。でも、そこに出てくるのは「綺麗だけど、私じゃない」モノたち。正解を求めれば求めるほど、自分の体温が消えていくジレンマ。</div>
-            <div class="pain-voice">誰にも相談できず、画面の前でフリーズしているその時間は、あなたが前に進む力を少しずつ削り取っています。</div>
-        </div>
-
-        <div class="pain-box fade-up">
-            <div class="pain-title">思考の未完了：バックグラウンド処理の過負荷</div>
-            <div class="pain-voice">溜まったメール、整理されていないデスクトップ、着手できない企画書。</div>
-            <div class="pain-voice">物理的な散らかりやタスクの滞留は、単なる「怠慢」ではありません。それは「決断の先送り」という脳のメモリリークです。</div>
-            <div class="pain-voice">「いつかやらなきゃ」という微細なノイズが、あなたのクリエイティビティや意思決定のスピードを鈍らせています。</div>
-        </div>
-        
-        <p class="fade-up" style="text-align: center; font-weight: bold; margin-top: 50px;">
-            あなたができないのは、意思が弱いからではありません。<br>
-            「独りで抱え込んでいる」からです。
-        </p>
-    </div>
-</section>
-
-<section class="gray-section" id="concept">
-    <div class="container">
-        <div class="section-head">
-            <h2 class="mincho">CoCOMPLETEの関わり</h2>
-        </div>
-        <div class="solution-text">
-            <p class="fade-up">
-                CoCOMPLETEは、プロコーチによる「心理的安全性」と、ITシステムコンサルタントによる「技術的解決」を融合させた、独自の完了支援プログラムです。
-            </p>
-            <p class="fade-up">
-                私はあなたの作業をただ監視するだけではありません。<span class="scroll-marker">あなたが「完了」させるその瞬間を、誰よりも信じ、最後まで見届ける「証人」</span>となります。
-            </p>
-            <p class="fade-up">
-                技術的な壁（IT）と、心理的な壁（恥や恐れ）。<br>
-                <span class="scroll-marker">この双方を取り除くことで、半年間止まっていた時計の針を、わずか数時間で動かします。</span>
+            <p class="lp-subtitle fade-up">
+                <span class="inline-phrase">ずっと先送りにしてきた</span><span class="inline-phrase">「未完了」を、</span><br
+                    class="sp-br">
+                <span class="inline-phrase">今日、</span><span class="inline-phrase">共に</span><span
+                    class="inline-phrase">終わらせる。</span>
             </p>
         </div>
     </div>
-</section>
 
-<section class="white-section" id="course">
-    <div class="container">
-        <div class="section-head">
-            <h2 class="mincho">選べる2つのコース</h2>
-            <p>現在、モニター様を限定募集中です</p>
+    <div class="floating-cta" id="floating-cta">
+        <div class="page-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'});">
+            ↑
         </div>
+    </div>
 
-        <div class="menu-card fade-up">
-            <div class="menu-header">
-                <span>Aコース：Webサイト作成伴走</span>
-                <div class="price-box">
-                    <span class="original-price">通常 55,000円</span>
-                    <span class="monitor-price">モニター 25,000円(税込)</span>
+    <section class="white-section" id="pain">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="mincho">
+                    <span class="inline-phrase">こんな「未完了」を</span><span class="inline-phrase">抱えていませんか？</span>
+                </h2>
+            </div>
+
+            <div class="pain-box fade-up">
+                <div class="pain-title">未完のホームページ</div>
+                <div class="pain-voice">「自分のHPを持ちたい」「プロフィールを更新しなきゃ」と思いながら、数ヶ月が過ぎた。</div>
+                <div class="pain-voice">HP作成ツールを使えば形にはなる。でも、そこに出てくるのは「綺麗だけど、私じゃない」モノたち。正解を求めれば求めるほど、自分の体温が消えていくジレンマ。
+                </div>
+                <div class="pain-voice">誰にも相談できず、画面の前でフリーズしているその時間は、あなたが前に進む力を少しずつ削り取っています。</div>
+            </div>
+
+            <div class="pain-box fade-up">
+                <div class="pain-title">思考の未完了：バックグラウンド処理の過負荷</div>
+                <div class="pain-voice">溜まったメール、整理されていないデスクトップ、着手できない企画書。</div>
+                <div class="pain-voice">物理的な散らかりやタスクの滞留は、単なる「怠慢」ではありません。それは「決断の先送り」という脳のメモリリークです。</div>
+                <div class="pain-voice">「いつかやらなきゃ」という微細なノイズが、あなたのクリエイティビティや意思決定のスピードを鈍らせています。</div>
+            </div>
+
+            <p class="fade-up" style="text-align: center; font-weight: bold; margin-top: 50px;">
+                あなたができないのは、意思が弱いからではありません。<br>
+                「独りで抱え込んでいる」からです。
+            </p>
+        </div>
+    </section>
+
+    <section class="gray-section" id="concept">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="mincho">CoCOMPLETEの関わり</h2>
+            </div>
+            <div class="solution-text">
+                <p class="fade-up">
+                    CoCOMPLETEは、プロコーチによる「心理的安全性」と、ITシステムコンサルタントによる「技術的解決」を融合させた、独自の完了支援プログラムです。
+                </p>
+                <p class="fade-up">
+                    私はあなたの作業をただ監視するだけではありません。<span
+                        class="scroll-marker">あなたが「完了」させるその瞬間を、誰よりも信じ、最後まで見届ける「証人」</span>となります。
+                </p>
+                <p class="fade-up">
+                    技術的な壁（IT）と、心理的な壁（恥や恐れ）。<br>
+                    <span class="scroll-marker">この双方を取り除くことで、半年間止まっていた時計の針を、わずか数時間で動かします。</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="white-section" id="course">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="mincho">選べる2つのコース</h2>
+            </div>
+
+            <div class="menu-card fade-up">
+                <div class="menu-header">
+                    <span>Aコース：Webサイト作成伴走</span>
+                </div>
+                <div class="menu-body">
+                    <p>元ITエンジニアのコーチが伴走。AIを使ってあなただけのWebページを作り、120分で公開。<br>
+                        ※120分で作成・公開できる品質は下記のサンプルを参照ください。
+                    </p>
+
+                    <div class="sample-card">
+                        <span class="sample-badge">作成サンプル</span>
+                        <img src="sample_hp.jpg" alt="Webサイト作成サンプル" class="sample-img">
+                        <a href="https://naomitchy.github.io/CoCLEANUP-sample-HP/" target="_blank"
+                            class="sample-link">実際のWebサイトを見てみる（Demo） →</a>
+                    </div>
+
+                    <div style="margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
+                        <ul class="menu-list">
+                            <li><strong>言葉にならない思いをカタチに：</strong>コンサルティング×コーチング×AIで、あなたの感覚を言語化・システム化します。</li>
+                            <li><strong>AIの罠を回避：</strong>AIは完璧ではないからこそ、ハマらなくていい罠を事前に回避させて、120分でホームページを公開まで導きます。</li>
+                            <li><strong>自律への扉を開ける：</strong>「納品」ではなく「一緒に作る」から、後で自分で修正できる力が身につきます。特に、事業開始当初はサービスの内容を柔軟に変更していくことが予想されます。ホームページを静的なコンテンツから、稼働領域のあるコンテンツに。
+                            </li>
+                            <li><strong>確かな拠点があるからこそ、外で戦える：</strong>住所不定では得られない自信は、ビジネスを加速させ、世の中に更に価値を提供していきます。</li>
+
+                        </ul>
+                    </div>
+
+                    <h4 class="mincho plan-subtitle">ご希望に合わせて選べる3つのプラン</h4>
+
+                    <div class="plan-cards-container">
+
+                        <div class="plan-card">
+                            <div class="plan-card-header">
+                                <h5 class="plan-card-title">① シングル・プラン（作成のみ）</h5>
+                                <div><span class="plan-price">29,000円</span><span class="plan-price-tax">(税込)</span>
+                                </div>
+                            </div>
+                            <p class="plan-card-body">
+                                <span class="plan-badge">全1回</span>
+                                <strong>HP作成(120分)</strong><br>
+                                まずは形にしたい方に。
+                            </p>
+                        </div>
+
+                        <div class="plan-card plan-card--featured">
+                            <span class="plan-popular-tag">一番人気</span>
+                            <div class="plan-card-header">
+                                <h5 class="plan-card-title">② 安心スタート・パック</h5>
+                                <div style="text-align:right;">
+                                    <span class="plan-price-original">45,500円</span>
+                                    <span class="plan-price--large">39,000円</span><span
+                                        class="plan-price-tax">(税込)</span>
+                                </div>
+                            </div>
+                            <p class="plan-card-body">
+                                <span class="plan-badge plan-badge--accent">全2回</span>
+                                <strong>作成(120分) ＋ 後日フォロー(60分)</strong><br>
+                                公開後の「操作が不安」「ここ直したい」を解消。初めての方に推奨する安心セットです。<br>
+                                <span class="plan-discount-note">※単発で追加するより6,500円お得</span>
+                            </p>
+                        </div>
+
+                        <div class="plan-card plan-card--alt">
+                            <span class="plan-promo-tag">実質1回分無料</span>
+                            <div class="plan-card-header">
+                                <h5 class="plan-card-title">③ 事業伴走・パック</h5>
+                                <div style="text-align:right;">
+                                    <span class="plan-price-original">78,500円</span>
+                                    <span class="plan-price--large">62,000円</span><span
+                                        class="plan-price-tax">(税込)</span>
+                                </div>
+                            </div>
+                            <p class="plan-card-body">
+                                <span class="plan-badge plan-badge--blue">全4回</span>
+                                <strong>作成(120分) ＋ 事業支援(60分×3回)</strong><br>
+                                商品設計、集客導線まで。ビジネスを軌道に乗せる本気コース。
+                            </p>
+                        </div>
+                        <p class="plan-note">
+                            ※各セッションは、単発（1回60分 / 16,500円）で<br class="sp-br">後から追加することも可能です。
+                        </p>
+
+                    </div>
+
                 </div>
             </div>
-            <div class="menu-body">
-                <p style="color:var(--urgent-color); font-weight:bold; margin-bottom:15px;">※既に5名様が完了。追加募集は3枠限定となります。</p>
-                <p>元ITエンジニアのコーチが伴走。AIを使ってあなただけのWebページを作り、120分で公開。<br>
-                   Web上に「自分の家（Home）」を持つ安心感が、あなたをビジネスの挑戦（腹決め）へと駆り立てます。
-                </p>
 
-                <div class="sample-card">
-                    <span class="sample-badge">作成サンプル</span>
-                    <img src="sample_hp.jpg" alt="Webサイト作成サンプル" class="sample-img">
-                    <a href="https://naomitchy.github.io/CoCLEANUP-sample-HP/" target="_blank" class="sample-link">実際のWebサイトを見てみる（Demo） →</a>
-                </div>
-
-                <ul class="menu-list">
-                    <li><strong>言葉にならない思いをカタチに：</strong>コーチング×AIの力を使い、クライアントが言葉に出来ない声を比喩やシステムにカタチとして表現。ハマらなくて罠を回避し、AIのプロである私と共に完了させます。</li>
-					<li><strong>自律への扉を開ける：</strong>思った瞬間に、自分の手ですぐに修正できる自由。HPを静的なコンテンツから、稼働領域のあるコンテンツにして、あなたのビジネスを柔軟にします。</li>
-                    <li><strong>ビジネスを前進させる：</strong>確かな拠点があるからこそ、外（戦場）で戦える。住所不定では得られない自信は、ビジネスを加速させ、世の中に更に価値提供をします。</li>
-                   </ul>
-
-                <div class="option-box">
-                    <span class="option-tag">オススメ</span>
-                    <span class="option-title mincho">公開後のブラッシュアップ・セッション</span>
-                    <div class="option-desc">
-                        <p>「一度作った後に、自分で中身を触ってみたけれど、やっぱり迷子になった……」そんな時のために、後日行う追加セッション（60分）をご用意しました。</p>
-                        <p style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
-                            <span style="color: var(--accent-color); font-weight: bold;">※モニター様は「11,000円(税込)」で追加可能です。</span>
-                        </p>
+            <div class="menu-card fade-up">
+                <div class="menu-header">
+                    <span>Bコース：オーダーメイド完了セッション</span>
+                    <div class="price-box">
+                        <span class="original-price">通常 16,500円</span>
+                        <span class="monitor-price">特別価格 11,000円(税込)</span>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="menu-card fade-up">
-            <div class="menu-header">
-                <span>Bコース：オーダーメイド完了セッション</span>
-                <div class="price-box">
-                    <span class="original-price">通常 16,500円</span>
-                    <span class="monitor-price">モニター 5,500円(税込)</span>
+                <div class="menu-body">
+                    <p>あなたが抱えるあらゆる「未完了」を、60分一本勝負で終わらせるコースです。</p>
+                    <ul class="menu-list">
+                        <li><strong>デジタル・クリーンアップ：</strong>数千件の未読メールの一括処理、デスクトップ整理、クラウドストレージの断捨離。</li>
+                        <li><strong>言葉と発信の完了：</strong>SNSプロフィールの更新、ずっと書けなかったブログ記事の公開、提案書の完成。</li>
+                        <li><strong>思考とプロジェクトの完了：</strong>絡み合ったタスクの優先順位付け、ロードマップの策定、止まっていたプロジェクトの再始動。</li>
+                        <li><strong>時間：</strong>60分（コーチング20分＋集中作業40分）</li>
+                    </ul>
                 </div>
             </div>
-            <div class="menu-body">
-                <p>あなたが抱えるあらゆる「未完了」を、60分一本勝負で終わらせるコースです。</p>
-                <ul class="menu-list">
-                    <li><strong>デジタル・クリーンアップ：</strong>数千件の未読メールの一括処理、デスクトップ整理、クラウドストレージの断捨離。</li>
-                    <li><strong>言葉と発信の完了：</strong>SNSプロフィールの更新、ずっと書けなかったブログ記事の公開、提案書の完成。</li>
-                    <li><strong>思考とプロジェクトの完了：</strong>絡み合ったタスクの優先順位付け、ロードマップの策定、止まっていたプロジェクトの再始動。</li>
-                    <li><strong>時間：</strong>60分（コーチング20分＋集中作業40分）</li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="benefit-card fade-up">
-            <span class="benefit-tag">Community Benefit</span>
-            <span class="benefit-title-text">参加者限定グループ「Co-STAR SHIP」へのご招待</span>
-            <p style="font-size:0.95rem; line-height:1.8;">
-                未完了を完了させた者たちが集うFacebookプライベートグループへ招待します。ここでは、お互いのチャレンジを応援し、完了のエネルギーを循環させ続けます。
-            </p>
-            <p style="font-size:0.85rem; color:#888; margin-top:15px;">
-                ※参加は完全に任意（希望制）です。強制ではありませんのでご安心ください。
-            </p>
-        </div>
-        
-    </div>
-</section>
-
-<section class="gray-section" id="faq">
-    <div class="container">
-        <div class="section-head">
-            <h2 class="mincho">FAQ</h2>
-            <p>よくあるご質問</p>
-        </div>
-        
-        <details class="faq-item fade-up">
-            <summary class="faq-question">
-                <span class="faq-q-text">コーチは具体的に何をしてくれるのですか？</span>
-                <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">あなたの「伴走者」かつ「証人」となります。作業中に手が止まれば問いかけを行い、技術的な不明点（特にAコース）があれば、ITのプロとして即座に選択肢を提示します。独りでは挫折してしまうポイントを、対話と技術の両面からサポートし、完了まで導きます。</div>
-        </details>
-
-        <details class="faq-item fade-up">
-            <summary class="faq-question">
-                <span class="faq-q-text">散らかった状況や、整理できていない頭の中を見せるのが恥ずかしいです。</span>
-                <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">その「恥」の感情こそが、完了を妨げている最大の要因です。コーチには守秘義務があり、決してあなたを評価・批判しません。信頼できる第三者に「ありのまま」を開示した瞬間、心理的なブロックが外れ、驚くほど手が進むようになります。安心してお委ねください。</div>
-        </details>
-
-        <details class="faq-item fade-up">
-            <summary class="faq-question">
-                <span class="faq-q-text">ITスキルに自信がないですが、Webサイトは作れますか？</span>
-                <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">はい、作れます。CoCOMPLETEの強みは、コーチがシステムエンジニアとしてのバックグラウンドを持っていることです。難しい操作や設定は画面共有などを通じて丁寧にナビゲートしますので、あなたは「どんな表現をしたいか」という感性の部分に集中していただけます。</div>
-        </details>
-
-        <details class="faq-item fade-up">
-            <summary class="faq-question">
-                <span class="faq-q-text">申し込み後の流れを教えてください。</span>
-                <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">まずは無料相談（30分）にて、現状の課題とゴールのすり合わせを行います。相性や内容に納得いただいた上で、本セッションの日程を確定します。</div>
-        </details>
-    </div>
-</section>
-
-<section class="white-section" id="apply">
-    <div class="container">
-        <div class="section-head">
-            <h2 class="mincho" style="color:var(--urgent-color);" aria-label="Monitor Offer モニター募集（無料相談）">
-                Monitor Offer
-                <span style="display:block; font-size:1.2rem; margin-top:10px; color:var(--text-color);">モニター募集（無料相談）</span>
-            </h2>
-            <p>サービス開始に伴い、フィードバックを頂けるモニター様を募集します。<br>
-            <span style="font-weight:bold; color:var(--text-color);">Aコースは残り3枠限定となります。</span></p>
-        </div>
-
-        <p style="text-align: center; margin-bottom: 25px; font-weight: bold;">
-            まずは30分の無料相談で、現状の整理と完了へのプロセスをご提案します。<br>
-            実際にお役に立てそうか、相性をご確認いただいてから本申込となります。
-        </p>
-
-        <div class="form-wrapper fade-up">
-            <h3 style="text-align:center; margin-bottom:30px;">CoCOMPLETE モニター申込 無料相談</h3>
-            
-            <div style="background:#fff4f4; padding:20px; border-radius:4px; margin-bottom:30px; border:1px solid var(--urgent-color); font-size:0.9rem;">
-                <strong>【参加条件・注意事項】</strong>
-                <ul style="margin:10px 0 0 20px; padding:0;">
-                    <li>実施後のインタビュー・アンケートへのご協力</li>
-                    <li>「お客様の声」としての掲載許可</li>
-                    <li>Aコースをご希望の場合、120分連続した時間を確保いただきます。</li>
-                    <li>期間：2026年2月末まで（定員に達し次第終了）</li>
-                </ul>
+            <div class="benefit-card fade-up">
+                <span class="benefit-tag">Community Benefit</span>
+                <span class="benefit-title-text">参加者限定グループ「Co-STAR SHIP」へのご招待</span>
+                <p style="font-size:0.95rem; line-height:1.8;">
+                    未完了を完了させた者たちが集うFacebookプライベートグループへ招待します。ここでは、お互いのチャレンジを応援し、完了のエネルギーを循環させ続けます。
+                </p>
+                <p style="font-size:0.85rem; color:#888; margin-top:15px;">
+                    ※参加は完全に任意（希望制）です。強制ではありませんのでご安心ください。
+                </p>
             </div>
 
-<form action="https://ssgform.com/s/P1XZVcpingDQ" method="post" id="cocomplete-lp-form">
+        </div>
+    </section>
+
+    <section class="gray-section" id="voice">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="mincho">Voices</h2>
+                <p>モニター参加者のリアルな声</p>
+            </div>
+
+            <div class="voice-grid">
+
+                <div class="voice-card fade-up">
+                    <div class="voice-header">
+                        <div class="voice-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </div>
+                        <span class="voice-name">40代 コンサルタント (Webサイト作成)</span>
+                    </div>
+                    <div class="voice-body">
+                        <div class="voice-section voice-good">
+                            <span class="voice-label label-good">良い点</span>
+                            <p class="voice-text">
+                                2026年の活動の基礎となるWebサイトが形になり、身が引き締まる思いです。<br>
+                                自分一人では言葉にできなかった「感覚」を言語化してもらえたことで、ありのままに変化し続ける決意を持った自分を象徴するような、柔軟性のあるWebサイトを築くことができました。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="voice-card fade-up">
+                    <div class="voice-header">
+                        <div class="voice-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </div>
+                        <span class="voice-name">30代 ライフコーチ (Webサイト作成)</span>
+                    </div>
+                    <div class="voice-body">
+                        <div class="voice-section voice-good">
+                            <span class="voice-label label-good">良い点</span>
+                            <p class="voice-text">
+                                「自由度は欲しいけどコードは書けない」とずっと保留にしていたことがクリアになり、自分の世界観そのまんまのサイトが公開できて驚きと喜びを感じました。<br>
+                                完成後すぐにパートナーに見せ、喜びを分かち合えたことも嬉しかったです。
+                            </p>
+                        </div>
+                        <div class="voice-section voice-more">
+                            <span class="voice-label label-more">もっとこうして欲しかった点</span>
+                            <p class="voice-text">
+                                セッション中、これは「コーチング」なのか「制作のためのヒアリング」なのか、どちらのスタンスで答えればいいか迷う瞬間がありました。また、直感的なタイプなので、言葉だけでなく画像などの視覚情報ですり合わせができるとより安心できると感じました。
+                            </p>
+                            <div class="voice-reply">
+                                <span class="reply-badge">運営より</span>
+                                貴重なフィードバックありがとうございます。現在、セッション冒頭で「ここは制作のための聞き取りです」「ここはコーチングで深掘りします」というアナウンスを明確に行うよう改善いたしました。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="voice-card fade-up">
+                    <div class="voice-header">
+                        <div class="voice-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </div>
+                        <span class="voice-name">20代 パーソナルトレーナー (Webサイト作成)</span>
+                    </div>
+                    <div class="voice-body">
+                        <div class="voice-section voice-good">
+                            <span class="voice-label label-good">良い点</span>
+                            <p class="voice-text">
+                                AIでここまでできるなんて感動でした。「もう孤独に頑張らなくていいんだ」という思いの核を見つけられたのが大きな収穫です。<br>
+                                形にならないとわからないことがあると実感しているので、まずは一歩踏み出せたことが嬉しいです。
+                            </p>
+                        </div>
+                        <div class="voice-section voice-more">
+                            <span class="voice-label label-more">もっとこうして欲しかった点</span>
+                            <p class="voice-text">
+                                正直なところ、運用（更新や修正）にはまだ不安があります。AIへの指示出しは、一回では習得しきれないと感じました。<br>
+                                「作って終わり」ではなく、自分で修正できるようになるためのフォローアップの回が別にあると嬉しいです。
+                            </p>
+                            <div class="voice-reply">
+                                <span class="reply-badge">運営より</span>
+                                このお声をきっかけに、作成後日にもう一度レクチャーを行う<br>
+                                <a href="#course"
+                                    style="color:var(--text-color); text-decoration:underline; font-weight:bold;">「②
+                                    安心スタート・パック（全2回）」</a>を新設いたしました。<br>不安なまま終わらせない体制を整えました。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="voice-card fade-up">
+                    <div class="voice-header">
+                        <div class="voice-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </div>
+                        <span class="voice-name">40代 パーソナルコーチ (Webサイト作成)</span>
+                    </div>
+                    <div class="voice-body">
+                        <div class="voice-section voice-good">
+                            <span class="voice-label label-good">良い点</span>
+                            <p class="voice-text">
+                                自分の世界観や大切にしているサービスがWebサイトとして公開された瞬間、その特別感に驚きと喜びを感じました。<br>
+                                また、こちらの状況を察して先回りしてリードしてくれる関わりや、わかりやすい説明が、前に進むうえでとても心強かったです。「先生と生徒」ではなく「フラット」な関係で伴走してくれるのも、直道さんの大きな魅力だと感じました。
+                            </p>
+                        </div>
+                        <div class="voice-section voice-more">
+                            <span class="voice-label label-more">もっとこうして欲しかった点</span>
+                            <p class="voice-text">
+                                セッション中、何度か「もっと深く踏み込もう」として、時間を気にして止めたような瞬間を感じました。個人的にはその「深い関わり」も欲しかったな、と思ったのが正直なところです。<br>
+                                ただ、「時間内に完了させる」ことがこのサービスの最重要コンセプトであるため、そこからズレないためのプロとしての判断だったのだと納得はしています（笑）。
+                            </p>
+                            <div class="voice-reply">
+                                <span class="reply-badge">運営より</span>
+                                ありがとうございます。おっしゃる通り、CoCOMPLETEは「完了」を最優先するため、あえて深掘りを止めて手を動かす判断をすることがございます。より深いコンセプト設計や対話をご希望の場合は、ぜひ継続的な「事業伴走・パック」もご検討いただけますと幸いです。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="gray-section" id="faq">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="mincho">FAQ</h2>
+                <p>よくあるご質問</p>
+            </div>
+
+            <details class="faq-item fade-up">
+                <summary class="faq-question">
+                    <span class="faq-q-text">コーチは具体的に何をしてくれるのですか？</span>
+                    <span class="faq-icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    あなたの「伴走者」かつ「証人」となります。作業中に手が止まれば問いかけを行い、技術的な不明点（特にAコース）があれば、ITのプロとして即座に選択肢を提示します。独りでは挫折してしまうポイントを、対話と技術の両面からサポートし、完了まで導きます。
+                </div>
+            </details>
+
+            <details class="faq-item fade-up">
+                <summary class="faq-question">
+                    <span class="faq-q-text">散らかった状況や、整理できていない頭の中を見せるのが恥ずかしいです。</span>
+                    <span class="faq-icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    その「恥」の感情こそが、完了を妨げている最大の要因です。コーチには守秘義務があり、決してあなたを評価・批判しません。信頼できる第三者に「ありのまま」を開示した瞬間、心理的なブロックが外れ、驚くほど手が進むようになります。安心してお委ねください。
+                </div>
+            </details>
+
+            <details class="faq-item fade-up">
+                <summary class="faq-question">
+                    <span class="faq-q-text">ITスキルに自信がないですが、Webサイトは作れますか？</span>
+                    <span class="faq-icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    はい、作れます。CoCOMPLETEの強みは、コーチがシステムエンジニアとしてのバックグラウンドを持っていることです。難しい操作や設定は画面共有などを通じて丁寧にナビゲートしますので、あなたは「どんな表現をしたいか」という感性の部分に集中していただけます。
+                </div>
+            </details>
+
+            <details class="faq-item fade-up">
+                <summary class="faq-question">
+                    <span class="faq-q-text">申し込み後の流れを教えてください。</span>
+                    <span class="faq-icon">+</span>
+                </summary>
+                <div class="faq-answer">まずは無料相談（45分）にて、現状の課題とゴールのすり合わせを行います。相性や内容に納得いただいた上で、本セッションの日程を確定します。</div>
+            </details>
+        </div>
+    </section>
+
+    <section class="white-section" id="apply">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="mincho" aria-label="Contact">
+                    Contact
+                </h2>
+            </div>
+
+            <p style="text-align: center; margin-bottom: 25px; font-weight: bold;">
+                まずは45分の無料相談で、現状の整理と完了へのプロセスをご提案します。<br>
+                実際にお役に立てそうか、相性をご確認いただいてから本申込となります。
+            </p>
+
+            <div class="form-wrapper fade-up">
+                <h3 style="text-align:center; margin-bottom:30px;">CoCOMPLETE 無料相談 お申し込み</h3>
+
+                <div
+                    style="background:#fff4f4; padding:20px; border-radius:4px; margin-bottom:30px; border:1px solid var(--urgent-color); font-size:0.9rem;">
+                    <strong>【Bコース（オーダーメイド）：特別価格のご案内】</strong>
+                    <p style="margin:10px 0 0;">
+                        インタビューへのご協力や「お客様の声」への掲載を許可いただける場合、<br>
+                        表示価格（特別価格）にてご案内させていただきます。
+                    </p>
+                </div>
+
+                <form action="https://ssgform.com/s/P1XZVcpingDQ" method="post" id="cocomplete-lp-form">
+                    <input type="hidden" name="_redirectTo" value="https://costar-works.com/thanks.html">
+
+                    <div class="form-group">
+                        <label class="form-label">希望コース <span style="color:#d9534f">*</span></label>
+                        <select name="種別" class="form-select" required>
+                            <option value="">選択してください</option>
+                            <option value="CoCOMPLETE：Aコース（Web作成）">Aコース：Webサイト作成（無料相談）</option>
+                            <option value="CoCOMPLETE：Bコース（オーダーメイド）">Bコース：オーダーメイド（無料相談）</option>
+                            <option value="CoCOMPLETE：その他お問い合わせ">その他お問い合わせ</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">お名前 <span style="color:#d9534f">*</span></label>
+                        <input type="text" name="名前" class="form-input" required placeholder="例：山田 花子">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">メールアドレス <span style="color:#d9534f">*</span></label>
+                        <input type="email" name="email" class="form-input" required placeholder="例：example@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">希望日時・現状の課題 <span style="color:#d9534f">*</span></label>
+                        <textarea name="コメント" class="form-textarea" required rows="5"
+                            placeholder="・無料相談の希望日時（平日夜、土日など）&#13;&#10;・現在のお悩み（HPを作りたい、タスク整理したい等）&#13;&#10;&#13;&#10;上記をご自由にご記入ください。"></textarea>
+                        <p style="font-size:0.8rem; color:#666; margin-top:5px;">※具体的な日時は、フォーム送信後にメールにて調整させていただきます。</p>
+                    </div>
+
+                    <div style="margin-top:25px; text-align:center;">
+                        <label style="display:inline-flex; align-items:center; cursor:pointer;">
+                            <input type="checkbox" required
+                                style="width:18px; height:18px; margin-right:8px; cursor:pointer;">
+                            <span style="font-size:0.95rem;"><a href="privacy.html" target="_blank"
+                                    style="text-decoration:underline; color:var(--text-color);">プライバシーポリシー</a>に同意する</span>
+                        </label>
+                    </div>
+
+                    <div style="text-align: center; margin-top:20px;">
+                        <button type="submit" class="btn-submit">無料相談を予約する</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="gray-section" style="text-align:center;">
+        <div class="container">
+            <h3 class="mincho">その他の「未完了」も。</h3>
+            <p style="margin-bottom:15px; color:var(--text-muted);">一人では腰が重いタスクがあればお気軽にご相談ください。</p>
+            <p style="margin-bottom:30px; font-size:0.9rem; color:#666;">サービスに関するご質問や、HPに書かれていないご相談もこちらからどうぞ。</p>
+            <button class="btn-outline" onclick="openModal('contact')">お問い合わせ</button>
+        </div>
+    </section>
+
+    <footer style="text-align:center; padding:50px 0; font-size:0.8rem; color:#999; background:var(--bg-color);">
+        <div style="margin-bottom:15px;">
+            <a href="tokusho.html" style="margin:0 10px;">特定商取引法に基づく表記</a>
+            <span style="opacity:0.5;">|</span>
+            <a href="privacy.html" style="margin:0 10px;">プライバシーポリシー</a>
+        </div>
+        <p>&copy; 2026 CoSTAR. All Rights Reserved.</p>
+    </footer>
+
+    <div id="modal-contact" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('contact')">&times;</span>
+            <h2 class="mincho" style="margin-bottom:30px;">お問い合わせ</h2>
+            <form action="https://ssgform.com/s/1jc1dcHXlhf0" method="post">
                 <input type="hidden" name="_redirectTo" value="https://costar-works.com/thanks.html">
-                
-                <div class="form-group">
-                    <label class="form-label">希望コース <span style="color:#d9534f">*</span></label>
-                    <select name="種別" class="form-select" required>
-                        <option value="">選択してください</option>
-                        <option value="CoCOMPLETE：Aコース（Web作成）">Aコース：Webサイト作成（無料相談）</option>
-                        <option value="CoCOMPLETE：Bコース（オーダーメイド）">Bコース：オーダーメイド（無料相談）</option>
-                        <option value="CoCOMPLETE：その他お問い合わせ">その他お問い合わせ</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">お名前 <span style="color:#d9534f">*</span></label>
-                    <input type="text" name="名前" class="form-input" required placeholder="例：山田 花子">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">メールアドレス <span style="color:#d9534f">*</span></label>
-                    <input type="email" name="email" class="form-input" required placeholder="例：example@email.com">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">希望日時・現状の課題 <span style="color:#d9534f">*</span></label>
-                    <textarea name="コメント" class="form-textarea" required rows="5" placeholder="・無料相談の希望日時（平日夜、土日など）&#13;&#10;・現在のお悩み（HPを作りたい、タスク整理したい等）&#13;&#10;&#13;&#10;上記をご自由にご記入ください。"></textarea>
-                    <p style="font-size:0.8rem; color:#666; margin-top:5px;">※具体的な日時は、フォーム送信後にメールにて調整させていただきます。</p>
-                </div>
-
-                <div style="margin-top:25px; text-align:center;">
-                    <label style="display:inline-flex; align-items:center; cursor:pointer;">
-                        <input type="checkbox" required style="width:18px; height:18px; margin-right:8px; cursor:pointer;">
-                        <span style="font-size:0.95rem;"><a href="privacy.html" target="_blank" style="text-decoration:underline; color:var(--text-color);">プライバシーポリシー</a>に同意する</span>
-                    </label>
-                </div>
-
-                <div style="text-align: center; margin-top:20px;">
-                    <button type="submit" class="btn-submit">無料相談を予約する</button>
+                <div class="form-group"><label class="form-label">お名前*</label><input type="text" name="名前"
+                        class="form-input" required></div>
+                <div class="form-group"><label class="form-label">メールアドレス*</label><input type="email" name="email"
+                        class="form-input" required></div>
+                <div class="form-group"><label class="form-label">お問い合わせ内容*</label><textarea name="問い合わせ内容"
+                        class="form-textarea" required></textarea></div>
+                <div style="text-align:center; margin-top:30px;"><button type="submit" class="btn-submit">送信する</button>
                 </div>
             </form>
         </div>
     </div>
-</section>
 
-<section class="gray-section" style="text-align:center;">
-    <div class="container">
-        <h3 class="mincho">その他の「未完了」も。</h3>
-        <p style="margin-bottom:15px; color:var(--text-muted);">一人では腰が重いタスクがあればお気軽にご相談ください。</p>
-        <p style="margin-bottom:30px; font-size:0.9rem; color:#666;">サービスに関するご質問や、HPに書かれていないご相談もこちらからどうぞ。</p>
-        <button class="btn-outline" onclick="openModal('contact')">お問い合わせ</button>
-    </div>
-</section>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 1. Animation Observers (FadeUp & Markers) ---
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -50px 0px',
+                threshold: 0.1
+            };
 
-<footer style="text-align:center; padding:50px 0; font-size:0.8rem; color:#999; background:var(--bg-color);">
-    <div style="margin-bottom:15px;">
-        <a href="tokusho.html" style="margin:0 10px;">特定商取引法に基づく表記</a>
-        <span style="opacity:0.5;">|</span>
-        <a href="privacy.html" style="margin:0 10px;">プライバシーポリシー</a>
-    </div>
-    <p>&copy; 2026 CoSTAR. All Rights Reserved.</p>
-</footer>
-
-<div id="modal-contact" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('contact')">&times;</span>
-        <h2 class="mincho" style="margin-bottom:30px;">お問い合わせ</h2>
-        <form action="https://ssgform.com/s/1jc1dcHXlhf0" method="post">
-            <input type="hidden" name="_redirectTo" value="https://costar-works.com/thanks.html">
-            <div class="form-group"><label class="form-label">お名前*</label><input type="text" name="名前" class="form-input" required></div>
-            <div class="form-group"><label class="form-label">メールアドレス*</label><input type="email" name="email" class="form-input" required></div>
-            <div class="form-group"><label class="form-label">お問い合わせ内容*</label><textarea name="問い合わせ内容" class="form-textarea" required></textarea></div>
-            <div style="text-align:center; margin-top:30px;"><button type="submit" class="btn-submit">送信する</button></div>
-        </form>
-    </div>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- 1. Animation Observers (FadeUp & Markers) ---
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -50px 0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-        document.querySelectorAll('.scroll-marker').forEach(el => observer.observe(el));
-
-        // --- 2. Nav Active State & Floating CTA Logic ---
-        const sections = document.querySelectorAll('section[id], body[id], div[id]');
-        const navLinks = document.querySelectorAll('.pc-nav-link');
-        const floatingCta = document.getElementById('floating-cta');
-        const heroSection = document.querySelector('.lp-hero');
-
-        // ScrollSpy (Nav Highlight)
-        const navObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.dataset.target === entry.target.id) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }, { rootMargin: '-50% 0px -50% 0px' });
-
-        sections.forEach(section => navObserver.observe(section));
-
-        // Floating CTA Visibility
-        if(heroSection && floatingCta) {
-            const ctaObserver = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    if (!entry.isIntersecting) {
-                        floatingCta.classList.add('visible');
-                    } else {
-                        floatingCta.classList.remove('visible');
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, { rootMargin: '-100px 0px 0px 0px' });
-            ctaObserver.observe(heroSection);
-        }
+            }, observerOptions);
 
-        // --- 3. Form Logic (Preserved) ---
-        const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
-        document.querySelectorAll('input[type="date"]').forEach(el => el.setAttribute('min', tomorrow.toISOString().split('T')[0]));
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+            document.querySelectorAll('.scroll-marker').forEach(el => observer.observe(el));
 
-        document.querySelectorAll('.time-select').forEach(select => {
-            select.appendChild(new Option("--:--", ""));
-            for(let h=7; h<=22; h++){
-                let s = h.toString().padStart(2,'0');
-                select.appendChild(new Option(`${s}:00`, `${s}:00`));
-                if(h<22) select.appendChild(new Option(`${s}:30`, `${s}:30`));
+            // --- 2. Nav Active State & Floating CTA Logic ---
+            const sections = document.querySelectorAll('section[id], body[id], div[id]');
+            const navLinks = document.querySelectorAll('.pc-nav-link');
+            const floatingCta = document.getElementById('floating-cta');
+            const heroSection = document.querySelector('.lp-hero');
+
+            // ScrollSpy (Nav Highlight)
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.dataset.target === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-50% 0px -50% 0px' });
+
+            sections.forEach(section => navObserver.observe(section));
+
+            // Floating CTA Visibility
+            if (heroSection && floatingCta) {
+                const ctaObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) {
+                            floatingCta.classList.add('visible');
+                        } else {
+                            floatingCta.classList.remove('visible');
+                        }
+                    });
+                }, { rootMargin: '-100px 0px 0px 0px' });
+                ctaObserver.observe(heroSection);
             }
+
+            // --- 3. Form Logic (Preserved) ---
+            const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
+            document.querySelectorAll('input[type="date"]').forEach(el => el.setAttribute('min', tomorrow.toISOString().split('T')[0]));
+
+            // time-select JS removed (unused)
+
+            // Validation Logic (Preserved)
+            const form = document.getElementById('cocomplete-lp-form');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    // Validation here
+                });
+            }
+
+            // --- 5. SP Menu Toggle Logic (Added) ---
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const spMenu = document.getElementById('sp-menu');
+            const spMenuClose = document.getElementById('sp-menu-close');
+            const spNavLinks = document.querySelectorAll('.sp-nav-link');
+
+            function openSpMenu() {
+                if (spMenu) {
+                    spMenu.style.display = 'flex';
+                    setTimeout(() => spMenu.classList.add('active'), 10);
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closeSpMenu() {
+                if (spMenu) {
+                    spMenu.classList.remove('active');
+                    setTimeout(() => spMenu.style.display = 'none', 300);
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
+            if (hamburgerBtn) hamburgerBtn.addEventListener('click', openSpMenu);
+            if (spMenuClose) spMenuClose.addEventListener('click', closeSpMenu);
+            spNavLinks.forEach(l => l.addEventListener('click', closeSpMenu));
         });
 
-        // Validation Logic (Preserved)
-        const form = document.getElementById('cocomplete-lp-form');
-        if(form) {
-            form.addEventListener('submit', (e) => {
-                // Validation here
-            });
-        }
+        // --- 4. Hero Animation (Rising Gold Light) Preserved ---
+        (function () {
+            const canvas = document.getElementById('hero-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let w, h, time = 0;
 
-        // --- 5. SP Menu Toggle Logic (Added) ---
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const spMenu = document.getElementById('sp-menu');
-        const spMenuClose = document.getElementById('sp-menu-close');
-        const spNavLinks = document.querySelectorAll('.sp-nav-link');
-
-        function openSpMenu() { 
-            if(spMenu) {
-                spMenu.style.display = 'flex'; 
-                setTimeout(() => spMenu.classList.add('active'), 10); 
-                document.body.style.overflow = 'hidden'; 
+            function resize() {
+                w = canvas.width = canvas.parentElement.offsetWidth;
+                h = canvas.height = canvas.parentElement.offsetHeight;
             }
-        }
+            window.addEventListener('resize', resize);
+            resize();
 
-        function closeSpMenu() { 
-            if(spMenu) {
-                spMenu.classList.remove('active'); 
-                setTimeout(() => spMenu.style.display = 'none', 300); 
-                document.body.style.overflow = 'auto'; 
-            }
-        }
-
-        if(hamburgerBtn) hamburgerBtn.addEventListener('click', openSpMenu);
-        if(spMenuClose) spMenuClose.addEventListener('click', closeSpMenu);
-        spNavLinks.forEach(l => l.addEventListener('click', closeSpMenu));
-    });
-
-    // --- 4. Hero Animation (Rising Gold Light) Preserved ---
-    (function() {
-        const canvas = document.getElementById('hero-canvas');
-        if(!canvas) return;
-        const ctx = canvas.getContext('2d');
-        let w, h, time = 0;
-
-        function resize() { 
-            w = canvas.width = canvas.parentElement.offsetWidth; 
-            h = canvas.height = canvas.parentElement.offsetHeight; 
-        }
-        window.addEventListener('resize', resize);
-        resize();
-
-        function drawDiamond(x, y, size, alpha) {
-            ctx.save();
-            ctx.translate(x, y);
-            ctx.beginPath();
-            ctx.moveTo(0, -size);      
-            ctx.lineTo(size * 0.7, 0); 
-            ctx.lineTo(0, size);       
-            ctx.lineTo(-size * 0.7, 0);
-            ctx.closePath();
-            ctx.strokeStyle = `rgba(184, 150, 46, ${alpha})`;
-            ctx.lineWidth = 2;
-            ctx.stroke();
-            ctx.restore();
-        }
-
-        function anim() {
-            ctx.clearRect(0, 0, w, h);
-            time += 0.01;
-            const centerX = w / 2;
-            const centerY = h / 2;
-            for (let i = 0; i < 5; i++) {
-                const size = 150 + Math.sin(time + i * 0.5) * 50;
-                const alpha = 0.3 - (i * 0.05);
-                const rotation = time * 0.2 * (i % 2 === 0 ? 1 : -1);
+            function drawDiamond(x, y, size, alpha) {
                 ctx.save();
-                ctx.translate(centerX, centerY);
-                ctx.rotate(rotation);
-                drawDiamond(0, 0, size, alpha);
+                ctx.translate(x, y);
+                ctx.beginPath();
+                ctx.moveTo(0, -size);
+                ctx.lineTo(size * 0.7, 0);
+                ctx.lineTo(0, size);
+                ctx.lineTo(-size * 0.7, 0);
+                ctx.closePath();
+                ctx.strokeStyle = `rgba(184, 150, 46, ${alpha})`;
+                ctx.lineWidth = 2;
+                ctx.stroke();
                 ctx.restore();
             }
-            requestAnimationFrame(anim);
-        }
-        anim();
-    })();
 
-    // Modal Control
-    function openModal(t) { document.getElementById('modal-'+t).style.display='block'; document.body.style.overflow='hidden'; }
-    function closeModal(t) { document.getElementById('modal-'+t).style.display='none'; document.body.style.overflow='auto'; }
-</script>
+            function anim() {
+                ctx.clearRect(0, 0, w, h);
+                time += 0.01;
+                const centerX = w / 2;
+                const centerY = h / 2;
+                for (let i = 0; i < 5; i++) {
+                    const size = 150 + Math.sin(time + i * 0.5) * 50;
+                    const alpha = 0.3 - (i * 0.05);
+                    const rotation = time * 0.2 * (i % 2 === 0 ? 1 : -1);
+                    ctx.save();
+                    ctx.translate(centerX, centerY);
+                    ctx.rotate(rotation);
+                    drawDiamond(0, 0, size, alpha);
+                    ctx.restore();
+                }
+                requestAnimationFrame(anim);
+            }
+            anim();
+        })();
+
+        // Modal Control
+        function openModal(t) { document.getElementById('modal-' + t).style.display = 'block'; document.body.style.overflow = 'hidden'; }
+        function closeModal(t) { document.getElementById('modal-' + t).style.display = 'none'; document.body.style.overflow = 'auto'; }
+    </script>
 
 </body>
+
 </html>
