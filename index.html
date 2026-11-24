@@ -238,6 +238,9 @@ a{color:inherit}
 .final h2{font-size:clamp(1.5rem,5vw,2.1rem)}
 .final p.body{margin-top:1.6em;font-family:var(--serif);font-size:1.1rem;line-height:2.1}
 .final .btn{margin-top:2em}
+.final__in{max-width:980px;margin:0 auto;display:grid;gap:36px;align-items:center}
+.final__photo{width:100%;height:auto;max-width:300px;aspect-ratio:4/5;object-fit:cover;margin:0 auto;border-radius:4px}
+@media(min-width:900px){.final__in{grid-template-columns:380px 1fr;gap:72px}.final__photo{max-width:none}.final{text-align:left}}
 
 /* ---------- フッター ---------- */
 .footer{padding:40px 20px 120px;text-align:center;font-size:.85rem;color:var(--muted);background:var(--paper);border-top:1px solid var(--line)}
@@ -537,11 +540,14 @@ dialog::backdrop{background:rgba(249,250,251,.75);backdrop-filter:blur(4px)}
 
 <!-- ⑩ 最後の申込み -->
 <section class="sec final" id="contact">
-  <div class="narrow">
-    <h2>まずは60分、話してみませんか。</h2>
-    <p class="body"><span class="ph">大丈夫。</span><span class="ph">まとまっていなくていいです。</span><br><span class="ph">「このままでいいのかな」という感覚だけ、</span><span class="ph">持ってきてください。</span></p>
-    <a class="btn btn--lg" href="#apply" data-open="apply" data-cta="final">無料オリエンテーションを申し込む</a>
-    <p class="cta-note">オンラインで60分・無料。無理な勧誘や引き止めは一切行いません。</p>
+  <div class="final__in">
+    <img class="final__photo" src="smile.jpg" alt="笑顔の星野直道の写真です" width="880" height="1100" loading="lazy">
+    <div class="final__text">
+      <h2><span class="ph">まずは60分、</span><span class="ph">話してみませんか。</span></h2>
+      <p class="body"><span class="ph">大丈夫。</span><span class="ph">まとまっていなくていいです。</span><br><span class="ph">「このままでいいのかな」</span><span class="ph">という感覚だけ、</span><span class="ph">持ってきてください。</span></p>
+      <a class="btn btn--lg" href="#apply" data-open="apply" data-cta="final">無料オリエンテーションを申し込む</a>
+      <p class="cta-note">オンラインで60分・無料。無理な勧誘や引き止めは一切行いません。</p>
+    </div>
   </div>
 </section>
 </main>
